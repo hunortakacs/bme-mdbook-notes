@@ -1,0 +1,1405 @@
+{
+ "meta": {
+  "source": "dp26a-fp1ea.pdf",
+  "kind": "pdf",
+  "physical_pages": 136,
+  "units": 55,
+  "grouping": "labels",
+  "needs_view": 11,
+  "flags": {
+   "layout": 5,
+   "graphic": 1,
+   "variant": 6,
+   "math": 2
+  },
+  "body_font_size": 10.0,
+  "page_hashes": [
+   "7d3c63a6327106db",
+   "9c5e4641868c8d90",
+   "a1cc69a9dcb9cd0b",
+   "4e122a88979c1383",
+   "da6f0ee17be4e839",
+   "6472d45106d1291a",
+   "34a7f60778dd7f55",
+   "670c9bd3b74b5c1b",
+   "a1e7ed1fd76dede5",
+   "844fea5827b74cc0",
+   "19d042ca2b734dbe",
+   "61376af09520619d",
+   "c51f66272fd9ddb7",
+   "43714290853df305",
+   "fa21243fe95b5664",
+   "cec69bb14a275765",
+   "8185752c2305d17e",
+   "10a2e54d529d9a4e",
+   "bf3f25d96e0179ae",
+   "2bed360f27c3550e",
+   "e8a3b75ec5c8494f",
+   "e9ca7deef33163ae",
+   "65d1e6427a4cf127",
+   "39573a39950a9169",
+   "e4e364799718adad",
+   "471c0bc07f54667f",
+   "7f3a0837fd1ce7a8",
+   "6144b99bf7fdfa37",
+   "44de7e55c489de34",
+   "ccd958284f4b50b5",
+   "8432d399fcc781c5",
+   "86d33afce6dbe85b",
+   "1fc5e0ecf496e6bd",
+   "e16640c85d217c2d",
+   "ec2df6a6a62e7816",
+   "00256e23ce88d951",
+   "8f27b122fe85770c",
+   "bed3f893c73238b6",
+   "a464bac49e3d481d",
+   "8c40c33c8eeb1a21",
+   "1ee0e65249f52d3f",
+   "ab99d93e00486c24",
+   "2add5cdea65e7b9f",
+   "ea2d099b67b3093a",
+   "35a2e46f7e58118f",
+   "70a17fefb813f5cf",
+   "601fce42b6c68e2b",
+   "10e2665a029b8e6e",
+   "6da223a61fc69ea3",
+   "d932e79c8577023d",
+   "8dc1d21df58e9440",
+   "fbb78ff8dc87761c",
+   "0c0be20392ce84c6",
+   "a56988bca1149436",
+   "97e78a746cb4135c",
+   "2700aeee1f9c5e7a",
+   "26dc944710dc9243",
+   "c3ffb4e81bce238e",
+   "04eb2aeba47d4ccd",
+   "b841d0ab46e8effa",
+   "f47539d5c0523307",
+   "cd5fc4214b5974da",
+   "7787d5b4e4efe017",
+   "6e13c201757b0415",
+   "31de257f822f5860",
+   "0f97a2ccf489e5ea",
+   "6f98825163f1314d",
+   "a40de4dc77babc9d",
+   "1de8f7f576251f8d",
+   "f266296a0b87d45f",
+   "2a0b07929782ab5c",
+   "48aa3c5807c1fd8f",
+   "3d9afb78f4b90447",
+   "6e5baae22f2a8326",
+   "97b7461617d6925b",
+   "ddc95346fda01cea",
+   "410d5518eae30cf8",
+   "e7023a8259c8504f",
+   "4b53929dfec97db4",
+   "1bf21f3c5c08c327",
+   "e1915be1626c13b2",
+   "1e862de6d68def61",
+   "aa452b974c7ced22",
+   "509dc45ea4bdb763",
+   "c01385843680c267",
+   "3385589e335b999b",
+   "870499abba4beb50",
+   "0246ad2b047db6a2",
+   "7d4604d7d0758105",
+   "cc9853b85c19717e",
+   "9998fb8d5b723ac2",
+   "d792ea0b8b5b39ec",
+   "ef9973eb4c10c3ae",
+   "f250d32bb52408a0",
+   "0785a0f578c3a596",
+   "996029f0ea28641b",
+   "66780b1255ef3a99",
+   "23ae65826c0741f4",
+   "653f08b0db84d400",
+   "1c501f906079e376",
+   "f78c00e8f1061ea0",
+   "bcff8a0739fe7580",
+   "a49be9089a635e32",
+   "5d82df9f88a12488",
+   "009d9773f5169291",
+   "59a696de360ef52a",
+   "f9a4de1fc82a4a75",
+   "1d32d041a467e8f8",
+   "7faaae203a171f5c",
+   "d18360526be556a4",
+   "451e6ad176666939",
+   "4bed998b0b3409a5",
+   "c4382e78e2d7c5a0",
+   "60796a076d557f93",
+   "befffd1d9cc38204",
+   "119617e7bdc98e55",
+   "8235d265c9187b95",
+   "5e972569cf28880a",
+   "845a682dd35c579a",
+   "49eccc41a39a8b44",
+   "b0c7107431d19419",
+   "9fecd16319bcf30f",
+   "8377c5c75b554757",
+   "73a6885308869e5c",
+   "b2d15ca89ab0a739",
+   "15de7a6dfc36bea0",
+   "09784cccc7285a80",
+   "f95495e25e5da353",
+   "b2cc29f354b674cd",
+   "0639ac2548a71761",
+   "d0a3ee81ba597a59",
+   "b9fdb4a741d834ce",
+   "839db6cebef50415",
+   "b1e15f66c5584de5",
+   "6a568fa86d028b12",
+   "c692edef7e63f0b2"
+  ]
+ },
+ "units": [
+  {
+   "id": "s1",
+   "page": 1,
+   "pages": [
+    1,
+    1
+   ],
+   "label": "1",
+   "title": "",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "Deklaratív programozás 1. előadás",
+    "1 / 52"
+   ],
+   "text": "Deklaratív programozás 1. előadás\n\nKabódi László^(1) Marussy Kristóf^(2)\n\nBME Számítástudományi és Információelméleti Tanszék Mesterséges Intelligencia és Rendszertervezés Tanszék\n\n1`kabodi.laszlo@vik.bme.hu`\n\n2`marussy@mit.bme.hu`\n\n2026. ősz",
+   "fingerprint": "e5921e0893e92da7",
+   "debug": null
+  },
+  {
+   "id": "s2",
+   "page": 2,
+   "pages": [
+    2,
+    2
+   ],
+   "label": "2",
+   "title": "I. rész",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Deklaratív programozás, követelmények,\n\náttekintés\n\n1 Deklaratív programozás, követelmények, áttekintés\n\n2 Elixir: fő jellemzői, telepítés, használat",
+   "fingerprint": "13cbf60e33abf116",
+   "debug": null
+  },
+  {
+   "id": "s3",
+   "page": 3,
+   "pages": [
+    3,
+    3
+   ],
+   "label": "3",
+   "title": "A tantárgy témája",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "Deklaratív programozás, követelmények, áttekintés",
+    "3 / 52"
+   ],
+   "text": "- Deklaratív programozási nyelvek – gyakorlati megközelítésben\n- Két fő irány:\n  - funkcionális programozás **Elixir** nyelven,\n  - logikai programozás **Prolog** nyelven.",
+   "fingerprint": "b571b97f2004ae38",
+   "debug": null
+  },
+  {
+   "id": "s4",
+   "page": 4,
+   "pages": [
+    4,
+    4
+   ],
+   "label": "4",
+   "title": "Tartalom",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "Deklaratív programozás, követelmények, áttekintés",
+    "Tudnivalók, követelmények",
+    "4 / 52"
+   ],
+   "text": "1 Deklaratív programozás, követelmények, áttekintés\n- Tudnivalók, követelmények\n- A deklaratív programozási paradigma áttekintése",
+   "fingerprint": "55dac0f912b3eeb4",
+   "debug": null
+  },
+  {
+   "id": "s5",
+   "page": 5,
+   "pages": [
+    5,
+    5
+   ],
+   "label": "5",
+   "title": "Honlap, Elektronikus TanárSegéd, Teams csoport",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [
+    "https://dp.iit.bme.hu",
+    "https://dp.iit.bme.hu/dp-current",
+    "https://dps.iit.bme.hu/ets",
+    "https://github.com/dhanak/ets/"
+   ],
+   "annots": [],
+   "header": [
+    "Deklaratív programozás, követelmények, áttekintés",
+    "Tudnivalók, követelmények",
+    "5 / 52"
+   ],
+   "text": "- Honlap: <https://dp.iit.bme.hu>, a jelen félév honlapja: <https://dp.iit.bme.hu/dp-current>\n- ETS, az Elektronikus TanárSegéd^(1) <https://dps.iit.bme.hu/ets>, csak a tantárgy jelenlegi hallgatói tudnak belépni a Neptun-kódjukkal\n- Deklaratív programozás Teams csoport\n1Az ETS 2024-es új kiadása Hanák Dávidnak köszönhető. Forrás: <https://github.com/dhanak/ets/>",
+   "fingerprint": "8e2d852dd8635c1f",
+   "debug": null
+  },
+  {
+   "id": "s6",
+   "page": 6,
+   "pages": [
+    6,
+    6
+   ],
+   "label": "6",
+   "title": "DP-követelmények: gyakorlatok",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "Deklaratív programozás, követelmények, áttekintés",
+    "Tudnivalók, követelmények",
+    "6 / 52"
+   ],
+   "text": "Gyakorlatok\n- Az 1. oktatási héttől kezdve lesznek tantermi gyakorlatok, mégpedig az ötkredites VISZAD01 kurzus hallgatói számára minden héten, a háromkredites VISZAD00 kurzus hallgatói számára minden második héten. Részletes beosztás a honlapon.\n- A gyakorlatok anyagát elektronikus formában a honlapon tesszük közzé.\n- A tantermi gyakorlatokon nagyon ajánlott a hordozható számítógép (laptop) használata, különösen az FP-gyakorlatokon, ahol a Livebook for Elixir notebook-formában adjuk ki a feladatsorokat.\n- További Elixir gyakorlási lehetőség az EDUX, Prolog gyakorlási lehetőség a PLWIN rendszerben (lásd honlap).",
+   "fingerprint": "109ac499c5f519c2",
+   "debug": null
+  },
+  {
+   "id": "s7",
+   "page": 7,
+   "pages": [
+    7,
+    7
+   ],
+   "label": "7",
+   "title": "DP-követelmények: kis házi feladatok",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "Deklaratív programozás, követelmények, áttekintés",
+    "Tudnivalók, követelmények",
+    "7 / 52"
+   ],
+   "text": "Kis házi feladatok (KHF)\n- 3 feladat funkcionális, 3 logikai programozási nyelven, ütemterv szerint.\n- Kiírás a honlapon, beadás szintén elektronikus úton (ld. honlap, ETS).\n- **Kötelező** legalább **két** FP és **két** LP KHF érvényes és sikeres beadása.\n- A KHF-ek egyre összetettebbek és részben *egymásra épülnek* – érdemes *minél előbb* elkezdeni a KHF-ek beadását!\n- Egy KHF beadása érvényes, ha az összes beadási tesztesetre jól fut le.\n- A KHF-ek az ún. éles tesztelés során kapnak pontszámot (ezek az éles tesztesetek a beadási tesztesetekhez hasonlóak, de nem ugyanazok).\n- Minden KHF sikeres megoldásáért – azaz az összes éles teszteset megoldásáért – 1-1 jutalompont (azaz a 100 alappont feletti pont) jár.\n- Ha valaki mindhárom KHF-et megoldja az adott nyelven, azzal **megduplázza** a pontszámát, azaz 3 helyett 6 pontot kap.\n- Minden **KHF**-nek külön határideje van, **pótlási lehetőség nincs**.\n- A beadási határidejéig a KHF többször is beadható, az utolsót értékeljük.\n- Mindenkinek el kell tudnia magyaráznia a megoldását az oktatóknak.",
+   "fingerprint": "c65c36486ee63f4f",
+   "debug": null
+  },
+  {
+   "id": "s8",
+   "page": 8,
+   "pages": [
+    8,
+    8
+   ],
+   "label": "8",
+   "title": "DP-követelmények: nagy házi feladat",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "Deklaratív programozás, követelmények, áttekintés",
+    "Tudnivalók, követelmények",
+    "8 / 52"
+   ],
+   "text": "Nagy házi feladat (NHF)\n- Programozás mind funkcionális, mind logikai nyelven.\n- Mindenkinek önállóan kell dolgoznia!\n- Elvárás: hatékony (időlimit!), jól dokumentált („kommentezett”) programok.\n- A programokhoz 5–10 oldalas fejlesztői dokumentáció PDF-ben.\n- Az FP NHF kiírása 6. héten, az LP NHF-é 11. héten a honlapon.\n- Az FP NHF beadása 8. héten, az LP NHF-é 13. héten az ETS-sel.\n- A beadáskor és a pontozáskor most is külön-külön tesztsorozatot használunk (nehézségben hasonlókat, de nem azonosakat).\n- Azok a programok, amelyek megoldják az éles tesztesetek 80%-át, létraversenyen vesznek részt (hatékonysági, gyorsasági plusz pontokért).\n- Azok a hallgatók, akik **mindkét** nyelvből bejutnak a létraversenybe, és a kis házi feladatokra vonatkozó követelményeket is teljesítik, **megajánlott** jegyet kapnak.\n- A beadási határidejéig az NHF többször beadható, az utolsót értékeljük.",
+   "fingerprint": "cf0523f58245206f",
+   "debug": null
+  },
+  {
+   "id": "s9",
+   "page": 9,
+   "pages": [
+    9,
+    9
+   ],
+   "label": "9",
+   "title": "DP-követelmények: nagy házi feladat (folyt.)",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "Deklaratív programozás, követelmények, áttekintés",
+    "Tudnivalók, követelmények",
+    "9 / 52"
+   ],
+   "text": "Nagy házi feladat (folyt.)\n- Pontozása mindkét nyelvből:\n  - helyes (azaz jó eredményt időkorláton belül adó) futás esetén a 10 teszteset mindegyikére 0,5-0,5 pont, összesen max. 5 pont;\n  - a dokumentációra, a kód olvashatóságára, kommentezettségére max. 2 pont;\n  - tehát nyelvenként összesen max. 7 pont szerezhető.\n- Így az NHF súlya az osztályzatban: 14% (a 100 pontból 14).\n- Az NHF beadása **nem kötelező, de ajánlott!** Hogy miért? Többek között\n  - egy-egy nagyobb feladat megoldásával lehet igazán megérteni, megérezni a funkcionális, ill. a logikai programozási szemléletet;\n  - mindkét NHF hatékony megoldásával megajánlott jegyet lehet szerezni, ami a külföldön tanulóknak, „home office”-ban dolgozóknak, sok zéhát íróknak stb. különösen hasznos lehet;\n  - maguk a feladványok is érdekesek, például abból a szempontból, hogy hogyan lehet hatékonyan algoritmizálni őket;\n  - lehetőséget adnak egy új szakmai területre, a korlátprogramozásba (constraint programming) való „belekóstolásra”.",
+   "fingerprint": "b288bdfe3d001f38",
+   "debug": null
+  },
+  {
+   "id": "s10",
+   "page": 10,
+   "pages": [
+    10,
+    10
+   ],
+   "label": "10",
+   "title": "DP-követelmények: zárthelyik",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "Deklaratív programozás, követelmények, áttekintés",
+    "Tudnivalók, követelmények"
+   ],
+   "text": "Nagyzárthelyik, pótzárthelyik (NZH-k, PZH-k)\n- Két NZH-t tartunk, egyet a funkcionális, egyet a logikai részből.\n- Két PZH-t tartunk, mindkét PZH-n bármelyik NZH-t lehet pótolni, akár mind a kettőt (de szűkebb időkerettel).\n- Az FP-zéhákat terveink szerint gépteremben, Livebook for Elixir notebookkal kell megírni.\n- Mind a funkcionális, mind a logikai részből **kötelező** a zárthelyi érvényes teljesítése, kivéve megajánlott jegy esetén (lásd alább).\n- 40%-os szabály: **nyelvenként** a maximális pontszám 40%-a kell az érvényességhez.\n- Zárthelyi időpontok: lásd a honlapon.\n- A zárthelyik súlya az osztályzatban: 43%–43% (a 100 pontból max. 86).",
+   "fingerprint": "c5edec1716dd70cf",
+   "debug": null
+  },
+  {
+   "id": "s11",
+   "page": 12,
+   "pages": [
+    11,
+    12
+   ],
+   "label": "11",
+   "title": "DP-követelmények: megajánlott jegy, önálló feladatmegoldás",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [
+    "http://www.kth.bme.hu/document/189/original/bme_rektori_utasitas_05.pdf"
+   ],
+   "annots": [],
+   "header": [
+    "Deklaratív programozás, követelmények, áttekintés",
+    "Tudnivalók, követelmények"
+   ],
+   "text": "A megajánlott jegy feltételei\n- Alapfeltételek: a KHF követelmények teljesítése; az NHF „megvédése”.\n- Azok a programok, amelyek megoldják az éles tesztesetek 80%-át az időkorláton belül, létraversenyen vesznek részt\n  - Jóval nehezebb létra-tesztesetek: verseny a hallgatók között, hogy kinek a programja hányat tud megoldani időre\n- Jó (4): a nagy házi feladat mindkét nyelvből bejut a létraversenybe.\n- Jeles (5): legalább 40%-os eredmény a létraversenyen, mindkét nyelvből.\nAz NHF „megvédése” azt jelenti, hogy a hallgatónak személyes (vagy távjelenléti) formában el kell magyaráznia a tantárgy egy oktatójának, hogyan oldotta meg az NHF-et, és válaszolni kell tudnia az oktató kérdéseire.\n\n*Magától értetődő, hogy* minden házi feladatot önállóan kell elkészíteni. Másolás esetén kötelesek vagyunk fegyelmi eljárást indítani, *lásd a 3/2011.* (III.23.) rektori utasításban a \"Beadandó feladat, szakdolgozat, diplomaterv elkészíttetése mással\" tételt.",
+   "fingerprint": "819611f6fde5bb8a",
+   "debug": null
+  },
+  {
+   "id": "s12",
+   "page": 13,
+   "pages": [
+    13,
+    13
+   ],
+   "label": "12",
+   "title": "DP-követelmények: IMSc-pontozás",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "Deklaratív programozás, követelmények, áttekintés",
+    "Tudnivalók, követelmények"
+   ],
+   "text": "- A tantárgyból kétféle módon szerezhető IMSc pont:\n  - egyes zárthelyik során pluszfeladatok megoldásával (max. 13 pont),\n  - a létraversenyen a megajánlott jeles érdemjegyhez szükséges 40%-os teljesítés felett minden további 10%-os teljesítésért mindkét nyelv esetén 1–1 pont (összesen max. 12 pont).\n- A hallgató a fenti módokon szerzett pontok összegét kapja, de a VISZAD00 kurzus esetén legfeljebb 15 IMSc pontot.\n- Az IMSc pontok gyűjtése teljesen független a tantárgyban szerezhető ZH és HF pontoktól. Ezen pontok megszerzése és a fakultatív feladatok megoldása nélkül is jeles szinten teljesíthetők a tantárgy követelményei.\n- Az IMSc pontok megszerzése az IMSc programban nem résztvevő hallgatók számára is lehetséges.",
+   "fingerprint": "b14e1cec1ed2507e",
+   "debug": null
+  },
+  {
+   "id": "s13",
+   "page": 14,
+   "pages": [
+    14,
+    14
+   ],
+   "label": "13",
+   "title": "Tartalom",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "Deklaratív programozás, követelmények, áttekintés",
+    "A deklaratív programozási paradigma áttekintése"
+   ],
+   "text": "1 Deklaratív programozás, követelmények, áttekintés\n- Tudnivalók, követelmények\n- A deklaratív programozási paradigma áttekintése",
+   "fingerprint": "5146647d5e4a5167",
+   "debug": null
+  },
+  {
+   "id": "s14",
+   "page": 19,
+   "pages": [
+    15,
+    19
+   ],
+   "label": "14",
+   "title": "Deklaratív programozás",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "Deklaratív programozás, követelmények, áttekintés",
+    "A deklaratív programozási paradigma áttekintése"
+   ],
+   "text": "- A „deklaratív programozás” jelentése (Wikipédia): (. . . ) a deklaratív programozás egy programozási paradigma, (. . . ) amely kifejezi a számítás logikáját anélkül, hogy leírná a vezérlési folyamatát. (. . . ) declarative programming is a programming paradigm (. . . ) that expresses the logic of a computation without describing its control flow.\n- A „deklaratív” jelző értelmezése (Topszótár):\n  - *kijelentő*, kinyilatkoztató\n  - ellentmondást nem tűrő\n- A *„deklaratív”* jelző a nyelvészetből származik, pl. „kijelentő mondat”.\n- Milyen más mondatfajták vannak?\n  - kérdő,\n  - *felszólító* (imperatív) stb.\n- A számítógépek belső nyelve (gépi kódja) alapvetően *felszólító* jellegű: add hozzá, szorozd meg, ugorj, . . .\n- A magas szintű programnyelvek többsége is *imperatív*: `while ... do ...`, `goto ...`, értékadás (írd felül a változó értékét) stb.",
+   "fingerprint": "02fd3edf5b503a95",
+   "debug": null
+  },
+  {
+   "id": "s15",
+   "page": 21,
+   "pages": [
+    20,
+    21
+   ],
+   "label": "15",
+   "title": "Deklaratív programozás (folyt.)",
+   "flags": [
+    "layout"
+   ],
+   "view": "pages/p021.png",
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "Deklaratív programozás, követelmények, áttekintés",
+    "A deklaratív programozási paradigma áttekintése"
+   ],
+   "text": "- Lehet-e pl. C-ben deklaratívan programozni? Igen, pl. ciklus helyett rekurzió használatával:\n\n```\nint fact(int n) {if (n > 0) return n * fact(n-1);\n                 else return 1;\n```\n\n- Igen, de ez lassú! ; Ún. jobbrekurzív (farokrekurzív, tail recursive) változata a ciklussal azonos hatékonyságú kóddá fordul.\n- Mi az előnye a deklaratív szemléletnek? A programkód sokkal közelebb áll a specifikációhoz, helyességéről sokkal könnyebb meggyőződni.\n- A deklaratív megközelítés jelmondata:\n\n```\n}\n```\n\nvagy kicsit enyhítve:\n\n*MIT* és nem *HOGYAN*\n\nInkább *MIT,* mint *HOGYAN* (*WHAT* rather than *HOW*)\n- A *deklaratív* nyelvekben a *változó* a *matematika* változófogalmának felel meg: *egyetlen*, esetleg még ismeretlen értéket jelöl.",
+   "fingerprint": "8443637d7c181625",
+   "debug": null
+  },
+  {
+   "id": "s16",
+   "page": 23,
+   "pages": [
+    22,
+    23
+   ],
+   "label": "16",
+   "title": "Funkcionális és logikai programozás",
+   "flags": [
+    "graphic",
+    "layout"
+   ],
+   "view": "pages/p023.png",
+   "figures": [
+    {
+     "file": "figures/p023-f1.png",
+     "bbox": [
+      0.256,
+      0.382,
+      0.818,
+      0.826
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [
+    "Deklaratív programozás, követelmények, áttekintés",
+    "A deklaratív programozási paradigma áttekintése"
+   ],
+   "text": "- A *deklaratív* programozás két fő ága egy-egy alapvető *matematikai*\n  - Funkcionális programozás (FP) – *függvények*\n**Programozási paradigmák – programozási nyelvek**\n\n**Deklaratív**\n\n*fogalom*hoz kapcsolódik:\n  - Logikai programozás (LP) – *relációk*\n**Imperatív** Fortran Algol C\n\n**Funkcionális**\n\nJava\n\nLISP\n\nPython\n\nML\n\n. . .\n\nHaskell Erlang Elixir . . .\n- A kurzus tárgya: az *Elixir* funkcionális és a *Prolog* logikai programozási nyelv.\n**Logikai**\n\nSQL Prolog ConstraintxProg. . . .",
+   "fingerprint": "27d75371860cd1f2",
+   "debug": null
+  },
+  {
+   "id": "s17",
+   "page": 32,
+   "pages": [
+    24,
+    32
+   ],
+   "label": "17",
+   "title": "Példa: Listák összefűzése Elixirben és Prologban",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "Deklaratív programozás, követelmények, áttekintés",
+    "A deklaratív programozási paradigma áttekintése"
+   ],
+   "text": "- Az Elixir és a Prolog nyelvek (közös) szintaxisa a láncolt listák jelölésére:\n  - `[]` – üres lista\n  - `[Head|Tail]` – egy olyan lista, amelynek feje `Head`, farka pedig `Tail`\n- Példa: az `1`, `2`, `3` számokból álló lista: `[1|[2|[3|[]]]]`\n- Ugyanez az adatstruktúra tömörebben is leírható: `[1,2,3]`\n- Írjunk egy `app` nevű kétargumentumú *Elixir függvényt* (`app/2`):\n\n```\n#   app(l1,   l2): l1 és l2 listák összefűzöttje (l1⊕l2)\ndef app([],    b) do            b end       # [] ⊕b = b\ndef app([x|a], b) do [x|app(a,b)] end       # [x|a] ⊕b = [x|a⊕b]\n```\n\n- Az `app` függvénynek egy 3-argumentumú *Prolog eljárás* (másnéven *predikátum*) felel meg (`app/3`), a 3. argumentum az *Elixir fv.* eredménye):\n\n```\n%   app(L1, L2, L12): L1 és L2 listák összefűzöttje L12 (L1⊕L2 = L12)\n    app([],    B,               B).         % [] ⊕B = B\n    app([X|A], B,    [X|       C]) :-       % [X|A] ⊕B = [X|C] ha\n           app(A, B, C).                    %      A ⊕B = C\n```\n\n- Az eljáráshívások (a függvényhívásokkal ellentétben) nem ágyazhatók egymásba, ezért van szükség a `C` segédváltozóra.\n- **DE**: az `app/3` Prolog eljárás jobbrekurzív (azaz ciklussá fordul!)",
+   "fingerprint": "4f0edc0a88721968",
+   "debug": null
+  },
+  {
+   "id": "s18.1",
+   "page": 34,
+   "pages": [
+    33,
+    44
+   ],
+   "label": "18",
+   "title": "Az app/3 Prolog eljárás használata",
+   "flags": [
+    "variant"
+   ],
+   "view": "pages/p034.png",
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "Deklaratív programozás, követelmények, áttekintés",
+    "A deklaratív programozási paradigma áttekintése"
+   ],
+   "text": "- Prologban megengedett, hogy egy *adatstruktúrában behelyettesítetlen* változó szerepeljen:\n\n```\napp([],    B, B).\napp([X|A], B, L) :- L = [X|C], app(A, B, C).\n```\n\n- A Prolog változó pointerként is felfogható: pl. `app` először felépíti az eredménylista első láncszemét (`[X|C]`), majd az `app` jobbrekurzív hívásával kitölti az eredménylista `C` által mutatott farkát",
+   "fingerprint": "fe45f16eaaab9c6a",
+   "debug": null
+  },
+  {
+   "id": "s18.2",
+   "page": 44,
+   "pages": [
+    33,
+    44
+   ],
+   "label": "18",
+   "title": "Az app/3 Prolog eljárás használata",
+   "flags": [
+    "math",
+    "layout",
+    "variant"
+   ],
+   "view": "pages/p044.png",
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "Deklaratív programozás, követelmények, áttekintés",
+    "A deklaratív programozási paradigma áttekintése"
+   ],
+   "text": "- Prologban megengedett, hogy egy *adatstruktúrában behelyettesítetlen*\n\n```\napp([],    B, B).\napp([X|A], B, L) :- L = [X|C], app(A, B, C).\n```\n\n- A Prolog változó pointerként is felfogható: pl. `app` először felépíti az eredménylista első láncszemét (`[X|C]`), majd az `app` jobbrekurzív hívásával kitölti az eredménylista `C` által mutatott farkát, pl.\n\n```\napp([1], [2], L) ⇒L = [1|C], app([], [2], C) ⇒L = [1|[2]] = [1,2]\n```\n\n- Az `app/3` eljárás nemcsak összefűzésre használható: változó szerepeljen:\n\n```\n| ?- app([1,2], [3,4], L).\n| ?- app([1,2], B, [1,2,3,4]).\n| ?- app([1,2], B, [1,3,4,5]).\n| ?- app(A, B, [1,2]).\n```\n\n=⇒ `L = [1,2,3,4] ? ; no` =⇒ `B = [3,4] ? ; no` =⇒ `no` =⇒ `A = [], B = [1,2] ? ;`\n\n```\nA = [1],  B = [2] ? ;\nA = [1,2], B = [] ? ; no\n```",
+   "fingerprint": "53d4da5f9f941010",
+   "debug": null
+  },
+  {
+   "id": "s19",
+   "page": 45,
+   "pages": [
+    45,
+    45
+   ],
+   "label": "19",
+   "title": "II. rész",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Elixir: fő jellemzői, telepítés, használat\n\n1 Deklaratív programozás, követelmények, áttekintés\n\n2 Elixir: fő jellemzői, telepítés, használat",
+   "fingerprint": "65416d05e4783d0f",
+   "debug": null
+  },
+  {
+   "id": "s20",
+   "page": 46,
+   "pages": [
+    46,
+    46
+   ],
+   "label": "20",
+   "title": "Tartalom",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "FPE-1 – Az Elixir nyelv fő jellemzői"
+   ],
+   "text": "2 Elixir: fő jellemzői, telepítés, használat\n- FPE-1 – Az Elixir nyelv fő jellemzői\n- FPE-1 – Elixir: Telepítés, szövegszerkesztők\n- FPE-1 – Az Elixir interaktív használata (`IEx`)\n- FPE-1 – Projektszervezés és más hasznosságok: mix, benchee",
+   "fingerprint": "ffe237d8ebdc39d4",
+   "debug": null
+  },
+  {
+   "id": "s21",
+   "page": 47,
+   "pages": [
+    47,
+    47
+   ],
+   "label": "21",
+   "title": "Az Elixir nyelv fő jellemzői",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "FPE-1 – Az Elixir nyelv fő jellemzői"
+   ],
+   "text": "- Funkcionális\n- A nyelvben minden kifejezés (nincs statement / expression megkülönböztetés)\n- Mintaillesztés\n- Rekurzió és magasabb rendű függvények (ciklusok helyett)\n- Dinamikusan típusos\n- Nincs semmi megosztva, a processzek üzenetekkel kommunikálnak\n- Erlang függvények hívhatók Elixirből, Elixir függvények Erlangból",
+   "fingerprint": "0c26753e243f6674",
+   "debug": null
+  },
+  {
+   "id": "s22.1",
+   "page": 51,
+   "pages": [
+    48,
+    52
+   ],
+   "label": "22",
+   "title": "Mintaillesztés",
+   "flags": [
+    "variant"
+   ],
+   "view": "pages/p051.png",
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "FPE-1 – Az Elixir nyelv fő jellemzői"
+   ],
+   "text": "- Mintakifejezés, röviden minta: termhez hasonló olyan kifejezés, amelyben nincs függvénykifejezés, de lehet benne szabad változó\n- Egy szabad változó mindenre illeszkedik, az értékét az illeszkedő kifejezés megfelelő részéhez kötjük a sikeres illesztéskor\n- Egyszerű változó kötés: `x = 5`, az `x` mintát illeszti az 5 kifejezésre\n- `[hd|tl] = valami()`: `hd` és `tl` változókat köti a `valami()` által visszaadott lista fejéhez és farkához\n    - hibával leáll, ha a `valami()` üres listával (vagy bármi mással) tér vissza: `(MatchError) no match of right hand side value`\n- Mintaillesztés `case` kifejezéssel\n\n```\ncase valami() do\n  [hd|tl] -> ... # Ha nem üres lista\n  [] -> ... # Ha üres lista\n  _ -> ... # Bármi más\nend\n```",
+   "fingerprint": "1d66749acc32e330",
+   "debug": null
+  },
+  {
+   "id": "s22.2",
+   "page": 52,
+   "pages": [
+    48,
+    52
+   ],
+   "label": "22",
+   "title": "Mintaillesztés",
+   "flags": [
+    "variant"
+   ],
+   "view": "pages/p052.png",
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "FPE-1 – Az Elixir nyelv fő jellemzői"
+   ],
+   "text": "- Mintakifejezés, röviden minta: termhez hasonló olyan kifejezés, amelyben nincs függvénykifejezés, de lehet benne szabad változó\n- Egy szabad változó mindenre illeszkedik, az értékét az illeszkedő kifejezés megfelelő részéhez kötjük a sikeres illesztéskor\n- Egyszerű változó kötés: `x = 5`, az `x` mintát illeszti az 5 kifejezésre\n- `[hd|tl] = valami()`: `hd` és `tl` változókat köti a `valami()` által visszaadott lista fejéhez és farkához\n    - hibával leáll, ha a `valami()` üres listával (vagy bármi mással) tér vissza: `(MatchError) no match of right hand side value`\n- Mintaillesztés `case` kifejezéssel és *őrfeltétellel*\n\n```\ncase valami() do\n  [hd|tl] when is_integer(hd) -> hd * 2 # Ha nem üres lista\n  [] -> 0 # Ha üres lista\n  _ -> nil # Bármi más: hibajelzés\nend\n```\n\n- Függvényhívás: az aktuális paramétereket illesztjük a formális paraméterekre az egyes klózokban",
+   "fingerprint": "14f8cab253ffc25e",
+   "debug": null
+  },
+  {
+   "id": "s23",
+   "page": 57,
+   "pages": [
+    53,
+    57
+   ],
+   "label": "23",
+   "title": "Rekurzió",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "FPE-1 – Az Elixir nyelv fő jellemzői"
+   ],
+   "text": "- Lineáris rekurzió: egy *rekurzív hívás* a függvényben\n\n```\ndef fac(0), do: 1 # 1. klóz: Alapeset\ndef fac(n): do: n * fac(n - 1) # 2. klóz: Rekurzív eset\n```\n\n- Jobbrekurzív (farokrekurzív, tail recursive): rekurzív hívás *visszatérési* *pozícióban* →hatékonyabb gépi kód, nem kell stack\n\n```\ndef fac(n), do: fac(n, 1) # Segédfüggvény meghívása akkumulátor paraméterrel\ndef fac(0, a), do: a\ndef fac(n, a), do: fac(n - 1, n * a)\n```\n\n- Elágazó rekurzíció: több *rekurzív hívás*, sokszor nem hatékony\n\n```\ndef fib(n) when n <= 1, do: n # 1. klóz őrfeltétellel: Alapeset\ndef fib(n), do: fib(n - 1) + fib(n - 2) # 2. klóz: Rekurzív eset\n```\n\n- Lineáris rekurzív adatszerkezetek: pl. `[...]` egyszeresen láncolt listák\n  - Alapeset: `[]` üres lista\n  - *Rekurzív eset*: legalább egy elemű `[H|T]`, ahol `T` is egy lista (`[]` vagy legalább egy elemű)\n- Elágazó rekurzív adatszerekezetek: pl. bináris fa\n- Algebrai módszer: *rekurzív adatszerekezetek* feldolgozása *mintaillesztéssel* rekurzív függvényekkel",
+   "fingerprint": "0ea0742f00687d9d",
+   "debug": null
+  },
+  {
+   "id": "s24",
+   "page": 62,
+   "pages": [
+    58,
+    62
+   ],
+   "label": "24",
+   "title": "Magasabb rendű függvények",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "FPE-1 – Az Elixir nyelv fő jellemzői"
+   ],
+   "text": "- A függvény is érték: változóhoz köthető, adatstruktúra eleme lehet, függvény eredménye lehet, paraméterként átadható stb. Azaz: a függvény is ún. first class citizen, teljes jogú polgár\n\n```\n> L.map [1, 2, 3], fn(x) -> 2 * x end\n[2, 4, 6]\n```\n\n- Egyre gyakoribb az objektumorientált nyelvekben is\n    - Java: `List.of(1, 2, 3).stream().map(x -> 2 * x).toList()`\n    - C#: `new List<int>{1, 2, 3}.Select(x => 2 * x)`\n- Ciklusok helyett: szétválaszthatjuk az adatszerkezet rekurzív bejárását az elvégzendő műveletektől\n\n```\ndefmodule L do # Egyszeresen láncolt lista bejárás\n  def map([], _f), do: []\n  def map([hd|tl], f), do: [f.(hd)|map(tl, f)]\nend\ndefmodule T do # Bináris fa bejárás\n  def map(nil, _f), do: nil\n  def map({x, left, right}, f), do: {f.(x), map(left, f), map(right, f)}\nend\n```",
+   "fingerprint": "b06c69d74eee1e09",
+   "debug": null
+  },
+  {
+   "id": "s25",
+   "page": 66,
+   "pages": [
+    63,
+    66
+   ],
+   "label": "25",
+   "title": "Dinamikus típusok",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "FPE-1 – Az Elixir nyelv fő jellemzői"
+   ],
+   "text": "Az Elixir\n- erősen típusos: minden értéknek pontosan egy futásidejű típusa van\n- dinamikus típusellenőrzéssel: a típusokat nem kötelező megadni a kódban, egy változóhoz nem feltétlenül csak egy típus tartozik\n- *DE:* típus specifikációk megadhatók dokumentációs céllal\n  - @spec tl(xs :: [any()]) :: ts :: [any()] | nil „A `tl` függvény argumentuma egy `xs` tetszőleges elemű lista, visszatérési értéke (`ts`) egy szintén tetszőleges elemű lista vagy `nil`.”\n  - @spec nth(xs :: [any()], n :: integer()) :: r :: any() | nil „Az `nth` függvény argumentumai egy `xs` tetszőleges elemű lista és egy `n` egész szám, visszatérési értéke (`r`) vagy egy tetszőleges típusú érték vagy `nil`.”",
+   "fingerprint": "cf6e9b4023470aa6",
+   "debug": null
+  },
+  {
+   "id": "s26",
+   "page": 71,
+   "pages": [
+    67,
+    71
+   ],
+   "label": "26",
+   "title": "Folyamatok üzenetekkel kommunikálnak",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "FPE-1 – Az Elixir nyelv fő jellemzői"
+   ],
+   "text": "- Nincs folyamatok (processzek) között megosztott memória\n- Kommunikáció üzenetküldés segítségével (aktor modell)\n\n```\nworker = spawn(fn -> # Új folyamat indítása\n  receive do # Várakozás üzenetre\n    {:hello, from} -> # Válasz küldése from felé\n      send(from, {:reply, \"Hello from the worker process!\"})\n  end\nend)\nsend(worker, {:hello, self()}) # Üzenet küldése válaszcímmel\nreceive do # Várakozás a worker folyamat válaszára\n  {:reply, message} -> # Üzenet fogadása mintaillesztéssel\n    IO.puts(message)\nend\n```\n\n- Válasz egymásutáni üzenetekre rekurzív függvények segítségével",
+   "fingerprint": "472b123fa7e6e4eb",
+   "debug": null
+  },
+  {
+   "id": "s27",
+   "page": 76,
+   "pages": [
+    72,
+    76
+   ],
+   "label": "27",
+   "title": "Erlang és Elixir",
+   "flags": [
+    "math"
+   ],
+   "view": "pages/p076.png",
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "FPE-1 – Az Elixir nyelv fő jellemzői"
+   ],
+   "text": "- Erlang Open Telecom Platform (OTP): az Ericsson által fejlesztett nyílt forráskódú rendszer masszívan párhuzamos, elosztott, megbízható alkalmazások fejlesztésére\n  - Kihasználja az üzenetküldést és azt, hogy nincs megosztott memória vagy változó módosítás\n  - Akár függvények is átküldhetők a szerverek között\n- Erlang: az OTP platform eredeti funkcionális programozási nyelve, Prologhoz hasonló szintaxis\n- BEAM: az Erlang/OTP virtuális gépe\n- Elixir: funkcionális programozási nyelv a BEAM platforma, modern (Ruby-ra hasonlító) szintaxissal\nBEAM : Erlang : Elixir ≈JVM : Java : Kotlin\n\nJupyter ≈Livebook",
+   "fingerprint": "eb3f3cb3c29ebe9f",
+   "debug": null
+  },
+  {
+   "id": "s28",
+   "page": 77,
+   "pages": [
+    77,
+    77
+   ],
+   "label": "28",
+   "title": "Tartalom",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "FPE-1 – Elixir: Telepítés, szövegszerkesztők"
+   ],
+   "text": "2 Elixir: fő jellemzői, telepítés, használat\n- FPE-1 – Az Elixir nyelv fő jellemzői\n- FPE-1 – Elixir: Telepítés, szövegszerkesztők\n- FPE-1 – Az Elixir interaktív használata (`IEx`)\n- FPE-1 – Projektszervezés és más hasznosságok: mix, benchee",
+   "fingerprint": "56ae94837344027d",
+   "debug": null
+  },
+  {
+   "id": "s29",
+   "page": 78,
+   "pages": [
+    78,
+    78
+   ],
+   "label": "29",
+   "title": "Elixir: használat, telepítés",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [
+    "https://dps.iit.bme.hu/edux/",
+    "https://elixir-lang.org/install.html",
+    "https://github.com/mise-plugins/mise-elixir",
+    "https://github.com/vikger/edux/",
+    "https://mise.jdx.dev/getting-started.html"
+   ],
+   "annots": [],
+   "header": [
+    "FPE-1 – Elixir: Telepítés, szövegszerkesztők"
+   ],
+   "text": "- Elixir homokozó: <https://dps.iit.bme.hu/edux/>.^(2)\n- Az Elixir előtt a megfelelő verziójú Erlangot is telepíteni kell.\n- Telepítés: <https://elixir-lang.org/install.html>\n- Összetettebb esetekhez: különféle csomagkezelők: Debian, Ubuntu, Windows, macOS\n  - **asdf** verziókezelő (több verzió telepíthető vele párhuzamosan).\n  - **mise** verziókezelő (asdf-en alapul, ugyancsak több verziót tud kezelni): <https://mise.jdx.dev/getting-started.html>. Az Erlangot a **mise** alapból ismeri (lásd: Plugins, Core Plugins), az Elixir telepítése itt van leírva: <https://github.com/mise-plugins/mise-elixir>.\n2Köszönet Gergely Viktornak az EDUX-ért! Forrás: <https://github.com/vikger/edux/>",
+   "fingerprint": "eb0c35794f3087c8",
+   "debug": null
+  },
+  {
+   "id": "s30",
+   "page": 79,
+   "pages": [
+    79,
+    79
+   ],
+   "label": "30",
+   "title": "Livebook for Elixir telepítése",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [
+    "https://github.com/livebook-dev/livebook#direct-installation-with-elixir",
+    "https://github.com/livebook-dev/livebook#escript",
+    "https://livebook.dev/#install"
+   ],
+   "annots": [],
+   "header": [
+    "FPE-1 – Elixir: Telepítés, szövegszerkesztők"
+   ],
+   "text": "- A Livebook a Python Jupyterhez hasonló notebook. Telepítéséről itt lehet olvasni: <https://livebook.dev/#install>.\n- Macre és Windowsra telepítőkkel lehet fölrakni.\n- Linuxon csak kicsit bonyolultabb (hála az Elixir escript funkciójának), a leírás itt található: <https://github.com/livebook-dev/livebook#direct-installation-with-elixir>.\n- Ha az Elixirt és Erlangot a mise-zel telepítettük, akkor az Erlang függőségeit, amelyek az említett szakaszban vannak felsorolva (`inets`, `os_mon`, `runtime_tools`, `ssl`, `xmerl`), nem az operációs rendszer, hanem az Erlang már említett rebar csomagkezelőjével kell telepíteni:\n  - `rebar3 local install inets` stb.\n- Futtatás csomagkezelőből telepítés után: <https://github.com/livebook-dev/livebook#escript>.\nHa nem akarunk a telepítésekkel bajlódni, akkor használhatjuk a dockerizált Elixirt és Livebookot. Részletek a következő dián.",
+   "fingerprint": "5a1dfa95411634af",
+   "debug": null
+  },
+  {
+   "id": "s31",
+   "page": 80,
+   "pages": [
+    80,
+    80
+   ],
+   "label": "31",
+   "title": "Elixir: használat Docker konténerekkel",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [
+    "https://elixir-lang.org/install.html#docker",
+    "https://github.com/livebook-dev/livebook#docker",
+    "https://livebook.dev/"
+   ],
+   "annots": [],
+   "header": [
+    "FPE-1 – Elixir: Telepítés, szövegszerkesztők"
+   ],
+   "text": "- Elixir Docker: <https://elixir-lang.org/install.html#docker>\n  - Run iex (interactive mode): `docker run -it --rm elixir`\n  - Run elixir (compiler & iex): `docker run -it --rm elixir bash`\n- Elixir notebook, azaz Livebook for Elixir: <https://livebook.dev/>\n  - Docker: <https://github.com/livebook-dev/livebook#docker>\n  - Lokális tárhely a `-v $(pwd):/data` opcióval megadott mappában; `$(pwd)` használata esetén abban a mappában, ahol a `docker ...` parancsot kiadjuk. Tulajdonosi jogok beállítása a `-u $(id -u):$(id -g)` opcióval.\n\n```\ndocker run -p 8080:8080 -p 8081:8081 --rm --pull always \\\n-u $(id -u):$(id -g) -v $(pwd):/data ghcr.io/livebook-dev/livebook\n```\n\n  - Már letöltött konténer gyorsindítása frissítés nélkül:\n\n```\ndocker run -p 8080:8080 -p 8081:8081 --rm \\\n-u $(id -u):$(id -g) -v $(pwd):/data ghcr.io/livebook-dev/livebook\n```",
+   "fingerprint": "dfdd7313a20c3264",
+   "debug": null
+  },
+  {
+   "id": "s32",
+   "page": 81,
+   "pages": [
+    81,
+    81
+   ],
+   "label": "32",
+   "title": "Elixir: szövegszerkesztők",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [
+    "https://github.com/KronicDeth/intellij-elixir",
+    "https://github.com/elixir-editors",
+    "https://github.com/elixir-editors/emacs-elixir",
+    "https://github.com/elixir-editors/language-elixir",
+    "https://github.com/elixir-editors/vim-elixir",
+    "https://thinkingelixir.com/elixir-in-vs-code/"
+   ],
+   "annots": [],
+   "header": [
+    "FPE-1 – Elixir: Telepítés, szövegszerkesztők"
+   ],
+   "text": "- Editors for Elixir: <https://github.com/elixir-editors>\n  - vim-elixir for VIM: <https://github.com/elixir-editors/vim-elixir>\n  - emacs-elixir for Emacs: <https://github.com/elixir-editors/emacs-elixir>\n  - language-elixir for Atom: <https://github.com/elixir-editors/language-elixir>\n  - Visual Studio Code with ElixirLS: <https://thinkingelixir.com/elixir-in-vs-code/>\n  - IntelliJIdea with intellij-elixir plugin: <https://github.com/KronicDeth/intellij-elixir>",
+   "fingerprint": "8099d0a78abff741",
+   "debug": null
+  },
+  {
+   "id": "s33",
+   "page": 82,
+   "pages": [
+    82,
+    82
+   ],
+   "label": "33",
+   "title": "Elixir felvezető tutorial Livebookban",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [
+    "https://dp.iit.bme.hu/dp26a/gy/dp26a-fp1gyfel.livemd"
+   ],
+   "annots": [],
+   "header": [
+    "FPE-1 – Elixir: Telepítés, szövegszerkesztők"
+   ],
+   "text": "Az Elixir az előadásban szereplő jellegzetességeinek további bemutatásához Livebook segítségével készítettünk egy interaktív bemutatót. A Livebook-példák interaktív Markdown formátumban innen tölthetők le:\n- <https://dp.iit.bme.hu/dp26a/gy/dp26a-fp1gyfel.livemd>.\nMivel egyetlen programozási nyelvet sem lehet lineárisan, minden részletre kitérve ismertetni, megtanulni, ezért a fontos dolgokra később is visszatérünk.\n\nA következő diákon az Elixir interaktív használatát mutatjuk be kisebb példákon.",
+   "fingerprint": "f7606210273bfb8f",
+   "debug": null
+  },
+  {
+   "id": "s34",
+   "page": 83,
+   "pages": [
+    83,
+    83
+   ],
+   "label": "34",
+   "title": "Tartalom",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "FPE-1 – Az Elixir interaktív használata (IEx)"
+   ],
+   "text": "2 Elixir: fő jellemzői, telepítés, használat\n- FPE-1 – Az Elixir nyelv fő jellemzői\n- FPE-1 – Elixir: Telepítés, szövegszerkesztők\n- FPE-1 – Az Elixir interaktív használata (`IEx`)\n- FPE-1 – Projektszervezés és más hasznosságok: mix, benchee",
+   "fingerprint": "f483de88b16325d2",
+   "debug": null
+  },
+  {
+   "id": "s35",
+   "page": 98,
+   "pages": [
+    84,
+    98
+   ],
+   "label": "35",
+   "title": "Interactive Elixir (REPL: read-eval-print loop)",
+   "flags": [
+    "layout"
+   ],
+   "view": "pages/p098.png",
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "FPE-1 – Az Elixir interaktív használata (IEx)"
+   ],
+   "text": "```\n$ iex\nErlang/OTP ...\nInteractive Elixir ...\n  press Ctrl+C to exit\n  (type h() ENTER for help)\niex(1)> 3.2 + 2.1 * 2\n7.4\niex(2)> :atom\n:atom\niex(3)> Atom\nAtom\niex(4)> \"string\"\n\"string\"\niex(5)> {:ennes,:%,A,:':',9.8}\n{:ennes, :%, A, :\":\", 9.8}\niex(6)> [:lista,:%,A,:':',9.8]\n[:lista, :%, A, :\":\", 9.8]\niex(7)> i :':'\n...Data type\n    Atom...\n```\n\n```\niex(8)> Ctrl+C\nBREAK: (a)bort (A)bort with dump (c)ontinue\n   (p)roc info (i)nfo (l)oaded (v)ersion\n   (k)ill (D)b-tables (d)istribution\nCtrl+C\n$\n\niex(8>) Ctrl+G\nUser switch command\n--> h\n  c [nn]            - connect to job\n  i [nn]            - interrupt job\n  k [nn]            - kill job\n  j                 - list all jobs\n  s [shell]         - start local shell\n  r [node [shell]]  - start remote shell\n  q                 - quit erlang\n  ? | h             - this message\n  --> q\n$\n```",
+   "fingerprint": "5fa12fba1e0fa117",
+   "debug": null
+  },
+  {
+   "id": "s36",
+   "page": 100,
+   "pages": [
+    99,
+    100
+   ],
+   "label": "36",
+   "title": "Interactive Elixir (IEx): parancsok",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "FPE-1 – Az Elixir interaktív használata (IEx)"
+   ],
+   "text": "```\niex(1)> h().\nWelcome to Interactive Elixir.\n...\nc/1            - compiles a file\nc/2            - compiles a file and writes bytecode to the given path\ncd/1           - changes the current directory\nclear/0        - clears the screen\nexports/1      - shows all exports (functions + macros) in a module\nh/1            - prints help for the given module, function or macro\ni/0            - prints information about the last value\ni/1            - prints information about the given term\nls/0           - lists the contents of the current directory\nls/1           - lists the contents of the specified directory\npwd/0          - prints the current working directory\nr/1            - recompiles the given module's source file\nv/0            - retrieves the last value from the history\nv/1            - retrieves the nth value from the history\n...\nTo learn more about IEx as a whole, type h(IEx).\n```",
+   "fingerprint": "1d8c60d2434c65c4",
+   "debug": null
+  },
+  {
+   "id": "s37",
+   "page": 105,
+   "pages": [
+    101,
+    105
+   ],
+   "label": "37",
+   "title": "Saját program fordítása, futtatása",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "FPE-1 – Az Elixir interaktív használata (IEx)"
+   ],
+   "text": "`fpea.ex` – Faktoriális\n\n```\ndefmodule Fpea do\n# Fájlnév csupa kisbetűvel, szavak között aláhúzás (snake_case)\n# Modulnév egybe, szavak nagy kezdőbetűvel (BumpyCase, CamelCase)\n  @spec fac(n::integer) :: f::integer # Típusspecifikáció\n  # f = n! (azaz f az n faktoriálisa) # Fejkomment\n  def fac(0), do: 1            # ha az n=0 mintaillesztés sikeres\n  def fac(n), do: n * fac(n-1) # ha az n=0 mintaillesztés sikertelen\nend\n\n  iex(1)> c \"fpea.ex\"  # fordítás\n  [Fpea]\n  iex(2)> Fpea.fac(5)  # futtatás\n  120\n  iex(3)> fac(5)         # a modulnevet ki kell írni\n  ** (CompileError) iex:3: undefined function fac/1\n  iex(4)> Fpea.fac 5   # argumentum körül a zárójel sokszor elhagyható\n  120\n```",
+   "fingerprint": "b02b03c854f111cc",
+   "debug": null
+  },
+  {
+   "id": "s38.1",
+   "page": 111,
+   "pages": [
+    106,
+    115
+   ],
+   "label": "38",
+   "title": "Elixir docker – IEx",
+   "flags": [
+    "variant"
+   ],
+   "view": "pages/p111.png",
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "FPE-1 – Az Elixir interaktív használata (IEx)"
+   ],
+   "text": "```\n# tárhely a docker konténerben\n$ docker run -it --rm -w /home elixir\nErlang/OTP ...\nInteractive Elixir ...\niex(1)> pwd\n/home\niex(2)> Enum.map 1..5, fn(x) -> -x end\n[-1, -2, -3, -4, -5]\niex(3)> Ctrl+C kétszer\n\n# tárhely a hoszton\n$ docker run -it --rm -v \"$PWD\":/home -w /home elixir\niex(1)>\n```",
+   "fingerprint": "0bb78fa5ec1ad999",
+   "debug": null
+  },
+  {
+   "id": "s38.2",
+   "page": 115,
+   "pages": [
+    106,
+    115
+   ],
+   "label": "38",
+   "title": "Elixir docker – IEx",
+   "flags": [
+    "variant"
+   ],
+   "view": "pages/p115.png",
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "FPE-1 – Az Elixir interaktív használata (IEx)"
+   ],
+   "text": "```\n# tárhely a docker konténerben\n$ docker run -it --rm -w /home elixir\nErlang/OTP ...\nInteractive Elixir ...\niex(1)> pwd\n/home\niex(2)> Enum.map 1..5, fn(x) -> -x end\n[-1, -2, -3, -4, -5]\niex(3)> Ctrl+C kétszer\n\n# tárhely a hoszton\n$ docker run -it --rm -v \"$PWD\":/home -w /home elixir\niex(1)>ls\nfpea.ex      fpea.exs      ...\niex(2)> c \"fpea.ex\"\n[Fpea]\niex(3)> exports Fpea\nfac/1\n4> Fpea.fac 5\n120\n```",
+   "fingerprint": "560859efb1365a19",
+   "debug": null
+  },
+  {
+   "id": "s39",
+   "page": 123,
+   "pages": [
+    116,
+    123
+   ],
+   "label": "39",
+   "title": "Elixir docker – bash",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "FPE-1 – Az Elixir interaktív használata (IEx)"
+   ],
+   "text": "```\n# tárhely a hoszton\n$ docker run -it --rm -v \"$PWD\":/home -w /home elixir /bin/bash\nroot@...:/home#\n# ls *.ex *.exs\nfpea.ex      fpea.exs\n# iex fpea.ex\nErlang/OTP ...\nInteractive Elixir ...\niex(1)> Fpea.fac 5\n120\niex(2)> Ctrl+C kétszer\n$root@...:/home# ˆD exit\n$\n```",
+   "fingerprint": "7ebf24e5359fe1be",
+   "debug": null
+  },
+  {
+   "id": "s40",
+   "page": 124,
+   "pages": [
+    124,
+    124
+   ],
+   "label": "40",
+   "title": "Tartalom",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "FPE-1 – Projektszervezés és más hasznosságok: mix, benchee"
+   ],
+   "text": "2 Elixir: fő jellemzői, telepítés, használat\n- FPE-1 – Az Elixir nyelv fő jellemzői\n- FPE-1 – Elixir: Telepítés, szövegszerkesztők\n- FPE-1 – Az Elixir interaktív használata (`IEx`)\n- FPE-1 – Projektszervezés és más hasznosságok: mix, benchee",
+   "fingerprint": "c74a8158b78b8849",
+   "debug": null
+  },
+  {
+   "id": "s41",
+   "page": 125,
+   "pages": [
+    125,
+    125
+   ],
+   "label": "41",
+   "title": "Projektszervezés Elixirben 1: mix",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [
+    "https://elixir-lang.org/getting-started/mix-otp/introduction-to-mix.html"
+   ],
+   "annots": [],
+   "header": [
+    "FPE-1 – Projektszervezés és más hasznosságok: mix, benchee"
+   ],
+   "text": "Foglalkozzunk egy kicsit az Elixir projektek szervezésével.\n- Az Elixirhez sokféle modul van, a gyakran használtak (pl. `Kernel`, `Enum`, `List`, `String`) az Elixir-alapcsomag része, a többit (pl. `Benchee`) utólag kell telepíteni, ha és amikor szükség van rájuk.\n- Magának a fordítónak (`elixir`, `elixirc`, `iex`) is, a moduloknak is több verziójuk van, az újabb verziók nem mindig kompatibilisek a korábbiakkal: a függőségeket kezelni kell.\n- Általában egy saját projekt is több modulból áll, plusz a teszteléshez használt adatokból, segédprogramokból – célszerű ezeket is jól áttekinthetően, rendben tartani.\n- Ahhoz, hogy az Elixirhez kidolgozott segédeszközöket használni tudjuk, be kell tartani a konvenciókat – nemcsak a névadásra, hanem például a fájlokat tároló mappák szerkezetére vonatkozóakat is.\n- Elixir projektek kezelésére készült a `mix`. A `mix` az Elixir-csomag része. <https://elixir-lang.org/getting-started/mix-otp/introduction-to-mix.html>",
+   "fingerprint": "f2e5056c51750436",
+   "debug": null
+  },
+  {
+   "id": "s42",
+   "page": 126,
+   "pages": [
+    126,
+    126
+   ],
+   "label": "42",
+   "title": "Projektszervezés Elixirben 2: mix",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "FPE-1 – Projektszervezés és más hasznosságok: mix, benchee"
+   ],
+   "text": "Indítsuk el `mix`-et a `~/tmp/` mappában:\n\n```\n  ...$ cd ~/tmp\n  ~/tmp$ mix --help\nMix is a build tool for Elixir\n\nUsage: mix [task]\n\nExamples:\n\n    mix             - Invokes the default task (mix run) in a project\n    mix new PATH    - Creates a new Elixir project at the given path\n    mix help        - Lists all available tasks\n    mix help TASK   - Prints documentation for a given task\n\nThe --help and --version options can be given instead of a task for\nusage and versioning information.\n```\n\nHasználhatjuk a dokkeres Elixirt is:\n\n```\n~$ docker run -it --rm -v \"$PWD\":/home -w /home elixir /bin/bash\n.../home#\n```",
+   "fingerprint": "623f5fa607c39ca5",
+   "debug": null
+  },
+  {
+   "id": "s43",
+   "page": 127,
+   "pages": [
+    127,
+    127
+   ],
+   "label": "43",
+   "title": "Projektszervezés Elixirben 3: mix",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "FPE-1 – Projektszervezés és más hasznosságok: mix, benchee"
+   ],
+   "text": "Hozzunk létre egy új projektet egy új mappában. A projekt és a mappa neve legyen `fp`. Az `fp/lib` mappában is létrejön egy fájl `fp.ex` néven, benne az Fp modul-sablonnal – ez lenne a neve a `--module` opció nélkül is.\n\n```\n# mix new fp --module Fp\n* creating README.md\n* creating .formatter.exs\n* creating .gitignore\n* creating mix.exs\n* creating lib\n* creating lib/fp.ex\n* creating test\n* creating test/test_helper.exs\n* creating test/fp_test.exs\n\nYour Mix project was created successfully.\nYou can use \"mix\" to compile it, test it, and more:\n    cd fp\n    mix test\nRun \"mix help\" for more commands.\n\n# ls -F fp\nlib/  mix.exs  README.md  test/\n```",
+   "fingerprint": "3f7695c926e62304",
+   "debug": null
+  },
+  {
+   "id": "s44",
+   "page": 128,
+   "pages": [
+    128,
+    128
+   ],
+   "label": "44",
+   "title": "Projektszervezés Elixirben 4: mix",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "FPE-1 – Projektszervezés és más hasznosságok: mix, benchee"
+   ],
+   "text": "Nézzük, mi van a `mix.exs` fájlban^(3):\n\n```\n~/tmp$ cd fp\n~/tmp/fp$ cat mix.exs\ndefmodule Fp.MixProject do\n  use Mix.Project\n  def project do\n    [\n      app: :fp,\n      version: \"0.1.0\",\n      elixir: \"~> 1.18\",\n      start_permanent: Mix.env() == :prod,\n      deps: deps()\n    ]\n  end\n  # Run \"mix help compile.app\" to learn about applications.\n  def application do\n    [\n      extra_applications: [:logger]\n    ]\n  end\n```\n\n(Folytatás a következő dián.)\n\n3Mi más lenne, mint Elixir-kód. :-)",
+   "fingerprint": "f8e7ec1ef9b72b6d",
+   "debug": null
+  },
+  {
+   "id": "s45",
+   "page": 129,
+   "pages": [
+    129,
+    129
+   ],
+   "label": "45",
+   "title": "Projektszervezés Elixirben 5: mix",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [
+    "https://github.com/bencheeorg/benchee"
+   ],
+   "annots": [],
+   "header": [
+    "FPE-1 – Projektszervezés és más hasznosságok: mix, benchee"
+   ],
+   "text": "(Az előző dia folytatása.)\n\n```\n # Run \"mix help deps\" to learn about dependencies.\n defp deps do\n  [\n   # {:dep_from_hexpm, \"~> 0.3.0\"},\n   # {:dep_from_git, git: \"https://github.com/elixir-lang/my_dep.git\", tag: ...}\n  ]\n end\nend\n```\n\n- `mix.exs` két publikus (`def`) és egy privát (`defp`) függvényt definiál.\n- `project` a projektkonfigurációról tárol adatokat, `appication`-nel pedig egy applikációs fájlt lehet generálni – ezek részleteibe nem megyünk bele.\n- A `deps` privát függvény törzsében kell leírni a függőségeket, megadni a kívánt modulok nevét és paramétereit.\n- Egy új modult fogunk megadni, a `Benchee`-t, ami – ahogy a neve is sugallja – benchmarkingra használható: <https://github.com/bencheeorg/benchee>\n- A következő dián a `mix.exs` fájl végét láthatjuk ismét az új függőséggel.",
+   "fingerprint": "716f2edacb984dc6",
+   "debug": null
+  },
+  {
+   "id": "s46",
+   "page": 130,
+   "pages": [
+    130,
+    130
+   ],
+   "label": "46",
+   "title": "Projektszervezés Elixirben 6: mix",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "FPE-1 – Projektszervezés és más hasznosságok: mix, benchee"
+   ],
+   "text": "```\n # Run \"mix help deps\" to learn about dependencies.\n defp deps do\n  [\n   {:benchee, \"~> 1.0\", only: :dev},\n   # {:dep_from_hexpm, \"~> 0.3.0\"},\n   # {:dep_from_git, git: \"https://github.com/elixir-lang/my_dep.git\", tag: ...}\n  ]\n end\n\nTelepítsük és fordítsuk le az új modult és függőségeit!4\n\n~/tmp/fp$ mix do deps.get + deps.compile\nResolving Hex dependencies...\nResolution completed in 0.051s\nNew:\n  benchee 1.4.0\n  deep_merge 1.0.0\n  statistex 1.1.0\n...\nCompiling ...\n```\n\n4Az új modulok az adott projekt részei lesznek, lokálisak, nem globálisak.",
+   "fingerprint": "69c40bd8b682a9e9",
+   "debug": null
+  },
+  {
+   "id": "s47",
+   "page": 131,
+   "pages": [
+    131,
+    131
+   ],
+   "label": "47",
+   "title": "Egészlista elemeinek összege: lib/sum.ex",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "FPE-1 – Projektszervezés és más hasznosságok: mix, benchee"
+   ],
+   "text": "Alább látható egy egészlisták összegét kiszámoló függvény három változatban. `sum1` első, `sum2` második klóza illeszkedik az üres listára, `sum3` pedig egy jobbrekurzív segédfüggvényt hív meg. Van-e különbség a hatékonyságukban?\n\n```\ndefmodule Sum do\n  def sum1([]), do: 0\n  def sum1([x|xs]), do: x + sum1(xs)\n\n  def sum2([x|xs]), do: x + sum2(xs)\n  def sum2([]), do: 0\n\n  def sum3(xs), do: sumi(xs, 0)\n\n  defp sumi([x|xs], sum), do: sumi(xs, sum+x)\n  defp sumi([], sum), do: sum\nend\n\n# A fájl végére írt kifejezéseket az iex automatikusan ki fogja értékelni\n1..1000 |> Range.to_list() |> Sum.sum1() |> IO.inspect()\n1..1000 |> Range.to_list() |> Sum.sum2() |> IO.inspect()\n1..1000 |> Range.to_list() |> Sum.sum3() |> IO.inspect()\n```",
+   "fingerprint": "ac1234bd04170ee4",
+   "debug": null
+  },
+  {
+   "id": "s48",
+   "page": 132,
+   "pages": [
+    132,
+    132
+   ],
+   "label": "48",
+   "title": "Fordítás, futtatás mix-szel: mix compile; iex -S mix",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "FPE-1 – Projektszervezés és más hasznosságok: mix, benchee"
+   ],
+   "text": "- Fordítani a `mix compile`-lal lehet, a `_build/dev/lib/fp/ebin/` mappába kerül a lefordított fájl, pl. a `sum.ex` esetében `Elixir.Sum.beam` néven.\n- `iex` indítása a `mix` projekt konfigurációjával és függőségeivel: (lásd `mix help`, `elixir --help`)\n\n```\niex -S mix # Starts IEx and runs the default task\n```\n\n- Betölteni, újratölteni egyszerű a programunkat az `r` parancssal (korrektebben: az `r` helper funkcióval):\n\n```\niex> r Sum\n```\n\n- A `Sum` modulban definiált függvények meghívása:\n\n```\niex> Sum.sum1 [1,2,3,4,5]\n15\n```\n\n- A modult záró `end` után lehetnek olyan függvényhívások, melyeket az `iex` betöltéskor kiértékel; az `IO.inspect` ezek eredményét kiírja, pl.\n\n```\n1..1000 |> Range.to_list() |> Sum.sum1() |> IO.inspect()\n```\n\nHa újratöltjük a programot az `r` helper függvénnyel, az eredmény megjelenik a képernyőn:\n\n```\niex> r Sum\n...\n500500\n{:reloaded, [Sum]}\n```",
+   "fingerprint": "86527e9e4f73ba30",
+   "debug": null
+  },
+  {
+   "id": "s49",
+   "page": 133,
+   "pages": [
+    133,
+    133
+   ],
+   "label": "49",
+   "title": "Mérések, profilozás: benchee",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "FPE-1 – Projektszervezés és más hasznosságok: mix, benchee"
+   ],
+   "text": "- Már láttuk, hogyan kell telepíteni a `benchee` modult.\n- Most nézzünk egy példát a használatára, vizsgáljuk meg a `Sum.sum1/1`, `Sum.sum2/1`, `Sum.sum3/1` függvények működését.\n- A `Benchee.run/1` függvényt kell meghívni egy fájlban, pl. a `benchee_sum.exs`-ben. Ennek egy szótár a paramétere, amiben a függvényhívásokat kell megadni egy-egy névtelen függvény törzsében:\n\n```\nBenchee.run(%{\"sum1\" => fn -> 1..10_000 |> Enum.to_list() |> Sum.sum1() end,\n              ...\n              }\n           )\n```\n\n- Az elemzést a `mix run lib/benchee_sum.exs`-szel indítjuk el.\n- Ha azt is szeretnénk tudni, hogy a függvényeink által meghívott függvények milyen gyakran és mennyi ideig futnak, akkor a `profile_after` opciót kell megadnunk, így:\n\n```\nBenchee.run(%{\"sum1\" => fn -> 1..10_000 |> Enum.to_list() |> Sum.sum1() end,\n              ...\n             },\n             profile_after: true\n           )\n```",
+   "fingerprint": "13d1c9bb1b92bf44",
+   "debug": null
+  },
+  {
+   "id": "s50",
+   "page": 134,
+   "pages": [
+    134,
+    134
+   ],
+   "label": "50",
+   "title": "Benchmarking eredmények (részletek): sum.ex",
+   "flags": [
+    "layout"
+   ],
+   "view": "pages/p134.png",
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "FPE-1 – Projektszervezés és más hasznosságok: mix, benchee"
+   ],
+   "text": "- `Operating System: Linux`\n\n```\nCPU Information: Intel(R) Core(TM) i5-8365U CPU @ 1.60GHz\nNumber of Available Cores: 8\nAvailable memory: 38.81 GB\nElixir 1.18.4\nErlang 28.0.1\nJIT enabled: true\n\nBenchmark suite executing with the following configuration:\nwarmup: 2 s\ntime: 5 s\n...\nEstimated total run time: 21 s\n...\nName           ips        average  deviation         median         99th %\nsum3       16.26 K       61.50 µs    ±16.25%       63.65 µs       79.93 µs\nsum2        8.87 K      112.80 µs    ±18.45%       97.88 µs      175.92 µs\nsum1        8.26 K      121.01 µs    ±18.40%      105.16 µs      187.74 µs\n\nComparison:\nsum3\n           16.26 K (2. klóz illeszkedik az üres listára a jobbrekurzív segédfüggvényben)\nsum2\n            8.87 K - 1.83x slower +51.30 µs (2. klóz illeszkedik az üres listára)\nsum1\n```\n\n`8.26 K - 1.97x slower +59.52 µs` (1. klóz illeszkedik az üres listára)",
+   "fingerprint": "866b1acc05976207",
+   "debug": null
+  },
+  {
+   "id": "s51",
+   "page": 135,
+   "pages": [
+    135,
+    135
+   ],
+   "label": "51",
+   "title": "Benchmarking eredmények (részletek): sum.ex",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "FPE-1 – Projektszervezés és más hasznosságok: mix, benchee"
+   ],
+   "text": "A `Benchee` modul használatára példát az első előadás segédanyaga tartalmaz: dp26a-fp1ea-sum-benchee.livemd, dp26a-fp1ea-sum-benchee.pdf.",
+   "fingerprint": "8098f9f74b185d46",
+   "debug": null
+  },
+  {
+   "id": "s52",
+   "page": 136,
+   "pages": [
+    136,
+    136
+   ],
+   "label": "52",
+   "title": "1. gyakorlat",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [
+    "https://dp.iit.bme.hu/dp26a/ea/dp26a-fp1ea-sum-benchee.livemd",
+    "https://dp.iit.bme.hu/dp26a/gy/dp26a-fp1gy.livemd",
+    "https://dp.iit.bme.hu/dp26a/gy/dp26a-fp1gyfel.livemd"
+   ],
+   "annots": [],
+   "header": [
+    "FPE-1 – Projektszervezés és más hasznosságok: mix, benchee"
+   ],
+   "text": "- Kedden 10:15 az IB027 és IE007 termekben\n- Felkészüléshez ajánlott\n  - Erlang, Elixir, Livebook telepítés (a gyakorlaton segítünk, ha valaki elakadt)\n  - Elixir felvezető tutorial: <https://dp.iit.bme.hu/dp26a/gy/dp26a-fp1gyfel.livemd>\n  - Benchee használat példa: <https://dp.iit.bme.hu/dp26a/ea/dp26a-fp1ea-sum-benchee.livemd>\n- Gyakorlat anyaga: <https://dp.iit.bme.hu/dp26a/gy/dp26a-fp1gy.livemd>",
+   "fingerprint": "cba306d7f6d18680",
+   "debug": null
+  }
+ ]
+}

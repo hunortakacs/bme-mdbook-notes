@@ -1,0 +1,166 @@
+source	unit	title	disposition
+dp26a-fp1ea-sum-benchee	s1	dp26a, benchmarking-példa az 1. előadáshoz	cut: notebook header and Mix.install setup cell
+dp26a-fp1ea-sum-benchee	s2	Egészlista összege háromféleképpen + benchmarking	rekurzio.md,elixir/mix.md; cut: Benchee warnings and system info output
+dp26a-fp1ea	s1		cut: title slide, part divider, table of contents
+dp26a-fp1ea	s2	I. rész	cut: title slide, part divider, table of contents
+dp26a-fp1ea	s3	A tantárgy témája	intro.md
+dp26a-fp1ea	s4	Tartalom	cut: title slide, part divider, table of contents
+dp26a-fp1ea	s5	Honlap, Elektronikus TanárSegéd, Teams csoport	cut: course administration (website, requirements, grading, IMSc, practice times)
+dp26a-fp1ea	s6	DP-követelmények: gyakorlatok	cut: course administration (website, requirements, grading, IMSc, practice times)
+dp26a-fp1ea	s7	DP-követelmények: kis házi feladatok	cut: course administration (website, requirements, grading, IMSc, practice times)
+dp26a-fp1ea	s8	DP-követelmények: nagy házi feladat	cut: course administration (website, requirements, grading, IMSc, practice times)
+dp26a-fp1ea	s9	DP-követelmények: nagy házi feladat (folyt.)	cut: course administration (website, requirements, grading, IMSc, practice times)
+dp26a-fp1ea	s10	DP-követelmények: zárthelyik	cut: course administration (website, requirements, grading, IMSc, practice times)
+dp26a-fp1ea	s11	DP-követelmények: megajánlott jegy, önálló feladatmegoldás	cut: course administration (website, requirements, grading, IMSc, practice times)
+dp26a-fp1ea	s12	DP-követelmények: IMSc-pontozás	cut: course administration (website, requirements, grading, IMSc, practice times)
+dp26a-fp1ea	s13	Tartalom	cut: title slide, part divider, table of contents
+dp26a-fp1ea	s14	Deklaratív programozás	deklarativ.md
+dp26a-fp1ea	s15	Deklaratív programozás (folyt.)	deklarativ.md
+dp26a-fp1ea	s16	Funkcionális és logikai programozás	deklarativ.md
+dp26a-fp1ea	s17	Példa: Listák összefűzése Elixirben és Prologban	deklarativ.md
+dp26a-fp1ea	s18.1	Az app/3 Prolog eljárás használata	deklarativ.md
+dp26a-fp1ea	s18.2	Az app/3 Prolog eljárás használata	deklarativ.md
+dp26a-fp1ea	s19	II. rész	cut: title slide, part divider, table of contents
+dp26a-fp1ea	s20	Tartalom	cut: title slide, part divider, table of contents
+dp26a-fp1ea	s21	Az Elixir nyelv fő jellemzői	elixir.md
+dp26a-fp1ea	s22.1	Mintaillesztés	mintaillesztes.md
+dp26a-fp1ea	s22.2	Mintaillesztés	mintaillesztes.md
+dp26a-fp1ea	s23	Rekurzió	rekurzio.md
+dp26a-fp1ea	s24	Magasabb rendű függvények	tipusok/fuggveny.md
+dp26a-fp1ea	s25	Dinamikus típusok	tipusok.md
+dp26a-fp1ea	s26	Folyamatok üzenetekkel kommunikálnak	elixir.md
+dp26a-fp1ea	s27	Erlang és Elixir	elixir.md
+dp26a-fp1ea	s28	Tartalom	cut: title slide, part divider, table of contents
+dp26a-fp1ea	s29	Elixir: használat, telepítés	cut: installation, Docker, editors
+dp26a-fp1ea	s30	Livebook for Elixir telepítése	cut: installation, Docker, editors
+dp26a-fp1ea	s31	Elixir: használat Docker konténerekkel	cut: installation, Docker, editors
+dp26a-fp1ea	s32	Elixir: szövegszerkesztők	cut: installation, Docker, editors
+dp26a-fp1ea	s33	Elixir felvezető tutorial Livebookban	cut: pointer to the notebooks
+dp26a-fp1ea	s34	Tartalom	cut: title slide, part divider, table of contents
+dp26a-fp1ea	s35	Interactive Elixir (REPL: read-eval-print loop)	elixir/iex.md
+dp26a-fp1ea	s36	Interactive Elixir (IEx): parancsok	elixir/iex.md
+dp26a-fp1ea	s37	Saját program fordítása, futtatása	elixir/iex.md
+dp26a-fp1ea	s38.1	Elixir docker – IEx	cut: Docker environment setup
+dp26a-fp1ea	s38.2	Elixir docker – IEx	cut: Docker environment setup
+dp26a-fp1ea	s39	Elixir docker – bash	cut: Docker environment setup
+dp26a-fp1ea	s40	Tartalom	cut: title slide, part divider, table of contents
+dp26a-fp1ea	s41	Projektszervezés Elixirben 1: mix	elixir/mix.md
+dp26a-fp1ea	s42	Projektszervezés Elixirben 2: mix	elixir/mix.md; cut: full mix --help text (usage lines kept)
+dp26a-fp1ea	s43	Projektszervezés Elixirben 3: mix	elixir/mix.md
+dp26a-fp1ea	s44	Projektszervezés Elixirben 4: mix	elixir/mix.md
+dp26a-fp1ea	s45	Projektszervezés Elixirben 5: mix	elixir/mix.md
+dp26a-fp1ea	s46	Projektszervezés Elixirben 6: mix	elixir/mix.md
+dp26a-fp1ea	s47	Egészlista elemeinek összege: lib/sum.ex	elixir/mix.md,rekurzio.md
+dp26a-fp1ea	s48	Fordítás, futtatás mix-szel: mix compile; iex -S mix	elixir/mix.md
+dp26a-fp1ea	s49	Mérések, profilozás: benchee	elixir/mix.md
+dp26a-fp1ea	s50	Benchmarking eredmények (részletek): sum.ex	rekurzio.md
+dp26a-fp1ea	s51	Benchmarking eredmények (részletek): sum.ex	cut: pointer to the notebooks
+dp26a-fp1ea	s52	1. gyakorlat	cut: course administration (website, requirements, grading, IMSc, practice times)
+dp26a-fp1gy-megoldasok	s1	DP26a - 1. FP-gyakorlat	cut: notebook title, Mix.install cell, cell colour conventions
+dp26a-fp1gy-megoldasok	s2	Jelölések, konvenciók	cut: notebook title, Mix.install cell, cell colour conventions
+dp26a-fp1gy-megoldasok	s3	Első lépések	elixir/iex.md; cut: installation advice, consultation note
+dp26a-fp1gy-megoldasok	s4	Rekurzió	rekurzio.md
+dp26a-fp1gy-megoldasok	s5	Egyszerű feladatok listák feldolgozására	rekurzio.md,mintaillesztes.md; cut: Benchee warnings, %Benchee.Suite{} dumps and profiler listing
+dp26a-fp1gy-megoldasok	s6	További gyakorló feladatok	rekurzio.md
+dp26a-fp1gyfel	s1	dp26a FP gy1 felvezető	cut: notebook title
+dp26a-fp1gyfel	s2	Kedvcsináló első lépések	elixir/iex.md,tipusok/lista.md; cut: Livebook hover tip
+dp26a-fp1gyfel	s3	Két láncolt lista összefűzése rekurzív függvénnyel (app/2)	rekurzio.md,mintaillesztes.md
+dp26a-fp1gyfel	s4	Röviden a mintaillesztésről	mintaillesztes.md,tipusok/lista.md
+dp26a-fp1gyfel	s5	Vissza a listák összefűzéséhez!	rekurzio.md,tipusok.md,tipusok/lista.md,elixir/iex.md
+dp26a-fp1gyfel	s6	Faktoriális (jobbrekurzív is)	rekurzio.md
+dp26a-fp1gyfel	s7	Egészlista elemeinek összege	rekurzio.md
+dp26a-fp2ea-fibonacci	s1	Fibonacci	cut: notebook title and Mix.install cell
+dp26a-fp2ea-fibonacci	s2	Fibonacci hat változatban	technikak/dinamikus.md; cut: Kino input / Explorer DataFrame widget cells, Benchee warnings and system info
+dp26a-fp2ea	s1		cut: title slide, part divider, table of contents
+dp26a-fp2ea	s2	I. rész	cut: title slide, part divider, table of contents
+dp26a-fp2ea	s3	Tartalom	cut: title slide, part divider, table of contents
+dp26a-fp2ea	s4	Típusok1	tipusok.md
+dp26a-fp2ea	s5	Atom	tipusok/atom-szam.md
+dp26a-fp2ea	s6	Szám	tipusok/atom-szam.md
+dp26a-fp2ea	s7	Függvény (Function) 1	tipusok/fuggveny.md
+dp26a-fp2ea	s8	Függvény (Function) 2	tipusok/fuggveny.md
+dp26a-fp2ea	s9	Paraméter alapértelmezett (default) értéke	tipusok/fuggveny.md
+dp26a-fp2ea	s10	Ennes (Tuple), tartomány (Range)	tipusok/ennes-tartomany.md
+dp26a-fp2ea	s11	Lista (List)	tipusok/lista.md
+dp26a-fp2ea	s12	Karakterlánc (single-quoted)	tipusok/lista.md
+dp26a-fp2ea	s13	Sztring (String, double quoted)	tipusok/sztring-binaris.md
+dp26a-fp2ea	s14	Ami közös a karakterláncban és a sztringben	tipusok/sztring-binaris.md
+dp26a-fp2ea	s15	Bináris (Binary)	tipusok/sztring-binaris.md
+dp26a-fp2ea	s16	Kulcs-érték lista (Keyword lists)	tipusok/szotar.md
+dp26a-fp2ea	s17	Szótár (Map) 1	tipusok/szotar.md
+dp26a-fp2ea	s18	Szótár (Map) 2	tipusok/szotar.md
+dp26a-fp2ea	s19	Reguláris kifejezés (Regex) 1	tipusok/regex.md
+dp26a-fp2ea	s20	Reguláris kifejezés (Regex) 2	tipusok/regex.md
+dp26a-fp2ea	s21	Tartalom	cut: title slide, part divider, table of contents
+dp26a-fp2ea	s22	Term	valtozok.md
+dp26a-fp2ea	s23	Azonosító (identifier)	valtozok.md
+dp26a-fp2ea	s24	Változó	valtozok.md
+dp26a-fp2ea	s25	Változó hatásköre, komment, igazságérték	valtozok.md,tipusok/atom-szam.md
+dp26a-fp2ea	s26	II. rész	cut: title slide, part divider, table of contents
+dp26a-fp2ea	s27	Tartalom	cut: title slide, part divider, table of contents
+dp26a-fp2ea	s28	Műveletek listákon 1	listak.md
+dp26a-fp2ea	s29	Műveletek listákon 2	listak.md
+dp26a-fp2ea	s30	Műveletek listákon 3	listak.md
+dp26a-fp2ea	s31	Műveletek listákon 4	listak.md
+dp26a-fp2ea	s32	Műveletek listákon 5	listak.md
+dp26a-fp2ea	s33	Műveletek listákon 6	listak.md
+dp26a-fp2ea	s34	Tartalom	listak.md
+dp26a-fp2ea	s35	Listakezelés – rövid példák 1	listak.md
+dp26a-fp2ea	s36	Listakezelés – rövid példák 2	listak.md
+dp26a-fp2ea	s37	Listakezelés – rövid példák 3	listak.md
+dp26a-fp2ea	s38	Listakezelés – rövid példák 4	listak.md
+dp26a-fp2ea	s39	III. rész	cut: title slide, part divider, table of contents
+dp26a-fp2ea	s40	Tartalom	cut: title slide, part divider, table of contents
+dp26a-fp2ea	s41	Műveletek sztringeken 1	sztringek.md
+dp26a-fp2ea	s42	Műveletek sztringeken 2	sztringek.md
+dp26a-fp2ea	s43	Műveletek sztringeken 3	sztringek.md
+dp26a-fp2ea	s44	IV. rész	cut: title slide, part divider, table of contents
+dp26a-fp2ea	s45	Tartalom	cut: title slide, part divider, table of contents
+dp26a-fp2ea	s46		technikak/dinamikus.md; cut: aside that Bellman chose the name for better saleability
+dp26a-fp2ea	s47	Dinamikus programozás: Fibonacci. Benchmarking és debugging	technikak/dinamikus.md; cut: download link of the notebook
+dp26a-fp2ea	s48	Fibonacci elágazó rekurzióval	technikak/dinamikus.md
+dp26a-fp2ea	s49	2. gyakorlat	cut: course administration (practice schedule, links)
+dp26a-fp2gy-megoldasok	s1	DP26a - 2. FP-gyakorlat	cut: notebook title and Mix.install cell
+dp26a-fp2gy-megoldasok	s2	Bal-, jobb- és törzsrekurzió	mintaillesztes.md,rekurzio.md
+dp26a-fp2gy-megoldasok	s3	Maximális összegű intervallum	technikak/dinamikus.md
+dp26a-fp2gy-megoldasok	s4	Műveletek listákon	listak.md,elixir/mix.md; cut: L3-L6 duplicate of dp26a-fp3gy s2 (L1-L4)
+dp26a-fp3ea-reszlistak-kihagy-bevesz-rek	s1	Csúszóablakos technika, kihagy-bevesz rekurzió	cut: notebook title and Mix.install cell
+dp26a-fp3ea-reszlistak-kihagy-bevesz-rek	s2	Csúszóablakos problémamegoldási technika	technikak/csuszoablak.md; cut: Benchee warnings and system info
+dp26a-fp3ea-reszlistak-kihagy-bevesz-rek	s3	1. Számlista max. összegű folytonos részlistái – maximumkeresés a legvégén	technikak/csuszoablak.md; cut: Benchee warnings and system info
+dp26a-fp3ea-reszlistak-kihagy-bevesz-rek	s4	2. Számlista max. összegű folytonos részlistái – maximumkiválasztás a részlisták gyűjtésekor	technikak/csuszoablak.md; cut: Benchee warnings and system info
+dp26a-fp3ea-reszlistak-kihagy-bevesz-rek	s5	Max. összegű folytonos részlisták – futási idők összehasonlítása	technikak/csuszoablak.md; cut: Benchee warnings and system info
+dp26a-fp3ea-reszlistak-kihagy-bevesz-rek	s6	Kihagy-bevesz (include-exclude) rekurzió	technikak/kihagy-bevesz.md; cut: argument trace output of an earlier eloszt version
+dp26a-fp3ea	s1		cut: title slide, part divider, table of contents
+dp26a-fp3ea	s2	I. rész	cut: title slide, part divider, table of contents
+dp26a-fp3ea	s3	Tartalom	cut: title slide, part divider, table of contents
+dp26a-fp3ea	s4	Csúszóablakos technika: maximális összegű folytonos részlisták	technikak.md,technikak/csuszoablak.md; cut: download pointer
+dp26a-fp3ea	s5	Tartalom	cut: title slide, part divider, table of contents
+dp26a-fp3ea	s6	Kihagy-bevesz rekurzió: elemek kombinációja, kétfelé válogatása	technikak.md,technikak/kihagy-bevesz.md; cut: download pointer
+dp26a-fp3ea	s7	Dinamikus programozás: olvasnivalók, feladatok gyakorlásra	cut: link list (DP reading list)
+dp26a-fp3ea	s8	II. rész	cut: title slide, part divider, table of contents
+dp26a-fp3ea	s9	Tartalom	cut: title slide, part divider, table of contents
+dp26a-fp3ea	s10	For-jelölés 1	for.md
+dp26a-fp3ea	s11	For-jelölés 2	for.md
+dp26a-fp3ea	s12	For-jelölés 3	for.md
+dp26a-fp3ea	s13	For-jelölés: kis példák 1	for.md
+dp26a-fp3ea	s14	For-jelölés: kis példák 2	for.md
+dp26a-fp3ea	s15	III. rész	cut: title slide, part divider, table of contents
+dp26a-fp3ea	s16	Tartalom	cut: title slide, part divider, table of contents
+dp26a-fp3ea	s17	Aritmetikai és bitműveletek	muveletek.md
+dp26a-fp3ea	s18	Összehasonlító műveletek (relációk)	muveletek.md
+dp26a-fp3ea	s19	Logikai műveletek	muveletek.md
+dp26a-fp3ea	s20	Beépített függvények (Built-In Functions, BIFs)	muveletek.md
+dp26a-fp3ea	s21	Egyéb alapfügvények (típusvizsgálat és típuskonverzió)	muveletek.md
+dp26a-fp3ea	s22	Tartalom	cut: title slide, part divider, table of contents
+dp26a-fp3ea	s23	Mintakifejezés, minta, mintaillesztés (pattern matching)	mintaillesztes.md
+dp26a-fp3ea	s24		mintaillesztes.md
+dp26a-fp3ea	s25		mintaillesztes.md
+dp26a-fp3ea	s26		mintaillesztes.md
+dp26a-fp3ea	s27	IV. rész	cut: title slide, part divider, table of contents
+dp26a-fp3ea	s28	Tartalom	cut: title slide, part divider, table of contents
+dp26a-fp3ea	s29	dialyxir telepítése	elixir/mix.md
+dp26a-fp3ea	s30	Szignatúravizsgálat: mix dialyzer	elixir/mix.md
+dp26a-fp3ea	s31	3. gyakorlat	cut: course administration (practice, links)
+dp26a-fp3gy	s1	DP26a - 3. FP-gyakorlat	cut: notebook title and attachments
+dp26a-fp3gy	s2	Műveletek listákon	listak.md,for.md,elixir/mix.md; cut: kino_explorer suggestion
+dp26a-fp3gy	s3	Összeg testvéries elosztása	technikak/kihagy-bevesz.md,for.md; cut: copy of the ElosztS/Eloszt code of the lecture notebook

@@ -1,0 +1,20 @@
+NEW       dp26a-fp1ea-sum-benchee.livemd  [dp26a-fp1ea-sum-benchee, text]
+          2 sections (units s1-s2, split at # and ## headings)
+NEW       dp26a-fp1ea.pdf  [dp26a-fp1ea, pdf]
+          136 pages -> 55 units, 11 to view (flags: graphic 1, layout 5, math 2, variant 6)
+NEW       dp26a-fp1gy-megoldasok.livemd  [dp26a-fp1gy-megoldasok, text]
+          6 sections (units s1-s6, split at # and ## headings)
+NEW       dp26a-fp1gyfel.livemd  [dp26a-fp1gyfel, text]
+          7 sections (units s1-s7, split at # and ## headings)
+NEW       dp26a-fp2ea-fibonacci.livemd  [dp26a-fp2ea-fibonacci, text]
+          2 sections (units s1-s2, split at # and ## headings)
+NEW       dp26a-fp2ea.pdf  [dp26a-fp2ea, pdf]
+          118 pages -> 49 units, 8 to view (flags: graphic 2, image 2, layout 2, math 2, no-text 1, table 2)
+NEW       dp26a-fp2gy-megoldasok.livemd  [dp26a-fp2gy-megoldasok, text]
+          4 sections (units s1-s4, split at # and ## headings)
+NEW       dp26a-fp3ea-reszlistak-kihagy_bevesz_rek.livemd  [dp26a-fp3ea-reszlistak-kihagy-bevesz-rek, text]
+          6 sections (units s1-s6, split at # and ## headings)
+NEW       dp26a-fp3ea.pdf  [dp26a-fp3ea, pdf]
+          90 pages -> 31 units, 4 to view (flags: graphic 2, image 1, layout 2, math 1)
+NEW       dp26a-fp3gy.livemd  [dp26a-fp3gy, text]
+          3 sections (units s1-s3, split at # and ## headings)

@@ -1,0 +1,333 @@
+{
+ "resources": "res",
+ "reviewed_lines": [
+  "005762401d0e",
+  "01640c8e287f",
+  "0330556d60eb",
+  "052cc1d36b9e",
+  "0a4515fda338",
+  "0ab61e78c614",
+  "0f79b230a84f",
+  "178ddea21ef7",
+  "1a4a6afbe141",
+  "1a55e6b6113c",
+  "1b3798d2ab30",
+  "1cb69a707695",
+  "1e5602195732",
+  "1ee5d764652e",
+  "212f691e99fc",
+  "2555752fac56",
+  "25e41874a967",
+  "26acd582d5a0",
+  "2e42bcc04581",
+  "2ee11f66261a",
+  "337bdfb880c0",
+  "342cb03cd35e",
+  "34e8fb884ca1",
+  "35a81e7b0564",
+  "3f2252454ff8",
+  "4040c5a068b2",
+  "41b85f0fa17d",
+  "41eb293fd433",
+  "4294d192d1e8",
+  "478b9510549d",
+  "4953b3da61c0",
+  "4998284f3491",
+  "499a8cfee405",
+  "49f7b1fe4cd9",
+  "4a083cf6aaf1",
+  "4c7a106749d7",
+  "4e9205ff5c9d",
+  "51bb70c614a5",
+  "530fc655d5c6",
+  "5836d1bc51f4",
+  "5859c691842d",
+  "5bb314277798",
+  "5d5d1035dc19",
+  "628fff504750",
+  "640990ab5d86",
+  "69d1013638e3",
+  "72cd6e58723d",
+  "73962e84acac",
+  "73afebb1e966",
+  "75a554c38e6a",
+  "79393297551b",
+  "8001fcc99f76",
+  "8227149e7a56",
+  "8313ee938b84",
+  "84b54234c47a",
+  "8a21791a106b",
+  "8e92b91af81e",
+  "930873a8a94f",
+  "98856f5b3b65",
+  "9fc61960a0bc",
+  "a74d81b57ff5",
+  "a8cdcd7e2d34",
+  "ad3d2f8c7450",
+  "b42c82851dec",
+  "b5e8f3cce2b6",
+  "bcc7c6b74ce0",
+  "bef48ecc5130",
+  "c4b7a0bc5241",
+  "c54b0d6466b8",
+  "c5ffde0e4283",
+  "c6968188a977",
+  "c74894038580",
+  "c9350eebcf0c",
+  "c9857045d252",
+  "d2427a828e43",
+  "d2eaea900546",
+  "d4ce0769fe2f",
+  "d5179ebf9248",
+  "d622e3b03c08",
+  "d916ac269c8d",
+  "dc73e9882d1b",
+  "dd9e0c3b8614",
+  "ddbae0219aa4",
+  "e014eba10463",
+  "e4a121d26e88",
+  "e5ec2c197849",
+  "e95517cfb501",
+  "eec53a938556",
+  "efcb5fd5f746",
+  "f132fe788018",
+  "f82b860a4bee"
+ ],
+ "sources": {
+  "dp26a-fp1ea-sum-benchee.livemd": {
+   "kind": "text",
+   "sections": [
+    {
+     "fingerprint": "8429188909a242a8",
+     "id": "s1",
+     "title": "dp26a, benchmarking-példa az 1. előadáshoz"
+    },
+    {
+     "fingerprint": "b7f357aa838d529c",
+     "id": "s2",
+     "title": "Egészlista összege háromféleképpen + benchmarking"
+    }
+   ],
+   "sha256": "ff8b392cc8fd2ec3e2d2b34c5ea3015ca7890562a3b670bff9f8b35db55e353a",
+   "slug": "dp26a-fp1ea-sum-benchee",
+   "status": "done",
+   "units": 2
+  },
+  "dp26a-fp1ea.pdf": {
+   "kind": "pdf",
+   "sha256": "c25defe830eb952b29bee1cf901df5eb33e219257f1a77172ba9aa8a73325ee1",
+   "slug": "dp26a-fp1ea",
+   "status": "done",
+   "units": 55
+  },
+  "dp26a-fp1gy-megoldasok.livemd": {
+   "kind": "text",
+   "sections": [
+    {
+     "fingerprint": "3ad772d1f7e67779",
+     "id": "s1",
+     "title": "DP26a - 1. FP-gyakorlat"
+    },
+    {
+     "fingerprint": "5a08802dc5a77461",
+     "id": "s2",
+     "title": "Jelölések, konvenciók"
+    },
+    {
+     "fingerprint": "625041e9405a8841",
+     "id": "s3",
+     "title": "Első lépések"
+    },
+    {
+     "fingerprint": "c53684ab08ab8523",
+     "id": "s4",
+     "title": "Rekurzió"
+    },
+    {
+     "fingerprint": "6f460763711d7264",
+     "id": "s5",
+     "title": "Egyszerű feladatok listák feldolgozására"
+    },
+    {
+     "fingerprint": "199c8394fa01e9de",
+     "id": "s6",
+     "title": "További gyakorló feladatok"
+    }
+   ],
+   "sha256": "bc4119c468b27868472989af15003c8446914e29e79ed2f97a43b7a16d696bda",
+   "slug": "dp26a-fp1gy-megoldasok",
+   "status": "done",
+   "units": 6
+  },
+  "dp26a-fp1gyfel.livemd": {
+   "kind": "text",
+   "sections": [
+    {
+     "fingerprint": "55bcb4ef58dc3614",
+     "id": "s1",
+     "title": "dp26a FP gy1 felvezető"
+    },
+    {
+     "fingerprint": "0f4058cb147d2d50",
+     "id": "s2",
+     "title": "Kedvcsináló első lépések"
+    },
+    {
+     "fingerprint": "4f25124eb042dcbe",
+     "id": "s3",
+     "title": "Két láncolt lista összefűzése rekurzív függvénnyel (app/2)"
+    },
+    {
+     "fingerprint": "1cf5f12796467c95",
+     "id": "s4",
+     "title": "Röviden a mintaillesztésről"
+    },
+    {
+     "fingerprint": "95e7df7bf0102080",
+     "id": "s5",
+     "title": "Vissza a listák összefűzéséhez!"
+    },
+    {
+     "fingerprint": "38e6c9a2b08bab88",
+     "id": "s6",
+     "title": "Faktoriális (jobbrekurzív is)"
+    },
+    {
+     "fingerprint": "6a05f7ca267f215f",
+     "id": "s7",
+     "title": "Egészlista elemeinek összege"
+    }
+   ],
+   "sha256": "590f784562727f6d87c4523728c85f2579950cd1b903b5b58a4eed8d8a695584",
+   "slug": "dp26a-fp1gyfel",
+   "status": "done",
+   "units": 7
+  },
+  "dp26a-fp2ea-fibonacci.livemd": {
+   "kind": "text",
+   "sections": [
+    {
+     "fingerprint": "a1c5c18868d372ed",
+     "id": "s1",
+     "title": "Fibonacci"
+    },
+    {
+     "fingerprint": "6bb265facf7022ce",
+     "id": "s2",
+     "title": "Fibonacci hat változatban"
+    }
+   ],
+   "sha256": "e4bee63270e489b1f5b9cc7a6429dd57f3e0458713546476007e61ad298f3ab3",
+   "slug": "dp26a-fp2ea-fibonacci",
+   "status": "done",
+   "units": 2
+  },
+  "dp26a-fp2ea.pdf": {
+   "kind": "pdf",
+   "sha256": "54202e1db4df4231169f9c9f67d9b8f1e46d24e3a53ad2d1ffaae9b07af245c9",
+   "slug": "dp26a-fp2ea",
+   "status": "done",
+   "units": 49
+  },
+  "dp26a-fp2gy-megoldasok.livemd": {
+   "kind": "text",
+   "sections": [
+    {
+     "fingerprint": "fb4105ce310d185f",
+     "id": "s1",
+     "title": "DP26a - 2. FP-gyakorlat"
+    },
+    {
+     "fingerprint": "002fd9c1884d7c82",
+     "id": "s2",
+     "title": "Bal-, jobb- és törzsrekurzió"
+    },
+    {
+     "fingerprint": "83926f309d20d183",
+     "id": "s3",
+     "title": "Maximális összegű intervallum"
+    },
+    {
+     "fingerprint": "bafce57f17e9d643",
+     "id": "s4",
+     "title": "Műveletek listákon"
+    }
+   ],
+   "sha256": "86799456f87e42472c3ca62cb6f4aee38f306a63f437eb38e1027861721f6773",
+   "slug": "dp26a-fp2gy-megoldasok",
+   "status": "done",
+   "units": 4
+  },
+  "dp26a-fp3ea-reszlistak-kihagy_bevesz_rek.livemd": {
+   "kind": "text",
+   "sections": [
+    {
+     "fingerprint": "6f10100590a604a3",
+     "id": "s1",
+     "title": "Csúszóablakos technika, kihagy-bevesz rekurzió"
+    },
+    {
+     "fingerprint": "d587e1d5b464669d",
+     "id": "s2",
+     "title": "Csúszóablakos problémamegoldási technika"
+    },
+    {
+     "fingerprint": "ea252634e3efeff4",
+     "id": "s3",
+     "title": "1. Számlista max. összegű folytonos részlistái – maximumkeresés a legvégén"
+    },
+    {
+     "fingerprint": "5f64eba7b931d1c1",
+     "id": "s4",
+     "title": "2. Számlista max. összegű folytonos részlistái – maximumkiválasztás a részlisták gyűjtésekor"
+    },
+    {
+     "fingerprint": "3475424ca37b4ebb",
+     "id": "s5",
+     "title": "Max. összegű folytonos részlisták – futási idők összehasonlítása"
+    },
+    {
+     "fingerprint": "fdc18fe59ed5366a",
+     "id": "s6",
+     "title": "Kihagy-bevesz (include-exclude) rekurzió"
+    }
+   ],
+   "sha256": "e304873b376e66ae6b417d5340c56ed211db9d9fbcb169435b19a5614f93f81b",
+   "slug": "dp26a-fp3ea-reszlistak-kihagy-bevesz-rek",
+   "status": "done",
+   "units": 6
+  },
+  "dp26a-fp3ea.pdf": {
+   "kind": "pdf",
+   "sha256": "85e19b9346bb2f32dbe1971088bbde1cad4585d1af437ca099ba666810ac7c47",
+   "slug": "dp26a-fp3ea",
+   "status": "done",
+   "units": 31
+  },
+  "dp26a-fp3gy.livemd": {
+   "kind": "text",
+   "sections": [
+    {
+     "fingerprint": "62ffb5e84789d7fa",
+     "id": "s1",
+     "title": "DP26a - 3. FP-gyakorlat"
+    },
+    {
+     "fingerprint": "821953f877f5c2a9",
+     "id": "s2",
+     "title": "Műveletek listákon"
+    },
+    {
+     "fingerprint": "21b0ba815236425e",
+     "id": "s3",
+     "title": "Összeg testvéries elosztása"
+    }
+   ],
+   "sha256": "8cd09630dcb6283f3b31da50132da0258becb136ac320385caaa70c2fd236ce7",
+   "slug": "dp26a-fp3gy",
+   "status": "done",
+   "units": 3
+  }
+ },
+ "version": 1
+}

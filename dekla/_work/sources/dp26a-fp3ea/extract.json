@@ -1,0 +1,809 @@
+{
+ "meta": {
+  "source": "dp26a-fp3ea.pdf",
+  "kind": "pdf",
+  "physical_pages": 90,
+  "units": 31,
+  "grouping": "labels",
+  "needs_view": 4,
+  "flags": {
+   "graphic": 2,
+   "image": 1,
+   "layout": 2,
+   "math": 1
+  },
+  "body_font_size": 10.0,
+  "page_hashes": [
+   "c18e9567d08649ce",
+   "3f6acc6944b60a71",
+   "fdbc5c93888e8d63",
+   "81f403c2118d3dd9",
+   "beac51777f00918a",
+   "a9ea66504c17c907",
+   "010462c7410bd1df",
+   "1141b4fd938c83db",
+   "8a48b6321592d887",
+   "7ef1ce1395b9533d",
+   "9fdf5fbc173b9089",
+   "2913f0e207c1cb77",
+   "620b2e0f6dd6eb56",
+   "5f7e3e56e547e4fa",
+   "f01a5e1d1310834b",
+   "9b4b22abb1c48fe2",
+   "7e35729d09146699",
+   "fd380ccd14b6aa3f",
+   "08439585d27c1361",
+   "74618fb549eb9c76",
+   "b10b669f6c1ef3a9",
+   "941883482a42ff4b",
+   "1fb2a9f37342d2ed",
+   "d8e52c78d5e3b4e5",
+   "ffbb3ffafabbac6f",
+   "e33af624debed962",
+   "faec17d31cea2b20",
+   "627014f290d96381",
+   "2142ffeea562cdaf",
+   "042f75554f9deb53",
+   "10e825b2413adceb",
+   "f97c868f5c4d6f3a",
+   "7950da567c676fb3",
+   "d2f6599bce5a4bb9",
+   "7dbc78d20be968ef",
+   "1f78d1194ae48968",
+   "e9c0771bb509ad3e",
+   "1736ab233dc75ee6",
+   "348f246ef835af94",
+   "f06b83fdac00f92c",
+   "c3651aa52373c4a7",
+   "2c5b15bbf1f89ceb",
+   "c392f924f3eb1eb7",
+   "cb98d1fa562ed62d",
+   "f4c8b08173a411eb",
+   "b14a2c8a79224178",
+   "5017e2cd23350c64",
+   "7a3bbe26b4db3158",
+   "8c4d6557dc28e614",
+   "1a9e2dc94f196370",
+   "0ec69d640b0fa687",
+   "33246d21108b13e7",
+   "4bd7d755a1f8ede6",
+   "be9521ed35d533e2",
+   "1d974dd2962c91b9",
+   "7166b4095d785309",
+   "2b4d58ce21a82bbe",
+   "84451fee3f9f2a12",
+   "0e986c5f77485339",
+   "cf8dd1a6d899625f",
+   "5202eeb2006d72ec",
+   "5853ae20a66af13a",
+   "817c967a0d67aabd",
+   "be07a39c54904703",
+   "b25e06986c2a29d8",
+   "c5b83f342ace726c",
+   "37535ddd9a1e395b",
+   "9e2e9719795ceef5",
+   "6e480a2b2fc288ad",
+   "514542d256b88d71",
+   "bf0407570e080787",
+   "d03b740089447086",
+   "6f1be2bf7aeab377",
+   "813974f6961d6b5d",
+   "3cb043358f732207",
+   "712ff2005d53574c",
+   "0ce33478fb5d96b7",
+   "e59c85695393f5d1",
+   "816b622ee4614cac",
+   "37c6ee0126379cf8",
+   "a79082b9a7a2276e",
+   "d73bc85d4dbae2bf",
+   "825640add7dc7b86",
+   "0e3e6e83a2025a35",
+   "2ac956fdc658d0e4",
+   "66303a47b9d073e4",
+   "166a7cc58175c1af",
+   "ec45bff351bfde5a",
+   "a637f2f2f8468e1b",
+   "e14e7bd642b5613d"
+  ]
+ },
+ "units": [
+  {
+   "id": "s1",
+   "page": 1,
+   "pages": [
+    1,
+    1
+   ],
+   "label": "1",
+   "title": "",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "Deklaratív programozás 3. előadás",
+    "1 / 31"
+   ],
+   "text": "Deklaratív programozás 3. előadás\n\nKabódi László^(1) Marussy Kristóf^(2)\n\nBME Számítástudományi és Információelméleti Tanszék Mesterséges Intelligencia és Rendszertervezés Tanszék\n\n1`kabodi.laszlo@vik.bme.hu`\n\n2`marussy@mit.bme.hu`\n\n2026. ősz",
+   "fingerprint": "ff8ba006fdbe0026",
+   "debug": null
+  },
+  {
+   "id": "s2",
+   "page": 2,
+   "pages": [
+    2,
+    2
+   ],
+   "label": "2",
+   "title": "I. rész",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Problémamegoldási technikák\n\n1 Problémamegoldási technikák\n\n2 For-jelölés (for-comprehension)\n\n3 Műveletek, BIFek, típusvizsgálat/konverzió, mintaillesztés\n\n4 Hasznos segédeszköz: dialyzer",
+   "fingerprint": "02b6c09c9623fdca",
+   "debug": null
+  },
+  {
+   "id": "s3",
+   "page": 3,
+   "pages": [
+    3,
+    3
+   ],
+   "label": "3",
+   "title": "Tartalom",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "Problémamegoldási technikák",
+    "FPE-3 – Problémamegoldási technikák: csúszóablak használata",
+    "3 / 31"
+   ],
+   "text": "1 Problémamegoldási technikák\n- FPE-3 – Problémamegoldási technikák: csúszóablak használata\n- FPE-3 – Problémamegoldási technikák: kihagy-bevesz rekurzió",
+   "fingerprint": "c22d91195d52bd0e",
+   "debug": null
+  },
+  {
+   "id": "s4",
+   "page": 4,
+   "pages": [
+    4,
+    4
+   ],
+   "label": "4",
+   "title": "Csúszóablakos technika: maximális összegű folytonos részlisták",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "Problémamegoldási technikák",
+    "FPE-3 – Problémamegoldási technikák: csúszóablak használata",
+    "4 / 31"
+   ],
+   "text": "Egy lista különféle szempontok szerint kiválasztott folytonos részlistáit csúszóablakos módszerrel állíthatjuk elő, egymásba ágyazott ismétlésekkel. Mivel a funkcionális nyelvekben nincs ciklus, az ismétlést rekurzióval valósítjuk meg, a részeredményeket egy, esetleg több akkumulátorban gyűjtjük. Mivel a gyűjtéshez plusz paraméter(ek)re van szükség, általában segédfüggvényeket is definiálunk. A lista maximális összegű folytonos részlistáinak előállítására többféle megoldást is bemutat a harmadik előadás segédanyaga. Az egyes megoldások futási idejét is megmérjük a `benchee`-vel. Egy példa:\n- Bemenet (egészlista): `[1, 2, 3, 4, -10, 4, 3, 2, 1]`\n- Eredmény (egy pár, első eleme a részlisták összege, második eleme ezen maximális összegű részlisták listája):\n\n```\n{10, [[1, 2, 3, 4], [1, 2, 3, 4, -10, 4, 3, 2, 1], [4, 3, 2, 1]]}\n```\n\nA harmadik előadás segédanyaga a honlapról letölthető:\n- dp26a-fp3ea-reszlistak-kihagy_bevesz_rek.livemd",
+   "fingerprint": "34fc4d66d814643a",
+   "debug": null
+  },
+  {
+   "id": "s5",
+   "page": 5,
+   "pages": [
+    5,
+    5
+   ],
+   "label": "5",
+   "title": "Tartalom",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "Problémamegoldási technikák",
+    "FPE-3 – Problémamegoldási technikák: kihagy-bevesz rekurzió",
+    "5 / 31"
+   ],
+   "text": "1 Problémamegoldási technikák\n- FPE-3 – Problémamegoldási technikák: csúszóablak használata\n- FPE-3 – Problémamegoldási technikák: kihagy-bevesz rekurzió",
+   "fingerprint": "5a236f25d8fa0954",
+   "debug": null
+  },
+  {
+   "id": "s6",
+   "page": 6,
+   "pages": [
+    6,
+    6
+   ],
+   "label": "6",
+   "title": "Kihagy-bevesz rekurzió: elemek kombinációja, kétfelé válogatása",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "Problémamegoldási technikák",
+    "FPE-3 – Problémamegoldási technikák: kihagy-bevesz rekurzió",
+    "6 / 31"
+   ],
+   "text": "A harmadik előadás segédanyagában két példa is van a kihagy-bevesz (inclusion-exclusion) rekurzióra. Az első, `komb/1` egy lista elemeinek összes kombinációját adja eredményül, a második, `eloszt/1` pedig megmutatja, hogy listaelemeket hányféleképpen lehet úgy kétfelé válogatni, hogy a részösszegek különbségének abszolút értéke a lehető legkisebb legyen. Példák a függvényhívásokra és az eredményekre:\n\n1 `komb([1,2,3]) == [[], [1], [2], [2,1], [3], [3,1], [3,2], [3,2,1]]`\n\n2 `eloszt([28, 7, 11, 8, 9, 7, 27]) == %{[9, 11, 28] => 48}`\n\n3 `eloszt([4,1,2,5,3]) == %{[4, 2, 1] => 7, [4, 3] => 7, [5, 2] => 7}`\n\nAz `eloszt/1` eredménye egy szótár (map), melynek kulcsai az összegfeltételt kielégítő részlisták, elemei pedig az összegfeltételt kielégítő kisebbik összeg. A második példában tehát a fennmaradó `[7,7,8,27]` elemekből áll az eredményben nem szereplő másik rész, melynek összege `49`. A harmadik előadás segédanyaga, mint már írtuk, a honlapról letölthető:\n- dp26a-fp3ea-reszlistak-kihagy_bevesz_rek.livemd",
+   "fingerprint": "01f2e2239cee6a8b",
+   "debug": null
+  },
+  {
+   "id": "s7",
+   "page": 7,
+   "pages": [
+    7,
+    7
+   ],
+   "label": "7",
+   "title": "Dinamikus programozás: olvasnivalók, feladatok gyakorlásra",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [
+    "http://ceoi.inf.elte.hu/tasks-archive/",
+    "https://ioi.contest.codeforces.com/",
+    "https://people.inf.elte.hu/szlavi/VersenyFeladatok/DinaProg/dinprog.pdf",
+    "https://www.cs.bme.hu/algel/",
+    "https://www.geeksforgeeks.org/competitive-programming/dynamic-programming/",
+    "https://www.geeksforgeeks.org/dsa/dsa-tutorial-learn-data-structures-and-algorithms/"
+   ],
+   "annots": [],
+   "header": [
+    "Problémamegoldási technikák",
+    "FPE-3 – Problémamegoldási technikák: kihagy-bevesz rekurzió",
+    "7 / 31"
+   ],
+   "text": "- Az Algoritmuselmélet (VISZAA08) tantárgy dinamikus programozásról szóló és\n- más prezentációi: <https://www.cs.bme.hu/algel/>\n- Horváth Gyula (ELTE) összefoglalója és feladatgyűjteménye a dinamikus programozásról: <https://people.inf.elte.hu/szlavi/VersenyFeladatok/DinaProg/dinprog.pdf>\n- A Közép-európai Informatikai Diákolimpia (Central-European Olympiad in Informatics, CEOI) versenyfeladatai: <http://ceoi.inf.elte.hu/tasks-archive/>\n- A Nemzetközi Informatikai Diákolimpia (International Olympiad in Informatics, IOI) versenyfeladatai: <https://ioi.contest.codeforces.com/> (regisztráció szükséges)\n- DSA Tutorial – Learn Data Structures and Algorithms: <https://www.geeksforgeeks.org/dsa/>\n\n```\ndsa-tutorial-learn-data-structures-and-algorithms/ (sok példával és\n```\n\ngyakorló feladattal), többek között a dinamikus programozásról: <https://www.geeksforgeeks.org/competitive-programming/dynamic-programming/>",
+   "fingerprint": "cebdf6c0e36ac660",
+   "debug": null
+  },
+  {
+   "id": "s8",
+   "page": 8,
+   "pages": [
+    8,
+    8
+   ],
+   "label": "8",
+   "title": "II. rész",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "For-jelölés (for-comprehension)\n\n1 Problémamegoldási technikák\n\n2 For-jelölés (for-comprehension)\n\n3 Műveletek, BIFek, típusvizsgálat/konverzió, mintaillesztés\n\n4 Hasznos segédeszköz: dialyzer",
+   "fingerprint": "02c06ea3ae5ad1ac",
+   "debug": null
+  },
+  {
+   "id": "s9",
+   "page": 9,
+   "pages": [
+    9,
+    9
+   ],
+   "label": "9",
+   "title": "Tartalom",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "For-jelölés (for-comprehension)",
+    "FPE-3 – For-jelölés (for-komprehenzió, for-comprehension)",
+    "9 / 31"
+   ],
+   "text": "2 For-jelölés (for-comprehension)\n- FPE-3 – For-jelölés (for-komprehenzió, for-comprehension)",
+   "fingerprint": "ab59428ffc2165e1",
+   "debug": null
+  },
+  {
+   "id": "s10",
+   "page": 13,
+   "pages": [
+    10,
+    13
+   ],
+   "label": "10",
+   "title": "For-jelölés 1",
+   "flags": [
+    "graphic"
+   ],
+   "view": "pages/p013.png",
+   "figures": [
+    {
+     "file": "figures/p013-f1.png",
+     "bbox": [
+      0.014,
+      0.272,
+      0.193,
+      0.548
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [
+    "For-jelölés (for-comprehension)",
+    "FPE-3 – For-jelölés (for-komprehenzió, for-comprehension)"
+   ],
+   "text": "Gyűjtemények (kollekciók) kezelésére használjuk a for-jelölést, vagy az angol elnevezést teljesen átvéve: a for-komprehenziót). Most vegyünk sorra mindent, amit a for-jelölésről tudni kell (a szögletes zárójelek jelentése itt: opcionális). A for-jelölés: `for` q1[, q2, ..., qn][, `into:` coll], `do:` exp*, ahol*\n- a `q`i\n1 `pattern <- list` alakú generátor, vagy 2 predikátum (igazságérték-eredményű függvény, feltétel);\n- legalább egy `q`i-nak generátornak kell lennie;\n- a `pattern` mintának illeszkednie kell a `list` lista kiválasztandó elemeire, és ki kell elégítenie az adott `pattern <- list` generátortól jobbra álló összes `q`i predikátumot;\n- az `exp` tetszőleges, a `pattern` mintától függő vagy nem függő kifejezés;\n- a generátorban a minta előállítására lista helyett más felsorolható kollekciót, leggyakrabban tartomány-típusú értéket is megadhatunk.\n(Folytatás a következő dián.)",
+   "fingerprint": "ecd9722a8078ebc2",
+   "debug": null
+  },
+  {
+   "id": "s11",
+   "page": 17,
+   "pages": [
+    14,
+    17
+   ],
+   "label": "11",
+   "title": "For-jelölés 2",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [
+    "https://en.wikipedia.org/wiki/List_comprehension",
+    "https://www.mitchellhanberg.com/the-comprehensive-guide-to-elixirs-for-comprehension/"
+   ],
+   "annots": [],
+   "header": [
+    "For-jelölés (for-comprehension)",
+    "FPE-3 – For-jelölés (for-komprehenzió, for-comprehension)"
+   ],
+   "text": "A for-jelölés (folyt.): `for` q1[, q2, ..., qn][, `into:` coll], `do:` exp*, ahol*\n- az opcionális `into:` opció után álló `coll`-lal megadhatjuk, hogy milyen\n- típusú felsorolható kollekciót hozzon létre a for-jelölés, ha elhagyjuk,\n- alapértelmezés szerint lista jön létre;\n- `coll`-ként üres kollekciót kell megadni: `\"\"` (sztring), `%{}` (szótár), `[]` (lista), `<<>>` (bináris);\n- a for-jelölésben definiált változók lokálisak;\n- a for-jelölés értéke az összes olyan `exp`j kifejezés kollekciója, amelyre a **mintaillesztés sikerült** és a **predikátumok teljesültek;**\n- a for-jelölés eddig bemutatott változata tehát egy vagy több kollekció elemein műveletek elvégzésére és/vagy bizonyos elemek szűrésére használható (vö. `Enum.map/2`, `Enum.filter/2`).\n- Összefoglaló a for-jelölésről: <https://www.mitchellhanberg.com/the-comprehensive-guide-to-elixirs-for-comprehension/>\n- A komprehenzió ma már sokféle programozási nyelvben megtalálható, lásd: <https://en.wikipedia.org/wiki/List_comprehension>",
+   "fingerprint": "3fececad1f5a5f8c",
+   "debug": null
+  },
+  {
+   "id": "s12",
+   "page": 19,
+   "pages": [
+    18,
+    19
+   ],
+   "label": "12",
+   "title": "For-jelölés 3",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "For-jelölés (for-comprehension)",
+    "FPE-3 – For-jelölés (for-komprehenzió, for-comprehension)"
+   ],
+   "text": "A for-jelölés `uniq:` opcióval: `for` q1[, q2, ..., qn][, `into:` coll], `uniq: true|false`, `do:` exp*, ahol*\n- a `uniq: true` opció hatására az előállított gyűjteménybe csak egymástól\n- különböző értékek kerülnek be;\n- csak lista, sztring és bináris esetén van értelme használni, hiszen a szótárban a kulcsok sohasem ismétlődhetnek.\nA for-jelölés `reduce:` opcióval: `for` q1[, q2, ..., qn], `reduce:` acc0 `do` acc -> fun(pat, acc) `end`*, ahol*\n- a `reduce:` opcióval a for-jelölés nem az `Enum.map/2`-et, hanem az `Enum.reduce/3`-t váltja ki,\n- az acc0 az eredményt gyűjtő akkumulátor kezdőértéke,\n- a `do` . . . `end` között egy névtelen függvényt kell megadni (az `fn` és a hozzá tartozó `end` nélkül!), amelynek egyetlen argumentuma az acc akkumulátor (a neve bármi lehet), a törzsében pedig egy olyan kétargumentumú függvényt vagy operátort kell használni, amelynek két argumentuma közül az egyik a generátorban használt pat minta, a másik pedig ugyancsak az acc akkumulátor (az argumentumok sorrendjének hatása lehet az eredményre!).",
+   "fingerprint": "a1274b31a8dbda23",
+   "debug": null
+  },
+  {
+   "id": "s13",
+   "page": 24,
+   "pages": [
+    20,
+    24
+   ],
+   "label": "13",
+   "title": "For-jelölés: kis példák 1",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "For-jelölés (for-comprehension)",
+    "FPE-3 – For-jelölés (for-komprehenzió, for-comprehension)"
+   ],
+   "text": "```\niex> for x <- 1..6 // 2, do: x     # { x | x ∈{1, 3, 5} }\n[1, 3, 5]\niex> for x <- [1,2,3], do: 2*x+1   # { 2 · x + 1 | x ∈{1, 2, 3} }\n[3, 5, 7]\niex> for x <- 1..9, rem(x, 2) === 0, x > 2, do: 2*x\n[8, 12, 16]\niex> for {k,v} <- [egy: 1, két: 2, há: 3], into: %{}, do: {k,v}\n%{egy: 1, há: 3, két: 2}\niex> for {k,v} <- %{egy: 1, két: 2, há: 3}, into: [], do: {k,v}\n[egy: 1, há: 3, két: 2]\niex> for c <- [?c, ?s, ?ó, ?k, ?a], into: \"\", do: <<c>>\n<<99, 115, 243, 107, 97>>\niex> for c <- [?c, ?s, ?o, ?k, ?a], into: \"\", do: <<c>>\n\"csoka\"\niex> for x <- 0..-2 // -2, y <- 1..x, do: {x,y}\n[{0, 1}, {0, 0}, {-2, 1}, {-2, 0}, {-2, -1}, {-2, -2}]\niex> for x <- 0..-2 // -2, y <- 1..x, xy = {x,y}, do: xy\n[{0, 1}, {0, 0}, {-2, 1}, {-2, 0}, {-2, -1}, {-2, -2}]\niex> for x <- 2..4, rem(x,3) !== 0, y <- 1..3, x > y, do: {x,y}\n[{2, 1}, {4, 1}, {4, 2}, {4, 3}]\n```",
+   "fingerprint": "d95d0e9fc4a2dab5",
+   "debug": null
+  },
+  {
+   "id": "s14",
+   "page": 30,
+   "pages": [
+    25,
+    30
+   ],
+   "label": "14",
+   "title": "For-jelölés: kis példák 2",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "For-jelölés (for-comprehension)",
+    "FPE-3 – For-jelölés (for-komprehenzió, for-comprehension)"
+   ],
+   "text": "```\niex> for i <- 1..3, j <- 2..1//-1, do: {i,j} # keresztszorzatok listája\n[{1, 2}, {1, 1}, {2, 2}, {2, 1}, {3, 2}, {3, 1}]\niex> for i <- 1..3, do: (for j <- 2..1//-1, do: {i,j}) # listák listája\n[[{1, 2}, {1, 1}], [{2, 2}, {2, 1}], [{3, 2}, {3, 1}]]\niex> for i <- 1..3, j <- 2..1//-1, into: %{}, do: {i,j} # ismétlődő kulcs felülír!\n%{1 => 1, 2 => 1, 3 => 1}\niex> for i <- 1..3, j <- 2..1//-1, into: %{}, do: {i+j*4,j} # így a kulcsok egyediek\n%{5 => 1, 6 => 1, 7 => 1, 9 => 2, 10 => 2, 11 => 2}\niex> for _i <- 1..5, into: \"\", do: \"1\" # többszörözve\n\"11111\"\niex> for _i <- 1..5, into: \"\", uniq: true, do: \"1\" # azonosak csak egyszer\n\"1\"\niex> for _i <- 1..5, into: <<>>, do: <<1::size 1>> # 5 bit (0b11111), 1 byte\n<31::size(5)>>\niex> for _i <- 1..5, into: <<>>, uniq: true, do: <<1::size 1>> # 1 bit (0b1), 1 byte\n<<1::size(1)>>\niex> for _i <- 1..5, into: <<>>, do: <<1::size 2>> # 10 bit (0b01010101, 0b01), 2 byte\n<85, 1::size(2)>>\niex> for _i <- 1..5, into: <<>>, uniq: true, do: <<1::size 2>> # 2 bit (0b01), 1 byte\n<1::size(2)>>\n```",
+   "fingerprint": "d12b5646e9d35b42",
+   "debug": null
+  },
+  {
+   "id": "s15",
+   "page": 31,
+   "pages": [
+    31,
+    31
+   ],
+   "label": "15",
+   "title": "III. rész",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Műveletek, BIFek,\n\ntípusvizsgálat/konverzió, mintaillesztés\n\n1 Problémamegoldási technikák\n\n2 For-jelölés (for-comprehension)\n\n3 Műveletek, BIFek, típusvizsgálat/konverzió, mintaillesztés\n\n4 Hasznos segédeszköz: dialyzer",
+   "fingerprint": "4fd526ddf4f2568e",
+   "debug": null
+  },
+  {
+   "id": "s16",
+   "page": 32,
+   "pages": [
+    32,
+    32
+   ],
+   "label": "16",
+   "title": "Tartalom",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "FPE-3 – Alapműveletek, beépített függvények"
+   ],
+   "text": "3 Műveletek, BIFek, típusvizsgálat/konverzió, mintaillesztés\n- FPE-3 – Alapműveletek, beépített függvények\n- FPE-3 – Mintaillesztés",
+   "fingerprint": "97ff80a370293d01",
+   "debug": null
+  },
+  {
+   "id": "s17",
+   "page": 34,
+   "pages": [
+    33,
+    34
+   ],
+   "label": "17",
+   "title": "Aritmetikai és bitműveletek",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "FPE-3 – Alapműveletek, beépített függvények"
+   ],
+   "text": "- Aritmetikai műveletek (Kernel modul)\n  - Előjel: `+`, `-` (precedencia: 1)\n  - Multiplikatív műveletek: `*`, `/`, `div`, `rem` (precedencia: 2)\n  - Additív műveletek: `+`, `-` (precedencia: 3)\n- Bitműveletek (Bitwise modul)\n  - `bnot` vagy `~~~`, `band` vagy `&&&` (precedencia: 2)\n  - `bor` vagy `|||`, `bxor`, `bsl` vagy `<<<`, `bsr` vagy `>>>` (precedencia: 3)\nMegjegyzések\n- `+`, `-`, `*` és `/` egész és lebegőpontos operandusokra is alkalmazhatók\n- `+`, `-` és `*` eredménye egész, ha mindkét operandusuk egész, egyébként lebegőpontos\n- `/` eredménye mindig lebegőpontos\n- `div` és `rem` prefix helyzetűek, ereményük egész\n- `div`, `rem` és a bitműveletek operandusai csak egészek lehetnek\n- `~~~`, `&&&`, `|||`, `<<<`, `>>>` infix, a többi bitművelet prefix helyzetű\n- A bitműveleteket engedélyezni kell: `use Bitwise` vagy\n\n```\nuse Bitwise[, (only_operators | skip_operators): true]\n```",
+   "fingerprint": "55d5ab84e5bdac35",
+   "debug": null
+  },
+  {
+   "id": "s18",
+   "page": 37,
+   "pages": [
+    35,
+    37
+   ],
+   "label": "18",
+   "title": "Összehasonlító műveletek (relációk)",
+   "flags": [
+    "graphic",
+    "image",
+    "layout"
+   ],
+   "view": "pages/p037.png",
+   "figures": [
+    {
+     "file": "figures/p037-f1.png",
+     "bbox": [
+      0.481,
+      0.607,
+      0.98,
+      0.857
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [
+    "FPE-3 – Alapműveletek, beépített függvények"
+   ],
+   "text": "- Egy reláció (összehasonlítás) eredménye a `true` vagy `false` atom\n- Termek összehasonlítási sorrendje (vö. típusok):\n\n```\nnumber < atom < reference < function < port < pid < tuple < list < binary\n```\n\n- Kisebb, kisebb-egyenlő, nagyobb-egyenlő, nagyobb: `<`, `<=`, `>=`, `>`\n- Érték szerinti egyenlőség (`integer` és `float` lehet egyenlő): `==`, `!=`\n- Szigorú egyenlőség (`integer` és `float` nem lehet egyenlő): `===`, `!==`\n- Példák: `5.0 == 5 == true`, `5.0 === 5 == false`\nElrettentő példák:\n\n```\n10.1 - 9.9 == 0.2 ; false\n(10.1 - 9.9) * 10 ;\n1.999999999999993\n0.000000000000001 + 1 == 1 ; false\n0.0000000000000001 + 1 == 1 ; true\n```\n\nLebegőpontos értékek összehasonlítása helyett vizsgáljuk a különbségüket a `<=` vagy `>=` relációval (ε-nál kisebb-e a különbségük?)",
+   "fingerprint": "67f16ce3d53bceba",
+   "debug": null
+  },
+  {
+   "id": "s19",
+   "page": 40,
+   "pages": [
+    38,
+    40
+   ],
+   "label": "19",
+   "title": "Logikai műveletek",
+   "flags": [
+    "layout"
+   ],
+   "view": "pages/p040.png",
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "FPE-3 – Alapműveletek, beépített függvények"
+   ],
+   "text": "- Prefix helyzetű operátor: `not` és `!`; `not` operandusa csak `boolean`, `!`-é\n  - `not`, `and` és `or` használható őrkifejezésben, `!`, `&&` és `||` nem.\n  - `and` és `or` első operandusa csak `boolean`, `&&` és `||` első operandusa\n  - A `false` és `nil` értékű kifejezéseket kivéve minden más érték\n  - Második operandusuk tetszőleges típusú kifejezés lehet\n  - Eredményük típusa a két operandus típusának uniója\n  - Lusta kiértékelésű, ún. short-circuit műveletek: ha az első operandus kiértékelése eldönti eredményt, a másodikra nem kerül sor\ntetszőleges típusú kifejezés lehet\n- Infix helyzetű operátorok: `and` és `&&`, `or` és `||`\ntetszőleges típusú kifejezés lehet\n\n`true`-nak számít.\n- Példák:\n\n```\niex> !:atom && div(3,0) === 2\nfalse\niex> :atom && div(3,0) === 2\n** ...bad argument in ...: div(3, 0)\niex> :atom and rem(3,2) === 1\n```\n\n```\n                                                 iex> true and rem(3,2)\n                                                 1\n                                                 iex> false and rem(3,2)\n                                                 false\n                                                 iex> nil && rem(3,2)\n** ...expected a boolean on left-side of \"and\"   nil\n```",
+   "fingerprint": "f8881e699b612c51",
+   "debug": null
+  },
+  {
+   "id": "s20",
+   "page": 42,
+   "pages": [
+    41,
+    42
+   ],
+   "label": "20",
+   "title": "Beépített függvények (Built-In Functions, BIFs)",
+   "flags": [
+    "math"
+   ],
+   "view": "pages/p042.png",
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "FPE-3 – Alapműveletek, beépített függvények"
+   ],
+   "text": "- A BEAM-be beépített, rendszerint C-ben írt függvények\n- Többségük az erts Erlang-könyvtár `erlang` moduljának része\n- Elixir-specifikációjuk az Elixir Kernel moduljában található\n- A csak az Erlang `erlang` moduljában definiált BIF-ek az `:erlang` modulnévvel hívhatók\n- Az alaptípusokon alkalmazható leggyakoribb BIF-ek:\n  - Számok: `abs(num)`, `trunc(num)`, `ceil(num)`, `floor(num)`,\n\n```\nround(num), :erlang.float(num)\n```\n\n  - `:erlang.float` helyett 1-gyel oszthatjuk az egész számot, pl. `5/1`\n  - Sztring, bináris: `bit_size(string)`, `byte_size(string)`\n  - Szótár: `map_size(map)`\n  - Ennes: `tuple_size(tuple)`, `elem(tuple, index)`,\n\n```\nput_elem(tuple, index, value)1\n```\n\n  - Lista: `length(list)`, `hd(list)`, `tl(list)`\n- Az operátorok is BIF-ek a `Kernel`-ben, pl. `Kernel.*(3,4)`\n1Megjegyzés: `0` ≤`index` ≤`tuple_size(tuple)-1`",
+   "fingerprint": "30bcc5904a190604",
+   "debug": null
+  },
+  {
+   "id": "s21",
+   "page": 44,
+   "pages": [
+    43,
+    44
+   ],
+   "label": "21",
+   "title": "Egyéb alapfügvények (típusvizsgálat és típuskonverzió)",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "FPE-3 – Alapműveletek, beépített függvények"
+   ],
+   "text": "- Típusvizsgálat (BIF-ek a Kernelben)\n  - `is_integer(term)`, `is_float(term)`, `is_number(term)`,\n  - `is_atom(term)`, `is_boolean(term)`, `is_nil(term)`,\n  - `is_binary(term)`, `is_bitstring(term)`,\n  - `is_tuple(term)`, `is_list(term)`„ `is_map(term)`\n  - `is_function(term)`, `is_function(term, arity)`\n- Típuskonverzió (az egyes típusokhoz tartozó modulokban)\n  - Atom: `to_charlist(atom)`, `to_string(atom)`,\n  - Float: `to_charlist(float)`, `to_string(float)`,\n  - Integer: `to_charlist(integer)`, `to_string(integer)`,\n  - List: `to_atom(list)`, `to_charlist(list)`, `to_float(list)`,\n\n```\nto_integer(list), to_integer(list, base), to_string(list),\nto_tuple(list)\n```\n\n  - String: `to_atom(list)`, `to_charlist(string)`, `to_float(string)`,\n\n```\nto_integer(string), to_integer(string, base),\n```\n\n  - Tuple: `to_list(tuple)`,\n  - Map: `to_list(map)`,",
+   "fingerprint": "204cb06f650d0fa8",
+   "debug": null
+  },
+  {
+   "id": "s22",
+   "page": 45,
+   "pages": [
+    45,
+    45
+   ],
+   "label": "22",
+   "title": "Tartalom",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "3 Műveletek, BIFek, típusvizsgálat/konverzió, mintaillesztés\n- FPE-3 – Alapműveletek, beépített függvények\n- FPE-3 – Mintaillesztés",
+   "fingerprint": "cd675ab0b97c9ab1",
+   "debug": null
+  },
+  {
+   "id": "s23",
+   "page": 49,
+   "pages": [
+    46,
+    49
+   ],
+   "label": "23",
+   "title": "Mintakifejezés, minta, mintaillesztés (pattern matching)",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- Mintakifejezés, röviden minta: termhez hasonló olyan kifejezés, amelyben nincs függvénykifejezés, de lehet benne szabad változó\n- Egy szabad változó mindenre illeszkedik, és lehet rá hivatkozni\n- Az aláhúzásjel (_) és a vele kezdődő változónév mindenre illeszkedik; az előbbire nem lehet, az utóbbira nem szokás hivatkozni\n- Egy mintában ugyanaz a változó többször is előfordulhat, ha mindenütt azonos értékre kell illeszkednie\n- A mintaillesztés műveleti jele az `=`, bal oldalán a mintával, jobb oldalán egy tömör kifejezéssel (a mintaillesztés egyirányú)\n- A mintaillesztés a minta nem fixált (vö. ^ operátor) változóit értékhez köti\n- A kötés **nem** értékadás!\n- Függvényhíváskor az aktuális paramétereket illesztjük a formális paraméterekre\n- Ha egy változót értékhez kötünk, de nem használjuk, az Elixir figyelmeztet rá, kivéve akkor, ha a változónév _-sal kezdődik\n- Figyelem: a Prologban a funkcionális nyelvekkel ellentétben kétirányú mintaillesztés van, egyesítés a neve",
+   "fingerprint": "438d03917a0c6c5c",
+   "debug": null
+  },
+  {
+   "id": "s24",
+   "page": 60,
+   "pages": [
+    50,
+    60
+   ],
+   "label": "24",
+   "title": "",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "```\niex> [x, &+/2] = [5, &+/2]\n** (CompileError) ... & is not allowed in matches\niex> [x, f] = [5, &+/2]\n[5, &:erlang.+/2]\niex> [x, f] = [5, f]\n[5, &:erlang.+/2]\niex> a = fn(x) -> x+1 end\n#Function<44.40011524/1 in :erl_eval.expr/5>\niex> {a, b} = {fn(x) -> x+1 end, 23}\n#Function<44.40011524/1 in :erl_eval.expr/5>, 23\niex> fn(x) -> x+1 end = a\n** (CompileError) ... fn is not allowed in matches\niex> 3 = szabad\n** (CompileError) iex:505: undefined function szabad/0\niex> [z | zs] = [0,1,2,3]\n[0, 1, 2, 3]\niex> [z1 | [z2 | [z3 | [z4 | zs]]]] = [0,1,2,3]\n[0, 1, 2, 3]\niex> [z1, z2, z3 | [3]] = [0,1,2,3]\n[0, 1, 2, 3]\n```",
+   "fingerprint": "1db4f4e61334dd43",
+   "debug": null
+  },
+  {
+   "id": "s25",
+   "page": 72,
+   "pages": [
+    61,
+    72
+   ],
+   "label": "25",
+   "title": "",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "```\niex> [z1, z2, z3 | 3] = [0,1,2,3]\n** (MatchError) no match of right hand side value: [0, 1, 2, 3]\niex> [z1, z2 | [3]] = [0,1,2,3]\n** (MatchError) no match of right hand side value: [0, 1, 2, 3]\niex> {{a, b}, {a, b}} = {{:a, :b}, {:a, :b}}\n{{:a, :b}, {:a, :b}}\niex> {{a, b, a}} = {{:a, :b, :b}}\n** (MatchError) no match of right hand side value: {{:a, :b, :b}}\niex> {a, b, _b, _} = {:a, :b, :b, :a}\n{:a, :b, :b, :a}\niex> {a, b}\n{:a, :b}\niex> _b\nwarning: the underscored variable \"_b\" is used after being set...\nplease rename the variable to remove the underscore\n:b\niex> x = %{b: \"barna\", z: \"zöld\"}\n%{b: \"barna\", z: \"zöld\"}\niex> %{k1: v1, k2: v2} = x\n** (MatchError) no match of right hand side value: %{b: \"barna\", z: \"zöld\"}\n```",
+   "fingerprint": "feeffb6339e11b60",
+   "debug": null
+  },
+  {
+   "id": "s26",
+   "page": 85,
+   "pages": [
+    73,
+    85
+   ],
+   "label": "26",
+   "title": "",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "```\niex> %{k1 => v1, k2 => v2} = x\n** (CompileError) iex:3: cannot use variable k1 as map key inside a pattern...\niex> %{b: v1, z: v2} = x\n%{b: \"barna\", z: \"zöld\"}\niex> {v1, v2}\n\"barna\", \"zöld\"\niex> %{z: ^v1, b: v2} = x\n** (MatchError) no match of right hand side value: %{b: \"barna\", z: \"zöld\"}\niex> %{z: v1, b: v2} = x\n%{b: \"barna\", z: \"zöld\"}\niex> {v1, v2}\n\"zöld\", \"barna\"\niex> %{b: v} = x # részleges mintaillesztés\n%{b: \"barna\", z: \"zöld\"}\niex> v\n\"barna\"\niex> ([y|ys] = yss) = [1, 2, 3] # réteges minta (layered pattern)\n[1,2,3]\niex> {y, ys, yys}\n{[1], [2, 3], [1,2,3]}\n```",
+   "fingerprint": "23fd0b1cf4966ce9",
+   "debug": null
+  },
+  {
+   "id": "s27",
+   "page": 86,
+   "pages": [
+    86,
+    86
+   ],
+   "label": "27",
+   "title": "IV. rész",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Hasznos segédeszköz: dialyzer\n\n1 Problémamegoldási technikák\n\n2 For-jelölés (for-comprehension)\n\n3 Műveletek, BIFek, típusvizsgálat/konverzió, mintaillesztés\n\n4 Hasznos segédeszköz: dialyzer",
+   "fingerprint": "a4c9deb02a59bd2e",
+   "debug": null
+  },
+  {
+   "id": "s28",
+   "page": 87,
+   "pages": [
+    87,
+    87
+   ],
+   "label": "28",
+   "title": "Tartalom",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "Hasznos segédeszköz: dialyzer",
+    "FPE-3 – Programok statikus analízise: dialyzer"
+   ],
+   "text": "4 Hasznos segédeszköz: dialyzer\n- FPE-3 – Programok statikus analízise: dialyzer",
+   "fingerprint": "31f57f185a13df8d",
+   "debug": null
+  },
+  {
+   "id": "s29",
+   "page": 88,
+   "pages": [
+    88,
+    88
+   ],
+   "label": "29",
+   "title": "dialyxir telepítése",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "Hasznos segédeszköz: dialyzer",
+    "FPE-3 – Programok statikus analízise: dialyzer"
+   ],
+   "text": "```\n # Run \"mix help deps\" to learn about dependencies.\n defp deps do\n  [\n   {:dialyxir, \"~> 1.4\", only: [:dev, :test], runtime: false},\n   # {:dep_from_hexpm, \"~> 0.3.0\"},\n   # {:dep_from_git, git: \"https://github.com/elixir-lang/my_dep.git\", tag: ...}\n  ]\n end\n\nTelepítsük és fordítsuk le az új modulokat!2\n\n~/tmp/fp$ mix do deps.get, deps.compile\nResolving Hex dependencies...\nResolution completed in 0.051s\nNew:\n  dialyxir 1.4.6\n  erlex 0.2.7\n...\nCompiling ...\n```\n\n2Az új modulok az adott projekt részei lesznek, lokálisak, nem globálisak.",
+   "fingerprint": "2db1f96f2d9be906",
+   "debug": null
+  },
+  {
+   "id": "s30",
+   "page": 89,
+   "pages": [
+    89,
+    89
+   ],
+   "label": "30",
+   "title": "Szignatúravizsgálat: mix dialyzer",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "Hasznos segédeszköz: dialyzer",
+    "FPE-3 – Programok statikus analízise: dialyzer"
+   ],
+   "text": "- A projekt forrásfájljainak a `lib` mappában kell lenniük: rakjunk be ide egy\n- Elixir programot, pl. az egyik kisházit, rontsunk el egy-két specifikációt, és\n- dializáljuk.\n- A dializálás a `lib` mappában lévő **összes** `.ex` fájlt vizsgálja.\n- Az első futtatás soká tart, mert a dialyzer rengeteg ún. PLT-fájlt telepít a modulokhoz tartozó típusszignatúrákkal (PLT = Persistent Lookup Table).\n- A dializálás a `.beam` fájlokat elemzi, ezért ha változott valamelyik forrásfájl, az elemzés előtt fordítás készül belőle.\n\n```\n@spec sum(xs::[integer()]) :: s::[integer()]\n# Az xs számlista összege s\ndef sum([x|xs]), do: x + sum(xs)\ndef sum([]), do: 0\n~/tmp/fp$ mix dialyzer\nlib/sum.ex:2:invalid_contract\nThe @spec for the function does not match the success typing ...\nFunction: Sum.sum/1\nSuccess typing: ([number()]) -> number()\nBut the spec is: (xs::[integer()]) -> s::[integer()]\n```",
+   "fingerprint": "4bfdb837630c0392",
+   "debug": null
+  },
+  {
+   "id": "s31",
+   "page": 90,
+   "pages": [
+    90,
+    90
+   ],
+   "label": "31",
+   "title": "3. gyakorlat",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [
+    "https://dp.iit.bme.hu/dp26a/ea/dp26a-fp3ea-reszlistak-kihagy_bevesz_rek.livemd",
+    "https://dp.iit.bme.hu/dp26a/gy/dp26a-fp3gy.livemd"
+   ],
+   "annots": [],
+   "header": [
+    "Hasznos segédeszköz: dialyzer",
+    "FPE-3 – Programok statikus analízise: dialyzer"
+   ],
+   "text": "- Alapvetően *otthoni munka*, a gyakorlaton megbeszéljük a feladatok megoldásait\n- Gyakorlat anyaga: <https://dp.iit.bme.hu/dp26a/gy/dp26a-fp3gy.livemd>\n- Felkészüléshez ajánlott: <https://dp.iit.bme.hu/dp26a/ea/dp26a-fp3ea-reszlistak-kihagy_bevesz_rek.livemd>",
+   "fingerprint": "a6991ad3a3c76c1e",
+   "debug": null
+  }
+ ]
+}

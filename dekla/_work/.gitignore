@@ -1,0 +1,6 @@
+# rendered pages and crops can be regenerated with prepare.py --force
+sources/*/pages/
+sources/*/figures/
+sources/*/converted.pdf
+sources/*/*.prev.*
+removed/

@@ -1,0 +1,1210 @@
+{
+ "meta": {
+  "source": "dp26a-fp2ea.pdf",
+  "kind": "pdf",
+  "physical_pages": 118,
+  "units": 49,
+  "grouping": "labels",
+  "needs_view": 8,
+  "flags": {
+   "table": 2,
+   "math": 2,
+   "layout": 2,
+   "graphic": 2,
+   "image": 2,
+   "no-text": 1
+  },
+  "body_font_size": 10.0,
+  "page_hashes": [
+   "6e82c64d9f27c0d1",
+   "d302a6927d52de42",
+   "53e930d10bd26539",
+   "ec5337c566a93611",
+   "10c4a5ab54307839",
+   "f05cdceeb94adf6f",
+   "52ddbdad1929dc2c",
+   "b51901ec2a7b50f2",
+   "d4f6b3e12baeb442",
+   "d8daddecac4cba8d",
+   "504a7edd317e5af2",
+   "10a04045a6177630",
+   "ed90e6231f3485fc",
+   "dfa952c9e2780c17",
+   "123a72e004e7e130",
+   "6e78185abbd8479d",
+   "87e70a78dc92e7ca",
+   "fde838e5569d0c65",
+   "1d5e207499d2858b",
+   "f59c583eb685efc1",
+   "cfa50bccb73e4c8f",
+   "75a707d795087670",
+   "818d918826e80581",
+   "1172fbf4ee9d9396",
+   "52d75a81d232d36d",
+   "0b5e2480aa0b786f",
+   "dd723afc060278f7",
+   "a0ffcf1d12b7cc65",
+   "1453c8ec7ff60258",
+   "f5fed41181e5a44d",
+   "aeb5de35cd727fd1",
+   "ba6e4af66e9fcbf6",
+   "6993810195c89946",
+   "cf6876f124a538bf",
+   "63eb9c2f808cdf3c",
+   "b85f4c412c93d304",
+   "736d0079bedc0fd6",
+   "840194665c903c6f",
+   "44ab87d9c88419e4",
+   "40f3caf519ed1dc0",
+   "2ce0240f39d5cd1c",
+   "2ceaf8e757feb849",
+   "90021a207915229c",
+   "fb6465a8b9f313bc",
+   "29d11b784297bfde",
+   "268b1ac6650dcff8",
+   "c007b6263075db9b",
+   "2962616aed331d77",
+   "f9254b12c3ee0c86",
+   "9a178b8ad23b3de2",
+   "050e726c26583fe5",
+   "5576a90238a9659a",
+   "f88f1e748c7d5a82",
+   "ce1997871083f66a",
+   "b8b8856b3b1340f8",
+   "64c5e3161b0b2259",
+   "581cea1603194846",
+   "4e5431f287ea9d03",
+   "95c75602f6101686",
+   "bb817ed9000b4055",
+   "83e749e8b2eef935",
+   "3a8ce4284e69e748",
+   "df2d0e20805fccf3",
+   "a0a8fb8b09643636",
+   "c3fe03d4391224a1",
+   "83c5139cf1906e7d",
+   "e5d156b5a2e618da",
+   "288a089fac5b3225",
+   "51c304b452802a5c",
+   "f8add21c6663b075",
+   "55619d366bf55163",
+   "4c4d10255363e4e2",
+   "28bf89daec23b954",
+   "cdc7cb3199bc3705",
+   "1d0b36c1f82c3b10",
+   "344e50e84f50e35f",
+   "a6f5793a1b913286",
+   "0acd3bf915cf0839",
+   "bb42c4a1f0cb46d7",
+   "4931db1082f8a27f",
+   "e18e098aa2cc118b",
+   "aadc4c1bc1e099bb",
+   "3581d89b4d4ac592",
+   "84e164bd177d12e2",
+   "fd43113ebf87323d",
+   "647892530730cd70",
+   "80efa7b7f4cf5823",
+   "014a3603817a8481",
+   "6d5ca67520cd6f6b",
+   "d5186c972ae403bb",
+   "b590e5c9d34d1f44",
+   "794ddae3f31db904",
+   "2fa3b02db0dd7423",
+   "17eda5dcf5c38a66",
+   "6a1e71ec61d80d43",
+   "5e4daccb7841c7ca",
+   "cef6d85b30190818",
+   "ecef3ff47ba52697",
+   "ac90605ec59e1382",
+   "b0a242cfc1acea8e",
+   "b04b6a7790b163f5",
+   "4eb58b424a98d662",
+   "c78b3d0cb43aff90",
+   "25df95fa51a02b66",
+   "4560618dc227c2c8",
+   "6535a5bfa4d63b16",
+   "3aeec99488dd01a3",
+   "a10ec9ea239ca4e4",
+   "a471c812dd5e6674",
+   "4726cb25e1d28aee",
+   "e5cd28f8056344b4",
+   "ab9b2f65c044f242",
+   "f766d7f7603cdcaa",
+   "d0c1d2af8feb5364",
+   "6476726ebada1698",
+   "d727e0fc5a6279bd",
+   "e4817cdfbfb838b1",
+   "c72dd668d16e56ea"
+  ]
+ },
+ "units": [
+  {
+   "id": "s1",
+   "page": 1,
+   "pages": [
+    1,
+    1
+   ],
+   "label": "1",
+   "title": "",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "Deklaratív programozás 2. előadás",
+    "1 / 49"
+   ],
+   "text": "Deklaratív programozás 2. előadás\n\nKabódi László^(1) Marussy Kristóf^(2)\n\nBME Számítástudományi és Információelméleti Tanszék Mesterséges Intelligencia és Rendszertervezés Tanszék\n\n1`kabodi.laszlo@vik.bme.hu`\n\n2`marussy@mit.bme.hu`\n\n2026. ősz",
+   "fingerprint": "3b94e6a6bf5c8952",
+   "debug": null
+  },
+  {
+   "id": "s2",
+   "page": 2,
+   "pages": [
+    2,
+    2
+   ],
+   "label": "2",
+   "title": "I. rész",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Típusok, termek, azonosítók, változók\n\n1 Típusok, termek, azonosítók, változók\n\n2 Műveletek listákon\n\n3 Műveletek sztringeken\n\n4 Problémamegoldási technikák",
+   "fingerprint": "989eb7684240ad6d",
+   "debug": null
+  },
+  {
+   "id": "s3",
+   "page": 3,
+   "pages": [
+    3,
+    3
+   ],
+   "label": "3",
+   "title": "Tartalom",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "3 / 49"
+   ],
+   "text": "1 Típusok, termek, azonosítók, változók\n- FPE-2 – Típusok: atom, szám, függvény, ennes, tartomány, lista\n- FPE-2 – Termek, azonosítók, változók",
+   "fingerprint": "dd4feec24921e925",
+   "debug": null
+  },
+  {
+   "id": "s4",
+   "page": 4,
+   "pages": [
+    4,
+    4
+   ],
+   "label": "4",
+   "title": "Típusok1",
+   "flags": [
+    "table"
+   ],
+   "view": "pages/p004.png",
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "4 / 49"
+   ],
+   "text": "Az Elixir erősen típusos nyelv, dinamikus típusellenőrzéssel.\n\n**Értéktípusok**\n\n**Value types**\n\nAtom\n\nAtom\n\nTetszőleges hosszú egész szám Arbitrary-sized integer (integer) Lebegőpontos szám\n\nFloating-point number (float)\n\nFüggvény\n\nFunction\n\nTartomány\n\nRange\n\nReguláris kifejezés\n\nRegular expression (regex)\n\nSztring\n\nString\n\n**Kollekció-típusok** **Collection types** Ennes\n\nTuple\n\nLista\n\nList\n\nBináris\n\nBinary\n\nSzótár\n\nMap\n\nStruktúra\n\nStruct\n\n1A felsorolás nem teljes. A dőlt betűs típusok más alaptípusokra épülnek.",
+   "fingerprint": "d0ac8149c37f09e6",
+   "debug": null
+  },
+  {
+   "id": "s5",
+   "page": 5,
+   "pages": [
+    5,
+    5
+   ],
+   "label": "5",
+   "title": "Atom",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "5 / 49"
+   ],
+   "text": "- Kettősponttal (:) kezdődik\n- Kezdődhet az angol ábécé nagybetűjével is, kettőspont nélkül, de ez konvenció szerint a modulnevekre van fenntartva\n- A : után UTF-8 kódolású karaktersorozat, Elixir operátor vagy sztring állhat\n- Az UTF-8 kódolású karaktersorozatban betűk, számjegyek és kétféle írásjel (_, @) lehetnek\n- A karaktersorozat végén általában kérdőjel (?) vagy felkiáltójel (!) is lehet\n- Saját magát jelöli, nem sztring: egy atom értéke maga a neve\n- Két azonos nevű atom mindig egyenlő, akárhol is vannak definiálva\n- Hasonló a Prolog névkonstanshoz (atomhoz)\n- Példák: `:jános`, `:is_bin?`, `:vált@2`, `:<>`, `:\"fun/3\"`, `:\"éljen soká!\"`,\n\n```\n:Éljen_soká!, :\"Őrült Űrőr tűrjön\", Dp, Gy1\n```",
+   "fingerprint": "a138a690ed4b077a",
+   "debug": null
+  },
+  {
+   "id": "s6",
+   "page": 7,
+   "pages": [
+    6,
+    7
+   ],
+   "label": "6",
+   "title": "Szám",
+   "flags": [
+    "math"
+   ],
+   "view": "pages/p007.png",
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "6 / 49"
+   ],
+   "text": "- Egész (integer)\n  - Decimális, pl. 1234\n  - Hexadecimális, pl. 0xcafe\n  - Oktális, pl. 0o765\n  - Bináris, pl. 0b1010\n  - Tagolható, pl. `123_456_789`\n  - Korlátlan pontosságú, pl. `123456789012345678901234567890`\n  - Karakterkód (Unicode codepoint)\n    - Ha nyomtatható: `?z`\n    - Ha vezérlő: `?\\n`\n- Lebegőpontos (float)\n  - Pl. `3.14159`,\n  - Vezető nullával, pl. `0.14159`\n  - Exponenssel pl. `0.2e-22`\n  - IEEE 754 szerinti, dupla pontosságú (64 bit, kb. 16 számjegy, max. exponens kb. 10^(308))",
+   "fingerprint": "2fbdb5a3f73bb42c",
+   "debug": null
+  },
+  {
+   "id": "s7",
+   "page": 11,
+   "pages": [
+    8,
+    11
+   ],
+   "label": "7",
+   "title": "Függvény (Function) 1",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "7 / 49"
+   ],
+   "text": "- A függvény is érték: változóhoz köthető, adatstruktúra eleme lehet, függvény eredménye lehet, paraméterként átadható stb. Azaz: a függvény is ún. first class citizen, teljes jogú polgár\n- Példák:\n\n```\niex> fac = &Fpea.fac/1 # &: capture operator\n&Fpea.fac/1\niex> fac.(5) # pont és zárójelpár kell, szóközökkel tagolható\n120\niex> Kernel.+(3,2) # infix operátor alkalmazása prefix helyzetben\n5\niex> fs = [&Kernel.+/2, &*/2, &:math.sin/1] # :math Erlang modul!\n[&:erlang.+/2, &:erlang.*/2, &:math.sin/1]\niex> (hd fs).(3,2)\n5\niex> (hd tl fs).(3,2)\n6\niex> (hd tl tl fs).(:math.pi * 90 / 180)\n1.0\n```",
+   "fingerprint": "318e2ad463ee1bec",
+   "debug": null
+  },
+  {
+   "id": "s8",
+   "page": 16,
+   "pages": [
+    12,
+    16
+   ],
+   "label": "8",
+   "title": "Függvény (Function) 2",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "8 / 49"
+   ],
+   "text": "- További példák: anonim függvény definiálása, hívása, névhez kötése\n\n```\niex> fn ki -> \"Szia, \" <> ki <> \"!\" end # <>: konkatenálás\n#Function<44.40011524/1 in :erl_eval.expr/5>\niex> fn ki -> \"Szia, \"<>ki<>\"!\" end.(\"Péter\") # pont, zárójel!\n\"Szia, Péter!\"\niex> szia = fn ki -> \"Szia, \" <> ki <> \"!\" end\n#Function<44.40011524/1 in :erl_eval.expr/5>\niex> szia\n#Function<44.40011524/1 in :erl_eval.expr/5>\niex> szia.(\"Bea\")\n\"Szia, Bea!\"\n```\n\n- További példa: függvénydefiníció `def`-fel, `defp`-vel\n\n```\ndef sum_of_squares(a,b), do: sqr(a) + sqr(b)\ndefp sqr(a), do: a*a # p[rivát], azaz lokális a modulon belül\niex> Fpea.sum_of_squares 3, 4.5\n29.25\n```\n\n- Függvény típusa: `(`arg1 típusa`,` arg2 típusa`,` . . . `) ::` eredmény típusa Pl. a `sum_of_squares/2` függvényé: `(number, number) :: number`",
+   "fingerprint": "d64649687c870d67",
+   "debug": null
+  },
+  {
+   "id": "s9",
+   "page": 19,
+   "pages": [
+    17,
+    19
+   ],
+   "label": "9",
+   "title": "Paraméter alapértelmezett (default) értéke",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "9 / 49"
+   ],
+   "text": "- Egy függvény egy vagy több paraméterének adhatunk alapértelmezett értéket a `\\\\` jelöléssel. Az ilyen paraméter opcionális, a többi elvárt.\n- Ha egy függvényt\n  - a kötelezően (default argumentumok nélkül) elvártnál kevesebb paraméterrel hívunk meg, a hívás meghiúsul;\n  - az elvárt számú paraméterrel hívunk meg, az összes opcionális paraméter az alapértelmezett értékét veszi fel;\n  - az elvártnál több paraméterrel hívunk meg, az aktuális paraméterek értékét balról jobbra haladva veszik fel az opcionális paraméterek.\n- Példák alapértelmezett értékekkel\n\n```\ndef sum_of_sqrs_b5(a, b \\\\ 5), do: sqr(a) + sqr(b)\niex> Fpea.sum_of_sqrs_b5 3, 4.5\n29.25\niex> Fpea.sum_of_sqrs_b5 3\n34\ndef sum_of_sqrs_b5(a \\\\ 6, b \\\\ 5), do: sqr(a) + sqr(b)\niex> Fpea.sum_of_sqrs_a6b5 3\n34\niex> Fpea.sum_of_sqrs_a6b5\n61\n```",
+   "fingerprint": "1d97fb443e5bd65b",
+   "debug": null
+  },
+  {
+   "id": "s10",
+   "page": 21,
+   "pages": [
+    20,
+    21
+   ],
+   "label": "10",
+   "title": "Ennes (Tuple), tartomány (Range)",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Ennes (Tuple)\n- Rögzített számú, tetszőleges kifejezésből álló, fix sorrendű kollekció“\n- Példák:\n\n```\niex> {0x1ff, :erlang, Armstrong, 'Joe'++[0], [], {}}\n{511, :erlang, Armstrong, [74, 111, 101, 0], [], {}}\niex> {plus, per, sin} = # mintaillesztések kötésekkel\n  {&Kernel.+/2, &//2, &:math.sin/1}\n{&:erlang.+/2, &:erlang.//2, &:math.sin/1}\niex> {plus.(3,4), per.(3,4)} # infix volt, prefix lett\n{7, 0.75}\niex> sin.(90*:math.pi/180)\n1.0\n```\n\nTartomány (Range)\n- Egész számok sorozata a [start, end] tartományban\n- Példa tartomány és lépésköz definiálására, használatára:\n\n```\niex> {18..23, 18..10}\n{18..23, 18..10//-1}\niex> for i <- 18..10 // -3, do: i\n[18, 15, 12]\n```",
+   "fingerprint": "76be1aacc52f821a",
+   "debug": null
+  },
+  {
+   "id": "s11",
+   "page": 23,
+   "pages": [
+    22,
+    23
+   ],
+   "label": "11",
+   "title": "Lista (List)",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- Korlátlan számú, tetszőleges kifejezésből álló, egyszeresen láncolt sorozat\n- Lineáris rekurzív adatstruktúra:\n  - vagy üres (`[]` jellel jelöljük),\n  - vagy egy elemből áll, amelyet egy lista követ: `[x|xs]`\n- Első eleme, ha van, a lista feje\n- Első eleme utáni, esetleg üres része a lista farka\n\n```\niex> [:elem] # egyelemű lista\n[:elem]\niex> [:elem|[]] # fejből és üres farokból létrehozott lista\n[:elem]\niex> [:elem1|[:elem2]] # fejből-farokból létrehozott lista\n[:elem1, :elem2]\niex> [:elem,123,3.14,'elem'] # több elemű listák\n[:elem, 123, 3.14, 'elem']\niex> [:elem,123|[3.14,'elem']]\n[:elem, 123, 3.14, 'elem']\niex> [:egy|[:két]] ++ [:elem,123|[3.14,'elem']] # ++: konkatenáció\n[:egy, :két, :elem, 123, 3.14, 'elem']\n```",
+   "fingerprint": "b5e8091ad0b695e4",
+   "debug": null
+  },
+  {
+   "id": "s12",
+   "page": 24,
+   "pages": [
+    24,
+    24
+   ],
+   "label": "12",
+   "title": "Karakterlánc (single-quoted)",
+   "flags": [
+    "math"
+   ],
+   "view": "pages/p024.png",
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- Rövidítés, karakterkódok listája: `'erl'` ≡`[?e,?r,?l]` ≡`[101,114,108]`\n- Az Elixir/Erlang shell a nyomtatható karakterkódok (7..13, 27, 32..126) listáját karakterláncként írja ki\n- Ha ezektől különböző érték is van a listában, listaként írja ki\n- Példák:\n\n```\niex> [101,114,108]\n~c\"erl\"\niex> [31,101,114,108]\n[31, 101, 114, 108]\niex> 'erl' ++ 'ang' # konkatenálható\n~c\"erlang\"\n```\n\n- A karakterlánc NEM sztring!",
+   "fingerprint": "def289a6fa70b76f",
+   "debug": null
+  },
+  {
+   "id": "s13",
+   "page": 30,
+   "pages": [
+    25,
+    30
+   ],
+   "label": "13",
+   "title": "Sztring (String, double quoted)",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- UTF-8 kódolású karakterek ábrázolása bájtok sorozataként (bináris típus)\n- Következmények:\n  - Az UTF-8 kódolás miatt a sztring rövidebb lehet az őt ábrázoló binárisnál\n  - A lista- és a sztringműveletek különbözőek\n- Példák:\n\n```\niex> dxdy = \"δx/δy\"\n\"δx/δy\"\niex> {String.length(dxdy), byte_size(dxdy)}\n{5, 7}\niex> {String.at(dxdy,0), String.codepoints(dxdy)}\n{\"δ\", [\"δ\", \"x\", \"/\", \"δ\", \"y\"]}\niex> [dx, dy] = String.split(dxdy, \"/\")\n[\"δx\", \"δy\"]\niex> dx <> \"/\" <> dy # <>: konkatenálás\n\"δx/δy\"\n```\n\n- Sztringműveletekről, a String modul függvényeiről hamarosan lesz szó",
+   "fingerprint": "c9c45cdea25099de",
+   "debug": null
+  },
+  {
+   "id": "s14",
+   "page": 32,
+   "pages": [
+    31,
+    32
+   ],
+   "label": "14",
+   "title": "Ami közös a karakterláncban és a sztringben",
+   "flags": [
+    "layout"
+   ],
+   "view": "pages/p032.png",
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- UTF-8 kódolású karakterekből állnak\n- pause Lehetnek bennük ún. escape-szekvenciák:\n\\a BEL (0x07) \\b \\e ESC (0x1b) \\f \\r CR (0x0d) \\s\n\n```\niex> name = \"dávid\" # Sztring\n\"dávid\"\n\"Helló, Dávid!\"\n~c\"Bubo\"\n\"Helló, Bubo Réka!\"\n```\n\nBS (0x08) \\d DEL (0x7f) FF (0x0c) \\n NL (0x0a) SP (0x20) \\t TAB (0x09)\n\n\\v VT (0x0b) \\uhhhh Unicode codepoint in hexadecimal \\xhh single byte in hexadecimal\n- Néhány karakter speciális jelentését az elé írt `\\` megszünteti, pl. `\\\\`\n- Megengedik az ún. interpolációt, azaz változó helyettesítését az értékével (`\"...#{<expr>}...\"`) sztringben, illetve karakterláncban:\n\n```\niex> \"Helló, #{String.capitalize name}!\"\niex> bubo = 'Bubo' # Karakterlánc\niex> \"Helló, #{List.to_string [bubo, ? , \"Réka\"]}!\"\n```",
+   "fingerprint": "8c9f9180c0eb21c3",
+   "debug": null
+  },
+  {
+   "id": "s15",
+   "page": 35,
+   "pages": [
+    33,
+    35
+   ],
+   "label": "15",
+   "title": "Bináris (Binary)",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- A bináris típusba tartozó értékek bitsorozatok\n- Egy bináris érték jelölése `<< kif, ...` `>>` alakú\n- A legegyszerűbb `kif` a [0,255] tartományba eső egész szám\n- A számokat bájtként tároljuk a binárisban\n\n```\niex> b = << 1, 2, 3 >>\n<<1, 2, 3>>\niex> {byte_size(b), bit_size b}\n{3, 24}\n```\n\n- A tárolásra használt bitek száma megszabható\n\n```\niex> b = << 1::size(2), 1::size(3) >> # 01 001\n<<9::size(5)>> # = 9 (decimálisként)\niex> {byte_size(b), bit_size b}\n{1, 5}\n```\n\n- Egész és lebegőpontos számok és más értékek is tárolhatók binárisan\n\n```\niex> << <<1>> :: binary, <<2.5>> :: binary >>\n<<1, 64, 4, 0, 0, 0, 0, 0, 0>>\n```\n\n- A bináris tárolás hasznos médiafájlok és UTF-8 karakterek tárolására, processzek közötti kommunikációban stb.",
+   "fingerprint": "84c0cf9a49f56821",
+   "debug": null
+  },
+  {
+   "id": "s16",
+   "page": 40,
+   "pages": [
+    36,
+    40
+   ],
+   "label": "16",
+   "title": "Kulcs-érték lista (Keyword lists)",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- Egy kulcs-érték párt kételemű ennesként írhatunk le: `{:key, value}`, ahol a kulcs csak atom, az érték tetszőleges típusú lehet\n- Gyakran van szükség ilyen listákra, ezért az Elixir többféle jelölést, rövidítést, bizonyos esetekben zárójelelhagyást is megenged\n- Példák\n\n```\niex> [{:név,\"Szöszi\"},{:szerelme,\"jazz-zongorista\"},{:város,\"Prága\"}]\n[név: \"Szöszi\", szerelme: \"jazz-zongorista\", város: \"Prága\"]\niex> [név: \"Szöszi\", szerelme: \"jazz-zongorista\", város: \"Prága\"]\n[név: \"Szöszi\", szerelme: \"jazz-zongorista\", \"város: \"Prága\"]\niex> inspect név: \"Szöszi\", szerelme: \"jazz-zongorista\", város: \"Prága\"\n\"[név: \\\"Szöszi\\\", szerelme: \\\"jazz-zongorista\\\", város: \\\"Prága\\\"]\"\niex> [:cseh_film, név: \"Szöszi\", város: \"Prága\", szerelme: \"zongorista\"]\n[:cseh_film, {név: \"Szöszi\", város: \"Prága\", szerelme: \"zongorista\"}]\niex> {:cseh_film, név: \"Szöszi\", szerelme: \"zongorista\", város: \"Prága\"}\n{:cseh_film, [név: \"Szöszi\", szerelme: \"zongorista\", város: \"Prága\"]}\n```\n\n- A kulcs-érték párokat leginkább függvényopciók megadására használjuk, pl. `limit: :infinity`, `charlists: :as_lists`",
+   "fingerprint": "f54b540ad9d58a2a",
+   "debug": null
+  },
+  {
+   "id": "s17",
+   "page": 44,
+   "pages": [
+    41,
+    44
+   ],
+   "label": "17",
+   "title": "Szótár (Map) 1",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- A szótár kulcs-érték párok rendezett kollekciója\n- Jelölés (map literal): `%{ key1 => value1, key2 => value2, ...}`\n- Ha a kulcs atom, alternatív jelölés: `%{atom1: value1, atom2: value2}`\n- A kulcsok és az értékek típusa tetszőleges; lehet kifejezés is\n- Egy szótáron belül a kulcsok különböző típusúak lehetnek\n- Példák:\n\n```\niex> states = %{\"UA\"=>\"Ukraine\", \"SK\"=>\"Slovakia\", \"AT\"=>\"Austria\"}\n%{\"AT\" => \"Austria\", \"SK\" => \"Slovakia\", \"UA\" => \"Ukraine\"}\niex> msgs = %{{:error,:enoent} => :fatal, {:error,:busy} => :retry}\n%{{:error, :busy} => :retry, {:error, :enoent} => :fatal}\niex> colors = %{:red=>0xff0000, :green=>0x00ff00, :blue=>0x0000ff}\n%{green: 65280, red: 16711680, blue: 255}\niex> colors = %{red: 0xff0000, green: 0x00ff00, blue: 0x0000ff}\n%{green: 65280, red: 16711680, blue: 255}\niex> mix = %{(&+/2).(3,2) => \"három+kettő\", fütty: \"dal\"<>\"olka\"}\n%{5 => \"három+kettő\", :fütty => \"dalolka\"}\n```",
+   "fingerprint": "5785b2dadc26d3e5",
+   "debug": null
+  },
+  {
+   "id": "s18",
+   "page": 50,
+   "pages": [
+    45,
+    50
+   ],
+   "label": "18",
+   "title": "Szótár (Map) 2",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- A szótár típust elsősorban asszociatív tömbként szokás használni\n- Szótárból értéket a kulccsal lehet kinyerni szögletes zárójeles jelöléssel\n- Ha a kulcs atom, a rövidebb pontos jelölés is használható\n- Példák:\n\n```\niex> states[\"UA\"]\n\"Ukraine\"\niex> states[\"HU\"]\nnil\niex> msgs[{:error, :busy}]\n:retry\niex> colors[:green]\n65280\niex> colors.red\n16711680\niex> mix[(&Kernel.*/2).(1,5)]\n\"három+kettő\"\niex> mix.fütty\n\"dalolka\"\n```\n\n- További részletek a Map modul dokumentációjában",
+   "fingerprint": "0a1d6d5ea2e28218",
+   "debug": null
+  },
+  {
+   "id": "s19",
+   "page": 55,
+   "pages": [
+    51,
+    55
+   ],
+   "label": "19",
+   "title": "Reguláris kifejezés (Regex) 1",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [
+    "http://www.pcre.org"
+   ],
+   "annots": [],
+   "header": [],
+   "text": "- Az Elixirben a reguláris kifejezés is önálló típus\n- Jelölés: `~r{regexp}`^(2) vagy `~r{regexp}options`\n- A reguláris kifejezés szintaxisa a PCRE^(3) szerinti.\n- Példák:\n\n```\niex> Regex.run ~r{[cdr]}, \"madárcsicsergés\"\n[\"d\"]\niex> Regex.scan ~r{[cdr]}, \"madárcsicsergés\"\n[[\"d\"], [\"r\"], [\"c\"], [\"c\"], [\"r\"]]\niex> Regex.split ~r{[cdr]}, \"madárcsicsergés\"\n[\"ma\", \"á\", \"\", \"si\", \"se\", \"gés\"]\niex> Regex.replace ~r{[cdr]}, \"madárcsicsergés\", \".\"\n\"ma.á..si.se.gés\"\n```\n\n- További részletek a Regex modul dokumentációjában\n2A `~r{...}` jelölés is egy szigil, azaz bűvös jelölés. A szigilekről részletek a Kernel dokumentációjában\n\ntalálhatók.\n\n3Perl Compatible Regular Expressions, <http://www.pcre.org>",
+   "fingerprint": "d9ee93be5db40873",
+   "debug": null
+  },
+  {
+   "id": "s20",
+   "page": 57,
+   "pages": [
+    56,
+    57
+   ],
+   "label": "20",
+   "title": "Reguláris kifejezés (Regex) 2",
+   "flags": [
+    "table"
+   ],
+   "view": "pages/p057.png",
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- A regexp után egy vagy több egykarakteres opció állhat\n**Jel** **Jelentés**\n\nTöbbsoros sztring első sorában kezdődjön az illesztés\n\nf i\n\nAz illesztés ne különböztesse meg a kis- és nagybetűket\n\nm Többsoros sztring esetén a ^ és a $ az egyes sorok elejét és végét jelentse (a\n\n\\A és \\z jelentése változatlanul a sztring eleje és vége)\n\ns A . illeszkedjen az újsor-karakterekre is U Az egyébként mohó * és + módosítók legyenek lusták, azaz a minta a lehető\n\nleghosszabb karaktersorozat helyett a lehető legrövidebbre illeszkedjen\n\nu Engedje meg Unicode-specifikus minták, pl. \\p használatát x Engedje meg a bővített mód használatát: ignorálja a szóköz-jellegű (ún.\n\nwhitespace) karaktereket és a kommenteket (a # jeltől a sor végéig)\n- Példák:\n\n```\niex> Regex.run ~r{cs.*s}, \"Madarak Csicsergése\"\n[\"csergés\"]\niex> Regex.run ~r{cs.*s}i, \"Madarak Csicsergése\"\n[\"Csicsergés\"]\niex> Regex.run ~r{cs.*s}iU, \"Madarak Csicsergése\"\n[\"Csics\"]\n```",
+   "fingerprint": "40c8f9b44c974e2d",
+   "debug": null
+  },
+  {
+   "id": "s21",
+   "page": 58,
+   "pages": [
+    58,
+    58
+   ],
+   "label": "21",
+   "title": "Tartalom",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "FPE-2 – Termek, azonosítók, változók"
+   ],
+   "text": "1 Típusok, termek, azonosítók, változók\n- FPE-2 – Típusok: atom, szám, függvény, ennes, tartomány, lista\n- FPE-2 – Termek, azonosítók, változók",
+   "fingerprint": "a8adfc31ce3b7721",
+   "debug": null
+  },
+  {
+   "id": "s22",
+   "page": 61,
+   "pages": [
+    59,
+    61
+   ],
+   "label": "22",
+   "title": "Term",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "FPE-2 – Termek, azonosítók, változók"
+   ],
+   "text": "- A term tetszőleges adatstruktúra\n- Minden termnek van értéke és típusa\n- A term maga is kifejezés\n- Közelítő rekurzív definíciója: Szám-, atom-, függvény- és más értékekből, ill. termekből konstruktorokkal felépített, tovább nem egyszerűsíthető kifejezés\n- Példák\n  - `kötött = 2021`\n  - Term: tovább nem egyszerűsíthető, tömör, ha kiértékelhető, azaz nincs benne szabad változó\n\n```\n123456789\n{'Diák Detti', [{:khf, [:prolog, :elixir, :prolog]}]}\n[&:erlang.+/2, kötött, fn(x,y) -> x*y end]\n```\n\n  - Nem term (tovább egyszerűsíthető vagy nem tömör)\n\n```\n5+6                   # műveletet tartalmaz\n(&:erlang.+/2).(5,6) # függvényalkalmazást tartalmaz\nszabad                # szabad változó\n```",
+   "fingerprint": "46bc7c756d501170",
+   "debug": null
+  },
+  {
+   "id": "s23",
+   "page": 63,
+   "pages": [
+    62,
+    63
+   ],
+   "label": "23",
+   "title": "Azonosító (identifier)",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [
+    "https://hexdocs.pm/elixir/unicode-syntax.html"
+   ],
+   "annots": [],
+   "header": [
+    "FPE-2 – Termek, azonosítók, változók"
+   ],
+   "text": "- Kisbetűvel vagy aláhúzásjellel (_) kezdődő, betűket, számjegyeket^(4) és aláhúzásjeleket tartalmazó, opcionálisan kérdő- vagy felkiáltójellel végződő karaktersorozat\n- Konvenció szerint a ?-lel végződő azonosító kiértékelése igazságértéket ad eredményül, a !-lel végződő kiértékelése pedig kivételt dob, ha meghiúsul\n- Konvenció szerint az azonosító részeit aláhúzásjellel tagoljuk (ún. megengedő snake_case), vö. atom szintaxisa\n- Példák:\n\n```\nwhat_s_in_a_name   name?   exec!\n_unused   rómeó_és_Júlia   year_2021\n```\n\n- Az azonosító változót vagy függvénynevet jelöl\n4UTF-8 kódolású betű, ill. decimális számjegy; lásd <https://hexdocs.pm/elixir/unicode-syntax.html>",
+   "fingerprint": "cd95b8a7fc9d91c3",
+   "debug": null
+  },
+  {
+   "id": "s24",
+   "page": 68,
+   "pages": [
+    64,
+    68
+   ],
+   "label": "24",
+   "title": "Változó",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "FPE-2 – Termek, azonosítók, változók"
+   ],
+   "text": "- Egy változó lehet szabad vagy kötött\n- A szabad változónak nincs értéke, típusa\n- A kötött változó valamely konkrét term szinonimája\n- A változóhoz köthető új érték, de ez korábbi felhasználását nem módosítja\n- A ^ (pin) operátor a kötött változó értékét fixálja: nem köthető új értékhez\n- Példák\n\n```\niex> x = fn(x) -> 2*x end # a külső és a belső x nem ugyanaz!\n#Function<44.40011524/1 in :erl_eval.expr/5>\niex> y = x\n#Function<44.40011524/1 in :erl_eval.expr/5>\niex> ^x = y.(2)\n** (MatchError) no match of right hand side value: 4\niex> x = y.(2)\n4\niex> y\n#Function<44.40011524/1 in :erl_eval.expr/5>\n```",
+   "fingerprint": "32b8932f2ee22390",
+   "debug": null
+  },
+  {
+   "id": "s25",
+   "page": 73,
+   "pages": [
+    69,
+    73
+   ],
+   "label": "25",
+   "title": "Változó hatásköre, komment, igazságérték",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "FPE-2 – Termek, azonosítók, változók"
+   ],
+   "text": "- Változó hatásköre: lexikális\n  - A függvény törzsében és fejében definiált változók (utóbbiak másnéven: formális paraméterek) lokálisak a függvényre nézve\n  - Modulban is lehet változót definiálni, ami csak modulszinten látható, a modulban definiált függvényekből nem\n  - `with` kifejezéssel is definiálhatunk lokális változót, például\n\n```\niex> with a = 5, b = 7, do: a*a + 2*a*b + b*b\n144\niex> a = 11; with a = 5, b = 7, do: a*a + 2*a*b + b*b; a\n11\n```\n\n- Komment: # jellel keződik, a sor végéig tart\n- Igazságérték, másnéven logikai érték (boolean)\n  - Három atomot tekintünk igazságértéknek: `:true`, `:false`, `:nil`\n  - Mindhárom írható kettőspont nélkül is: `true`, `false`, `nil`\n  - A `false` és `nil` hamis, minden más érték (nemcsak a `true`) igaz\n  - Angolul szokás megkülönböztetni a true-t a truthy-tól, a false-t a falsy-tól, pl. JavaScript, Java, Elixir.",
+   "fingerprint": "a4a11ce98646999b",
+   "debug": null
+  },
+  {
+   "id": "s26",
+   "page": 74,
+   "pages": [
+    74,
+    74
+   ],
+   "label": "26",
+   "title": "II. rész",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Műveletek listákon\n\n1 Típusok, termek, azonosítók, változók\n\n2 Műveletek listákon\n\n3 Műveletek sztringeken\n\n4 Problémamegoldási technikák",
+   "fingerprint": "c36b0b8f71baa37b",
+   "debug": null
+  },
+  {
+   "id": "s27",
+   "page": 75,
+   "pages": [
+    75,
+    75
+   ],
+   "label": "27",
+   "title": "Tartalom",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "Műveletek listákon",
+    "FPE-2 – Műveletek listákon"
+   ],
+   "text": "2 Műveletek listákon\n- FPE-2 – Műveletek listákon\n- FPE-2 – Kis példák listák használatára",
+   "fingerprint": "88bdeedc3666203b",
+   "debug": null
+  },
+  {
+   "id": "s28",
+   "page": 78,
+   "pages": [
+    76,
+    78
+   ],
+   "label": "28",
+   "title": "Műveletek listákon 1",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "Műveletek listákon",
+    "FPE-2 – Műveletek listákon"
+   ],
+   "text": "- A lista láncolt lineáris adatstruktúra, ezért olcsó az első elemét (a fejét) és az összes többi elemét (a farkát) megkapni, de drága az utolsó elemét elérni, mert végig kell gyalogolni a listán\n- A funkcionális nyelvekben, a többi adatstruktúrával egyezően, a lista nem frissíthető, az Elixirben sem: amikor a lista egy elemét le akarjuk cserélni, akkor másolatot kell készítenünk a lecserélendő elem előtti részlistáról\n- A másolás során a lecserélendő elem előtti összes elemet félre kell raknunk, majd a lecserélendő elem utáni megosztott farokrész elé be kell fűznünk az új elemet, ezt követően pedig a félrerakott elemeket egyesével be kell fűznünk az új elemet már tartalmazó listarész elé\n- Vagyis a lista adott elemi utáni farkáról nem készül másolat, mert az Elixir megosztja a lista farkát a régi és az új elemet tartalmazó listák között\n- A lista annyira megkerülhetetlen adatstruktúra a funkcionális nyelvekben, hogy már eddig is sok példát láttunk a használatára. A következő dián összefoglaljuk a leggyakoribb listaműveleteket\n- A sztring ugyan nem listaként van ábrázolva az Elixirben, de a használata hasonló, ezért a leggyakoribb sztringműveleteket is összefoglaljuk később egy dián",
+   "fingerprint": "c10f983ee13e3f80",
+   "debug": null
+  },
+  {
+   "id": "s29",
+   "page": 83,
+   "pages": [
+    79,
+    83
+   ],
+   "label": "29",
+   "title": "Műveletek listákon 2",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "Műveletek listákon",
+    "FPE-2 – Műveletek listákon"
+   ],
+   "text": "- Lista feje, farka, hossza: `hd(xs)`, `tl(xs)`, `length(xs)`^(5)\n- Két lista összefűzése (konkatenációja): `xs ++ ys`, eredménye `xs` összes eleme `ys` elé fűzve az eredeti sorrendben\n- Két lista különbsége: `xs -- ys`, eredménye `xs` azon elemeinek listája az eredeti sorrendben, amelyek nincsenek benne `ys`-ben\n- Tagsági vizsgálat: `x in xs` eredménye `true`, ha `x` eleme `xs`-nek\n- Példák\n\n```\niex> [:a, 'a', [65]] ++ [1+2, 2/1, 'a'] # 65 == ?A\n[:a, 'a', 'A', 3, 2.0, 'a']\niex> Enum.to_list(1..100000) ++ [100001] # rossz hatékonyságú!\n[1, 2, 3, 4, 5, 6, 7, 8, ...100001]\niex> [:a, 'a', [65], 'a'] -- [\"A\", 2/1, 'a']\n[:a, 'A', 'a']\niex> [:a, 'a', [65], 'a'] -- [\"A\", 2/1, 'a', :a, :a, :a]\n['A', 'a']\niex> [1, 2, 3] -- [1.0, 2] # szigorú egyenlőség: 1̸ ≡1.0\n[1, 3]\niex> \"A\" in [\"A\", 2/1, 'a', :a, :a, :a]\ntrue\n```\n\n5`hd/1`, `tl/1`, `length/1`, `++/2`, `--/2`, `in/2` a Kernel modulban vannak definiálva",
+   "fingerprint": "b4c4ad15d05807f9",
+   "debug": null
+  },
+  {
+   "id": "s30",
+   "page": 86,
+   "pages": [
+    84,
+    86
+   ],
+   "label": "30",
+   "title": "Műveletek listákon 3",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "Műveletek listákon",
+    "FPE-2 – Műveletek listákon"
+   ],
+   "text": "- Lista első / utolsó eleme; ha nincs, `default` vagy `nil`:\n\n```\nfirst(list, default \\\\ nil), last(list, default \\\\ nil)\n```\n\n- Egy elem első előfordulásának törlésével kapott lista:\n\n```\ndelete(list, elem)\n```\n\n- Adott pozíciójú elem törlésével / beszúrásával / cseréjével kapott lista:\n\n```\ndelete_at(list, index), insert_at(list, index, value),\nreplace_at(list, index, value), update_at(list, index, fun)\n```\n\nIndexelés 0-tól, negatív index a lista végéről indul. `update_at/3` a `fun` függvényt alkalmazza az adott pozíciójú elemre.\n- Lista kilapításával / kilapítása után a `tail` elé fűzésével kapott lista:\n\n```\nflatten(list), flatten(list, tail)\n```\n\n- Elem többszörözésével kapott lista: `duplicate(elem, n)`\n- Listák listájából ennesek listája: `zip(list_of_lists)`\n- Példák:\n\n```\niex> List.zip([[:a, :b, :c], [:d, :e, :f, :g, :h], [:i, :j, :k, :l]])\n[{:a, :d, :i}, {:b, :e, :j}, {:c, :f, :k}] # Listák vége levágva\niex> List.flatten(['abc', [['defgh']], ['ijkl']], 'zzz')\n  'abcdefghijklzzz'\n```",
+   "fingerprint": "3b3bf6e3961a33d5",
+   "debug": null
+  },
+  {
+   "id": "s31",
+   "page": 89,
+   "pages": [
+    87,
+    89
+   ],
+   "label": "31",
+   "title": "Műveletek listákon 4",
+   "flags": [
+    "layout"
+   ],
+   "view": "pages/p089.png",
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "Műveletek listákon",
+    "FPE-2 – Műveletek listákon"
+   ],
+   "text": "- Konverziós függvények, pl. `List.to_string`, `Tuple.to_list`\n- Van három tesztelő függvény is:\n  - `improper?(list)` igaz, ha `list` nem valódi lista, azaz egy listakonstruktorban a farok nem lista, pl. `[1,2|3]`, `[:a,:b|nil]`\n  - `starts_with?(list, prefix)` igaz, ha `list prefix`-szel kezdődik\n  - `ascii_printable?(list, n \\\\ :infinity)` igaz, ha `list` első `n` karaktere 7-bites ASCII-kódolású és nyomtatható, beleértve a vezérlő karaktereket is (`\\a`, `\\b`, `\\t`, `\\n`, `\\v`, `\\f`, `\\r`, `\\e`)\nAz `Enum` modul függvényei is alkalmazhatók listákra:\n- Lista megfordításával / megfordítása után a `tail` elé fűzésével kapott lista: `reverse(list)`, `reverse(list, tail)`\n- Lista adott indexű eleme, ha nincs ilyen, `default` vagy `nil`:\n\n```\n    at(list, index, default \\\\ nil)\niex> List.starts_with? 'almafa', [?a, ?l]   iex> Enum.reverse 'almafa'\ntrue                                        'afamla'\n                                            iex> Enum.at 'almafa', 2\n                                            ?m\n```",
+   "fingerprint": "a00b6c8a141d699d",
+   "debug": null
+  },
+  {
+   "id": "s32",
+   "page": 91,
+   "pages": [
+    90,
+    91
+   ],
+   "label": "32",
+   "title": "Műveletek listákon 5",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "Műveletek listákon",
+    "FPE-2 – Műveletek listákon"
+   ],
+   "text": "További függvények az `Enum` modulból:\n- Lista legkisebb / legnagyobb eleme:\n\n```\nmin(list, sorter \\\\ &<=/2,\n          empty_fallback \\\\ fn -> raise(Enum.EmptyError) end)\n```\n\n`max/3` paraméterezése hasonló, `&<=/2` helyett `&>=/2`-vel. Ha `list` üres, a 3. paraméterként átadott függvény aktivizálódik.\n- Lista `n` elemű eleje, `n` elem utáni farka: `take(list, n)`, `drop(list, n)` Ha `n` negatív, az elemeket a lista végéről kezdve emeli le / dobja el.\n- Lista részlistája: `slice(list, range)` a `range` tartományba eső indexű elemek listája / `slice(list, start, n)` a `start` indextől kezdődő `n` elemű részlista. Ha `range`, ill. `start` negatív, indexelés a lista végéről.\nPéldák\n\n```\niex> {(Enum.max 'mióta') === ?ó, (Enum.min [], fn -> 0 end)}\n{true, 0}\niex> xs='indulakutyasatyukaludni'; {(Enum.take xs,-5), (Enum.drop xs,5)}\n{'ludni', 'akutyasatyukaludni'}\niex> {(Enum.slice xs, 6..10), (Enum.slice xs, -10..-7)}\n{'kutya', 'tyuk'}\n```",
+   "fingerprint": "4657f3ab81a629e7",
+   "debug": null
+  },
+  {
+   "id": "s33",
+   "page": 94,
+   "pages": [
+    92,
+    94
+   ],
+   "label": "33",
+   "title": "Műveletek listákon 6",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "Műveletek listákon",
+    "FPE-2 – Műveletek listákon"
+   ],
+   "text": "És még néhány függvény az `Enum` modulból:\n- Lista kettévágva: `split(list, n)` ugyanaz, csak rövidebben mint\n\n```\n{(take list, n), (drop list, n)}\n```\n\n- Lista rendezve alapértelmezés / `fun` függény szerint: `sort(list)`,\n\n```\nsort(list, fun)\n```\n\n- Lista többszörös értékek nélkül: `uniq(list)`\nPéldák\n\n```\niex> xs='indulakutyasatyukaludni'; [(Enum.split xs,5),(Enum.split xs,-5)]\n[{'indul', 'akutyasatyukaludni'}, {'indulakutyasatyuka', 'ludni'}]\niex> Enum.sort xs\n'aaaaddiikkllnnsttuuuuyy'\niex> Enum.sort xs, &>=/2\n'yyuuuuttsnnllkkiiddaaaa'\niex> Enum.uniq xs\n'indulaktys'\n```\n\nAz `Enum` modul függvényei – mind mohó kiértékelésű – egyéb korlátos, felsorolható (enumerable) adatstruktúrákra is alkalmazhatók. Nem korlátos adatstruktúrákra a `Stream` modul függvényeit – ezek lusta kiértékelésűek – lehet használni",
+   "fingerprint": "2e74ce2e51c0821b",
+   "debug": null
+  },
+  {
+   "id": "s34",
+   "page": 95,
+   "pages": [
+    95,
+    95
+   ],
+   "label": "34",
+   "title": "Tartalom",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "Műveletek listákon",
+    "FPE-2 – Kis példák listák használatára"
+   ],
+   "text": "2 Műveletek listákon\n- FPE-2 – Műveletek listákon\n- FPE-2 – Kis példák listák használatára",
+   "fingerprint": "fe7c9e09f9cde8ee",
+   "debug": null
+  },
+  {
+   "id": "s35",
+   "page": 96,
+   "pages": [
+    96,
+    96
+   ],
+   "label": "35",
+   "title": "Listakezelés – rövid példák 1",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "Műveletek listákon",
+    "FPE-2 – Kis példák listák használatára"
+   ],
+   "text": "```\niex> xs = [10,20,30] # mintaillesztés és változó kötése értékhez\n[10, 20, 30]\niex> x = hd xs       # hd: lista feje\n10\niex> rs = tl xs      # tl: lista farka\n[20, 30]\niex> {zs,xs} = {xs,[5,6]} # mintaillesztés és változó újrakötése\n{[10, 20, 30], [5, 6]}\niex> xs              # xs-hez új értéket kötöttünk\n[5, 6]\niex> zs              # xs változott, zs nem!\n[10, 20, 30]\niex> ^xs = [7,8,9]   # ^: változó 'fixálása', csak mintaillesztés, kötés nélkül\n** (MatchError) no match of right hand side value: ~c\"\\a\\b\\t\"\niex> hd tl xs       # összetett kifejezés is kiértékelhető\n6\niex> tl []           # mi az üres lista farka?\n** (ArgumentError) errors were found at the given arguments:\n  * 1st argument: not a nonempty list\n    :erlang.tl([])\n```",
+   "fingerprint": "4c8a4f2f7b012c5f",
+   "debug": null
+  },
+  {
+   "id": "s36",
+   "page": 97,
+   "pages": [
+    97,
+    97
+   ],
+   "label": "36",
+   "title": "Listakezelés – rövid példák 2",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "Műveletek listákon",
+    "FPE-2 – Kis példák listák használatára"
+   ],
+   "text": "```\niex> for i <- 7..13, do: [i]\n[~c\"\\a\", ~c\"\\b\", ~c\"\\t\", ~c\"\\n\", ~c\"\\v\", ~c\"\\f\", ~c\"\\r\"]\niex> for i <- 27..27, do: [i]\n[~c\"\\e\"]\niex> for i <- 32..126, do: [i]\n[~c\" \", ~c\"!\", ~c\"\\\"\", ~c\"#\", ~c\"$\", ~c\"%\", ~c\"&\", ~c\"'\", ~c\"(\", ~c\")\", ~c\"*\",\n ~c\"+\", ~c\",\", ~c\"-\", ~c\".\", ~c\"/\", ~c\"0\", ~c\"1\", ~c\"2\", ~c\"3\", ~c\"4\", ~c\"5\",\n ~c\"6\", ~c\"7\", ~c\"8\", ~c\"9\", ~c\":\", ~c\";\", ~c\"<\", ~c\"=\", ~c\">\", ~c\"?\", ~c\"@\",\n ~c\"A\", ~c\"B\", ~c\"C\", ~c\"D\", ~c\"E\", ~c\"F\", ~c\"G\", ~c\"H\", ~c\"I\", ~c\"J\", ~c\"K\",\n ~c\"L\", ~c\"M\", ~c\"N\", ~c\"O\", ~c\"P\", ~c\"Q\", ...]\niex> IO.puts (for i <- 35..126, do: [i])\n#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~\n:ok\niex> IO.inspect (for i <- 32..126, do: [i]), limit: :infinity\n[~c\" \", ~c\"!\", ~c\"\\\"\", ~c\"#\", ~c\"$\", ~c\"%\", ~c\"&\", ~c\"'\", ~c\"(\", ~c\")\", ~c\"*\",\n ~c\"+\", ~c\",\", ~c\"-\", ~c\".\", ~c\"/\", ~c\"0\", ~c\"1\", ~c\"2\", ~c\"3\", ~c\"4\", ~c\"5\",\n ~c\"6\", ~c\"7\", ~c\"8\", ~c\"9\", ~c\":\", ~c\";\", ~c\"<\", ~c\"=\", ~c\">\", ~c\"?\", ~c\"@\",\n ~c\"A\", ~c\"B\", ~c\"C\", ~c\"D\", ~c\"E\", ~c\"F\", ~c\"G\", ~c\"H\", ~c\"I\", ~c\"J\", ~c\"K\",\n ~c\"L\", ~c\"M\", ~c\"N\", ~c\"O\", ~c\"P\", ~c\"Q\", ~c\"R\", ~c\"S\", ~c\"T\", ~c\"U\", ~c\"V\",\n ~c\"W\", ~c\"X\", ~c\"Y\", ~c\"Z\", ~c\"[\", ~c\"\\\", ~c\"]\", ~c\"^\", ~c\"_\", ~c\"`\", ~c\"a\",\n ~c\"b\", ~c\"c\", ~c\"d\", ~c\"e\", ~c\"f\", ~c\"g\", ~c\"h\", ~c\"i\", ~c\"j\", ~c\"k\", ~c\"l\",\n ~c\"m\", ~c\"n\", ~c\"o\", ~c\"p\", ~c\"q\", ~c\"r\", ~c\"s\", ~c\"t\", ~c\"u\", ~c\"v\", ~c\"w\",\n ~c\"x\", ~c\"y\", ~c\"z\", ~c\"{\", ~c\"|\", ~c\"}\", ~c\"~\"]\n [~c\" \", ~c\"!\", ~c\"\\\"\", ~c\"#\", ~c\"$\", ~c\"%\", ~c\"&\", ~c\"'\", ~c\"(\", ~c\")\", ~c\"*\",\n  ~c\"+\", ~c\",\", ~c\"-\", ~c\".\", ~c\"/\", ~c\"0\", ~c\"1\", ~c\"2\", ~c\"3\", ~c\"4\", ~c\"5\",\n  ~c\"6\", ~c\"7\", ~c\"8\", ~c\"9\", ~c\":\", ~c\";\", ~c\"<\", ~c\"=\", ~c\">\", ~c\"?\", ~c\"@\",\n  ~c\"A\", ~c\"B\", ~c\"C\", ~c\"D\", ~c\"E\", ~c\"F\", ~c\"G\", ~c\"H\", ~c\"I\", ~c\"J\", ~c\"K\",\n  ~c\"L\", ~c\"M\", ~c\"N\", ~c\"O\", ~c\"P\", ~c\"Q\", ...]\n```",
+   "fingerprint": "dd3315db167bf450",
+   "debug": null
+  },
+  {
+   "id": "s37",
+   "page": 101,
+   "pages": [
+    98,
+    101
+   ],
+   "label": "37",
+   "title": "Listakezelés – rövid példák 3",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "Műveletek listákon",
+    "FPE-2 – Kis példák listák használatára"
+   ],
+   "text": "`fpea.ex` – Számlista összege @spec sum(xs::[integer]) :: s::integer\n\n```\n# Az xs számlista összege s\ndef sum([]), do: 0 # a \", do:\" jelölés többsoros változata a \"do ... end\"\ndef sum(xs)  do x = hd xs; rs = tl xs; x + sum rs end # újsor helyett ;\n\niex> c \"fpea.ex\"\n[Fpea]\niex> xs = [10, 20.5, 30.5]\n[10, 20.5, 30.5]\niex> Fpea.sum xs\n61.0\niex> Fpea.sum tl xs\n51.0\niex> Fpea.sum(tl(tl(tl xs)))\n0\niex> Fpea.sum \"abc\" # \"abc\" !== [97, 98, 99]: \"abc\" sztring, nem lista\n** (ArgumentError) errors were found at the given arguments:\n  * 1st argument: not a nonempty list\n    :erlang.hd(\"abc\")\n    fpea.ex:13: Fpea.sum/1\niex> Fpea.sum 'abc' # 'abc' === [97, 98, 99]: 'abc' karakterkódok listája\n294\n```",
+   "fingerprint": "483730ec822ce693",
+   "debug": null
+  },
+  {
+   "id": "s38",
+   "page": 103,
+   "pages": [
+    102,
+    103
+   ],
+   "label": "38",
+   "title": "Listakezelés – rövid példák 4",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "Műveletek listákon",
+    "FPE-2 – Kis példák listák használatára"
+   ],
+   "text": "`fpea.ex` – Két lista összefűzése @spec append(xs::[any], ys::[any]) :: rs::[any]\n\n```\n# rs az xs lista ys elé fűzésével kapott lista\ndef append([], ys), do: ys\ndef append(xs, ys), do: [(hd xs) | (append (tl xs), ys)]\n@spec revapp(xs::[any], ys::[any]) :: rs::[any]\n# rs a megfordított xs lista ys elé fűzésével kapott lista\ndef revapp([], ys), do: ys\ndef revapp(xs, ys), do: revapp (tl xs), [(hd xs) | ys]\n\niex(22)> c \"fpea.ex\"\n[Fpea]\niex(23)> xs\n[10, 20.5, 30.5]\niex(24)> Fpea.append(xs, [:a,:b,:c,:d])\n[10, 20.5, 30.5, :a, :b, :c, :d]\niex(25)> Fpea.revapp xs, [:a,:b,:c,:d]\n[30.5, 20.5, 10, :a, :b, :c, :d]\n```",
+   "fingerprint": "d8bd8e5fe23c355b",
+   "debug": null
+  },
+  {
+   "id": "s39",
+   "page": 104,
+   "pages": [
+    104,
+    104
+   ],
+   "label": "39",
+   "title": "III. rész",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Műveletek sztringeken\n\n1 Típusok, termek, azonosítók, változók\n\n2 Műveletek listákon\n\n3 Műveletek sztringeken\n\n4 Problémamegoldási technikák",
+   "fingerprint": "ab257123bc8ca5dd",
+   "debug": null
+  },
+  {
+   "id": "s40",
+   "page": 105,
+   "pages": [
+    105,
+    105
+   ],
+   "label": "40",
+   "title": "Tartalom",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "Műveletek sztringeken",
+    "FPE-2 – Műveletek sztringeken"
+   ],
+   "text": "3 Műveletek sztringeken\n- FPE-2 – Műveletek sztringeken",
+   "fingerprint": "4cb5a38d8d83c8df",
+   "debug": null
+  },
+  {
+   "id": "s41",
+   "page": 108,
+   "pages": [
+    106,
+    108
+   ],
+   "label": "41",
+   "title": "Műveletek sztringeken 1",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "Műveletek sztringeken",
+    "FPE-2 – Műveletek sztringeken"
+   ],
+   "text": "A sztringek nem listák az Elixirben – mégcsak nem is kollekciók –, de mivel kényelmes listaszerűen kezelni őket, a `String` modulban vannak ezt lehetővé tevő függvények. Két fogalmat kell megkülönböztetnünk: a kódpontot (code point) és a grafémát (grapheme cluster, röviden grapheme).\n- A **kódpont** egyetlen Unicode karakter, egy vagy több bájt ábrázolja\n\n```\niex> {byte_size(\"á\"), String.length(\"á\")}\n{2, 1}\n```\n\n- A **graféma** egy vagy több kódpont, ami egyetlen karakternek látszik\n\n```\niex> str = \"\\u0065\\u0302\"; {byte_size(str), String.length(str)}\n{3, 1}\niex> \"u\\u0302\"# U+0302 Combining Circumflex Accent\n\"ˆu\"\niex> String.codepoints(str)\n[\"e\", \"^\"] # Két egykarakteres sztring van a listában.\niex> String.graphemes(str)\n```\n\n`[\"`ˆ`e\"]` # Egyetlen egykarakteres sztring van a listában.",
+   "fingerprint": "e60d2cfb5a58961c",
+   "debug": null
+  },
+  {
+   "id": "s42",
+   "page": 110,
+   "pages": [
+    109,
+    110
+   ],
+   "label": "42",
+   "title": "Műveletek sztringeken 2",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "Műveletek sztringeken",
+    "FPE-2 – Műveletek sztringeken"
+   ],
+   "text": "- `<>` a konkatenálás jele: `\"ál\"<>\"om\"`\n- `string` első / utolsó grafémája, grafémáinak száma:\n\n```\nfirst(string), last(string), length(string)\n```\n\n- Graféma `string pos` pozíciójában: `at(string, pos)`\n- Tartalmazza-e `string patts` legalább egy elemét:\n\n```\ncontains?(string, patts)\n```\n\n- `string` elejéről / végéről / mindkettőről levágja a szóköz-jellegű (whitespace) UTF-8 karaktereket: `trim_leading(string)`,\n\n```\ntrim_trailing(string), trim(string)\n```\n\n- Példák\n\n```\niex> str = \" \"<>\" \"<>\"kutyafüle\"<>\" \"; String.at(str, 8)\n\"ü\"\niex> String.contains?(str, \"ü\")\ntrue\niex> String.contains?(str, [\"ü\",\"ty\",\"n\"])\ntrue\niex> String.contains?(str, [\"n\"])\nfalse\niex> {String.trim_leading(str), String.trim(str)}\n{\"kutyafüle \", \"kutyafüle\"}\n```",
+   "fingerprint": "db2a4f302c80ff63",
+   "debug": null
+  },
+  {
+   "id": "s43",
+   "page": 112,
+   "pages": [
+    111,
+    112
+   ],
+   "label": "43",
+   "title": "Műveletek sztringeken 3",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "Műveletek sztringeken",
+    "FPE-2 – Műveletek sztringeken"
+   ],
+   "text": "- Mint a listánál, csak graféma-elemekkel: `slice(string, range)`,\n\n```\nslice(string, start, n), duplicate(string, n), reverse(string),\nstarts_with?(string, prefix)\n```\n\n- Sztring két darabra vágva adott pozícióban: `split_at(string, pos)`; több darabra szabdalva UTF-8 whitespace-ek mentén: `split(string)`\n  - A vezető és záró UTF-8 whitespace-eket ignorálja\n- Példák\n\n```\niex> str = \"indulakutyasatyukaludni\"; String.reverse(str)\n\"indulakuytasaytukaludni\"\niex> String.starts_with?(str, \"indula\")\ntrue\niex> {String.slice(str, 6..10), String.slice(str, -10..-7)}\n{\"kutya\", \"tyuk\"}\niex> String.duplicate(\"indul \", 3)\n\"indul indul indul \"\niex> String.split_at(\" \"<>\" \"<>\"kutya füle macska farka\"<>\" \", 12)\n{\"  kutya füle\", \" macska farka \"} # párt ad eredményül\niex> String.split(\" \"<>\" \"<>\"kutya füle macska farka\"<>\" \")\n[\"kutya\", \"füle\", \"macska\", \"farka\"] # listát ad eredményül\n```",
+   "fingerprint": "a85d5fefbe1e314d",
+   "debug": null
+  },
+  {
+   "id": "s44",
+   "page": 113,
+   "pages": [
+    113,
+    113
+   ],
+   "label": "44",
+   "title": "IV. rész",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Problémamegoldási technikák\n\n1 Típusok, termek, azonosítók, változók\n\n2 Műveletek listákon\n\n3 Műveletek sztringeken\n\n4 Problémamegoldási technikák",
+   "fingerprint": "6613252e964581a7",
+   "debug": null
+  },
+  {
+   "id": "s45",
+   "page": 114,
+   "pages": [
+    114,
+    114
+   ],
+   "label": "45",
+   "title": "Tartalom",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [
+    "Problémamegoldási technikák",
+    "FPE-2 – Fibonacci-számok rekurzióval és dinamikus programozással"
+   ],
+   "text": "4 Problémamegoldási technikák\n- FPE-2 – Fibonacci-számok rekurzióval és dinamikus programozással",
+   "fingerprint": "23012fbe86ee30b6",
+   "debug": null
+  },
+  {
+   "id": "s46",
+   "page": 115,
+   "pages": [
+    115,
+    115
+   ],
+   "label": "46",
+   "title": "",
+   "flags": [
+    "graphic",
+    "image",
+    "no-text"
+   ],
+   "view": "pages/p115.png",
+   "figures": [
+    {
+     "file": "figures/p115-f1.png",
+     "bbox": [
+      0.009,
+      0.042,
+      0.944,
+      0.948
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [
+    "Problémamegoldási technikák",
+    "FPE-2 – Fibonacci-számok rekurzióval és dinamikus programozással"
+   ],
+   "text": "",
+   "fingerprint": "40744ef1733e0b0a",
+   "debug": null
+  },
+  {
+   "id": "s47",
+   "page": 116,
+   "pages": [
+    116,
+    116
+   ],
+   "label": "47",
+   "title": "Dinamikus programozás: Fibonacci. Benchmarking és debugging",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [
+    "https://dp.iit.bme.hu/dp26a/ea/dp26a-fp2ea-fibonacci.livemd"
+   ],
+   "annots": [],
+   "header": [
+    "Problémamegoldási technikák",
+    "FPE-2 – Fibonacci-számok rekurzióval és dinamikus programozással"
+   ],
+   "text": "A Fibonacci-számok kiszámítására hatféle algoritmust mutat be a második előadás segédanyaga:\n- Elágazó rekurzióval\n- Memoizálással (dinamikus programozás felülről lefelé haladva), Elixir Map-pel\n- Táblázattal (dinamikus programozás alulról felfelé haladva), Elixir Map-pel\n- Táblázattal (dinamikus programozás alulról felfelé haladva), Erlang :array-jel\n- Táblázattal (dinamikus programozás alulról felfelé haladva), Elixir List-tel\n- Az (n-2)-edik (prev) és az (n-1)-edik (curr) Fibonacci-szám nyilvántartásával\nA második előadás segédanyaga a honlapról letölthető:\n- <https://dp.iit.bme.hu/dp26a/ea/dp26a-fp2ea-fibonacci.livemd>\nA segédanyag a `Benchee` és a `KinoExplorer` modulok használatára is mutat példákat.",
+   "fingerprint": "10340a288430b0af",
+   "debug": null
+  },
+  {
+   "id": "s48",
+   "page": 117,
+   "pages": [
+    117,
+    117
+   ],
+   "label": "48",
+   "title": "Fibonacci elágazó rekurzióval",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p117.png",
+   "figures": [
+    {
+     "file": "figures/p117-f1.png",
+     "bbox": [
+      0.234,
+      0.402,
+      0.764,
+      0.978
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [
+    "Problémamegoldási technikák",
+    "FPE-2 – Fibonacci-számok rekurzióval és dinamikus programozással"
+   ],
+   "text": "# O(2^n) futási idő, O(2^n) tárhely @spec fib(i :: integer()) :: n :: integer()\n\n```\n# n az i-edik Fibonacci-szám\ndef fib(0), do: 0\ndef fib(1), do: 1\ndef fib(i), do: fib(i-1) + fib(i-2)\n```",
+   "fingerprint": "87f4f959a4a6af6d",
+   "debug": null
+  },
+  {
+   "id": "s49",
+   "page": 118,
+   "pages": [
+    118,
+    118
+   ],
+   "label": "49",
+   "title": "2. gyakorlat",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [
+    "https://dp.iit.bme.hu/dp26a/ea/dp26a-fp2ea-fibonacci.livemd",
+    "https://dp.iit.bme.hu/dp26a/gy/dp26a-fp2gy.livemd"
+   ],
+   "annots": [],
+   "header": [
+    "Problémamegoldási technikák",
+    "FPE-2 – Fibonacci-számok rekurzióval és dinamikus programozással"
+   ],
+   "text": "- Ezen a héten a dékáni szünet miatt nem találkozunk a gyakorlaton\n- **2026. szeptember 22.** 10:15 az IB027 és IE007 termekben\n- Alapvetően *otthoni munka*, a gyakorlaton megbeszéljük a feladatok megoldásait\n- Gyakorlat anyaga: <https://dp.iit.bme.hu/dp26a/gy/dp26a-fp2gy.livemd>\n- Felkészüléshez ajánlott: <https://dp.iit.bme.hu/dp26a/ea/dp26a-fp2ea-fibonacci.livemd>",
+   "fingerprint": "07aedd4a7b23f220",
+   "debug": null
+  }
+ ]
+}
