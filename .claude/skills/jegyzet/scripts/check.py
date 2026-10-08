@@ -8,7 +8,7 @@
   3 coverage     every unit points to a chapter or carries a reason for the cut
   4 book         SUMMARY and files agree; code blocks have a language and are
                  not empty; links and images resolve; chapters name their sources
-  5 content      (warnings) code lines of a unit that do not appear in its chapter
+  5 content      (warnings) code lines and formulas of a unit that do not appear in its chapter
   6 build        mdbook build; formula errors; languages without highlighting
 
 FAIL lines must be fixed. WARN lines must be read and either fixed or judged
@@ -121,6 +121,29 @@ def code_lines(lines: list[str]) -> list[str]:
     return out
 
 
+MATH = re.compile(r"\$\$(.+?)\$\$|(?<![\\$])\$(?!\s)([^$\n]+?)(?<![\s\\])\$", re.S)
+
+
+def formulas(lines: list[str]) -> list[str]:
+    """LaTeX formulas ($...$ and $$...$$) outside code fences and inline code."""
+    prose, inside = [], False
+    for line in lines:
+        if line.lstrip().startswith("```"):
+            inside = not inside
+            continue
+        if not inside and not line.startswith("<!--"):
+            prose.append(re.sub(r"`[^`]*`", "", line))
+    return [(a or b).strip() for a, b in MATH.findall("\n".join(prose)) if (a or b).strip()]
+
+
+def math_norm(f: str) -> str:
+    """Spacing, sizing and roman-font spellings do not change a formula."""
+    f = re.sub(r"\\(displaystyle|textstyle|left|right|big|Big|bigg|Bigg)(?![a-zA-Z])", "", f)
+    f = re.sub(r"\\(mathrm|operatorname|textrm)\{([^{}]*)\}", r"\2", f)
+    f = re.sub(r"\\[,;:! ]|\\quad|\\qquad|~", "", f)
+    return re.sub(r"\s+", "", f).rstrip(".,;")
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("class_dir")
@@ -208,8 +231,12 @@ def main():
             continue
         rs = by_source.get(e["slug"], [])
         ids = [r["unit"] for r in rs]
+        want = None
         if e["slug"] in transcripts:
             want = [u["id"] for u in transcripts[e["slug"]]]
+        elif e["kind"] == "text" and rel in current:
+            want = [u["id"] for u in C.text_units(current[rel], e)]
+        if want is not None:
             lost = [u for u in want if u not in ids]
             if lost:
                 R.fail(f"{e['slug']}: units without a coverage row: {compress(lost, want)}; run prepare.py")
@@ -226,6 +253,9 @@ def main():
             if d.lower().startswith("cut") and not d.partition(":")[2].strip():
                 R.fail(f"{e['slug']} {r['unit']}: cut without a reason")
                 bad = True
+            if C.partial_cut(d) == "":
+                R.fail(f"{e['slug']} {r['unit']}: after ';' only `cut: <what was left out>` may follow")
+                bad = True
             for c in C.chapters_of(d):
                 chapter_units.setdefault(c, []).append((e["slug"], r["unit"]))
                 if c not in chapters:
@@ -233,7 +263,8 @@ def main():
                     bad = True
     if not bad:
         cut = sum(1 for r in rows if r["disposition"].lower().startswith("cut"))
-        R.ok(f"{len(rows)} units: {len(rows) - cut} in chapters, {cut} cut with a reason")
+        part = sum(1 for r in rows if C.partial_cut(r["disposition"]))
+        R.ok(f"{len(rows)} units: {len(rows) - cut} in chapters ({part} of them partly cut), {cut} cut with a reason")
 
     # ------------------------------------------------------------------- 4 book
     R.section("4 book")
@@ -309,15 +340,19 @@ def main():
     units_of = dict(transcripts)
     for rel, e in sources.items():
         if e["kind"] == "text" and rel in current:
-            text = current[rel].read_text(errors="replace")
-            if any(l.lstrip().startswith("```") for l in text.splitlines()):
-                # untagged fences hold outputs and prose (Livebook); only tagged ones are code
-                _, blocks, _ = split_code(text)
-                text = [l for b in blocks if b["lang"] and b["lang"] not in ("text", "output")
-                        for l in ["```"] + b["body"] + ["```"]]
-            else:
-                text = ["```"] + text.splitlines() + ["```"]
-            units_of[e["slug"]] = [{"id": "all", "lines": [""] + text}]
+            units_of[e["slug"]] = []
+            for tu in C.text_units(current[rel], e):
+                text = "\n".join(tu["lines"])
+                if any(l.lstrip().startswith("```") for l in tu["lines"]):
+                    # untagged fences hold outputs and prose (Livebook); only tagged ones are code
+                    _, blocks, _ = split_code(text)
+                    code = [l for b in blocks if b["lang"] and b["lang"] not in ("text", "output")
+                            for l in ["```"] + b["body"] + ["```"]]
+                elif current[rel].suffix.lower() in C.MARKDOWN_EXT:
+                    code = []
+                else:
+                    code = ["```"] + tu["lines"] + ["```"]
+                units_of[e["slug"]].append({"id": tu["id"], "lines": [""] + code})
     reviewed = set(state.get("reviewed_lines", []))
     notes, lost_keys, hidden = [], [], 0
     for slug, units in units_of.items():
@@ -339,16 +374,32 @@ def main():
                 else:
                     lost.append(l)
             if lost:
-                notes.append(f"{slug} {u['id']} -> {', '.join(targets)}: {len(lost)} of {len(lines)} code lines not found")
+                pc = C.partial_cut(disp.get(u["id"], ""))
+                notes.append(f"{slug} {u['id']} -> {', '.join(targets)}: {len(lost)} of {len(lines)} code lines not found"
+                             + (f" (partly cut: {pc})" if pc else ""))
                 notes += [f"    {l[:110]}" for l in lost[:4]]
-            src_math = sum(1 for l in u["lines"] if "$$" in l)
-            if src_math and not any("$" in chapter_text[c] for c in targets):
-                notes.append(f"{slug} {u['id']} -> {', '.join(targets)}: the unit has formulas, the chapter has none")
+            src_f = [f for f in formulas(u["lines"]) if len(math_norm(f)) >= 3]
+            if src_f:
+                book_math = "\n".join(math_norm(f) for c in targets for f in formulas(chapter_text[c].splitlines()))
+                missing_f = []
+                for f in src_f:
+                    if math_norm(f) in book_math:
+                        continue
+                    key = hashlib.sha1(f"{slug}\t{u['id']}\tf:{math_norm(f)}".encode()).hexdigest()[:12]
+                    lost_keys.append(key)
+                    if key in reviewed:
+                        hidden += 1
+                    else:
+                        missing_f.append(f)
+                if missing_f:
+                    notes.append(f"{slug} {u['id']} -> {', '.join(targets)}: {len(missing_f)} of {len(src_f)} "
+                                 f"formulas not found (compare them symbol by symbol)")
+                    notes += [f"    ${f[:110]}$" for f in missing_f[:4]]
     if notes:
         R.warn("content of a unit that was not found in its chapter. Corrected or rewritten code is fine; "
                "a dropped example is not", notes)
     else:
-        R.ok("all code lines of the sources appear in their chapters")
+        R.ok("all code lines and formulas of the sources appear in their chapters")
     if hidden:
         print(f"          ({hidden} line(s) reviewed in an earlier run are not shown)")
 

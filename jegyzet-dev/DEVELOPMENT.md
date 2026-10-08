@@ -21,6 +21,8 @@ The user is a BME student. His university folder is a git repository with one fo
 - **Refer to code by content, never by position** ("the fourth line" broke once when line numbers were added).
 - **Homework is learning material.** An earlier version forbade solving or including graded work; the user dropped that rule ("this is learning material"). Homework files are treated like practice exercises: task text and any solution in the resources (his own solved homework included) go into the book; Claude still does not write solutions of its own.
 - **UI**: line numbers in code blocks, a thin whole-book reading-progress bar (fattens on hover and shows the percentage; he has ADHD and the scrollbar does not show where he is in the book), no programming ligatures (`|>` and `->` must stay two characters), whole-book search. He asked for official/standard mechanisms over home-grown hacks: mdBook's `additional-css`/`additional-js`, built-in search, built-in print page; third-party mdBook preprocessors (KaTeX, Mermaid) were explicitly OK.
+- **One entry point for all books**: a hub mdBook that lists the class books, served with all of them by one always-on systemd user service (standard setup, no per-class `mdbook serve`).
+- **Repository**: `~/bme/jegyzet` is the root and a git repo; class folders live directly in it. Everything else in `~/bme` is the user's and is never touched.
 - Book language: the sources' language (Hungarian for his classes). The skill's own instructions are in English.
 
 Things he said he will refine later, once he uses it locally: naming, details of the workflow.
@@ -39,6 +41,7 @@ Things he said he will refine later, once he uses it locally: naming, details of
   scripts/cover.py            records unit -> chapter / cut reason in coverage.tsv
   scripts/check.py            all completeness and build checks; --finalize marks sources done
   scripts/new_book.py         creates book/ (book.toml, SUMMARY, theme); --refresh updates the theme
+  scripts/hub.py              the hub: lists all books, serves / and /<class>/, rebuilds on change, installs the systemd unit
   scripts/common.py           layout constants, state and coverage I/O, transcript parsing
   assets/theme/               highlight.js bundle, jegyzet.css, jegyzet.js, head.hbs, highlight-languages.json
   assets/katex/               KaTeX 0.16.4 stylesheet and woff2 fonts (math works offline)
@@ -53,7 +56,8 @@ Why a transcript stage between PDF and book: it makes "nothing lost" checkable. 
 ### File formats
 
 - `state.json`: `sources[relpath] = {slug, sha256, kind (pdf|office|notebook|image|text|unsupported), status (pending|done|failed|skipped), units}`. Renames are detected by hash. `reviewed_lines`: hashes of the check.py section 5 lines that were missing at the last `--finalize` (judged deliberate then, hidden afterwards).
-- `coverage.tsv`: `source  unit  title  disposition`; disposition = chapter path(s) relative to `book/src`, comma separated, or `cut: <reason>`.
+- `coverage.tsv`: `source  unit  title  disposition`; disposition = chapter path(s) relative to `book/src`, comma separated, or `cut: <reason>`, or `a.md,b.md; cut: <what>` for a unit that is used with a part left out (`common.chapters_of`, `common.partial_cut`).
+- Text sources: Markdown-like files (`common.MARKDOWN_EXT`: .md, .livemd, .qmd, ...) are split at `#`/`##` headings outside fences into units `s1..sN` (text before the first heading joins s1); fewer than two headings, or a code file, is one unit `all`. `state.json` keeps `sections` (id, title, fingerprint) per text source; a changed file is matched by fingerprint, then by title. An entry without `sections` (prepared before this existed) stays one `all` unit. `.ipynb` notebooks are flattened and split the same way.
 - Transcript/draft unit header: `## s12 · p31-33 · Title` (regex in `common.UNIT_HEADER`), then `<!-- status: auto | TODO view pages/p033.png | viewed pages/p033.png | duplicate of <file> <unit> -->` (scripts only test for the `TODO` prefix), `<!-- flags: ... -->`, `<!-- figure: figures/... -->`.
 - Unit ids: `sN` = N-th logical slide (matches the printed slide number for Beamer), `sN.k` = variants (animation steps that replaced content), `all` = whole text file.
 - `extract.json` meta has `page_hashes` (page text + thumbnail); `prepare.py` marks units whose pages all occur in another source as duplicates (original = done source, else label-grouped, else first by name) and pre-fills `cut: duplicate of …`.
@@ -93,35 +97,28 @@ Install on Fedora: `sudo dnf install cargo git`, `cargo install mdbook mdbook-ka
 
 ## Status
 
-Tested, script by script: `pdf_triage.py` on the three dekla PDFs and the synthetic deck; `prepare.py`, `cover.py`, `check.py`, `new_book.py`, `doctor.py` on a dekla class folder; a demo book with KaTeX (inline, display, `\tag`, matrices, formula in a table), Mermaid, callouts, `<details>`, images, footnotes, line numbers and the progress bar, rendered in Chromium in light and navy themes and at phone width.
+**Ready to use.** `~/bme/jegyzet` is the git repository and root: the skill in `.claude/skills/jegyzet/`, this folder, and one folder per class created by the user (`<class>/resources/`). The hub runs as the systemd user service `jegyzet` on http://127.0.0.1:3000/.
 
-**End-to-end runs by a fresh Claude (2026-10-08).** Three runs, each a general-purpose subagent following SKILL.md in a scratch git repo, with the developing session answering the outline as the user:
+How it was tested:
 
-1. `kvantum` (synthetic deck + label-less export): book with 2 chapters, 0 FAIL. Caught the deliberately wrong circuit as a finding; the pasted formula image became LaTeX.
-2. `dekla` first run (fp1ea, fp1gy, fp1gyfel, fp1gy-megoldasok, khf1.exs): 13 pages, 0 FAIL. Running the Elixir examples surfaced 5 real errors in the course material (all confirmed); the paradigm tree was redrawn in Mermaid and compared by screenshot.
-3. `dekla` update (fp2ea, fp2gy, fp2gy-megoldasok): 6 new pages, 8 chapters extended, file names kept, no seams; a week-2 lecture contradicting the week-1 text became a finding and the old rule was rewritten in place after confirmation.
+- **Regression suite** `jegyzet-dev/test/test_scripts.py` (9 tests, ~10 s, no Claude, no LaTeX): PDF new → changed (only changed units are new work, transcripts and coverage carry over) → renamed → removed; duplicate sources and `--force --view-all --only`; unsupported and image sources; `.pptx` through a stand-in `soffice` and the failure without one; text sources split into sections, partial cuts, `set-many`, missing code reported per section, reviewed lines hidden after `--finalize`, changed and removed sections reported with their chapters; `.ipynb` sections with image outputs; formulas missing from a chapter; `cover.py changed`; the hub (list, routing, redirect, rebuild on change). Run it after every change to the scripts.
+- **End-to-end runs by a fresh Claude** (2026-10-08), each a general-purpose subagent following SKILL.md in a scratch repo, the developing session answering as the user: `kvantum` (synthetic deck + export), `dekla` week 1 (fp1ea, three fp1 notebooks, khf1.exs), `dekla` week 2 as an update (fp2ea, fp2gy, fp2gy-megoldasok). All ended with 0 FAIL and good books; the merge put new material into the existing chapters without seams, and contradictions between weeks became findings. Every SKILL FEEDBACK item from those runs is fixed (see git history of this file for the list).
+- **Real decks**: `pdf_triage.py` flags on dp26a-fp1ea/fp2ea/fp3ea and the synthetic deck (table above) were rechecked after each heuristic change.
 
-Every run ended with a SKILL FEEDBACK list; what came out of them is fixed: the duplicate-source detection, the `--force`-on-pending bug, `--only`, the math-flag and URL false alarms, side-by-side REPL detection, `check.py` covering text sources and remembering reviewed lines, `cover.py set-many`, the screenshot recipe, and about twenty instruction clarifications in SKILL.md and the references.
+Not covered by a real file: a real `.pptx`/`.docx` (LibreOffice is not installed here; the conversion path is tested with a stand-in), scanned PDFs, PowerPoint-exported decks.
 
-Also untested: `office` sources (pptx/docx via LibreOffice), `.ipynb` flattening, image sources, the CHANGED-source carry-over path on real data, rename detection, scanned PDFs, PowerPoint-exported decks, a run in the main session (all three ran as subagents; a subagent may not Write report-like `.md` files, the dekla agent used a heredoc for `findings.md`).
+### Limitations by design
 
-### Known issues and ideas
-
-- **Partial cuts are not tracked.** A unit (slide or whole text file) is either used or cut. A used slide with one cut sentence, or a notebook with cut cells (Benchee dumps, setup cells), records the partial cut only in the outline. A finer coverage model (sections of text sources, `used + cut:` on one unit) would close this.
-- **No formula comparison helper.** Step 5 asks to compare chapter formulas with the transcript; the agents grepped LaTeX strings by hand. A script listing each `math` unit's formulas next to the chapter's would make it reliable.
-- **Running examples is laborious** when the lecture's own module file is not in resources (examples retyped from slides) and when IEx output must be captured (`printf … | iex`).
-- Automatic figure crops are deliberately tight; transcribe.md asks to check only crops that will be used as images.
-- Variants also appear when a later step merely replaces a placeholder (`...` → real code). That costs a view, loses nothing.
-- Slides deliberately showing decomposed Unicode (fp2ea s41) extract with spacing accents; the spot check catches it, which is its job.
-- The progress-bar label sits over the print icon while shown (only on hover near the top).
-- `check.py` section 5 is a substring heuristic: an appended comment still matches, a changed line is reported. Lines judged at `--finalize` are hidden afterwards (`reviewed_lines`).
-- Code with `...` placeholders breaks highlighting for the rest of the block; harmless.
-- Possible improvements: a `check.py` option to list chapters touched since the last commit for the final report; a contact-sheet helper for the spot checks.
+- Automatic figure crops are deliberately tight; transcribe.md has the transcriber check every crop that will be used as an image and re-crop with `pdf_triage.py crop`.
+- A variant also appears when a later animation step merely replaces a placeholder (`...` → code): one extra view, nothing lost.
+- Slides that show decomposed Unicode on purpose (fp2ea s41) extract with spacing accents; the spot check catches it.
+- `check.py` section 5 is a substring check: a changed line is reported, an appended comment is not. Charlist spelling (`'a'`/`~c"a"`) and `#Function<…>` numbers are normalised, formula spacing and `\mathrm`/`\operatorname` too.
+- Code with `...` placeholders confuses the highlighter for the rest of the block; harmless.
+- Running examples costs effort when the lecture's own module is not in resources (examples are retyped from slides); IEx output is captured with `printf … | iex`.
+- The hub has no live reload in the browser; a reload shows the rebuilt book (pages are sent with `Cache-Control: no-cache`).
 
 ## Testing the skill again
 
-`jegyzet-dev/test/make_test_class.sh <folder>` builds the synthetic `kvantum` class (needs pdflatex with beamer; no `standalone` class needed any more). For a real class, copy a few of the user's dekla files into `<folder>/dekla/resources/`, with `.claude/skills/jegyzet` copied next to them and the folder made a git repo.
+After a change to a script: `python3 jegyzet-dev/test/test_scripts.py`. After a change to SKILL.md or a reference: an end-to-end run.
 
-Prompt for the fresh agent: "You stand in for Claude Code in a test of a skill. The user typed `/jegyzet <class>`. Setup: the university folder is …; the skill is at … (the value of `${CLAUDE_SKILL_DIR}`), `$ARGUMENTS` is `<class>`. Read `.claude/skills/jegyzet/SKILL.md` and follow it exactly. When it says to wait for the user, end your turn with the message you would show. Every time you end a turn, append a SKILL FEEDBACK section: every unclear instruction, script error, false alarm, wrong flag, guess, and disproportionate effort." Answer the outline via SendMessage, then read the book and the feedback. If two runs share a repo, tell each to commit only its class folder.
-
-Useful next runs: a CHANGED source (edit a lecture PDF that is already done), a removed source, a pptx (needs LibreOffice), an `.ipynb`, and a third dekla week to see how the book holds up as it grows.
+End-to-end: make a scratch git repo with `.claude/skills/jegyzet` copied in and one class folder. For a synthetic class run `jegyzet-dev/test/make_test_class.sh <folder>` (pdflatex with beamer); for a real one put copies of course files into `<folder>/<class>/resources/` (copies only: the user's folders outside `~/bme/jegyzet` are never touched). Prompt for the fresh agent: "You stand in for Claude Code in a test of a skill. The user typed `/jegyzet <class>`. Setup: the university folder is …; the skill is at … (the value of `${CLAUDE_SKILL_DIR}`), `$ARGUMENTS` is `<class>`. Read `.claude/skills/jegyzet/SKILL.md` and follow it exactly. When it says to wait for the user, end your turn with the message you would show. Every time you end a turn, append a SKILL FEEDBACK section: every unclear instruction, script error, false alarm, wrong flag, guess, and disproportionate effort." Answer the outline with SendMessage, then read the book and the feedback. If two runs share a repo, tell each to commit only its class folder.

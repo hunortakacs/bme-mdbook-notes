@@ -59,7 +59,7 @@ pre.has-ln > .ln-gutter {
 }
 #jz-progress > .jz-label {
     position: absolute;
-    top: 11px;
+    top: calc(var(--menu-bar-height, 50px) + 6px);   /* below the menu bar, clear of its buttons */
     right: 12px;
     padding: 3px 9px;
     border-radius: 4px;

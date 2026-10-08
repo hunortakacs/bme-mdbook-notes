@@ -40,6 +40,7 @@ no-css = true            # the stylesheet and fonts are served from src/_katex (
 throw-on-error = false   # a bad formula is shown in red and reported by check.py
 {mermaid_pre}
 [output.html]
+site-url = "/{name}/"     # the hub (hub.py) serves this book under /{name}/
 default-theme = "light"
 preferred-dark-theme = "navy"
 additional-css = ["theme/jegyzet.css"]
@@ -117,7 +118,7 @@ def main():
         js += ['"mermaid.min.js"', '"mermaid-init.js"']
         mermaid_pre = '\n# Diagrams: ```mermaid code blocks.\n[preprocessor.mermaid]\ncommand = "mdbook-mermaid"\n'
     # mdbook-mermaid install may have written its own book.toml entries; ours replaces them
-    toml.write_text(BOOK_TOML.format(title=args.title.replace('"', '\\"'), lang=args.lang,
+    toml.write_text(BOOK_TOML.format(title=args.title.replace('"', '\\"'), lang=args.lang, name=cdir.name,
                                      mermaid_pre=mermaid_pre, js=", ".join(js)))
     intro = args.intro_title or INTRO.get(args.lang, "Introduction")
     (bdir / "src" / "SUMMARY.md").write_text(f"# Summary\n\n[{intro}](intro.md)\n")

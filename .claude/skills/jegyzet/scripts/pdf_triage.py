@@ -965,6 +965,27 @@ def draft_markdown(meta, units):
     return "\n".join(head) + "\n" + "\n".join(unit_block(u) for u in units)
 
 
+def contact_sheet(doc, pages: list[int], out: Path, cols: int, width: int):
+    """Several pages side by side in one PNG, each labelled with its page number."""
+    bad = [p for p in pages if not 1 <= p <= len(doc)]
+    if bad:
+        sys.exit(f"pages out of range (1-{len(doc)}): {bad}")
+    w, h = doc[pages[0] - 1].rect.width, doc[pages[0] - 1].rect.height
+    gap, label = 12, 18
+    cols = max(1, min(cols, len(pages)))
+    rows = -(-len(pages) // cols)
+    sheet = fitz.open()
+    pg = sheet.new_page(width=cols * (w + gap) + gap, height=rows * (h + gap + label) + gap)
+    for k, p in enumerate(pages):
+        x = gap + (k % cols) * (w + gap)
+        y = gap + (k // cols) * (h + gap + label)
+        pg.insert_text((x, y + 12), f"p{p}", fontsize=12)
+        cell = fitz.Rect(x, y + label, x + w, y + label + h)
+        pg.draw_rect(cell, color=(0.6, 0.6, 0.6), width=0.5)
+        pg.show_pdf_page(cell, doc, p - 1)
+    save_png(pg, out, width)
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -984,6 +1005,12 @@ def main():
     c.add_argument("box", type=float, nargs=4, metavar=("X0", "Y0", "X1", "Y1"))
     c.add_argument("-o", "--output", required=True)
     c.add_argument("--width", type=int, default=FIGURE_WIDTH)
+    sh = sub.add_parser("sheet")
+    sh.add_argument("pdf")
+    sh.add_argument("pages", type=int, nargs="+")
+    sh.add_argument("-o", "--output", required=True)
+    sh.add_argument("--cols", type=int, default=3)
+    sh.add_argument("--width", type=int, default=2400)
     args = ap.parse_args()
 
     if args.cmd == "triage":
@@ -991,6 +1018,10 @@ def main():
         print(json.dumps(meta, ensure_ascii=False))
         return
     doc = fitz.open(args.pdf)
+    if args.cmd == "sheet":
+        contact_sheet(doc, args.pages, Path(args.output), args.cols, args.width)
+        print(args.output)
+        return
     if not 1 <= args.page <= len(doc):
         sys.exit(f"page {args.page} out of range (1-{len(doc)})")
     page = doc[args.page - 1]

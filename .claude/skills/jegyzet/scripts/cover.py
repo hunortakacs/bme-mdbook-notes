@@ -5,11 +5,14 @@
   cover.py CLASS_DIR set SLUG UNITS DISPOSITION
   cover.py CLASS_DIR set-many FILE         # one "SLUG<TAB>UNITS<TAB>DISPOSITION" per line; - reads stdin
   cover.py CLASS_DIR chapter FILE          # which units feed this chapter
+  cover.py CLASS_DIR changed               # chapters added or changed since the last commit
 
 UNITS        all | s3 | s3-s9 | s1,s4-s6,s12   (s4 and ranges also cover variants such as s4.1, s4.2)
 DISPOSITION  one or more chapter files relative to book/src, comma separated
              (types/lists.md  or  intro.md,types/atoms.md), or
-             "cut: <reason>" for content that is deliberately left out.
+             "cut: <reason>" for content that is deliberately left out, or
+             "types/lists.md; cut: <what>" when the unit is used but part of it is left out
+             (a setup cell, raw tool output, an aside).
 
 Every unit needs a disposition before check.py passes. "cut" needs a reason:
 admin, duplicate of <unit>, table of contents, installation, link list, ...
@@ -17,6 +20,7 @@ admin, duplicate of <unit>, table of contents, installation, link list, ...
 from __future__ import annotations
 
 import argparse
+import subprocess
 import sys
 from pathlib import Path
 
@@ -81,6 +85,11 @@ def assign(cdir, by_source, slug, units, disposition) -> str:
             C.die('a cut needs a reason: "cut: admin"')
         disp = f"cut: {reason}"
     else:
+        if ";" in disp:
+            reason = C.partial_cut(disp)
+            if not reason:
+                C.die('after ";" write "cut: <what was left out>": "lists.md; cut: setup cell"')
+            disp = f"{','.join(C.chapters_of(disp))}; cut: {reason}"
         src = C.book_dir(cdir) / "src"
         for c in C.chapters_of(disp):
             if not c.endswith(".md"):
@@ -110,6 +119,7 @@ def main():
     sm.add_argument("file")
     ch = sub.add_parser("chapter")
     ch.add_argument("file")
+    sub.add_parser("changed")
     args = ap.parse_args()
 
     cdir = C.class_dir(args.class_dir)
@@ -136,6 +146,34 @@ def main():
             msgs.append(assign(cdir, by_source, *(p.strip() for p in parts)))
         C.save_coverage(cdir, rows)                    # only after every line was valid
         print("\n".join(msgs))
+        return
+
+    if args.cmd == "changed":
+        src = C.book_dir(cdir) / "src"
+        try:
+            out = subprocess.run(["git", "status", "--porcelain", "--untracked-files=all", "--", "."],
+                                 cwd=src, capture_output=True, text=True, check=True).stdout
+        except (OSError, subprocess.CalledProcessError):
+            C.die("not a git repository (or git is missing): cannot tell what changed")
+        top = subprocess.run(["git", "rev-parse", "--show-toplevel"], cwd=src,
+                             capture_output=True, text=True).stdout.strip()
+        found = False
+        for line in out.splitlines():
+            code, path = line[:2], line[3:].split(" -> ")[-1]
+            f = (Path(top) / path).resolve()
+            if f.suffix != ".md" or f.name == "SUMMARY.md":
+                continue
+            rel = f.relative_to(src.resolve()).as_posix()
+            what = "NEW" if "?" in code or "A" in code else ("REMOVED" if "D" in code else "CHANGED")
+            title = ""
+            if f.exists():
+                title = next((l[2:].strip() for l in f.read_text().splitlines() if l.startswith("# ")), "")
+            feeds = [f"{slug} {compress([r['unit'] for r in rs if rel in C.chapters_of(r['disposition'])], [r['unit'] for r in rs])}"
+                     for slug, rs in by_source.items() if any(rel in C.chapters_of(r["disposition"]) for r in rs)]
+            print(f"{what:<8} {rel:<36} {title}" + (f"   <- {'; '.join(feeds)}" if feeds else ""))
+            found = True
+        if not found:
+            print("no chapter changed since the last commit")
         return
 
     if args.cmd == "chapter":

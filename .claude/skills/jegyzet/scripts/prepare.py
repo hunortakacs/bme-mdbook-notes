@@ -10,7 +10,8 @@ New and changed sources are prepared in _work/sources/<slug>/:
   pdf, office   draft.md + extract.json + pages/*.png + figures/*.png (pdf_triage.py)
   notebook      draft.md with the cells flattened, image outputs in figures/
   image         one unit that has to be looked at
-  text          nothing: the file is read as it is
+  text          nothing: the file is read as it is; Markdown-like files (.md, .livemd, ...)
+                are split into units at their # and ## headings, other files are one unit
 
 transcript.md is created from draft.md. When a source changed, sections of the
 old transcript are carried over for every unit whose content is unchanged, so
@@ -22,6 +23,8 @@ from __future__ import annotations
 
 import argparse
 import base64
+import hashlib
+import re
 import json
 import shutil
 import subprocess
@@ -74,14 +77,22 @@ def flatten_notebook(src: Path, out: Path) -> dict:
                 if len(lines) > 40:
                     lines = lines[:40] + [f"... ({len(lines) - 40} more lines)"]
                 body += ["Output:", "```text", *lines, "```", ""]
-    text = "\n".join(body).strip()
-    unit = {"id": "all", "page": 1, "pages": [1, 1], "label": "", "title": src.name,
-            "flags": ["image"] if figures else [], "view": "figures/" if figures else None,
-            "figures": figures, "links": [], "annots": [], "header": [], "text": text,
-            "fingerprint": C.sha256(src)[:16]}
-    return {"meta": {"source": src.name, "kind": "notebook", "units": 1,
-                     "needs_view": 1 if figures else 0, "flags": {"image": 1} if figures else {}},
-            "units": [unit]}
+    # one unit per # / ## section of the markdown cells, like a Markdown text source
+    body = "\n".join(body).splitlines()
+    parts = C.sections(body) or [(src.name, 0, len(body))]
+    ids = [f"s{k}" for k in range(1, len(parts) + 1)] if len(parts) > 1 else ["all"]
+    units = []
+    for uid, (title, a, b) in zip(ids, parts):
+        text = "\n".join(body[a:b]).strip()
+        figs = re.findall(r"<!-- figure: (\S+)", text)
+        units.append({"id": uid, "page": 1, "pages": [1, 1], "label": "", "title": title,
+                      "flags": ["image"] if figs else [], "view": figs[0] if figs else None,
+                      "figures": [], "links": [], "annots": [], "header": [], "text": text,
+                      "fingerprint": hashlib.sha1((title + "\n" + text).encode()).hexdigest()[:16]})
+    n_view = sum(1 for u in units if u["view"])
+    return {"meta": {"source": src.name, "kind": "notebook", "units": len(units),
+                     "needs_view": n_view, "flags": {"image": n_view} if n_view else {}},
+            "units": units}
 
 
 def image_source(src: Path, out: Path) -> dict:
@@ -187,7 +198,8 @@ def mark_duplicates(wdir: Path, sources: dict, fresh_slugs: set[str], coverage: 
 
     Such units get the status `duplicate of <file> <unit>` (nothing to view) and the
     coverage disposition `cut: duplicate of <file> <unit>`. The original is the source
-    that is already done, else the one grouped by page labels, else the first by name."""
+    that is already done, else the one grouped by page labels, else the one with the shorter
+    file name (copies and exports get suffixes), else the first by name."""
     extracts = {}
     for rel, e in sources.items():
         f = wdir / "sources" / e["slug"] / "extract.json"
@@ -196,7 +208,8 @@ def mark_duplicates(wdir: Path, sources: dict, fresh_slugs: set[str], coverage: 
             if data["meta"].get("page_hashes"):
                 extracts[rel] = data
     rank = sorted(extracts, key=lambda rel: (sources[rel].get("status") != "done",
-                                             extracts[rel]["meta"].get("grouping") != "labels", rel))
+                                             extracts[rel]["meta"].get("grouping") != "labels",
+                                             len(Path(rel).stem), rel))
     seen: dict[str, tuple[str, str]] = {}       # page hash -> (original file, unit id)
     report = []
     for rel in rank:
@@ -220,7 +233,7 @@ def mark_duplicates(wdir: Path, sources: dict, fresh_slugs: set[str], coverage: 
             m = C.UNIT_HEADER.match(line)
             if m:
                 cur = m.group(1)
-            elif cur in dup and C.STATUS_LINE.match(line) and line.startswith("<!-- status: TODO"):
+            elif cur in dup and line.startswith(("<!-- status: TODO", "<!-- status: auto")):
                 lines[k] = f"<!-- status: duplicate of {dup[cur][0]} {dup[cur][1]} -->"
         tfile.write_text("\n".join(lines) + "\n")
         for r in coverage:
@@ -231,6 +244,32 @@ def mark_duplicates(wdir: Path, sources: dict, fresh_slugs: set[str], coverage: 
         report.append(f"DUPLICATE {rel}: {len(dup)} of {len(data['units'])} units have every page in "
                       f"{', '.join(others)}; they are marked and need no viewing")
     return report
+
+
+def match_sections(old: list[dict], new: list[dict]):
+    """Map old text-source units to new ones: same content first, then same title.
+    Returns (id map old->new, new ids whose content is new or changed, removed old ids)."""
+    idmap, used = {}, set()
+    by_fp = {}
+    for u in old:
+        by_fp.setdefault(u.get("fingerprint"), u["id"])
+    same = set()
+    for u in new:
+        oid = by_fp.get(u["fingerprint"])
+        if oid and oid not in idmap:
+            idmap[oid] = u["id"]
+            used.add(u["id"])
+            same.add(u["id"])
+    for u in new:
+        if u["id"] in used:
+            continue
+        cands = [o["id"] for o in old if o["title"] == u["title"] and o["id"] not in idmap]
+        if len(cands) == 1:
+            idmap[cands[0]] = u["id"]
+            used.add(u["id"])
+    changed = [u["id"] for u in new if u["id"] not in same]
+    removed = [o["id"] for o in old if o["id"] not in idmap]
+    return idmap, changed, removed
 
 
 def main():
@@ -322,9 +361,16 @@ def main():
         fresh = what in ("NEW", "CHANGED", "FORCED") or (kind != "text" and not (out / "extract.json").exists())
         info = ""
         if kind == "text":
-            units = [{"id": "all", "title": path.name}]
-            idmap, changed, removed = {"all": "all"}, [], []
-            e["units"] = 1
+            tunits = C.text_units(path)
+            units = [{"id": u["id"], "title": u["title"]} for u in tunits]
+            old_secs = e.get("sections") or ([{"id": "all", "title": path.name}] if what == "CHANGED" else [])
+            idmap, changed, removed = match_sections(old_secs, tunits)
+            if what != "CHANGED":
+                idmap.update({u["id"]: u["id"] for u in units if u["id"] not in idmap.values()})
+            e["sections"] = [{"id": u["id"], "title": u["title"], "fingerprint": u["fingerprint"]} for u in tunits]
+            e["units"] = len(units)
+            if len(units) > 1:
+                info = f"{len(units)} sections (units s1-s{len(units)}, split at # and ## headings)"
         else:
             old = None
             if (out / "extract.json").exists():
@@ -368,7 +414,13 @@ def main():
             line += f"\n          {info}"
         if what in ("CHANGED", "FORCED") and (kind == "text" or changed or removed or what == "CHANGED"):
             if kind == "text":
-                line += "\n          text file changed: reread it and update the chapters that use it"
+                titles = {u["id"]: u["title"] for u in units}
+                line += ("\n          new or changed sections: "
+                         + (", ".join(f"{uid} ({titles[uid]})" for uid in changed) or "none"))
+                if removed:
+                    line += f"\n          sections no longer in the file: {', '.join(removed)}"
+                for uid, disp in lost:
+                    line += f"\n          removed section {uid} was used in: {disp}"
             else:
                 line += f"\n          new or changed units: {', '.join(changed) or 'none'}"
                 if removed:

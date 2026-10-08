@@ -52,6 +52,7 @@ python3 <skill>/scripts/pdf_triage.py crop <source.pdf> <physical page> X0 Y0 X1
 ## Special cases
 
 - **Variants** (`s14.1`, `s14.2`): animation steps of one slide where a later step replaced something instead of adding to it. Each variant holds content the other lacks. Transcribe each fully and start the later ones with a line `Differs from s14.1: ...`, so the writer sees at once what changed.
+- **Notebooks** (`.ipynb`): a TODO unit is a notebook section with image outputs. The status names the first image; read every `figure:` comment in the unit's body, each where it stands among the cells, and describe it there.
 - **Stacked pictures** (`stacked`): several pictures lie on top of each other on one page, usually an animation exported to a single page. Only the top one is visible in the render. The script saved every layer as its own file (`figures/pNNN-x*.png`); read each one and describe them in order. A layer file is a better image than the crop of the page, so a `Use: image` line names the layer.
 - **`encoding`**: the text layer has wrong or missing characters. Take all text from the image.
 - **`layout`**: decide the real reading order from the image. Side-by-side columns become consecutive blocks; say what was beside what when the pairing carries meaning (a term next to its definition, code next to its output).
@@ -60,7 +61,7 @@ python3 <skill>/scripts/pdf_triage.py crop <source.pdf> <physical page> X0 Y0 X1
 
 ## Spot checks on `auto` units
 
-Extraction can be wrong on a slide that was not flagged. For each source, pick three `auto` units spread across the deck, render them with `pdf_triage.py page` into the source's `pages/` folder, and compare with their text. If one of them is missing something or is out of order, do not trust the rest: run `prepare.py <class> --force --view-all --only <slug>`, which turns every `auto` unit of that source into a TODO unit (other sources stay as they are), and transcribe them all.
+Extraction can be wrong on a slide that was not flagged. For each source, pick three `auto` units spread across the deck, render their last pages side by side with `pdf_triage.py sheet <pdf> <page> <page> <page> -o <source folder>/pages/spot.png`, read that one image, and compare each page with its unit's text. If one of them is missing something or is out of order, do not trust the rest: run `prepare.py <class> --force --view-all --only <slug>`, which turns every `auto` unit of that source into a TODO unit (other sources stay as they are), and transcribe them all.
 
 When the script merged animation steps by content instead of by page labels (the prepare report says "merged by content"), also render the first and the last page of two merged groups and confirm that the last page contains everything the first one has.
 

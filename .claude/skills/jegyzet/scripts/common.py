@@ -15,6 +15,8 @@ IGNORED_NAMES = {".DS_Store", "Thumbs.db", "desktop.ini"}
 OFFICE_EXT = {".pptx", ".ppt", ".odp", ".docx", ".doc", ".odt", ".rtf", ".key"}
 IMAGE_EXT = {".png", ".jpg", ".jpeg", ".gif", ".webp", ".bmp", ".tif", ".tiff"}
 ARCHIVE_EXT = {".zip", ".tar", ".gz", ".tgz", ".bz2", ".xz", ".7z", ".rar"}
+MARKDOWN_EXT = {".md", ".markdown", ".livemd", ".qmd", ".rmd", ".mdx", ".txt"}
+HEADING = re.compile(r"^(#{1,2})\s+(.+?)\s*#*\s*$")
 UNIT_HEADER = re.compile(r"^## (s\d+(?:\.\d+)?|all) · (.*)$")
 STATUS_LINE = re.compile(r"^<!-- status: (.*?) -->\s*$")
 
@@ -160,6 +162,58 @@ def transcript_head(text: str) -> str:
     return "\n".join(out).rstrip() + "\n\n"
 
 
+# --------------------------------------------------------------- text sources
+
+def sections(lines: list[str]) -> list[tuple[str, int, int]]:
+    """(title, start, end) of the parts of a Markdown text between `#` and `##` headings
+    outside code fences. Text before the first heading belongs to the first part."""
+    starts, in_fence = [], False
+    for i, line in enumerate(lines):
+        if line.lstrip().startswith(("```", "~~~")):
+            in_fence = not in_fence
+            continue
+        m = None if in_fence else HEADING.match(line)
+        if m:
+            starts.append((i, m.group(2).strip()))
+    if len(starts) < 2:
+        return []
+    if any(l.strip() for l in lines[:starts[0][0]]):
+        starts[0] = (0, starts[0][1])
+    out = []
+    for k, (i, title) in enumerate(starts):
+        end = starts[k + 1][0] if k + 1 < len(starts) else len(lines)
+        out.append((title, i, end))
+    return out
+
+
+def read_text(path: Path) -> str:
+    data = path.read_bytes()
+    try:
+        return data.decode("utf-8")
+    except UnicodeDecodeError:
+        return data.decode("cp1250", errors="replace")
+
+
+def text_units(path: Path, entry: dict | None = None) -> list[dict]:
+    """Units of a text source: one per `#`/`##` section of a Markdown-like file (s1, s2, ...),
+    otherwise the whole file as `all`. Each: {id, title, lines, fingerprint}.
+    A state entry prepared before sections existed (no "sections" key) stays one unit."""
+    lines = read_text(path).splitlines()
+    split = path.suffix.lower() in MARKDOWN_EXT and (entry is None or "sections" in entry)
+    parts = sections(lines) if split else []
+    if not parts:
+        parts = [(path.name, 0, len(lines))]
+        ids = ["all"]
+    else:
+        ids = [f"s{k}" for k in range(1, len(parts) + 1)]
+    out = []
+    for uid, (title, a, b) in zip(ids, parts):
+        body = lines[a:b]
+        fp = hashlib.sha1((title + "\n" + "\n".join(body)).encode()).hexdigest()[:16]
+        out.append({"id": uid, "title": title, "lines": body, "first_line": a + 1, "fingerprint": fp})
+    return out
+
+
 # ------------------------------------------------------------------- coverage
 
 COVERAGE_COLUMNS = ["source", "unit", "title", "disposition"]
@@ -194,10 +248,20 @@ def unit_sort_key(uid: str):
 
 
 def chapters_of(disposition: str) -> list[str]:
+    """Disposition: `a.md,b.md`, `cut: reason`, or `a.md,b.md; cut: what of the unit was left out`."""
     d = disposition.strip()
     if not d or d.lower().startswith("cut"):
         return []
-    return [c.strip() for c in d.split(",") if c.strip()]
+    return [c.strip() for c in d.partition(";")[0].split(",") if c.strip()]
+
+
+def partial_cut(disposition: str) -> str | None:
+    """The reason of a partial cut (`a.md; cut: Benchee output`), None if there is none."""
+    d = disposition.strip()
+    if d.lower().startswith("cut") or ";" not in d:
+        return None
+    rest = d.partition(";")[2].strip()
+    return rest.partition(":")[2].strip() if rest.lower().startswith("cut") else ""
 
 
 # ----------------------------------------------------------------------- book

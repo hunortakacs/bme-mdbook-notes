@@ -138,7 +138,8 @@ Alt text says what the figure shows. Images are centred and limited to the text 
 
 ```bash
 python3 <skill>/scripts/check.py C      # builds as its last step and reports problems
-mdbook serve C/book --open              # live preview for the user
 ```
+
+The user reads the books through the hub (`http://127.0.0.1:3000/C/`, the `jegyzet` systemd user service running `hub.py`), which rebuilds a book by itself after every change. `mdbook serve C/book --open` previews a single book. The hub serves each book under `/C/`, which is why `book.toml` sets `site-url = "/C/"`; keep it.
 
 `check.py` also regenerates `theme/jegyzet-weights.js` (words per chapter), which the progress bar uses to show the position in the whole book. Search is built in (`s` or the magnifier), and the print icon opens the whole book as one page.
