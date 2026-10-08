@@ -437,6 +437,12 @@ class Coordination(ClassFolder):
         self.assertIn("(partly cut on purpose: long output)", ex)
         self.assertIn("def osszeg([h | t])", ex)
 
+        # the book map comes from the chapters and the coverage
+        bm = run("bookmap.py", self.c)
+        self.assertIn("rekurzio.md · Rekurzió · ", bm)
+        self.assertIn("code: elixir 1", bm)
+        self.assertIn("sources: gy01 s2-s3", bm)
+
         # class verifiers: executables in _work/verify run in section 7; helpers and data do not
         vdir = self.c / "_work" / "verify"
         vdir.mkdir()
