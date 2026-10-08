@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Builds the synthetic "kvantum" test deck and a copy without page labels,
 # then puts both into <target>/kvantum/res/.
-#   usage: notes-dev/test/make_test_class.sh <target-folder>
+#   usage: .claude/notes-dev/test/make_test_class.sh <target-folder>
 # Needs: pdflatex with beamer, tikz, booktabs, listings, helvet, courier;
 #        python3 with pymupdf, numpy, matplotlib, pillow.
 set -euo pipefail

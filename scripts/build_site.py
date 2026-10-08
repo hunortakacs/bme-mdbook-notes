@@ -28,9 +28,9 @@ import urllib.parse
 import urllib.request
 from pathlib import Path
 
-# The versions the books are tested with (notes-dev/DEVELOPMENT.md, "Versions"). All three are
-# static (musl) release binaries, so a build machine needs nothing but Python. mdbook-katex 0.10.0
-# has no binary release; its 0.10.0-alpha binary renders the books byte for byte like 0.10.0.
+# The versions the books are tested with. All three are static (musl) release binaries, so a
+# build machine needs nothing but Python. mdbook-katex 0.10.0 has no binary release; its
+# 0.10.0-alpha binary renders the books byte for byte like 0.10.0.
 MDBOOK = "0.5.4"
 MERMAID = "0.17.1"
 KATEX = "0.10.0-alpha"

@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Regression tests for the notes skill's scripts, without Claude in the loop.
 
-  python3 notes-dev/test/test_scripts.py            # all tests
-  python3 notes-dev/test/test_scripts.py -k Text    # tests whose name contains "Text"
+  python3 .claude/notes-dev/test/test_scripts.py            # all tests
+  python3 .claude/notes-dev/test/test_scripts.py -k Text    # tests whose name contains "Text"
 
 Each test builds a throw-away class folder in a temporary git repository, runs
 the scripts the way a run of the skill does (prepare, simulated transcription,
@@ -27,7 +27,7 @@ from pathlib import Path
 
 import pymupdf
 
-REPO = Path(__file__).resolve().parents[2]
+REPO = Path(__file__).resolve().parents[3]
 SKILL = REPO / ".claude" / "skills" / "notes"
 S = SKILL / "scripts"
 REPO_SCRIPTS = ("hub.py", "build_site.py")     # in REPO/scripts: they work without the skill

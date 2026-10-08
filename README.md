@@ -11,7 +11,7 @@ Study books for university classes, generated from lecture material with Claude 
 hub/             the start page that lists every book
 scripts/         serve and build the site (no Claude Code needed)
 .claude/skills/notes/   the skill that writes and updates the books
-notes-dev/       development notes and regression tests of the skill
+.claude/notes-dev/      development notes and regression tests of the skill
 ```
 
 ## Use
