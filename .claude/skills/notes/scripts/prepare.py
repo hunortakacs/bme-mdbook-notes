@@ -437,10 +437,14 @@ def main():
     C.save_coverage(cdir, coverage)
     C.save_state(cdir, state)
 
+    # regenerable files stay out of git; lines added in later versions are appended to an old file
     gi = wdir / ".gitignore"
-    if not gi.exists():
-        gi.write_text("# rendered pages and crops can be regenerated with prepare.py --force\n"
-                      "sources/*/pages/\nsources/*/figures/\nsources/*/converted.pdf\nsources/*/*.prev.*\nremoved/\n")
+    have = gi.read_text() if gi.exists() else "# rendered pages and crops can be regenerated with prepare.py --force\n"
+    need = ["sources/*/pages/", "sources/*/figures/", "sources/*/converted.pdf", "sources/*/*.prev.*",
+            "removed/", "audit/", "verify/.cache/"]
+    missing_lines = [n for n in need if n not in have.splitlines()]
+    if missing_lines or not gi.exists():
+        gi.write_text(have.rstrip("\n") + "\n" + "".join(n + "\n" for n in missing_lines))
 
     pending = sum(1 for e in sources.values() if e.get("status") == "pending")
     unassigned = sum(1 for r in coverage if not r["disposition"].strip())

@@ -71,8 +71,8 @@ Every unit is `auto`, `viewed` or `duplicate`; none is TODO. Report: how many un
 
 ## Independent formula check
 
-Run this for every source that has `math` units, as soon as those units are transcribed (the others need not be finished), with a fresh subagent that did not write the transcript (a reader who knows what the formula "should" say reads it less carefully).
+It runs for every source of a run that has `math` units after transcription, in a fresh agent that did not write the transcript (a reader who knows what the formula "should" say reads it less carefully). The class agent lists these sources as `FORMULA CHECK` lines; the coordinator starts one agent per transcript with this instruction:
 
-Give the subagent the transcript path and this instruction: for each unit flagged `math`, read the page image named in its status line (`pages/pNNN.png`), then compare every formula in the transcript with the image symbol by symbol: indices and exponents, signs, limits of sums and integrals, hats, bars, daggers and primes, bracket types, the order of factors, matrix entries. Report each difference as `unit: transcript has X, image shows Y`. Report nothing else and change nothing.
+> Formula check of one transcript: `<transcript path>`. Change nothing. For each unit flagged `math`, read the page image named in its status line (`pages/pNNN.png`, relative to the transcript's folder), then compare every formula in the transcript with the image symbol by symbol: indices and exponents, signs, limits of sums and integrals, hats, bars, daggers and primes, bracket types, the order of factors, matrix entries. Report each difference as `unit: transcript has X, image shows Y`, or `no differences`. Report nothing else.
 
-For every reported difference, look at the image again yourself and correct the transcript where the report is right.
+The class agent gets the report and, for every reported difference, looks at the image again itself and corrects the transcript where the report is right.

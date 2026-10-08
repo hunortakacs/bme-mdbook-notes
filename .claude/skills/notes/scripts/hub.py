@@ -99,7 +99,7 @@ def books_block(infos: list[dict]) -> str:
         rows = ["| Class | Chapters | Sources |", "|---|---:|---:|"]
         for i in infos:
             note = " (update in progress)" if i["pending"] else ""
-            rows.append(f"| [{i['title']}](/{i['name']}/){note} | {i['chapters']} | {i['sources']} |")
+            rows.append(f"| [{i['title']}]({i['name']}/){note} | {i['chapters']} | {i['sources']} |")
         body = "\n".join(rows)
     return f"{BEGIN}\n\n{body}\n\n{END}"
 

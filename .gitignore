@@ -4,3 +4,6 @@
 */book/.book-old/
 __pycache__/
 notes-dev/highlight-bundle/node_modules/
+# static site built by build_site.py (Cloudflare Pages output dir) and its downloaded tools
+site/
+.tools/

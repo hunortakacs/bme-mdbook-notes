@@ -6,6 +6,9 @@
   cover.py CLASS_DIR set-many FILE         # one "SLUG<TAB>UNITS<TAB>DISPOSITION" per line; - reads stdin
   cover.py CLASS_DIR chapter FILE          # which units feed this chapter
   cover.py CLASS_DIR changed               # chapters added or changed since the last commit
+  cover.py CLASS_DIR excerpt FILE [--pending] [-o OUT]
+                                           # the source text of the units that feed this chapter;
+                                           # --pending: only units of sources not yet finalized
 
 UNITS        all | s3 | s3-s9 | s1,s4-s6,s12   (s4 and ranges also cover variants such as s4.1, s4.2)
 DISPOSITION  one or more chapter files relative to book/src, comma separated
@@ -104,6 +107,48 @@ def assign(cdir, by_source, slug, units, disposition) -> str:
     return f"{slug}: {len(chosen)} unit(s) -> {disp}"
 
 
+BOOKKEEPING = __import__("re").compile(r"^<!--\s*(status|flags|figure|header):")
+
+
+def excerpt(cdir: Path, by_source: dict, chapter: str, pending: bool = False) -> str:
+    """Every unit mapped to CHAPTER, in source order: the transcript section of a slide or
+    notebook unit, the section of a text source. Partial cuts are noted above the unit."""
+    state = C.load_state(cdir)
+    by_slug = {e["slug"]: (rel, e) for rel, e in state["sources"].items()}
+    rdir = C.resources_dir(cdir, state)
+    out = [f"# Sources of {chapter}", ""]
+    for slug, rs in by_source.items():
+        mine = {r["unit"]: r for r in rs if chapter in C.chapters_of(r["disposition"])}
+        if not mine or slug not in by_slug:
+            continue
+        rel, e = by_slug[slug]
+        if pending and e.get("status") == "done":
+            continue
+        transcript = C.work_dir(cdir) / "sources" / slug / "transcript.md"
+        if transcript.exists():
+            units = {u["id"]: u["lines"][1:] for u in C.parse_units(transcript.read_text())}
+            titles = {u["id"]: u["title"] for u in C.parse_units(transcript.read_text())}
+        else:
+            tus = C.text_units(rdir / rel, e)
+            units = {u["id"]: u["lines"] for u in tus}
+            titles = {u["id"]: u["title"] for u in tus}
+        for uid in sorted(mine, key=C.unit_sort_key):
+            out.append(f"## {rel} {uid} · {titles.get(uid, '')}")
+            disp = mine[uid]["disposition"]
+            others = [c for c in C.chapters_of(disp) if c != chapter]
+            if others:
+                out.append(f"(this unit also feeds: {', '.join(others)}; its content may be there instead)")
+            cut = C.partial_cut(disp)
+            if cut:
+                out.append(f"(partly cut on purpose: {cut})")
+            body = units.get(uid)
+            if body is None:
+                body = ["(unit not found in the source)"]
+            out += [l for l in body if not BOOKKEEPING.match(l)]
+            out.append("")
+    return "\n".join(out).rstrip() + "\n"
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("class_dir")
@@ -120,6 +165,10 @@ def main():
     ch = sub.add_parser("chapter")
     ch.add_argument("file")
     sub.add_parser("changed")
+    ex = sub.add_parser("excerpt")
+    ex.add_argument("file")
+    ex.add_argument("--pending", action="store_true", help="only units of sources that are not finalized yet")
+    ex.add_argument("-o", "--out")
     args = ap.parse_args()
 
     cdir = C.class_dir(args.class_dir)
@@ -174,6 +223,15 @@ def main():
             found = True
         if not found:
             print("no chapter changed since the last commit")
+        return
+
+    if args.cmd == "excerpt":
+        text = excerpt(cdir, by_source, args.file, args.pending)
+        if args.out:
+            Path(args.out).write_text(text)
+            print(f"{args.out}: {len(text.splitlines())} lines")
+        else:
+            sys.stdout.write(text)
         return
 
     if args.cmd == "chapter":

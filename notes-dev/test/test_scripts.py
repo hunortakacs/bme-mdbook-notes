@@ -367,7 +367,7 @@ class Hub(ClassFolder):
                     time.sleep(0.5)
             hub = urllib.request.urlopen(base + "/").read().decode()
             self.assertIn("Próba tárgy", hub)
-            self.assertIn('href="/proba/"', hub)
+            self.assertIn('href="proba/"', hub)                   # relative: works under any path prefix
             self.assertIn("Bevezetés", urllib.request.urlopen(base + "/proba/").read().decode())
             req = urllib.request.Request(base + "/proba")
             opener = urllib.request.build_opener(NoRedirect)
@@ -377,7 +377,7 @@ class Hub(ClassFolder):
 
             # the hub is a tracked mdBook in hub/; only the marked block is generated
             index = self.root / "hub" / "src" / "index.md"
-            self.assertIn("[Próba tárgy](/proba/)", index.read_text())
+            self.assertIn("[Próba tárgy](proba/)", index.read_text())
             self.assertTrue((self.root / "hub" / "book.toml").exists())
             self.assertFalse((self.root / ".hub").exists())
             index.write_text(index.read_text().replace("# Notes\n", "# Notes\n\nMy own intro.\n"))
@@ -386,8 +386,8 @@ class Hub(ClassFolder):
             run("hub.py", self.root, "update")                    # the server may have done it already
             text = index.read_text()
             self.assertIn("My own intro.", text)
-            self.assertIn("[Próba tárgy 2](/proba/)", text)
-            self.assertNotIn("[Próba tárgy](/proba/)", text)
+            self.assertIn("[Próba tárgy 2](proba/)", text)
+            self.assertNotIn("[Próba tárgy](proba/)", text)
             status = subprocess.run(["git", "-C", str(self.root), "status", "--porcelain", "-uall", "hub"],
                                     capture_output=True, text=True).stdout
             self.assertIn("hub/src/index.md", status)
@@ -407,6 +407,80 @@ class Hub(ClassFolder):
         finally:
             proc.terminate()
             proc.wait(10)
+
+
+class Coordination(ClassFolder):
+    """What the coordinator and the class agents use beyond the single-class pipeline."""
+
+    def test_status_excerpt_verifiers(self):
+        (self.res / "gy01.livemd").write_text(NOTES)
+        out = run("status.py", self.root)
+        self.assertRegex(out, r"WORK\s+proba\s+new 1, uncommitted changes, no book yet")
+        run("prepare.py", self.c)
+        self.assertRegex(run("status.py", self.root, "proba"), r"WORK\s+proba\s+pending 1")
+
+        run("new_book.py", self.c, "--title", "Próba")
+        self.chapter("rekurzio.md", "# Rekurzió\n\n```elixir\ndef hossz([]), do: 0\ndef hossz([_ | t]), do: 1 + hossz(t)\n"
+                     "def osszeg([]), do: 0\ndef osszeg([h | t]), do: h + osszeg(t)\n```\n\n"
+                     '<p class="sources">Forrás: gy01.livemd</p>\n')
+        run("cover.py", self.c, "set", "gy01", "s1", "cut: introduction")
+        run("cover.py", self.c, "set", "gy01", "s2", "rekurzio.md")
+        self.chapter("egyeb.md", "# Egyéb\n\nszöveg\n\n<p class=\"sources\">Forrás: gy01.livemd</p>\n")
+        run("cover.py", self.c, "set", "gy01", "s3", "rekurzio.md,egyeb.md; cut: long output")
+
+        # the excerpt holds exactly the units that feed the chapter, with their notes
+        ex = run("cover.py", self.c, "excerpt", "rekurzio.md")
+        self.assertIn("## gy01.livemd s2 ·", ex)
+        self.assertIn("## gy01.livemd s3 ·", ex)
+        self.assertNotIn("## gy01.livemd s1 ·", ex)
+        self.assertIn("(this unit also feeds: egyeb.md", ex)
+        self.assertIn("(partly cut on purpose: long output)", ex)
+        self.assertIn("def osszeg([h | t])", ex)
+
+        # class verifiers: executables in _work/verify run in section 7; helpers and data do not
+        vdir = self.c / "_work" / "verify"
+        vdir.mkdir()
+        (vdir / "_helper.py").write_text("raise SystemExit('must not run')\n")
+        (vdir / "_kod.accepted").write_text("abc\tok\n")
+        good = vdir / "kod"
+        good.write_text("#!/bin/sh\necho 'OK 2 examples ran'\n")
+        good.chmod(0o755)
+        out = run("check.py", self.c, "--no-build")
+        self.assertIn("ok    kod: 2 examples ran", out)
+        self.assertIn("0 failure(s)", out)
+        good.write_text("#!/bin/sh\necho 'WARN rekurzio.md: output differs'\necho 'FAIL rekurzio.md: does not compile'\n")
+        out = run("check.py", self.c, "--no-build", check=False)
+        self.assertIn("FAIL  kod", out)
+        self.assertIn("rekurzio.md: does not compile", out)
+        self.assertIn("rekurzio.md: output differs", out)
+        out = run("check.py", self.c, "--no-build", "--no-verify")
+        self.assertIn("0 failure(s)", out)
+
+        # finalized: current; --pending leaves the finalized source out
+        good.write_text("#!/bin/sh\necho 'OK fine'\n")
+        run("check.py", self.c, "--no-build", "--finalize")
+        self.commit()
+        self.assertRegex(run("status.py", self.root), r"ok\s+proba\s+current")
+        self.assertNotIn("## gy01.livemd", run("cover.py", self.c, "excerpt", "rekurzio.md", "--pending"))
+        (self.res / "gy01.livemd").write_text(NOTES + "\n## Harmadik\n\nszöveg\n")
+        self.assertRegex(run("status.py", self.root), r"WORK\s+proba\s+changed 1")
+
+    def test_build_site(self):
+        make_pdf(self.res / "ea01.pdf", SLIDES[:1])
+        run("prepare.py", self.c)
+        run("new_book.py", self.c, "--title", "Próba tárgy")
+        run("hub.py", self.root, "update")
+        out_dir = self.tmp / "site"
+        out = run("build_site.py", self.root, out_dir, "--base", "en/latest")
+        self.assertIn("hub + 1 book(s) (proba), base /en/latest/", out)
+        self.assertIn('href="proba/"', (out_dir / "index.html").read_text())
+        self.assertTrue((out_dir / "proba" / "index.html").exists())
+        self.assertIn('<base href="/en/latest/proba/"', (out_dir / "proba" / "404.html").read_text())
+        self.assertIn('<base href="/en/latest/"', (out_dir / "404.html").read_text())
+        env = dict(os.environ, READTHEDOCS_CANONICAL_URL="https://x.readthedocs.io/hu/stable/")
+        p = subprocess.run([sys.executable, "-B", str(S / "build_site.py"), str(self.root), str(out_dir)],
+                           capture_output=True, text=True, env=env)
+        self.assertIn("base /hu/stable/", p.stdout)
 
 
 class NoRedirect(urllib.request.HTTPRedirectHandler):

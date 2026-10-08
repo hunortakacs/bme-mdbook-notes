@@ -4,6 +4,6 @@
 
 | Class | Chapters | Sources |
 |---|---:|---:|
-| [Deklaratív programozás](/dekla/) | 23 | 10 |
+| [Deklaratív programozás](dekla/) | 23 | 10 |
 
 <!-- /notes:books -->

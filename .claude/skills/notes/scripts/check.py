@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Last step of a run: verify that nothing was lost and that the book builds.
 
-  check.py CLASS_DIR [--no-build] [--finalize] [--all]
+  check.py CLASS_DIR [--no-build] [--no-verify] [--finalize] [--all]
 
   1 sources      every file in res/ was prepared and has not changed since
   2 transcripts  every unit is present and none is still marked TODO
@@ -10,6 +10,7 @@
                  not empty; links and images resolve; chapters name their sources
   5 content      (warnings) code lines and formulas of a unit that do not appear in its chapter
   6 build        mdbook build; formula errors; languages without highlighting
+  7 verifiers    the class's own checks: every executable in _work/verify/ (references/modules.md)
 
 FAIL lines must be fixed. WARN lines must be read and either fixed or judged
 to be fine. --finalize marks the pending sources as done, only when nothing failed.
@@ -22,6 +23,7 @@ import argparse
 import hashlib
 import html
 import json
+import os
 import re
 import shutil
 import statistics
@@ -148,6 +150,7 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("class_dir")
     ap.add_argument("--no-build", action="store_true")
+    ap.add_argument("--no-verify", action="store_true", help="skip the class verifiers (section 7)")
     ap.add_argument("--finalize", action="store_true")
     ap.add_argument("--all", action="store_true", help="print every item of a list")
     args = ap.parse_args()
@@ -451,6 +454,36 @@ def main():
                 R.warn("pages that still show raw LaTeX (unclosed $$ or math inside HTML?)", raw)
             if not errors and not log:
                 R.ok(f"book built: {out / 'index.html'}")
+
+    # -------------------------------------------------------------- 7 verifiers
+    R.section("7 verifiers")
+    vdir = wdir / "verify"
+    runners = sorted(p for p in vdir.iterdir()
+                     if p.is_file() and os.access(p, os.X_OK) and not p.name.startswith((".", "_"))
+                     ) if vdir.is_dir() else []
+    if args.no_verify:
+        print("  skipped")
+    elif not runners:
+        print("  none: this class has no verifiers in _work/verify/")
+    for p in ([] if args.no_verify else runners):
+        try:
+            r = subprocess.run([str(p), str(cdir)], capture_output=True, text=True, timeout=900, cwd=cdir)
+        except subprocess.TimeoutExpired:
+            R.fail(f"{p.name}: no result within 15 minutes")
+            continue
+        except OSError as e:
+            R.fail(f"{p.name}: cannot run ({e})")
+            continue
+        lines = (r.stdout + r.stderr).splitlines()
+        fails = [l[4:].strip() for l in lines if l.startswith("FAIL")]
+        warns = [l[4:].strip() for l in lines if l.startswith("WARN")]
+        oks = [l[2:].strip() for l in lines if l.startswith("OK")]
+        if fails or r.returncode != 0:
+            R.fail(f"{p.name}" + ("" if fails else f": exit code {r.returncode}"), fails or lines[-15:])
+        if warns:
+            R.warn(p.name, warns)
+        if not fails and not warns and r.returncode == 0:
+            R.ok(f"{p.name}: " + (oks[-1] if oks else "passed"))
 
     # ----------------------------------------------------------------- finalize
     print(f"\n{R.fails} failure(s), {R.warns} warning(s)")

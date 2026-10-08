@@ -31,11 +31,17 @@ Things he said he will refine later, once he uses it locally: naming, details of
 
 ```text
 .claude/skills/notes/
-  SKILL.md                    the workflow (6 steps); loaded on /notes <class>
+  SKILL.md                    the coordinator: finds work, runs one class agent per class, asks the user,
+                              starts fresh agents, commits; loaded on /notes [class ...]
+  references/class-agent.md   the class agent's phases A-D and their report formats
+  references/modules.md       class modules: _work/profile.md and executable checks in _work/verify/
+  references/audit.md         the chapter audit by a fresh agent
   references/transcribe.md    how to turn flagged units into a faithful transcript; formula check
   references/writing.md       structure, style, cuts, errors, gap filling, code, math, figures, homework
   references/mdbook.md        book layout, Markdown/KaTeX/Mermaid specifics
   scripts/doctor.py           checks installed tools
+  scripts/status.py           for the coordinator: which classes have work (hashes only, reads no material)
+  scripts/build_site.py       static site for hosting: hub at the root, books under /<class>/
   scripts/prepare.py          hashes res/, triages new/changed sources, carries over transcripts
   scripts/pdf_triage.py       the PDF analysis (also: `page` and `crop` subcommands for Claude)
   scripts/cover.py            records unit -> chapter / cut reason in coverage.tsv
@@ -48,9 +54,9 @@ Things he said he will refine later, once he uses it locally: naming, details of
   assets/katex/               KaTeX 0.16.4 stylesheet and woff2 fonts (math works offline)
 ```
 
-Per class (`<class>/`): `res/` (the user's input, read-only), `book/` (the mdBook), `_work/` (state.json, coverage.tsv, outline.md, findings.md, sources/<slug>/{extract.json, draft.md, transcript.md, pages/, figures/}).
+Per class (`<class>/`): `res/` (the user's input, read-only), `book/` (the mdBook), `_work/` (state.json, coverage.tsv, outline.md, findings.md, profile.md, verify/, sources/<slug>/{extract.json, draft.md, transcript.md, pages/, figures/}, audit/).
 
-The run: `prepare.py` → Claude transcribes every unit marked `status: TODO view <png>` by reading the PNG (subagents per large source; independent formula-check subagent) → outline, wait for approval → write chapters, record coverage with `cover.py` → `check.py` until no FAIL → `check.py --finalize` → commit.
+The run (since 2026-10-08, see "Scaling" below): the coordinator (the session that got `/notes`) runs `status.py`, then starts one class agent per class with work. Phase A: `prepare.py`, the class agent transcribes small sources itself and lists large ones (`TRANSCRIBE`) and math sources (`FORMULA CHECK`); the coordinator starts fresh agents for those. Phase B: the class agent reads, runs what can be run, writes the outline and returns it with questions; the coordinator asks the user (AskUserQuestion, one question per finding). Phase C: write chapters, `cover.py`, `check.py` (sections 1-7), module upkeep, chapter excerpts for the audit (`AUDIT`); the coordinator starts one auditor per chapter. Phase D: apply the audit, `check.py --finalize`, final report; the coordinator runs `hub.py update` and commits class + hub.
 
 Why a transcript stage between PDF and book: it makes "nothing lost" checkable. Every unit (logical slide) has a transcript section; `coverage.tsv` maps every unit to a chapter or a cut reason; `check.py` fails on any gap and warns about source code lines that do not appear in the mapped chapter.
 
@@ -63,6 +69,28 @@ Why a transcript stage between PDF and book: it makes "nothing lost" checkable. 
 - Unit ids: `sN` = N-th logical slide (matches the printed slide number for Beamer), `sN.k` = variants (animation steps that replaced content), `all` = whole text file.
 - `extract.json` meta has `page_hashes` (page text + thumbnail); `prepare.py` marks units whose pages all occur in another source as duplicates (original = done source, else label-grouped, else first by name) and pre-fills `cut: duplicate of …`.
 - On a changed PDF, units are matched by `fingerprint` (hash of draft text + thumbnail), finished transcript sections and coverage rows carry over, only changed units become TODO.
+
+## Scaling: contexts, class modules, audit (2026-10-08)
+
+The user asked for the pipeline to keep its quality all semester, for several classes of different sizes, weekly updates, without classes ever mixing in one context. Decisions:
+
+- **One context per class.** The coordinator never reads class material; each class has its own agent, so a run for several classes is several independent contexts, and the coordinator's context grows only by reports. Subagents cannot ask the user (and are not relied on to start agents), so the class agent works in phases A-D and returns fixed-format reports (`PHASE X DONE`, `TRANSCRIBE:`, `FORMULA CHECK:`, `OUTLINE`/`QUESTIONS`, `AUDIT:`, `FINAL REPORT`); the coordinator continues it with SendMessage. The coordinator does all commits, one class at a time (no git index races).
+- **Findings go to the user through AskUserQuestion** (the user's explicit preference), one question per finding, recommended option first.
+- **The skill stays general; classes grow their own modules** (the user's direction): `_work/profile.md` (terminology, notation, conventions, recurring decisions; read by every agent of that class) and executable checks in `_work/verify/` that `check.py` runs as section 7 under a small contract (`FAIL`/`WARN`/`OK` lines, `_<name>.accepted` for judged differences, files starting with `_` are helpers). Nothing class-specific goes into the skill, not even a reusable runner: another class's agent writes or copies its own. First module: `dekla/_work/verify/iex` (compiles every complete `defmodule`, runs every `iex` block chapter by chapter and compares outputs; 210 inputs, 55 modules, 4 accepted differences; catches a changed output and a syntax error, tested by tampering).
+- **Audit by a fresh agent per changed chapter**, against `cover.py excerpt` (only the units that feed the chapter; `--pending` for an extended chapter: only this run's units), so its cost stays at about one chapter plus its new sources however large the book grows. It closes the gap that section 5 checks only code lines and formulas, not prose.
+- **Deferred: chapter digests** for planning (a short summary per chapter so planning does not read whole chapters). The user was unsure whether they would help or mislead; with per-class contexts the pressure is lower. Revisit when a book passes roughly 60 000 words or a planning step has to read more than about a third of a book.
+
+Not yet tested end to end: a full run through the coordinator and class agents (phases A-D with real agents). The scripts behind it are covered by the regression suite (`Coordination`). Do the next real update (dekla week 4) as that test, and fix what the reports show.
+
+## Hosting (2026-10-08)
+
+The user wants the hub and all books online for free, deployed automatically on push (the user pushes; runs end at the commit). Chosen: **Cloudflare Pages** (free plan, private GitHub repositories, no ads, the user's domain and DNS are already on Cloudflare). Read the Docs was considered: its free tier is for public projects and shows ads. The site is static; nothing runs on a server.
+
+`build_site.py ROOT OUT --install DIR` is the whole build: it downloads static (musl) release binaries of mdbook 0.5.4, mdbook-katex and mdbook-mermaid 0.17.1 into DIR, builds `hub/` into OUT and each `<class>/book` into `OUT/<class>/` exactly as committed (no checks, nothing written to the repo). All links are relative (hub list `dekla/`, the books' home button `../` from the book root, computed in notes.js), so the site also works under a path prefix; `--base` (or `$READTHEDOCS_CANONICAL_URL`) only sets mdBook's 404 page.
+
+Cloudflare Pages project settings (dashboard, Git integration, no config file): framework preset None, build command `python3 .claude/skills/notes/scripts/build_site.py . site --install .tools`, output directory `site`, root directory empty. Tested in a clean `ubuntu:22.04` container with only python3 and ca-certificates.
+
+mdbook-katex 0.10.0 has no binary release, and compiling it needs `patch` and a C compiler (a quickjs dependency patches its sources), which a build image may lack. Its `0.10.0-alpha-binaries` release has a static binary; the whole site built with it is byte-identical to the one built with the locally compiled 0.10.0. When mdbook-katex publishes binaries for a release, switch `KATEX` in build_site.py.
 
 ## How pdf_triage.py decides
 
@@ -102,7 +130,7 @@ Install on Fedora: `sudo dnf install cargo git`, `cargo install mdbook mdbook-ka
 
 How it was tested:
 
-- **Regression suite** `notes-dev/test/test_scripts.py` (9 tests, ~10 s, no Claude, no LaTeX): PDF new → changed (only changed units are new work, transcripts and coverage carry over) → renamed → removed; duplicate sources and `--force --view-all --only`; unsupported and image sources; `.pptx` through a stand-in `soffice` and the failure without one; text sources split into sections, partial cuts, `set-many`, missing code reported per section, reviewed lines hidden after `--finalize`, changed and removed sections reported with their chapters; `.ipynb` sections with image outputs; formulas missing from a chapter; `cover.py changed`; the hub (list, routing, redirect, rebuild on change). Run it after every change to the scripts.
+- **Regression suite** `notes-dev/test/test_scripts.py` (11 tests, ~12 s, no Claude, no LaTeX): PDF new → changed (only changed units are new work, transcripts and coverage carry over) → renamed → removed; duplicate sources and `--force --view-all --only`; unsupported and image sources; `.pptx` through a stand-in `soffice` and the failure without one; text sources split into sections, partial cuts, `set-many`, missing code reported per section, reviewed lines hidden after `--finalize`, changed and removed sections reported with their chapters; `.ipynb` sections with image outputs; formulas missing from a chapter; `cover.py changed`; the hub (list, routing, redirect, rebuild on change, relative links); `status.py`, `cover.py excerpt` (also `--pending`), the class-verifier hook in check.py section 7, `build_site.py` (layout, base path). Run it after every change to the scripts.
 - **End-to-end runs by a fresh Claude** (2026-10-08), each a general-purpose subagent following SKILL.md in a scratch repo, the developing session answering as the user: `kvantum` (synthetic deck + export), `dekla` week 1 (fp1ea, three fp1 notebooks, khf1.exs), `dekla` week 2 as an update (fp2ea, fp2gy, fp2gy-megoldasok). All ended with 0 FAIL and good books; the merge put new material into the existing chapters without seams, and contradictions between weeks became findings. Every SKILL FEEDBACK item from those runs is fixed (see git history of this file for the list).
 - **Real decks**: `pdf_triage.py` flags on dp26a-fp1ea/fp2ea/fp3ea and the synthetic deck (table above) were rechecked after each heuristic change.
 
