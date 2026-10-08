@@ -1,10 +1,10 @@
 ---
-name: jegyzet
-description: Builds and incrementally updates an mdBook study book (jegyzet) for a university class from the files in the class's res folder (lecture slide PDFs, notebooks, code, exercise sheets). Use when the user wants to create, update, extend or rebuild the notes or book of a class, says new material arrived for a class, or names a class folder such as dekla, mi or kvantum together with notes, jegyzet or mdBook.
+name: notes
+description: Builds and incrementally updates an mdBook study book (notes, jegyzet) for a university class from the files in the class's res folder (lecture slide PDFs, notebooks, code, exercise sheets). Use when the user wants to create, update, extend or rebuild the notes or book of a class, says new material arrived for a class, or names a class folder such as dekla, mi or kvantum together with notes, jegyzet or mdBook.
 argument-hint: "[class-folder]"
 ---
 
-# Jegyzet: one study book per class, updated as material arrives
+# Notes: one study book per class, updated as material arrives
 
 The user is a university student. Each class has a folder; its `res/` folder fills up week by week with lecture slides and other material. This skill turns that material into one mdBook per class that he reads from start to finish instead of the slides, and keeps that book current when files are added to `res/` or changed.
 
@@ -18,8 +18,8 @@ Requested class: `$ARGUMENTS`
 ## Folder layout
 
 ```text
-<root>/                      git repository (the user's is ~/bme/jegyzet), one folder per class
-  hub/                       the entry page listing all books (an mdBook, in git) and jegyzet.service
+<root>/                      git repository (the user's is ~/bme/notes), one folder per class
+  hub/                       the entry page listing all books (an mdBook, in git) and notes.service
   dekla/
     res/                     the user's files (lecture slides, notebooks, code); never modify these
     book/                    the mdBook: book.toml, src/, theme/   (book/book/ is build output)
@@ -42,7 +42,7 @@ Work through these steps in order. Steps 3 and 6 are the points where the user d
 
 ### 1. Find out what changed
 
-First, if the folder is a git repository and the class folder has uncommitted changes from before this run, commit them before running anything (`git add C && git commit -m "C: állapot frissítés előtt"`), so the run's changes can be reviewed and undone as one diff. Uncommitted changes outside the class folder are not this run's business: leave them alone and never add them to a commit.
+First, if the folder is a git repository and the class folder has uncommitted changes from before this run, commit them before running anything (`git add C && git commit -m "C: state before update"`), so the run's changes can be reviewed and undone as one diff. Uncommitted changes outside the class folder are not this run's business: leave them alone and never add them to a commit.
 
 ```bash
 python3 S/doctor.py              # tools present? If something required is missing, tell the user the install line and stop.
@@ -129,7 +129,7 @@ python3 S/check.py C --finalize      # marks the sources as done in state.json
 
 ### 6. Report and commit
 
-Refresh the list of books on the entry page (`python3 S/hub.py <root> update`), then commit the class folder and the hub together (`git add C hub && git commit`), message in the form `C: <what was added>`, in the language of the book. Do not push.
+Refresh the list of books on the entry page (`python3 S/hub.py <root> update`), then commit the class folder and the hub together (`git add C hub && git commit`), message in English in the form `C: <what was added>`. Do not push.
 
 Tell the user, briefly:
 
@@ -142,7 +142,7 @@ Tell the user, briefly:
 
 ## Reading the books
 
-All books are served together by the hub: `http://127.0.0.1:3000/` lists them, `/<class>/` is a book, and every book has a home button back to the list. It runs as the systemd user service `jegyzet` and rebuilds a book within seconds of any change, so a finished run needs no extra step. Check it with `systemctl --user is-active jegyzet`. If it is not installed, install it once with `python3 S/hub.py <root> install-service` (the user asked for this setup; tell him the address afterwards). The hub is an ordinary mdBook in `<root>/hub/`, kept in git with its unit file `hub/jegyzet.service`; `hub.py` only rewrites the list between the `jegyzet:books` markers in `hub/src/index.md`, everything else there is the user's. `mdbook serve C/book --open` still works for a single book.
+All books are served together by the hub: `http://127.0.0.1:3000/` lists them, `/<class>/` is a book, and every book has a home button back to the list. It runs as the systemd user service `notes` and rebuilds a book within seconds of any change, so a finished run needs no extra step. Check it with `systemctl --user is-active notes`. If it is not installed, install it once with `python3 S/hub.py <root> install-service` (the user asked for this setup; tell him the address afterwards). The hub is an ordinary mdBook in `<root>/hub/`, kept in git with its unit file `hub/notes.service`; `hub.py` only rewrites the list between the `notes:books` markers in `hub/src/index.md`, everything else there is the user's. `mdbook serve C/book --open` still works for a single book.
 
 ## Rules that hold in every step
 

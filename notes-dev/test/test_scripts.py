@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Regression tests for the jegyzet skill's scripts, without Claude in the loop.
+"""Regression tests for the notes skill's scripts, without Claude in the loop.
 
-  python3 jegyzet-dev/test/test_scripts.py            # all tests
-  python3 jegyzet-dev/test/test_scripts.py -k Text    # tests whose name contains "Text"
+  python3 notes-dev/test/test_scripts.py            # all tests
+  python3 notes-dev/test/test_scripts.py -k Text    # tests whose name contains "Text"
 
 Each test builds a throw-away class folder in a temporary git repository, runs
 the scripts the way a run of the skill does (prepare, simulated transcription,
@@ -27,7 +27,7 @@ from pathlib import Path
 
 import pymupdf
 
-SKILL = Path(__file__).resolve().parents[2] / ".claude" / "skills" / "jegyzet"
+SKILL = Path(__file__).resolve().parents[2] / ".claude" / "skills" / "notes"
 S = SKILL / "scripts"
 PNG_1PX = base64.b64decode(
     "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==")
@@ -92,7 +92,7 @@ class ClassFolder(unittest.TestCase):
     """A fresh repository with one class folder per test."""
 
     def setUp(self):
-        self.tmp = Path(tempfile.mkdtemp(prefix="jegyzet-test-"))
+        self.tmp = Path(tempfile.mkdtemp(prefix="notes-test-"))
         self.root = self.tmp / "repo"
         self.c = self.root / "proba"
         self.res = self.c / "res"
@@ -233,13 +233,13 @@ doc.save(out / (src.stem + ".pdf"))
         self.assertTrue((self.c / "_work/sources/ea02/converted.pdf").exists())
 
         # without LibreOffice the source fails with a message, and the others go on
-        (self.res / "jegyzet.md").write_text("# A\n\nszöveg\n")
+        (self.res / "notes.md").write_text("# A\n\nszöveg\n")
         (self.res / "ea03.pptx").write_bytes(b"PK")
         env = dict(os.environ, PATH="/usr/bin:/bin")
         p = subprocess.run([sys.executable, "-B", str(S / "prepare.py"), str(self.c)],
                            capture_output=True, text=True, env=env)
         self.assertIn("FAILED    ea03.pptx", p.stdout)
-        self.assertIn("NEW       jegyzet.md", p.stdout)
+        self.assertIn("NEW       notes.md", p.stdout)
 
 
 class TextSources(ClassFolder):
@@ -350,7 +350,7 @@ class Hub(ClassFolder):
         make_pdf(self.res / "ea01.pdf", SLIDES[:1])
         run("prepare.py", self.c)
         run("new_book.py", self.c, "--title", "Próba tárgy")
-        (self.root / "jegyzet-dev").mkdir()                    # folders without a book are ignored
+        (self.root / "notes-dev").mkdir()                    # folders without a book are ignored
         with socket.socket() as s:
             s.bind(("127.0.0.1", 0))
             port = s.getsockname()[1]
@@ -380,12 +380,12 @@ class Hub(ClassFolder):
             self.assertIn("[Próba tárgy](/proba/)", index.read_text())
             self.assertTrue((self.root / "hub" / "book.toml").exists())
             self.assertFalse((self.root / ".hub").exists())
-            index.write_text(index.read_text().replace("# Jegyzetek\n", "# Jegyzetek\n\nSaját bevezető.\n"))
+            index.write_text(index.read_text().replace("# Notes\n", "# Notes\n\nMy own intro.\n"))
             (self.res.parent / "book" / "book.toml").write_text(
                 (self.res.parent / "book" / "book.toml").read_text().replace("Próba tárgy", "Próba tárgy 2"))
             run("hub.py", self.root, "update")                    # the server may have done it already
             text = index.read_text()
-            self.assertIn("Saját bevezető.", text)
+            self.assertIn("My own intro.", text)
             self.assertIn("[Próba tárgy 2](/proba/)", text)
             self.assertNotIn("[Próba tárgy](/proba/)", text)
             status = subprocess.run(["git", "-C", str(self.root), "status", "--porcelain", "-uall", "hub"],

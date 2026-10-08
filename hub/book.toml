@@ -1,12 +1,12 @@
 [book]
-title = "Jegyzetek"
-language = "hu"
+title = "Notes"
+language = "en"
 src = "src"
 
 [output.html]
 default-theme = "light"
 preferred-dark-theme = "navy"
-additional-css = ["theme/jegyzet.css"]
+additional-css = ["theme/notes.css"]
 
 [output.html.search]
 enable = false

@@ -43,7 +43,7 @@ throw-on-error = false   # a bad formula is shown in red and reported by check.p
 site-url = "/{name}/"     # the hub (hub.py) serves this book under /{name}/
 default-theme = "light"
 preferred-dark-theme = "navy"
-additional-css = ["theme/jegyzet.css"]
+additional-css = ["theme/notes.css"]
 additional-js = [{js}]
 
 [output.html.search]
@@ -63,11 +63,11 @@ copyable = true
 def copy_theme(bdir: Path) -> bool:
     theme = bdir / "theme"
     theme.mkdir(parents=True, exist_ok=True)
-    for name in ("highlight.js", "jegyzet.css", "jegyzet.js", "head.hbs"):
+    for name in ("highlight.js", "notes.css", "notes.js", "head.hbs"):
         shutil.copyfile(ASSETS / "theme" / name, theme / name)
-    weights = theme / "jegyzet-weights.js"
+    weights = theme / "notes-weights.js"
     if not weights.exists():
-        weights.write_text("window.JEGYZET_WEIGHTS = {};\n")
+        weights.write_text("window.NOTES_WEIGHTS = {};\n")
     katex = bdir / "src" / "_katex"
     if katex.exists():
         shutil.rmtree(katex)
@@ -112,7 +112,7 @@ def main():
     (bdir / "src").mkdir(parents=True, exist_ok=True)
     toml.write_text('[book]\ntitle = "x"\n')      # mdbook-mermaid install wants a book.toml
     mermaid = copy_theme(bdir)
-    js = ['"theme/jegyzet-weights.js"', '"theme/jegyzet.js"']
+    js = ['"theme/notes-weights.js"', '"theme/notes.js"']
     mermaid_pre = ""
     if mermaid:
         js += ['"mermaid.min.js"', '"mermaid-init.js"']

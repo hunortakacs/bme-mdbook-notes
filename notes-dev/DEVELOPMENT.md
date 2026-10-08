@@ -1,6 +1,6 @@
-# jegyzet skill: development notes
+# notes skill: development notes
 
-Context for whoever continues developing the skill in `.claude/skills/jegyzet/` (most likely Claude Code). It records what the user asked for, why the design is the way it is, what has been tested, and what is still open. The skill itself does not read this file.
+Context for whoever continues developing the skill in `.claude/skills/notes/` (most likely Claude Code). It records what the user asked for, why the design is the way it is, what has been tested, and what is still open. The skill itself does not read this file.
 
 ## What the skill is for
 
@@ -22,7 +22,7 @@ The user is a BME student. His university folder is a git repository with one fo
 - **Homework is learning material.** An earlier version forbade solving or including graded work; the user dropped that rule ("this is learning material"). Homework files are treated like practice exercises: task text and any solution in `res/` (his own solved homework included) go into the book; Claude still does not write solutions of its own.
 - **UI**: line numbers in code blocks, a thin whole-book reading-progress bar (fattens on hover and shows the percentage; he has ADHD and the scrollbar does not show where he is in the book), no programming ligatures (`|>` and `->` must stay two characters), whole-book search. He asked for official/standard mechanisms over home-grown hacks: mdBook's `additional-css`/`additional-js`, built-in search, built-in print page; third-party mdBook preprocessors (KaTeX, Mermaid) were explicitly OK.
 - **One entry point for all books**: a hub mdBook that lists the class books, served with all of them by one always-on systemd user service (standard setup, no per-class `mdbook serve`).
-- **Repository**: `~/bme/jegyzet` is the root and a git repo; class folders live directly in it. Everything else in `~/bme` is the user's and is never touched.
+- **Repository**: `~/bme/notes` is the root and a git repo; class folders live directly in it. Everything else in `~/bme` is the user's and is never touched.
 - Book language: the sources' language (Hungarian for his classes). The skill's own instructions are in English.
 
 Things he said he will refine later, once he uses it locally: naming, details of the workflow.
@@ -30,8 +30,8 @@ Things he said he will refine later, once he uses it locally: naming, details of
 ## Layout and data flow
 
 ```text
-.claude/skills/jegyzet/
-  SKILL.md                    the workflow (6 steps); loaded on /jegyzet <class>
+.claude/skills/notes/
+  SKILL.md                    the workflow (6 steps); loaded on /notes <class>
   references/transcribe.md    how to turn flagged units into a faithful transcript; formula check
   references/writing.md       structure, style, cuts, errors, gap filling, code, math, figures, homework
   references/mdbook.md        book layout, Markdown/KaTeX/Mermaid specifics
@@ -42,9 +42,9 @@ Things he said he will refine later, once he uses it locally: naming, details of
   scripts/check.py            all completeness and build checks; --finalize marks sources done
   scripts/new_book.py         creates book/ (book.toml, SUMMARY, theme); --refresh updates the theme
   scripts/hub.py              the hub: keeps hub/ (an mdBook listing all books) current, serves / and /<class>/,
-                              rebuilds on change, writes and links hub/jegyzet.service
+                              rebuilds on change, writes and links hub/notes.service
   scripts/common.py           layout constants, state and coverage I/O, transcript parsing
-  assets/theme/               highlight.js bundle, jegyzet.css, jegyzet.js, head.hbs, highlight-languages.json
+  assets/theme/               highlight.js bundle, notes.css, notes.js, head.hbs, highlight-languages.json
   assets/katex/               KaTeX 0.16.4 stylesheet and woff2 fonts (math works offline)
 ```
 
@@ -91,18 +91,18 @@ During tuning, the unflagged slides of fp1ea were checked visually on contact sh
 - mdBook **0.5.x** (tested 0.5.4). mdBook 0.4 is not supported: mdbook-katex 0.10 needs the 0.5 preprocessor API.
 - mdbook-katex **0.10.0**. Its injected CSS link points at KaTeX **0.16.4**; we set `no-css = true` and serve `assets/katex` (0.16.4) via `theme/head.hbs`. If mdbook-katex is upgraded and uses another KaTeX version, update `assets/katex` from `npm pack katex@<version>` (dist/katex.min.css + dist/fonts/*.woff2).
 - mdbook-mermaid **0.17.1** (built against mdBook 0.5.0; prints a harmless version warning that check.py filters).
-- highlight.js **10.7.3** custom bundle (mdBook ships 10.1.1 without Elixir/Prolog). Rebuild: in `jegyzet-dev/highlight-bundle/`, `npm i highlight.js@10.7.3 esbuild`, edit `entry.js`, `npx esbuild entry.js --bundle --minify --format=iife --outfile=highlight.js`, copy to `assets/theme/highlight.js`, then `node langs.js > ../../.claude/skills/jegyzet/assets/theme/highlight-languages.json` (check.py uses it to warn about unknown fence languages). Requires must stay static (`require('...')` per language), or esbuild fails. Aliases added: `iex`, `ex`, `exs` → elixir; `pl`, `pro` → prolog (this overrides Perl's `pl`).
+- highlight.js **10.7.3** custom bundle (mdBook ships 10.1.1 without Elixir/Prolog). Rebuild: in `notes-dev/highlight-bundle/`, `npm i highlight.js@10.7.3 esbuild`, edit `entry.js`, `npx esbuild entry.js --bundle --minify --format=iife --outfile=highlight.js`, copy to `assets/theme/highlight.js`, then `node langs.js > ../../.claude/skills/notes/assets/theme/highlight-languages.json` (check.py uses it to warn about unknown fence languages). Requires must stay static (`require('...')` per language), or esbuild fails. Aliases added: `iex`, `ex`, `exs` → elixir; `pl`, `pro` → prolog (this overrides Perl's `pl`).
 - PyMuPDF 1.28 (`import pymupdf`, falls back to `fitz`), numpy.
 
 Install on Fedora: `sudo dnf install cargo git`, `cargo install mdbook mdbook-katex mdbook-mermaid --locked`, `python3 -m pip install --user pymupdf numpy`, `~/.cargo/bin` on PATH. `doctor.py` prints the same.
 
 ## Status
 
-**Ready to use.** `~/bme/jegyzet` is the git repository and root: the skill in `.claude/skills/jegyzet/`, this folder, and one folder per class created by the user (`<class>/res/`). The hub runs as the systemd user service `jegyzet` on http://127.0.0.1:3000/. The hub is part of the repository: `hub/` holds its mdBook (book.toml, src/, theme/; the user may edit the page outside the `jegyzet:books` markers, whose content hub.py regenerates without dates so it only changes when a book does) and `hub/jegyzet.service`, which `install-service` writes with `%h` paths and links into `~/.config/systemd/user/`. Only `hub/book/` is ignored. A run commits `C` and `hub` together after `hub.py update`.
+**Ready to use.** `~/bme/notes` is the git repository and root: the skill in `.claude/skills/notes/`, this folder, and one folder per class created by the user (`<class>/res/`). The hub runs as the systemd user service `notes` on http://127.0.0.1:3000/. The hub is part of the repository: `hub/` holds its mdBook (book.toml, src/, theme/; the user may edit the page outside the `notes:books` markers, whose content hub.py regenerates without dates so it only changes when a book does) and `hub/notes.service`, which `install-service` writes with `%h` paths and links into `~/.config/systemd/user/`. Only `hub/book/` is ignored. A run commits `C` and `hub` together after `hub.py update`.
 
 How it was tested:
 
-- **Regression suite** `jegyzet-dev/test/test_scripts.py` (9 tests, ~10 s, no Claude, no LaTeX): PDF new → changed (only changed units are new work, transcripts and coverage carry over) → renamed → removed; duplicate sources and `--force --view-all --only`; unsupported and image sources; `.pptx` through a stand-in `soffice` and the failure without one; text sources split into sections, partial cuts, `set-many`, missing code reported per section, reviewed lines hidden after `--finalize`, changed and removed sections reported with their chapters; `.ipynb` sections with image outputs; formulas missing from a chapter; `cover.py changed`; the hub (list, routing, redirect, rebuild on change). Run it after every change to the scripts.
+- **Regression suite** `notes-dev/test/test_scripts.py` (9 tests, ~10 s, no Claude, no LaTeX): PDF new → changed (only changed units are new work, transcripts and coverage carry over) → renamed → removed; duplicate sources and `--force --view-all --only`; unsupported and image sources; `.pptx` through a stand-in `soffice` and the failure without one; text sources split into sections, partial cuts, `set-many`, missing code reported per section, reviewed lines hidden after `--finalize`, changed and removed sections reported with their chapters; `.ipynb` sections with image outputs; formulas missing from a chapter; `cover.py changed`; the hub (list, routing, redirect, rebuild on change). Run it after every change to the scripts.
 - **End-to-end runs by a fresh Claude** (2026-10-08), each a general-purpose subagent following SKILL.md in a scratch repo, the developing session answering as the user: `kvantum` (synthetic deck + export), `dekla` week 1 (fp1ea, three fp1 notebooks, khf1.exs), `dekla` week 2 as an update (fp2ea, fp2gy, fp2gy-megoldasok). All ended with 0 FAIL and good books; the merge put new material into the existing chapters without seams, and contradictions between weeks became findings. Every SKILL FEEDBACK item from those runs is fixed (see git history of this file for the list).
 - **Real decks**: `pdf_triage.py` flags on dp26a-fp1ea/fp2ea/fp3ea and the synthetic deck (table above) were rechecked after each heuristic change.
 
@@ -120,6 +120,6 @@ Not covered by a real file: a real `.pptx`/`.docx` (LibreOffice is not installed
 
 ## Testing the skill again
 
-After a change to a script: `python3 jegyzet-dev/test/test_scripts.py`. After a change to SKILL.md or a reference: an end-to-end run.
+After a change to a script: `python3 notes-dev/test/test_scripts.py`. After a change to SKILL.md or a reference: an end-to-end run.
 
-End-to-end: make a scratch git repo with `.claude/skills/jegyzet` copied in and one class folder. For a synthetic class run `jegyzet-dev/test/make_test_class.sh <folder>` (pdflatex with beamer); for a real one put copies of course files into `<folder>/<class>/res/` (copies only: the user's folders outside `~/bme/jegyzet` are never touched). Prompt for the fresh agent: "You stand in for Claude Code in a test of a skill. The user typed `/jegyzet <class>`. Setup: the university folder is …; the skill is at … (the value of `${CLAUDE_SKILL_DIR}`), `$ARGUMENTS` is `<class>`. Read `.claude/skills/jegyzet/SKILL.md` and follow it exactly. When it says to wait for the user, end your turn with the message you would show. Every time you end a turn, append a SKILL FEEDBACK section: every unclear instruction, script error, false alarm, wrong flag, guess, and disproportionate effort." Answer the outline with SendMessage, then read the book and the feedback. If two runs share a repo, tell each to commit only its class folder.
+End-to-end: make a scratch git repo with `.claude/skills/notes` copied in and one class folder. For a synthetic class run `notes-dev/test/make_test_class.sh <folder>` (pdflatex with beamer); for a real one put copies of course files into `<folder>/<class>/res/` (copies only: the user's folders outside `~/bme/notes` are never touched). Prompt for the fresh agent: "You stand in for Claude Code in a test of a skill. The user typed `/notes <class>`. Setup: the university folder is …; the skill is at … (the value of `${CLAUDE_SKILL_DIR}`), `$ARGUMENTS` is `<class>`. Read `.claude/skills/notes/SKILL.md` and follow it exactly. When it says to wait for the user, end your turn with the message you would show. Every time you end a turn, append a SKILL FEEDBACK section: every unclear instruction, script error, false alarm, wrong flag, guess, and disproportionate effort." Answer the outline with SendMessage, then read the book and the feedback. If two runs share a repo, tell each to commit only its class folder.

@@ -1,3 +1,3 @@
 # Summary
 
-[Jegyzetek](index.md)
+[Notes](index.md)

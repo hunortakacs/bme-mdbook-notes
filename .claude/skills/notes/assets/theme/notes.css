@@ -7,7 +7,7 @@ code, pre, .hljs {
     font-feature-settings: "liga" 0, "calt" 0;
 }
 
-/* Line numbers (the gutter is added by jegyzet.js). */
+/* Line numbers (the gutter is added by notes.js). */
 pre.has-ln {
     position: relative;
 }
@@ -34,8 +34,8 @@ pre.has-ln > .ln-gutter {
     font-variant-numeric: tabular-nums;
 }
 
-/* Whole-book reading progress (jegyzet.js). */
-#jz-progress {
+/* Whole-book reading progress (notes.js). */
+#notes-progress {
     position: fixed;
     inset: 0 0 auto 0;
     height: 3px;
@@ -43,21 +43,21 @@ pre.has-ln > .ln-gutter {
     background: transparent;
     transition: height 0.15s ease;
 }
-#jz-progress > .jz-fill {
+#notes-progress > .notes-fill {
     height: 100%;
     width: 0;
     background: var(--links);
     opacity: 0.75;
     transition: width 0.12s linear;
 }
-#jz-progress.jz-open {
+#notes-progress.notes-open {
     height: 7px;
     background: var(--table-border-color);
 }
-#jz-progress.jz-open > .jz-fill {
+#notes-progress.notes-open > .notes-fill {
     opacity: 1;
 }
-#jz-progress > .jz-label {
+#notes-progress > .notes-label {
     position: absolute;
     top: calc(var(--menu-bar-height, 50px) + 6px);   /* below the menu bar, clear of its buttons */
     right: 12px;
@@ -73,7 +73,7 @@ pre.has-ln > .ln-gutter {
     pointer-events: none;
     transition: opacity 0.15s ease;
 }
-#jz-progress.jz-open > .jz-label {
+#notes-progress.notes-open > .notes-label {
     opacity: 1;
 }
 
@@ -115,6 +115,6 @@ main .sources {
 }
 
 @media print {
-    #jz-progress { display: none; }
+    #notes-progress { display: none; }
     pre.has-ln > .ln-gutter { opacity: 0.6; }
 }

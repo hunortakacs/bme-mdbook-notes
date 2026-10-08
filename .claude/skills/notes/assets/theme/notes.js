@@ -59,7 +59,7 @@
         if (!pages.length) {
             return;
         }
-        const weights = window.JEGYZET_WEIGHTS || {};
+        const weights = window.NOTES_WEIGHTS || {};
         let total = 0;
         pages.forEach(function (p) {
             p.weight = weights[p.key] > 0 ? weights[p.key] : (weights.__default || 1);
@@ -76,14 +76,14 @@
         }
 
         const bar = document.createElement('div');
-        bar.id = 'jz-progress';
+        bar.id = 'notes-progress';
         bar.setAttribute('role', 'progressbar');
         bar.setAttribute('aria-valuemin', '0');
         bar.setAttribute('aria-valuemax', '100');
         const fill = document.createElement('div');
-        fill.className = 'jz-fill';
+        fill.className = 'notes-fill';
         const label = document.createElement('div');
-        label.className = 'jz-label';
+        label.className = 'notes-label';
         bar.appendChild(fill);
         bar.appendChild(label);
         document.body.appendChild(bar);
@@ -101,11 +101,11 @@
 
         let hideTimer = null;
         function open() {
-            bar.classList.add('jz-open');
+            bar.classList.add('notes-open');
             if (hideTimer) {
                 clearTimeout(hideTimer);
             }
-            hideTimer = setTimeout(function () { bar.classList.remove('jz-open'); }, 1800);
+            hideTimer = setTimeout(function () { bar.classList.remove('notes-open'); }, 1800);
         }
         // Open when the pointer is near the top edge. In fullscreen the browser may
         // cover the top pixels with its own toolbar, so a wider zone is used.
@@ -141,9 +141,9 @@
         }
         const a = document.createElement('a');
         a.href = '/';
-        a.title = 'Minden jegyzet';
-        a.setAttribute('aria-label', 'Minden jegyzet');
-        a.innerHTML = '<span class="fa-svg" id="jz-home-button"><svg xmlns="http://www.w3.org/2000/svg" ' +
+        a.title = 'All notes';
+        a.setAttribute('aria-label', 'All notes');
+        a.innerHTML = '<span class="fa-svg" id="notes-home-button"><svg xmlns="http://www.w3.org/2000/svg" ' +
             'viewBox="0 0 576 512"><path d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 ' +
             '8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 ' +
             '384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2' +

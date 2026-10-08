@@ -13,7 +13,7 @@ book/
     types.md             a chapter
     types/lists.md       its sub-chapters
     img/                 figures, named <source-slug>-<what>.png
-  theme/                 highlight.js, jegyzet.css, jegyzet.js, head.hbs, jegyzet-weights.js
+  theme/                 highlight.js, notes.css, notes.js, head.hbs, notes-weights.js
 ```
 
 - File names are short lowercase ASCII slugs of the topic (`mintaillesztes.md`, `types/lists.md`), without numbers: order lives in `SUMMARY.md`, so inserting a chapter never renames files.
@@ -140,6 +140,6 @@ Alt text says what the figure shows. Images are centred and limited to the text 
 python3 <skill>/scripts/check.py C      # builds as its last step and reports problems
 ```
 
-The user reads the books through the hub (`http://127.0.0.1:3000/C/`, the `jegyzet` systemd user service running `hub.py`), which rebuilds a book by itself after every change. `mdbook serve C/book --open` previews a single book. The hub serves each book under `/C/`, which is why `book.toml` sets `site-url = "/C/"`; keep it.
+The user reads the books through the hub (`http://127.0.0.1:3000/C/`, the `notes` systemd user service running `hub.py`), which rebuilds a book by itself after every change. `mdbook serve C/book --open` previews a single book. The hub serves each book under `/C/`, which is why `book.toml` sets `site-url = "/C/"`; keep it.
 
-`check.py` also regenerates `theme/jegyzet-weights.js` (words per chapter), which the progress bar uses to show the position in the whole book. Search is built in (`s` or the magnifier), and the print icon opens the whole book as one page.
+`check.py` also regenerates `theme/notes-weights.js` (words per chapter), which the progress bar uses to show the position in the whole book. Search is built in (`s` or the magnifier), and the print icon opens the whole book as one page.
