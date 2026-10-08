@@ -7,6 +7,11 @@ code, pre, .hljs {
     font-feature-settings: "liga" 0, "calt" 0;
 }
 
+/* Two tables in a row (a blank line between them in the source) get a gap; mdBook gives tables no vertical margin. */
+table {
+    margin-block-end: 1.2em;
+}
+
 /* Session prompts (iex>, >>>, $ ...; Pygments' Generic.Prompt) are dimmed, so the eye goes to the
    input; the session's output is plain text. Token colours are in pygments.css; `html` makes these
    rules more specific than its `.light code .gp`. A token Pygments cannot parse (a `...` placeholder)
