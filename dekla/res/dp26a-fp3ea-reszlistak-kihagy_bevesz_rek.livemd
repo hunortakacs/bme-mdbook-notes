@@ -1,0 +1,1702 @@
+<!-- livebook:{"persist_outputs":true} -->
+
+# Csúszóablakos technika, kihagy-bevesz rekurzió
+
+```elixir
+Mix.install([
+{:benchee, "~> 1.3"}
+])
+
+```
+
+## Csúszóablakos problémamegoldási technika
+
+Egy sorozat különféle szempontok szerint kiválasztott folytonos részsorozatait
+_csúszóablakos_ módszerrel állíthatjuk elő, egymásba ágyazott ismétlésekkel, azaz
+funkcionális nyelveken rekurzióval. A részeredményeket általában egy, esetleg több akkumulátorban
+gyűjtjük. Mivel a gyűjtéshez plusz paraméter(ek)re van szükség, rendszerint
+segédfüggvényeket is definiálunk.
+
+A példafeladat egy számlista maximális összegű folytonos részlistáinak az előállítása. A megoldásra a csúszóablakos technikát alkalmazzuk.
+
+Például az `[1, 2, 3, 4, -10, 4, 3, 2, 1]` lista maximális összegű folytonos részlistái ezek: `[1, 2, 3, 4]`, `[1, 2, 3, 4, -10, 4, 3, 2, 1]` és `[4, 3, 2, 1]`, összegük `10`.
+
+A függvény visszatérési értéke olyan pár legyen, amelynek első eleme a részlisták összege, második eleme ezen maximális összegű részlisták listája. A fenti példa esetén:
+`{10, [[1, 2, 3, 4], [1, 2, 3, 4, -10, 4, 3, 2, 1], [4, 3, 2, 1]]}`.
+
+A `reszlistak/1` függvény specifikációja:
+
+<!-- livebook:{"force_markdown":true} -->
+
+```elixir
+  @spec reszlistak(xs::[integer()]) :: {max::integer(), rss::[[integer()]]}
+  # rss az xs max összegű részlistáinak listája 
+```
+
+## 1. Számlista max. összegű folytonos részlistái – maximumkeresés a legvégén
+
+### 11. Számlista elejétől kezdődő összes folytonos részlistája
+
+```elixir
+defmodule Reszlistak11 do
+  def reszlistak([x|xs]), do: reszlistak(xs, [x], [[x]])
+  def reszlistak([]), do: []
+
+  def reszlistak([y|ys], ss, zss) do
+    ss_uj = [y|ss]
+    reszlistak(ys, ss_uj, [Enum.reverse(ss_uj) | zss])
+  end
+  def reszlistak([], _ss, zss), do: zss
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Reszlistak11, <<70, 79, 82, 49, 0, 0, 9, ...>>, ...}
+```
+
+```elixir
+Reszlistak11.reszlistak([1,2,3,4,5]) |> Enum.reverse()
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+[[1], [1, 2], [1, 2, 3], [1, 2, 3, 4], [1, 2, 3, 4, 5]]
+```
+
+### 12. Számlista összes folytonos részlistája
+
+```elixir
+defmodule Reszlistak12 do
+  def reszlistak(xxs), do: reszlistak(xxs, [])
+    
+  def reszlistak([_x|xs]=xxs, zss) do
+    reszlistak(xs, Reszlistak11.reszlistak(xxs) ++ zss)
+  end
+
+  def reszlistak([], zss), do: zss
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Reszlistak12, <<70, 79, 82, 49, 0, 0, 8, ...>>, ...}
+```
+
+```elixir
+Reszlistak12.reszlistak([1,2,3,4,5]) |> Enum.reverse()
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+[
+  [1],
+  [1, 2],
+  [1, 2, 3],
+  [1, 2, 3, 4],
+  [1, 2, 3, 4, 5],
+  [2],
+  [2, 3],
+  [2, 3, 4],
+  [2, 3, 4, 5],
+  [3],
+  [3, 4],
+  [3, 4, 5],
+  [4],
+  [4, 5],
+  [5]
+]
+```
+
+### 12x Számlista összes folytonos részlistája és ezek összege
+
+<!-- livebook:{"break_markdown":true} -->
+
+Kitérő: lássuk a részösszegeket is.
+
+```elixir
+defmodule Reszlistak12x do
+  def reszlistak(xs), do: reszlistak(Reszlistak12.reszlistak(xs), [])
+    
+  def reszlistak([xs|xss], zss), do: reszlistak(xss, [{Enum.sum(xs), xs} | zss]) 
+  def reszlistak([], zss), do: zss
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Reszlistak12x, <<70, 79, 82, 49, 0, 0, 8, ...>>, ...}
+```
+
+```elixir
+Reszlistak12x.reszlistak([1,2,-3,-4,5]) |> Enum.reverse()
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+[
+  {5, [5]},
+  {1, [-4, 5]},
+  {-4, [-4]},
+  {-2, [-3, -4, 5]},
+  {-7, [-3, -4]},
+  {-3, [-3]},
+  {0, [2, -3, -4, 5]},
+  {-5, [2, -3, -4]},
+  {-1, [2, -3]},
+  {2, [2]},
+  {1, [1, 2, -3, -4, 5]},
+  {-4, [1, 2, -3, -4]},
+  {0, [1, 2, -3]},
+  {3, [1, 2]},
+  {1, [1]}
+]
+```
+
+### 13. Számlista max. összegű folytonos részlistái
+
+```elixir
+defmodule Reszlistak13 do
+  @spec reszlistak(xs::[integer()]) :: {max::integer(), rss::[[integer()]]}
+  # rss az xs max összegű részlistáinak listája 
+  def reszlistak([_|_]=xs) do
+    [rs|rss] = Reszlistak12.reszlistak(xs)
+    reszlistak(rss, Enum.sum(rs), [rs])
+  end
+  def reszlistak([]), do: []
+    
+  @spec reszlistak(xs::[integer()], max::integer(), zss::[[integer()]]) :: rss::[[integer()]]
+  # rss az xs max összegű részlistáinak listája; a részlistákat zss-ben gyűjtjük 
+  def reszlistak([xs|xss], max, zss) do
+    sum = Enum.sum(xs)
+    cond do
+      sum > max -> reszlistak(xss, sum, [xs])
+      sum == max -> reszlistak(xss, max, [xs | zss])
+      true -> reszlistak(xss, max, zss) 
+    end
+  end 
+  def reszlistak([], max, zss), do: {max, zss}
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Reszlistak13, <<70, 79, 82, 49, 0, 0, 11, ...>>, ...}
+```
+
+```elixir
+Reszlistak13.reszlistak([1,2,13,4,5]) |> IO.inspect()
+Reszlistak13.reszlistak([1,2,13,4,-10,4,13,2,1]) |> IO.inspect()
+Reszlistak13.reszlistak([-13,-13,-13]) |> IO.inspect()
+Reszlistak13.reszlistak([0,0,0]) |> IO.inspect()
+Reszlistak13.reszlistak([-13]) |> IO.inspect()
+Reszlistak13.reszlistak([]) |> IO.inspect()
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{25, [[1, 2, 13, 4, 5]]}
+{30, [[1, 2, 13, 4, -10, 4, 13, 2, 1]]}
+{-13, [[-13], [-13], [-13]]}
+{0, [[0], [0, 0], [0, 0, 0], [0], [0, 0], [0]]}
+{-13, [[-13]]}
+[]
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+[]
+```
+
+## 2. Számlista max. összegű folytonos részlistái – maximumkiválasztás a részlisták gyűjtésekor
+
+### 21. Számlista elejétől kezdődő folytonos részlistái és összegük
+
+```elixir
+defmodule Reszlistak21 do
+  def reszlistak([x|xs]), do: reszlistak(xs, [x], [{x, [x]}])
+  def reszlistak([]), do: []
+
+  def reszlistak([y|ys], ss, zss) do
+    ss_uj = [y|ss]
+    reszlistak(ys, ss_uj, [{Enum.sum(ss_uj), Enum.reverse(ss_uj)} | zss])
+  end
+  def reszlistak([], _ss, zss), do: zss
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Reszlistak21, <<70, 79, 82, 49, 0, 0, 9, ...>>, ...}
+```
+
+```elixir
+Reszlistak21.reszlistak([1,2,3,4,5]) |> Enum.reverse() |> IO.inspect()
+Reszlistak21.reszlistak([1,2,3,-3,-2,5]) |> Enum.reverse() |> IO.inspect()
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+[
+  {1, [1]},
+  {3, [1, 2]},
+  {6, [1, 2, 3]},
+  {10, [1, 2, 3, 4]},
+  {15, [1, 2, 3, 4, 5]}
+]
+[
+  {1, [1]},
+  {3, [1, 2]},
+  {6, [1, 2, 3]},
+  {3, [1, 2, 3, -3]},
+  {1, [1, 2, 3, -3, -2]},
+  {6, [1, 2, 3, -3, -2, 5]}
+]
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+[
+  {1, [1]},
+  {3, [1, 2]},
+  {6, [1, 2, 3]},
+  {3, [1, 2, 3, -3]},
+  {1, [1, 2, 3, -3, -2]},
+  {6, [1, 2, 3, -3, -2, 5]}
+]
+```
+
+### 22. Számlista elejétől kezdődő, max. összegű folytonos részlistái
+
+<!-- livebook:{"break_markdown":true} -->
+
+#### 22a Számlista elejétől kezdődő, max. összegű folytonos részlistái
+
+```elixir
+defmodule Reszlistak22a do
+  def reszlistak([x|xs]), do: reszlistak(xs, [x], x, [[x]])
+  def reszlistak([]), do: []
+
+  def reszlistak([y|ys], ss, max, zss) do
+    ss_uj = [y|ss]
+    ss_uj_rev = Enum.reverse(ss_uj) # |> IO.inspect(label: "ss_uj_rev")
+    sum = Enum.sum(ss_uj_rev) # |> IO.inspect(label: "sum")
+    cond do
+      sum > max -> reszlistak(ys, ss_uj, sum, [ss_uj_rev])
+      sum == max -> reszlistak(ys, ss_uj, max, [ss_uj_rev | zss])
+      true -> reszlistak(ys, ss_uj, max, zss)
+    end
+  end
+  def reszlistak([], _ss, max, zss), do: {max, Enum.reverse(zss)}
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Reszlistak22a, <<70, 79, 82, 49, 0, 0, 11, ...>>, ...}
+```
+
+```elixir
+Reszlistak22a.reszlistak([1,2,3,-3,-2,5]) |> IO.inspect()
+Reszlistak22a.reszlistak([6,-6,1,2,3,-3,-2,5]) |> IO.inspect()
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{6, [[1, 2, 3], [1, 2, 3, -3, -2, 5]]}
+{6, [[6], [6, -6, 1, 2, 3], [6, -6, 1, 2, 3, -3, -2, 5]]}
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{6, [[6], [6, -6, 1, 2, 3], [6, -6, 1, 2, 3, -3, -2, 5]]}
+```
+
+#### 22b Számlista elejétől kezdődő, max. összegű folytonos részlistái `Enum.take`-kel
+
+```elixir
+defmodule Reszlistak22b do
+  def reszlistak(xs), do: reszlistak(xs, length(xs)-1, Enum.sum(xs), [xs])
+
+  def reszlistak(_xs, 0, max, zss), do: {max, zss}
+  def reszlistak(xs, len, max, zss) do
+    ss = Enum.take(xs, len)
+    sum = Enum.sum(ss)
+    cond do
+      sum > max -> reszlistak(xs, len-1, sum, [ss])
+      sum == max -> reszlistak(xs, len-1, max, [ss | zss])
+      true -> reszlistak(xs, len-1, max, zss)
+    end
+  end
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Reszlistak22b, <<70, 79, 82, 49, 0, 0, 10, ...>>, ...}
+```
+
+```elixir
+Reszlistak22b.reszlistak([1,2,3,-3,-2,5]) |> IO.inspect()
+Reszlistak22b.reszlistak([6,-6,1,2,3,-3,-2,5]) |> IO.inspect()
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{6, [[1, 2, 3], [1, 2, 3, -3, -2, 5]]}
+{6, [[6], [6, -6, 1, 2, 3], [6, -6, 1, 2, 3, -3, -2, 5]]}
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{6, [[6], [6, -6, 1, 2, 3], [6, -6, 1, 2, 3, -3, -2, 5]]}
+```
+
+### 23. Számlista max. összegű folytonos részlistái
+
+```elixir
+defmodule Reszlistak23 do
+  @type mxrls() :: ([integer()] -> [[integer()]])
+  @spec reszlistak(f::mxrls(), xs::[integer()]) :: {max::integer(), rss::[[integer()]]}
+  # rss az xs max összegű részlistáinak listája
+  # f egy számlista elejétől kezdődő, folytonos, max. összegű részlistákat adja eredményül
+  def reszlistak(mxrls, [_x|xs]=xxs), do: reszlistak(mxrls, xs, mxrls.(xxs))
+  def reszlistak(_mxrls, []), do: {}
+
+  def reszlistak(mxrls, [_y|ys]=yys, {maxsum, zss}) do
+    {max, mss} = mxrls.(yys)
+    cond do
+      max > maxsum -> reszlistak(mxrls, ys, {max, mss})
+      max == maxsum -> reszlistak(mxrls, ys, {maxsum, zss ++ mss}) # hatékonyság vs. sorrend!
+      true -> reszlistak(mxrls, ys, {maxsum, zss})
+    end
+  end
+  def reszlistak(_mxrls, [], maxlists), do: maxlists
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Reszlistak23, <<70, 79, 82, 49, 0, 0, 11, ...>>, ...}
+```
+
+```elixir
+(&Reszlistak22a.reszlistak/1) |> Reszlistak23.reszlistak([1,2,3,4,5]) |> IO.inspect()
+(&Reszlistak22a.reszlistak/1) |> Reszlistak23.reszlistak([1,2,3,4,-10,4,3,2,1]) |> IO.inspect()
+(&Reszlistak22b.reszlistak/1) |> Reszlistak23.reszlistak([1,2,3,4,5]) |> IO.inspect()
+(&Reszlistak22b.reszlistak/1) |> Reszlistak23.reszlistak([1,2,3,4,-10,4,3,2,1]) |> IO.inspect()
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{15, [[1, 2, 3, 4, 5]]}
+{10, [[1, 2, 3, 4], [1, 2, 3, 4, -10, 4, 3, 2, 1], [4, 3, 2, 1]]}
+{15, [[1, 2, 3, 4, 5]]}
+{10, [[1, 2, 3, 4], [1, 2, 3, 4, -10, 4, 3, 2, 1], [4, 3, 2, 1]]}
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{10, [[1, 2, 3, 4], [1, 2, 3, 4, -10, 4, 3, 2, 1], [4, 3, 2, 1]]}
+```
+
+## Max. összegű folytonos részlisták – futási idők összehasonlítása
+
+A futási idők mérésére véletlenszerű számok listáját fogjuk használni. 10 hosszúságú, a -5..5 tartományba eső számokat tartalmazó sorozatot pl. így állíthatunk elő:
+
+```elixir
+for _ <- 1..10, do: Enum.random(-5..5)
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+[-5, 4, -2, -2, -5, 0, 2, 1, 4, -3]
+```
+
+### Benchmarking: maximális összegű folytonos részlisták futási ideje
+
+```elixir
+xs = for _ <- 1..1000, do: Enum.random(-5..5)
+Benchee.run(
+  %{
+    "utolag keres"  => 
+      fn -> Reszlistak13.reszlistak(xs) end,
+    "menet kozben, sajat fv"  => 
+      fn -> Reszlistak23.reszlistak(&Reszlistak22a.reszlistak/1, xs) end,
+    "menet kozben, Enum.take"  =>
+      fn -> Reszlistak23.reszlistak(&Reszlistak22b.reszlistak/1, xs) end
+  }# , profile_after: true
+)
+:ok
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+Warning: the benchmark menet kozben, Enum.take is using an evaluated function.
+  Evaluated functions perform slower than compiled functions.
+  You can move the Benchee caller to a function in a module and invoke `Mod.fun()` instead.
+  Alternatively, you can move the benchmark into a benchmark.exs file and run mix run benchmark.exs
+
+Warning: the benchmark menet kozben, sajat fv is using an evaluated function.
+  Evaluated functions perform slower than compiled functions.
+  You can move the Benchee caller to a function in a module and invoke `Mod.fun()` instead.
+  Alternatively, you can move the benchmark into a benchmark.exs file and run mix run benchmark.exs
+
+Warning: the benchmark utolag keres is using an evaluated function.
+  Evaluated functions perform slower than compiled functions.
+  You can move the Benchee caller to a function in a module and invoke `Mod.fun()` instead.
+  Alternatively, you can move the benchmark into a benchmark.exs file and run mix run benchmark.exs
+
+Operating System: Linux
+CPU Information: AMD Ryzen AI 9 HX 370 w
+Number of Available Cores: 24
+Available memory: 93.58 GB
+Elixir 1.20.2
+Erlang 29.0.6
+JIT enabled: true
+
+Benchmark suite executing with the following configuration:
+warmup: 2 s
+time: 5 s
+memory time: 0 ns
+reduction time: 0 ns
+parallel: 1
+inputs: none specified
+Estimated total run time: 21 s
+Excluding outliers: false
+
+Benchmarking menet kozben, Enum.take ...
+Benchmarking menet kozben, sajat fv ...
+Benchmarking utolag keres ...
+Calculating statistics...
+Formatting results...
+
+Name                              ips        average  deviation         median         99th %
+menet kozben, sajat fv           2.26      442.21 ms     ±2.22%      438.00 ms      465.67 ms
+menet kozben, Enum.take          1.42      702.56 ms     ±1.30%      702.25 ms      720.61 ms
+utolag keres                     0.33     3016.53 ms    ±44.34%     3169.76 ms     4270.77 ms
+
+Comparison: 
+menet kozben, sajat fv           2.26
+menet kozben, Enum.take          1.42 - 1.59x slower +260.35 ms
+utolag keres                     0.33 - 6.82x slower +2574.31 ms
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+:ok
+```
+
+## Kihagy-bevesz (include-exclude) rekurzió
+
+### Kombinációk
+
+```elixir
+defmodule Kombinaciok do
+  def komb(ns), do: komb(ns, [])
+
+  defp komb([n | ns], acc) do
+    komb(ns, acc) ++ komb(ns, [n | acc])
+  end
+  defp komb([], acc), do: [acc]
+end
+
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Kombinaciok, <<70, 79, 82, 49, 0, 0, 7, ...>>, ...}
+```
+
+```elixir
+Kombinaciok.komb([1,2,3]) |> Enum.sort
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+[[], [1], [2], [2, 1], [3], [3, 1], [3, 2], [3, 2, 1]]
+```
+
+### Összeg testvéries elosztása
+
+<!-- livebook:{"break_markdown":true} -->
+
+Adott pénzérméket úgy kell elosztani két ember között, hogy a két összeg különbségének abszolút értéke a lehető legkisebb legyen (CEOI'1995 versenyfeladat).
+
+Legyen ez az érmék értékét tartalmazó lista:  `[28, 7, 11, 8, 9, 7, 27]`. Ekkor egyikük a `[9, 11, 28]` érméket kapja, melyek összege `48`, másikuk a többit, melyek összege `49`.
+
+```elixir
+defmodule ElosztS do
+  
+  def sort(ls), do: Enum.sort(ls, fn (a,b) -> b < a end)
+  
+  @type p_int() :: integer()
+  @type my_map() :: %{[p_int()] => p_int()}
+  @spec max_osszegek(map :: my_map()) :: resmap :: my_map()
+  def max_osszegek(map) do
+    maxval = Enum.max(Map.values(map))
+    for {k,v} <- map, v == maxval, into: %{}, do: {k, v}
+  end
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{:module, ElosztS, <<70, 79, 82, 49, 0, 0, 10, ...>>, ...}
+```
+
+```elixir
+defmodule Eloszt do
+
+  @spec eloszt(vals :: [EnumS.p_int()]) :: map :: EnumS.my_map 
+    # Legyen halfsum a vals pozitív egészlista összegének a fele (egész osztással).
+    # A map kulcs-érték párjaiban a kulcsok vals olyan max. összegű részlistái,
+    # melyek összege nem nagyobb halfsum-nál, az értékek pedig e részlisták összege.
+  
+  def eloszt([_,_|_] = vals) do
+    tot = Enum.sum(vals)
+    |> IO.inspect(label: "Listaösszeg")
+    tgt = div(tot, 2)
+    |> IO.inspect(label: "Célérték")
+
+    # vals = vals #Enum.sort(vals) #my_sort(vals) # rendezzük az értéklistát csökkenő sorrendben
+    # |> IO.inspect()
+    eloszt(Map.new(), vals, tgt, [], 0) # Map.new() === %{} # 0 jó-e?
+    # |> IO.inspect()
+    |> ElosztS.max_osszegek()
+  end
+  def eloszt(_), do: "A listának legalább kételeműnek kell lennie."
+
+  @spec eloszt(map  :: EnumS.my_map(),  # map-be gyűjtjük a részlistákat és összegüket 
+               vals :: [EnumS.p_int()], # a még feldolgozandó érmelista 
+               tgt  :: EnumS.p_int(),   # a célösszeg (nem változik)
+               curr :: [EnumS.p_int()], # a már összegyűjtött részlista
+               sum  :: EnumS.p_int())   # a már összegyűjtött részlista összege
+          :: resmap :: EnumS.my_map()   # a bővített map, a fv. eredménye
+  
+  defp eloszt(map, [val|vals], tgt, curr, sum) do
+    curr_new = [val | curr] # az aktuális érmével bővített részlista
+    sum_new = sum + val     # az aktuális érmével megnövelt összeg
+
+    # ha az új összeg nem nagyobb a célösszegnél, berakjuk a map-be, ha kisebb, nem
+    # figyeljük meg, hogyan használjuk a pipe-ot az esetleg bővített map továbbadására
+    (if sum_new <= tgt, do: Map.put(map, curr_new, sum_new), else: map)
+    |> eloszt(vals, tgt, curr_new, sum_new) # 1. ág: val-t bevesszük # feltételesen kihagyható
+    |> eloszt(vals, tgt, curr, sum) # 2. ág: val-t kihagyjuk
+  end
+  defp eloszt(map, [], _tgt, _curr, _sum), do: map
+end
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Eloszt, <<70, 79, 82, 49, 0, 0, 12, ...>>, ...}
+```
+
+```elixir
+Eloszt.eloszt([1, 2, 3, 4])
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+Listaösszeg: 10
+Célérték: 5
+{%{}, [1, 2, 3, 4], 5, [], 0}
+{%{[1] => 1}, [2, 3, 4], 5, [1], 1}
+{%{[1] => 1, [2, 1] => 3}, [3, 4], 5, [2, 1], 3}
+{%{[1] => 1, [2, 1] => 3}, [4], 5, [3, 2, 1], 6}
+{%{[1] => 1, [2, 1] => 3}, [4], 5, [2, 1], 3}
+{%{[1] => 1, [2, 1] => 3}, [3, 4], 5, [1], 1}
+{%{[1] => 1, [2, 1] => 3, [3, 1] => 4}, [4], 5, [3, 1], 4}
+{%{[1] => 1, [2, 1] => 3, [3, 1] => 4}, [4], 5, [1], 1}
+{%{[1] => 1, [2, 1] => 3, [3, 1] => 4, [4, 1] => 5}, [2, 3, 4], 5, [], 0}
+{%{[1] => 1, [2] => 2, [2, 1] => 3, [3, 1] => 4, [4, 1] => 5}, [3, 4], 5, [2],
+ 2}
+{%{[1] => 1, [2] => 2, [2, 1] => 3, [3, 1] => 4, [3, 2] => 5, [4, 1] => 5}, [4],
+ 5, [3, 2], 5}
+{%{[1] => 1, [2] => 2, [2, 1] => 3, [3, 1] => 4, [3, 2] => 5, [4, 1] => 5}, [4],
+ 5, [2], 2}
+{%{[1] => 1, [2] => 2, [2, 1] => 3, [3, 1] => 4, [3, 2] => 5, [4, 1] => 5},
+ [3, 4], 5, [], 0}
+{%{
+   [1] => 1,
+   [2] => 2,
+   [2, 1] => 3,
+   [3] => 3,
+   [3, 1] => 4,
+   [3, 2] => 5,
+   [4, 1] => 5
+ }, [4], 5, [3], 3}
+{%{
+   [1] => 1,
+   [2] => 2,
+   [2, 1] => 3,
+   [3] => 3,
+   [3, 1] => 4,
+   [3, 2] => 5,
+   [4, 1] => 5
+ }, [4], 5, [], 0}
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+%{[3, 2] => 5, [4, 1] => 5}
+```
+
+```elixir
+Eloszt.eloszt([1,2,3,4,5]) |> IO.inspect()
+Eloszt.eloszt([4,1,2,5,3]) |> IO.inspect()
+Eloszt.eloszt([4,1,2,5,6,3,7]) |> IO.inspect()
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+...
+   [1, 4] => 5,
+   [6, 2] => 8,
+   [6, 1, 4] => 11,
+   [3, 5, 4] => 12,
+   [7, 1, 4] => 12,
+   [6, 1] => 7,
+   [3, 2, 1, 4] => 10,
+   [6, 2, 1, 4] => 13,
+   [7, 5, 1] => 13,
+   [3, 1, 4] => 8,
+   [3, 5, 1, 4] => 13,
+   [7, 3, 2, 1] => 13,
+   [2, 1] => 3,
+   [7, 2, 1] => 10,
+   [7, 1] => 8,
+   [6, 4] => 10,
+   [7, 4] => 11,
+   [4] => 4,
+   [3, 5, 2, 4] => 14,
+   [6, 5, 1] => 12,
+   [6, 2, 4] => 12,
+   [2, 4] => 6,
+   [5, 4] => 9,
+   [2, 1, 4] => 7,
+   [5, 2, 4] => 11,
+   [3, 6, 1] => 10,
+   [1] => 1,
+   [5, 1] => 6,
+   [3, 5, 2, 1] => 11,
+   [3, 6, ...] => 11,
+   ...
+ }, ...}
+{%{
+   [7, 2, 1, 4] => 14,
+   [3, 6, 2, 1] => 12,
+   [5, 2] => 7,
+   [3, 5, 1] => 9,
+   [3, 4] => 7,
+   [3, 2, 4] => 9,
+   [7, 5, 2] => 14,
+   [7, 2, 4] => 13,
+   [3, 6, 1, 4] => 14,
+   [5, 2, 1, 4] => 12,
+   [7, 6, 1] => 14,
+   [7, 3, 4] => 14,
+   [7, 3, 1] => 11,
+   [3, 1] => 4,
+   [6, 2, 1] => 9,
+   [3, 2, 1] => 6,
+   [6, 5, 2] => 13,
+   [6, 5, 2, 1] => 14,
+   [5, 1, 4] => 10,
+   [2] => 2,
+   [3, 6, 4] => 13,
+   [5, 2, 1] => 8,
+   [1, 4] => 5,
+   [6, 2] => 8,
+   [6, 1, 4] => 11,
+   [3, 5, 4] => 12,
+   [7, 1, 4] => 12,
+   [6, 1] => 7,
+   [3, 2, 1, 4] => 10,
+   [6, 2, 1, 4] => 13,
+   [7, 5, 1] => 13,
+   [3, 1, 4] => 8,
+   [3, 5, 1, 4] => 13,
+   [7, 3, 2, 1] => 13,
+   [2, 1] => 3,
+   [7, 2, 1] => 10,
+   [7, 1] => 8,
+   [6, 4] => 10,
+   [7, 4] => 11,
+   [4] => 4,
+   [3, 5, 2, 4] => 14,
+   [6, 5, 1] => 12,
+   [6, 2, 4] => 12,
+   [3, 2] => 5,
+   [2, 4] => 6,
+   [5, 4] => 9,
+   [2, 1, 4] => 7,
+   [5, 2, 4] => 11,
+   [3, 6, 1] => 10,
+   [1] => 1,
+   [5, 1] => 6,
+   [3, 5, 2, 1] => 11,
+   ...
+ }, ...}
+{%{
+   [7, 2, 1, 4] => 14,
+   [3, 6, 2, 1] => 12,
+   [5, 2] => 7,
+   [3, 5, 1] => 9,
+   [3, 4] => 7,
+   [3, 2, 4] => 9,
+   [7, 5, 2] => 14,
+   [7, 2, 4] => 13,
+   [3, 6, 1, 4] => 14,
+   [5, 2, 1, 4] => 12,
+   [7, 6, 1] => 14,
+   [7, 3, 4] => 14,
+   [7, 3, 1] => 11,
+   [3, 1] => 4,
+   [6, 2, 1] => 9,
+   [3, 2, 1] => 6,
+   [6, 5, 2] => 13,
+   [6, 5, 2, 1] => 14,
+   [5, 1, 4] => 10,
+   [2] => 2,
+   [3, 6, 4] => 13,
+   [5, 2, 1] => 8,
+   [1, 4] => 5,
+   [6, 2] => 8,
+   [6, 1, 4] => 11,
+   [3, 5, 4] => 12,
+   [7, 1, 4] => 12,
+   [6, 1] => 7,
+   [3, 2, 1, 4] => 10,
+   [6, 2, 1, 4] => 13,
+   [7, 3, 2] => 12,
+   [7, 5, 1] => 13,
+   [3, 1, 4] => 8,
+   [3, 5, 1, 4] => 13,
+   [7, 3, 2, 1] => 13,
+   [2, 1] => 3,
+   [7, 2, 1] => 10,
+   [7, 1] => 8,
+   [6, 4] => 10,
+   [7, 4] => 11,
+   [4] => 4,
+   [3, 5, 2, 4] => 14,
+   [6, 5, 1] => 12,
+   [6, 2, 4] => 12,
+   [3, 2] => 5,
+   [2, 4] => 6,
+   [5, 4] => 9,
+   [2, 1, 4] => 7,
+   [5, 2, 4] => 11,
+   [3, 6, 1] => 10,
+   [1] => 1,
+   [5, 1] => 6,
+   [...] => 11,
+   ...
+ }, ...}
+{%{
+   [7, 2, 1, 4] => 14,
+   [3, 6, 2, 1] => 12,
+   [5, 2] => 7,
+   [3, 5, 1] => 9,
+   [3, 4] => 7,
+   [3, 2, 4] => 9,
+   [7, 5, 2] => 14,
+   [7, 2, 4] => 13,
+   [3, 6, 1, 4] => 14,
+   [5, 2, 1, 4] => 12,
+   [7, 6, 1] => 14,
+   [7, 3, 4] => 14,
+   [7, 3, 1] => 11,
+   [3, 1] => 4,
+   [6, 2, 1] => 9,
+   [3, 2, 1] => 6,
+   [6, 5, 2] => 13,
+   [6, 5, 2, 1] => 14,
+   [5, 1, 4] => 10,
+   [2] => 2,
+   [3, 6, 4] => 13,
+   [5, 2, 1] => 8,
+   [1, 4] => 5,
+   [6, 2] => 8,
+   [6, 1, 4] => 11,
+   [3, 5, 4] => 12,
+   [7, 1, 4] => 12,
+   [6, 1] => 7,
+   [3, 2, 1, 4] => 10,
+   [6, 2, 1, 4] => 13,
+   [7, 3, 2] => 12,
+   [7, 5, 1] => 13,
+   [3, 1, 4] => 8,
+   [3, 5, 1, 4] => 13,
+   [7, 3, 2, 1] => 13,
+   [2, 1] => 3,
+   [7, 2, 1] => 10,
+   [7, 2] => 9,
+   [7, 1] => 8,
+   [6, 4] => 10,
+   [7, 4] => 11,
+   [4] => 4,
+   [3, 5, 2, 4] => 14,
+   [6, 5, 1] => 12,
+   [6, 2, 4] => 12,
+   [3, 2] => 5,
+   [2, 4] => 6,
+   [5, 4] => 9,
+   [2, 1, 4] => 7,
+   [5, 2, 4] => 11,
+   [3, 6, 1] => 10,
+   [1] => 1,
+   [...] => 6,
+   ...
+ }, ...}
+{%{
+   [7, 2, 1, 4] => 14,
+   [3, 6, 2, 1] => 12,
+   [5, 2] => 7,
+   [3, 5, 1] => 9,
+   [3, 4] => 7,
+   [3, 2, 4] => 9,
+   [7, 5, 2] => 14,
+   [7, 2, 4] => 13,
+   [3, 6, 1, 4] => 14,
+   [5, 2, 1, 4] => 12,
+   [7, 6, 1] => 14,
+   [7, 3, 4] => 14,
+   [7, 3, 1] => 11,
+   [3, 1] => 4,
+   [6, 2, 1] => 9,
+   [3, 2, 1] => 6,
+   [6, 5, 2] => 13,
+   [6, 5, 2, 1] => 14,
+   [5, 1, 4] => 10,
+   [2] => 2,
+   [3, 6, 4] => 13,
+   [5, 2, 1] => 8,
+   [1, 4] => 5,
+   [6, 2] => 8,
+   [6, 1, 4] => 11,
+   [3, 5, 4] => 12,
+   [7, 1, 4] => 12,
+   [6, 1] => 7,
+   [3, 2, 1, 4] => 10,
+   [6, 2, 1, 4] => 13,
+   [7, 3, 2] => 12,
+   [7, 5, 1] => 13,
+   [3, 1, 4] => 8,
+   [5] => 5,
+   [3, 5, 1, 4] => 13,
+   [7, 3, 2, 1] => 13,
+   [2, 1] => 3,
+   [7, 2, 1] => 10,
+   [7, 2] => 9,
+   [7, 1] => 8,
+   [6, 4] => 10,
+   [7, 4] => 11,
+   [4] => 4,
+   [3, 5, 2, 4] => 14,
+   [6, 5, 1] => 12,
+   [6, 2, 4] => 12,
+   [3, 2] => 5,
+   [2, 4] => 6,
+   [5, 4] => 9,
+   [2, 1, 4] => 7,
+   [5, 2, 4] => 11,
+   [3, 6, 1] => 10,
+   [...] => 1,
+   ...
+ }, ...}
+{%{
+   [7, 2, 1, 4] => 14,
+   [3, 6, 2, 1] => 12,
+   [5, 2] => 7,
+   [3, 5, 1] => 9,
+   [3, 4] => 7,
+   [3, 2, 4] => 9,
+   [7, 5, 2] => 14,
+   [7, 2, 4] => 13,
+   [3, 6, 1, 4] => 14,
+   [5, 2, 1, 4] => 12,
+   [7, 6, 1] => 14,
+   [6, 5] => 11,
+   [7, 3, 4] => 14,
+   [7, 3, 1] => 11,
+   [3, 1] => 4,
+   [6, 2, 1] => 9,
+   [3, 2, 1] => 6,
+   [6, 5, 2] => 13,
+   [6, 5, 2, 1] => 14,
+   [5, 1, 4] => 10,
+   [2] => 2,
+   [3, 6, 4] => 13,
+   [5, 2, 1] => 8,
+   [1, 4] => 5,
+   [6, 2] => 8,
+   [6, 1, 4] => 11,
+   [3, 5, 4] => 12,
+   [7, 1, 4] => 12,
+   [6, 1] => 7,
+   [3, 2, 1, 4] => 10,
+   [6, 2, 1, 4] => 13,
+   [7, 3, 2] => 12,
+   [7, 5, 1] => 13,
+   [3, 1, 4] => 8,
+   [5] => 5,
+   [3, 5, 1, 4] => 13,
+   [7, 3, 2, 1] => 13,
+   [2, 1] => 3,
+   [7, 2, 1] => 10,
+   [7, 2] => 9,
+   [7, 1] => 8,
+   [6, 4] => 10,
+   [7, 4] => 11,
+   [4] => 4,
+   [3, 5, 2, 4] => 14,
+   [6, 5, 1] => 12,
+   [6, 2, 4] => 12,
+   [3, 2] => 5,
+   [2, 4] => 6,
+   [5, 4] => 9,
+   [2, 1, 4] => 7,
+   [5, 2, 4] => 11,
+   [3, ...] => 10,
+   ...
+ }, ...}
+{%{
+   [7, 2, 1, 4] => 14,
+   [3, 6, 2, 1] => 12,
+   [5, 2] => 7,
+   [3, 5, 1] => 9,
+   [3, 4] => 7,
+   [3, 2, 4] => 9,
+   [7, 5, 2] => 14,
+   [7, 2, 4] => 13,
+   [3, 6, 1, 4] => 14,
+   [5, 2, 1, 4] => 12,
+   [7, 6, 1] => 14,
+   [6, 5] => 11,
+   [7, 3, 4] => 14,
+   [7, 3, 1] => 11,
+   [3, 1] => 4,
+   [6, 2, 1] => 9,
+   [3, 2, 1] => 6,
+   [6, 5, 2] => 13,
+   [6, 5, 2, 1] => 14,
+   [3, 6, 5] => 14,
+   [5, 1, 4] => 10,
+   [2] => 2,
+   [3, 6, 4] => 13,
+   [5, 2, 1] => 8,
+   [1, 4] => 5,
+   [6, 2] => 8,
+   [6, 1, 4] => 11,
+   [3, 5, 4] => 12,
+   [7, 1, 4] => 12,
+   [6, 1] => 7,
+   [3, 2, 1, 4] => 10,
+   [6, 2, 1, 4] => 13,
+   [7, 3, 2] => 12,
+   [7, 5, 1] => 13,
+   [3, 1, 4] => 8,
+   [5] => 5,
+   [3, 5, 1, 4] => 13,
+   [7, 3, 2, 1] => 13,
+   [2, 1] => 3,
+   [7, 2, 1] => 10,
+   [7, 2] => 9,
+   [7, 1] => 8,
+   [6, 4] => 10,
+   [7, 4] => 11,
+   [4] => 4,
+   [3, 5, 2, 4] => 14,
+   [6, 5, 1] => 12,
+   [6, 2, 4] => 12,
+   [3, 2] => 5,
+   [2, 4] => 6,
+   [5, 4] => 9,
+   [2, 1, 4] => 7,
+   [5, ...] => 11,
+   ...
+ }, ...}
+{%{
+   [7, 2, 1, 4] => 14,
+   [3, 6, 2, 1] => 12,
+   [5, 2] => 7,
+   [3, 5, 1] => 9,
+   [3, 4] => 7,
+   [3, 2, 4] => 9,
+   [7, 5, 2] => 14,
+   [7, 2, 4] => 13,
+   [3, 6, 1, 4] => 14,
+   [5, 2, 1, 4] => 12,
+   [7, 6, 1] => 14,
+   [6, 5] => 11,
+   [7, 3, 4] => 14,
+   [7, 3, 1] => 11,
+   [3, 1] => 4,
+   [6, 2, 1] => 9,
+   [3, 2, 1] => 6,
+   [6, 5, 2] => 13,
+   [6, 5, 2, 1] => 14,
+   [3, 6, 5] => 14,
+   [5, 1, 4] => 10,
+   [2] => 2,
+   [3, 6, 4] => 13,
+   [5, 2, 1] => 8,
+   [1, 4] => 5,
+   [6, 2] => 8,
+   [6, 1, 4] => 11,
+   [3, 5, 4] => 12,
+   [7, 1, 4] => 12,
+   [6, 1] => 7,
+   [3, 2, 1, 4] => 10,
+   [6, 2, 1, 4] => 13,
+   [7, 3, 2] => 12,
+   [7, 5, 1] => 13,
+   [3, 1, 4] => 8,
+   [5] => 5,
+   [3, 5, 1, 4] => 13,
+   [7, 3, 2, 1] => 13,
+   [2, 1] => 3,
+   [7, 2, 1] => 10,
+   [7, 2] => 9,
+   [7, 1] => 8,
+   [6, 4] => 10,
+   [7, 4] => 11,
+   [4] => 4,
+   [3, 5, 2, 4] => 14,
+   [6, 5, 1] => 12,
+   [6, 2, 4] => 12,
+   [3, 2] => 5,
+   [2, 4] => 6,
+   [5, 4] => 9,
+   [2, 1, 4] => 7,
+   [5, ...] => 11,
+   ...
+ }, ...}
+{%{
+   [7, 2, 1, 4] => 14,
+   [3, 6, 2, 1] => 12,
+   [5, 2] => 7,
+   [3, 5, 1] => 9,
+   [3, 4] => 7,
+   [3, 2, 4] => 9,
+   [7, 5, 2] => 14,
+   [7, 2, 4] => 13,
+   [3, 6, 1, 4] => 14,
+   [5, 2, 1, 4] => 12,
+   [7, 6, 1] => 14,
+   [6, 5] => 11,
+   [7, 3, 4] => 14,
+   [7, 3, 1] => 11,
+   [3, 1] => 4,
+   [6, 2, 1] => 9,
+   [3, 2, 1] => 6,
+   [6, 5, 2] => 13,
+   [6, 5, 2, 1] => 14,
+   [3, 6, 5] => 14,
+   [5, 1, 4] => 10,
+   [2] => 2,
+   [3, 6, 4] => 13,
+   [5, 2, 1] => 8,
+   [1, 4] => 5,
+   [6, 2] => 8,
+   [6, 1, 4] => 11,
+   [3, 5, 4] => 12,
+   [7, 1, 4] => 12,
+   [6, 1] => 7,
+   [3, 2, 1, 4] => 10,
+   [6, 2, 1, 4] => 13,
+   [7, 3, 2] => 12,
+   [7, 5, 1] => 13,
+   [3, 1, 4] => 8,
+   [5] => 5,
+   [3, 5, 1, 4] => 13,
+   [7, 3, 2, 1] => 13,
+   [2, 1] => 3,
+   [7, 2, 1] => 10,
+   [7, 2] => 9,
+   [7, 1] => 8,
+   [6, 4] => 10,
+   [7, 4] => 11,
+   [4] => 4,
+   [3, 5, 2, 4] => 14,
+   [6, 5, 1] => 12,
+   [6, 2, 4] => 12,
+   [3, 2] => 5,
+   [2, 4] => 6,
+   [5, 4] => 9,
+   [2, 1, 4] => 7,
+   [5, ...] => 11,
+   ...
+ }, ...}
+{%{
+   [7, 2, 1, 4] => 14,
+   [3, 6, 2, 1] => 12,
+   [5, 2] => 7,
+   [3, 5, 1] => 9,
+   [3, 4] => 7,
+   [3, 5] => 8,
+   [3, 2, 4] => 9,
+   [7, 5, 2] => 14,
+   [7, 2, 4] => 13,
+   [3, 6, 1, 4] => 14,
+   [5, 2, 1, 4] => 12,
+   [7, 6, 1] => 14,
+   [6, 5] => 11,
+   [7, 3, 4] => 14,
+   [7, 3, 1] => 11,
+   [3, 1] => 4,
+   [6, 2, 1] => 9,
+   [3, 2, 1] => 6,
+   [6, 5, 2] => 13,
+   [6, 5, 2, 1] => 14,
+   [3, 6, 5] => 14,
+   [5, 1, 4] => 10,
+   [2] => 2,
+   [3, 6, 4] => 13,
+   [5, 2, 1] => 8,
+   [1, 4] => 5,
+   [6, 2] => 8,
+   [6, 1, 4] => 11,
+   [3, 5, 4] => 12,
+   [7, 1, 4] => 12,
+   [6, 1] => 7,
+   [3, 2, 1, 4] => 10,
+   [6, 2, 1, 4] => 13,
+   [7, 3, 2] => 12,
+   [7, 5, 1] => 13,
+   [3, 1, 4] => 8,
+   [5] => 5,
+   [3, 5, 1, 4] => 13,
+   [7, 3, 2, 1] => 13,
+   [2, 1] => 3,
+   [7, 2, 1] => 10,
+   [7, 2] => 9,
+   [7, 1] => 8,
+   [6, 4] => 10,
+   [7, 4] => 11,
+   [4] => 4,
+   [3, 5, 2, 4] => 14,
+   [6, 5, 1] => 12,
+   [6, 2, 4] => 12,
+   [3, 2] => 5,
+   [2, 4] => 6,
+   [5, 4] => 9,
+   [2, 1, ...] => 7,
+   ...
+ }, ...}
+{%{
+   [7, 2, 1, 4] => 14,
+   [3, 6, 2, 1] => 12,
+   [5, 2] => 7,
+   [3, 5, 1] => 9,
+   [3, 4] => 7,
+   [3, 5] => 8,
+   [3, 2, 4] => 9,
+   [7, 5, 2] => 14,
+   [7, 2, 4] => 13,
+   [3, 6, 1, 4] => 14,
+   [5, 2, 1, 4] => 12,
+   [7, 6, 1] => 14,
+   [6, 5] => 11,
+   [7, 3, 4] => 14,
+   [7, 3, 1] => 11,
+   [3, 1] => 4,
+   [6, 2, 1] => 9,
+   [3, 2, 1] => 6,
+   [6, 5, 2] => 13,
+   [6, 5, 2, 1] => 14,
+   [3, 6, 5] => 14,
+   [5, 1, 4] => 10,
+   [2] => 2,
+   [3, 6, 4] => 13,
+   [5, 2, 1] => 8,
+   [1, 4] => 5,
+   [6, 2] => 8,
+   [6, 1, 4] => 11,
+   [3, 5, 4] => 12,
+   [7, 1, 4] => 12,
+   [6, 1] => 7,
+   [3, 2, 1, 4] => 10,
+   [6, 2, 1, 4] => 13,
+   [7, 3, 2] => 12,
+   [7, 5, 1] => 13,
+   [3, 1, 4] => 8,
+   [5] => 5,
+   [3, 5, 1, 4] => 13,
+   [7, 3, 2, 1] => 13,
+   [2, 1] => 3,
+   [7, 2, 1] => 10,
+   [7, 2] => 9,
+   [7, 1] => 8,
+   [6, 4] => 10,
+   [7, 4] => 11,
+   [4] => 4,
+   [3, 5, 2, 4] => 14,
+   [6, 5, 1] => 12,
+   [6, 2, 4] => 12,
+   [3, 2] => 5,
+   [2, 4] => 6,
+   [5, 4] => 9,
+   [2, 1, ...] => 7,
+   ...
+ }, ...}
+{%{
+   [7, 2, 1, 4] => 14,
+   [3, 6, 2, 1] => 12,
+   [5, 2] => 7,
+   [3, 5, 1] => 9,
+   [3, 4] => 7,
+   [3, 5] => 8,
+   [3, 2, 4] => 9,
+   [7, 5, 2] => 14,
+   [7, 2, 4] => 13,
+   [3, 6, 1, 4] => 14,
+   [5, 2, 1, 4] => 12,
+   [7, 6, 1] => 14,
+   [7, 5] => 12,
+   [6, 5] => 11,
+   [7, 3, 4] => 14,
+   [7, 3, 1] => 11,
+   [3, 1] => 4,
+   [6, 2, 1] => 9,
+   [3, 2, 1] => 6,
+   [6, 5, 2] => 13,
+   [6, 5, 2, 1] => 14,
+   [3, 6, 5] => 14,
+   [5, 1, 4] => 10,
+   [2] => 2,
+   [3, 6, 4] => 13,
+   [5, 2, 1] => 8,
+   [1, 4] => 5,
+   [6, 2] => 8,
+   [6, 1, 4] => 11,
+   [3, 5, 4] => 12,
+   [7, 1, 4] => 12,
+   [6, 1] => 7,
+   [3, 2, 1, 4] => 10,
+   [6, 2, 1, 4] => 13,
+   [7, 3, 2] => 12,
+   [7, 5, 1] => 13,
+   [3, 1, 4] => 8,
+   [5] => 5,
+   [3, 5, 1, 4] => 13,
+   [7, 3, 2, 1] => 13,
+   [2, 1] => 3,
+   [7, 2, 1] => 10,
+   [7, 2] => 9,
+   [7, 1] => 8,
+   [6, 4] => 10,
+   [7, 4] => 11,
+   [4] => 4,
+   [3, 5, 2, 4] => 14,
+   [6, 5, 1] => 12,
+   [6, 2, 4] => 12,
+   [3, 2] => 5,
+   [2, 4] => 6,
+   [5, 4] => 9,
+   ...
+ }, ...}
+{%{
+   [7, 2, 1, 4] => 14,
+   [3, 6, 2, 1] => 12,
+   [5, 2] => 7,
+   [3, 5, 1] => 9,
+   [3, 4] => 7,
+   [3, 5] => 8,
+   [3, 2, 4] => 9,
+   [7, 5, 2] => 14,
+   [7, 2, 4] => 13,
+   [3, 6, 1, 4] => 14,
+   [5, 2, 1, 4] => 12,
+   [7, 6, 1] => 14,
+   [7, 5] => 12,
+   [6, 5] => 11,
+   [7, 3, 4] => 14,
+   [7, 3, 1] => 11,
+   [3, 1] => 4,
+   [6, 2, 1] => 9,
+   [3, 2, 1] => 6,
+   [6, 5, 2] => 13,
+   [6, 5, 2, 1] => 14,
+   [3, 6, 5] => 14,
+   [5, 1, 4] => 10,
+   [2] => 2,
+   [3, 6, 4] => 13,
+   [5, 2, 1] => 8,
+   [6] => 6,
+   [1, 4] => 5,
+   [6, 2] => 8,
+   [6, 1, 4] => 11,
+   [3, 5, 4] => 12,
+   [7, 1, 4] => 12,
+   [6, 1] => 7,
+   [3, 2, 1, 4] => 10,
+   [6, 2, 1, 4] => 13,
+   [7, 3, 2] => 12,
+   [7, 5, 1] => 13,
+   [3, 1, 4] => 8,
+   [5] => 5,
+   [3, 5, 1, 4] => 13,
+   [7, 3, 2, 1] => 13,
+   [2, 1] => 3,
+   [7, 2, 1] => 10,
+   [7, 2] => 9,
+   [7, 1] => 8,
+   [6, 4] => 10,
+   [7, 4] => 11,
+   [4] => 4,
+   [3, 5, 2, 4] => 14,
+   [6, 5, 1] => 12,
+   [6, 2, 4] => 12,
+   [3, 2] => 5,
+   [2, 4] => 6,
+   [...] => 9,
+   ...
+ }, ...}
+{%{
+   [7, 2, 1, 4] => 14,
+   [3, 6, 2, 1] => 12,
+   [5, 2] => 7,
+   [3, 5, 1] => 9,
+   [3, 4] => 7,
+   [3, 5] => 8,
+   [3, 2, 4] => 9,
+   [7, 5, 2] => 14,
+   [7, 2, 4] => 13,
+   [3, 6, 1, 4] => 14,
+   [5, 2, 1, 4] => 12,
+   [7, 6, 1] => 14,
+   [7, 5] => 12,
+   [6, 5] => 11,
+   [7, 3, 4] => 14,
+   [7, 3, 1] => 11,
+   [3, 1] => 4,
+   [6, 2, 1] => 9,
+   [3, 2, 1] => 6,
+   [6, 5, 2] => 13,
+   [6, 5, 2, 1] => 14,
+   [3, 6, 5] => 14,
+   [5, 1, 4] => 10,
+   [2] => 2,
+   [3, 6, 4] => 13,
+   [5, 2, 1] => 8,
+   [6] => 6,
+   [1, 4] => 5,
+   [6, 2] => 8,
+   [6, 1, 4] => 11,
+   [3, 5, 4] => 12,
+   [7, 1, 4] => 12,
+   [6, 1] => 7,
+   [3, 2, 1, 4] => 10,
+   [6, 2, 1, 4] => 13,
+   [7, 3, 2] => 12,
+   [7, 5, 1] => 13,
+   [3, 1, 4] => 8,
+   [5] => 5,
+   [3, 5, 1, 4] => 13,
+   [7, 3, 2, 1] => 13,
+   [2, 1] => 3,
+   [7, 2, 1] => 10,
+   [7, 2] => 9,
+   [7, 1] => 8,
+   [6, 4] => 10,
+   [7, 4] => 11,
+   [4] => 4,
+   [3, 5, 2, 4] => 14,
+   [6, 5, 1] => 12,
+   [6, 2, 4] => 12,
+   [3, 2] => 5,
+   [2, 4] => 6,
+   [...] => 9,
+   ...
+ }, ...}
+{%{
+   [7, 2, 1, 4] => 14,
+   [3, 6, 2, 1] => 12,
+   [5, 2] => 7,
+   [3, 5, 1] => 9,
+   [3, 4] => 7,
+   [3, 5] => 8,
+   [3, 2, 4] => 9,
+   [7, 5, 2] => 14,
+   [7, 2, 4] => 13,
+   [3, 6, 1, 4] => 14,
+   [5, 2, 1, 4] => 12,
+   [7, 6, 1] => 14,
+   [7, 5] => 12,
+   [6, 5] => 11,
+   [7, 3, 4] => 14,
+   [7, 3, 1] => 11,
+   [3, 1] => 4,
+   [6, 2, 1] => 9,
+   [3, 2, 1] => 6,
+   [6, 5, 2] => 13,
+   [6, 5, 2, 1] => 14,
+   [3, 6, 5] => 14,
+   [5, 1, 4] => 10,
+   [2] => 2,
+   [3, 6, 4] => 13,
+   [5, 2, 1] => 8,
+   [6] => 6,
+   [1, 4] => 5,
+   [6, 2] => 8,
+   [6, 1, 4] => 11,
+   [3, 5, 4] => 12,
+   [7, 1, 4] => 12,
+   [6, 1] => 7,
+   [3, 2, 1, 4] => 10,
+   [6, 2, 1, 4] => 13,
+   [7, 3, 2] => 12,
+   [7, 5, 1] => 13,
+   [3, 1, 4] => 8,
+   [5] => 5,
+   [3, 5, 1, 4] => 13,
+   [7, 3, 2, 1] => 13,
+   [2, 1] => 3,
+   [7, 2, 1] => 10,
+   [7, 2] => 9,
+   [7, 1] => 8,
+   [6, 4] => 10,
+   [7, 4] => 11,
+   [4] => 4,
+   [3, 5, 2, 4] => 14,
+   [6, 5, 1] => 12,
+   [6, 2, 4] => 12,
+   [3, 2] => 5,
+   [2, 4] => 6,
+   [...] => 9,
+   ...
+ }, ...}
+{%{
+   [7, 2, 1, 4] => 14,
+   [3, 6, 2, 1] => 12,
+   [5, 2] => 7,
+   [3, 5, 1] => 9,
+   [3, 4] => 7,
+   [3, 5] => 8,
+   [3, 2, 4] => 9,
+   [7, 5, 2] => 14,
+   [7, 6] => 13,
+   [7, 2, 4] => 13,
+   [3, 6, 1, 4] => 14,
+   [5, 2, 1, 4] => 12,
+   [7, 6, 1] => 14,
+   [7, 5] => 12,
+   [6, 5] => 11,
+   [7, 3, 4] => 14,
+   [7, 3, 1] => 11,
+   [3, 1] => 4,
+   [6, 2, 1] => 9,
+   [3, 2, 1] => 6,
+   [6, 5, 2] => 13,
+   [6, 5, 2, 1] => 14,
+   [3, 6, 5] => 14,
+   [5, 1, 4] => 10,
+   [2] => 2,
+   [3, 6, 4] => 13,
+   [5, 2, 1] => 8,
+   [6] => 6,
+   [1, 4] => 5,
+   [6, 2] => 8,
+   [6, 1, 4] => 11,
+   [3, 5, 4] => 12,
+   [7, 1, 4] => 12,
+   [6, 1] => 7,
+   [3, 2, 1, 4] => 10,
+   [6, 2, 1, 4] => 13,
+   [7, 3, 2] => 12,
+   [7, 5, 1] => 13,
+   [3, 1, 4] => 8,
+   [5] => 5,
+   [3, 5, 1, 4] => 13,
+   [7, 3, 2, 1] => 13,
+   [2, 1] => 3,
+   [7, 2, 1] => 10,
+   [7, 2] => 9,
+   [7, 1] => 8,
+   [6, 4] => 10,
+   [7, 4] => 11,
+   [4] => 4,
+   [3, 5, 2, 4] => 14,
+   [6, 5, 1] => 12,
+   [6, 2, 4] => 12,
+   [3, 2] => 5,
+   [...] => 6,
+   ...
+ }, ...}
+{%{
+   [7, 2, 1, 4] => 14,
+   [3, 6, 2, 1] => 12,
+   [5, 2] => 7,
+   [3, 5, 1] => 9,
+   [3, 4] => 7,
+   [3, 5] => 8,
+   [3, 2, 4] => 9,
+   [7, 5, 2] => 14,
+   [7, 6] => 13,
+   [7, 2, 4] => 13,
+   [3, 6, 1, 4] => 14,
+   [5, 2, 1, 4] => 12,
+   [7, 6, 1] => 14,
+   [7, 5] => 12,
+   [6, 5] => 11,
+   [7, 3, 4] => 14,
+   [7, 3, 1] => 11,
+   [3, 1] => 4,
+   [6, 2, 1] => 9,
+   [3, 2, 1] => 6,
+   [6, 5, 2] => 13,
+   [6, 5, 2, 1] => 14,
+   [3, 6, 5] => 14,
+   [5, 1, 4] => 10,
+   [2] => 2,
+   [3, 6, 4] => 13,
+   [5, 2, 1] => 8,
+   [6] => 6,
+   [1, 4] => 5,
+   [6, 2] => 8,
+   [6, 1, 4] => 11,
+   [3, 5, 4] => 12,
+   [7, 1, 4] => 12,
+   [6, 1] => 7,
+   [3, 2, 1, 4] => 10,
+   [6, 2, 1, 4] => 13,
+   [3] => 3,
+   [7, 3, 2] => 12,
+   [7, 5, 1] => 13,
+   [3, 1, 4] => 8,
+   [5] => 5,
+   [3, 5, 1, 4] => 13,
+   [7, 3, 2, 1] => 13,
+   [2, 1] => 3,
+   [7, 2, 1] => 10,
+   [7, 2] => 9,
+   [7, 1] => 8,
+   [6, 4] => 10,
+   [7, 4] => 11,
+   [4] => 4,
+   [3, 5, 2, 4] => 14,
+   [6, 5, 1] => 12,
+   [6, 2, 4] => 12,
+   [3, ...] => 5,
+   ...
+ }, ...}
+{%{
+   [7, 2, 1, 4] => 14,
+   [3, 6, 2, 1] => 12,
+   [5, 2] => 7,
+   [3, 5, 1] => 9,
+   [7, 3] => 10,
+   [3, 4] => 7,
+   [3, 5] => 8,
+   [3, 2, 4] => 9,
+   [7, 5, 2] => 14,
+   [7, 6] => 13,
+   [7, 2, 4] => 13,
+   [3, 6, 1, 4] => 14,
+   [5, 2, 1, 4] => 12,
+   [7, 6, 1] => 14,
+   [7, 5] => 12,
+   [6, 5] => 11,
+   [7, 3, 4] => 14,
+   [7, 3, 1] => 11,
+   [3, 1] => 4,
+   [6, 2, 1] => 9,
+   [3, 2, 1] => 6,
+   [6, 5, 2] => 13,
+   [6, 5, 2, 1] => 14,
+   [3, 6, 5] => 14,
+   [5, 1, 4] => 10,
+   [2] => 2,
+   [3, 6, 4] => 13,
+   [5, 2, 1] => 8,
+   [6] => 6,
+   [1, 4] => 5,
+   [6, 2] => 8,
+   [6, 1, 4] => 11,
+   [3, 5, 4] => 12,
+   [7, 1, 4] => 12,
+   [6, 1] => 7,
+   [3, 2, 1, 4] => 10,
+   [6, 2, 1, 4] => 13,
+   [3] => 3,
+   [7, 3, 2] => 12,
+   [7, 5, 1] => 13,
+   [3, 1, 4] => 8,
+   [5] => 5,
+   [3, 5, 1, 4] => 13,
+   [7, 3, 2, 1] => 13,
+   [2, 1] => 3,
+   [7, 2, 1] => 10,
+   [7, 2] => 9,
+   [7, 1] => 8,
+   [6, 4] => 10,
+   [7, 4] => 11,
+   [4] => 4,
+   [3, 5, 2, 4] => 14,
+   [6, 5, 1] => 12,
+   [6, 2, ...] => 12,
+   ...
+ }, ...}
+%{
+  [3, 5, 2, 4] => 14,
+  [3, 6, 1, 4] => 14,
+  [3, 6, 5] => 14,
+  [6, 5, 2, 1] => 14,
+  [7, 2, 1, 4] => 14,
+  [7, 3, 4] => 14,
+  [7, 5, 2] => 14,
+  [7, 6, 1] => 14
+}
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+%{
+  [3, 5, 2, 4] => 14,
+  [3, 6, 1, 4] => 14,
+  [3, 6, 5] => 14,
+  [6, 5, 2, 1] => 14,
+  [7, 2, 1, 4] => 14,
+  [7, 3, 4] => 14,
+  [7, 5, 2] => 14,
+  [7, 6, 1] => 14
+}
+```
+
+Gyakorló feladat: ne tartsuk meg az összes részlistát, csak a korábbiaknál nagyobb összegűeket.

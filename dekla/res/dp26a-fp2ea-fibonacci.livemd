@@ -1,0 +1,382 @@
+<!-- livebook:{"persist_outputs":true} -->
+
+# Fibonacci
+
+```elixir
+Mix.install([
+{:benchee, "~> 1.3"},
+{:kino_explorer, "~> 0.1.25"}
+])
+```
+
+## Fibonacci hat változatban
+
+A Fibonacci-számok jól ismert matematikai definíciója:
+
+$F_0 = 0$ <br />
+$F_1 = 1$ <br />
+$F_i = F_{i-2} + F_{i-1}$, ha $i > 1$
+
+Naív rekurzív megoldásunk ezt követi.
+
+Az $i$-edik Fibonacci-szám meghatározása elágazó rekurzióval nagyon rossz hatékonyságú, mert a két elágazó ágat minden egyes rekurzív lépésben újra meg újra teljesen be kell járni, azaz az $i$-ediknél kisebb Fibonacci-számokat újra és újra ki kell számolni, ráadásul a részeredményeket az egyre mélyülő veremben kell tárolni.
+
+```elixir
+defmodule Fib do
+
+  # Tree recursion
+  # O(2^n) futási idő, O(2^n) tárhely
+  @spec fib(i :: integer()) :: n :: integer()
+  # n az i-edik Fibonacci-szám
+  def fib(0), do: 0
+  def fib(1), do: 1
+  def fib(i), do: fib(i-1) + fib(i-2)
+
+end
+Fib.fib(23) #|> IO.inspect()
+
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+28657
+```
+
+```elixir
+defmodule FibM do
+
+  # Memoization (top down) – dinamikus programozás 
+  # O(n) futási idő, O(n) tárhely
+  @spec fib_mem(i :: integer()) :: n :: integer()
+  # n az i-edik Fibonacci-szám
+  def fib_mem(i), do: fib_m(i, %{0 => 0, 1 => 1}) |> elem(0)
+
+  @type mem() :: %{index :: integer() => value :: integer()}
+  @spec fib_m(i :: integer(), mem :: mem()) :: {n :: integer(), uj_mem :: mem()}
+  # n az i-edik Fibonacci-szám
+ 
+  def fib_m(i, mem) do
+    case mem[i] do # case nem váltható ki mintaillesztéssel
+      nil ->
+        {prev, memp} = fib_m(i-2, mem)
+        {curr, memc} = fib_m(i-1, memp)
+        val = prev + curr
+        {val, Map.put(memc, i, prev+curr)}
+      val ->
+        {val, mem}
+      end
+  end
+
+end
+FibM.fib_mem(63) #|> IO.inspect()
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+6557470319842
+```
+
+```elixir
+defmodule FibT do
+
+  # Tabulation (bottom-up) – dinamikus programozás
+  # O(n) futási idő, O(n) tárhely
+  @spec fib_tab(i :: integer()) :: n :: integer()
+  # n az i-edik Fibonacci-szám
+  def fib_tab(i), do: fib_t(i, 2, %{0 => 0, 1 => 1})
+
+  @type tab() :: %{index :: integer() => value :: integer()}
+  @spec fib_t(i :: integer(), j :: integer(), tab :: tab()) :: n :: integer()
+  # n az i-edik Fibonacci-szám
+  def fib_t(i, j, tab) when i < j, do: tab[i]
+  def fib_t(i, j, tab) do
+    tab0 = Map.put(tab, j, tab[j-2] + tab[j-1])
+    fib_t(i, j+1, tab0)
+  end
+end
+FibT.fib_tab(63) #|> IO.inspect()
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+6557470319842
+```
+
+```elixir
+defmodule FibAerl do
+
+  # Tabulation (bottom-up) – dinamikus programozás
+  # O(n) futási idő, O(n) tárhely
+  # Erlang :array
+  @spec fib_tab(i :: integer()) :: n :: integer()
+  # n az i-edik Fibonacci-szám
+  def fib_tab(i), do: fib_t(i, 2, :array.set(1,1,(:array.set(0,0,:array.new()))))
+
+  @type tab(integer) :: :array.arrayinteger(integer)
+  @spec fib_t(i :: integer(), j :: integer(), tab :: tab(integer())) :: n :: integer()
+  # n az i-edik Fibonacci-szám
+  def fib_t(i, j, tab) when i < j, do: :array.get(i, tab)
+  def fib_t(i, j, tab) do
+    prev = :array.get(j-2, tab)
+    curr = :array.get(j-1, tab)
+    tab0 = :array.set(j, prev+curr, tab)
+    fib_t(i, j+1, tab0)
+  end
+end
+FibAerl.fib_tab(1023) #|> IO.inspect()
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+2785293550699592923938812412668093509353307352123703806913182668987369503203465183625616759613324452749958549669966882191117895425015208455469403731272652158240825628484818131485544230827304940519132195299466733282
+```
+
+```elixir
+defmodule FibLtab do
+
+  # Tabulation (bottom-up) – dinamikus programozás
+  # O(n) futási idő, O(n) tárhely
+  # Elixir List
+  @spec fib_tab(i :: integer()) :: n :: integer()
+  # n az i-edik Fibonacci-szám
+  def fib_tab(i), do: fib_t(i, 2, [1,0])
+
+  @spec fib_t(i :: integer(), j :: integer(), tab :: [integer()]) :: n :: integer()
+  # n az i-edik Fibonacci-szám
+  def fib_t(i, j, tab) when i < j, do: hd(tab)
+  def fib_t(i, j, tab) do
+    prev = hd(tl(tab))
+    curr = hd(tab)
+    tab0 = [prev+curr | tab]
+    fib_t(i, j+1, tab0)
+  end
+end
+FibLtab.fib_tab(63) #|> IO.inspect()
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+6557470319842
+```
+
+```elixir
+defmodule FibI do
+  # Space optimized (bottom up)
+  # O(n) futási idő, O(1) tárhely
+  @spec fib_iter(i :: integer()) :: n :: integer()
+  # n az i-edik Fibonacci-szám
+  def fib_iter(i), do: fib_i(i, 1, 0)
+
+  @spec fib_i(i :: integer(), curr :: integer(), prev :: integer())
+    :: n :: integer()
+  # n az i-edik Fibonacci-szám
+  defp fib_i(0, _curr, prev), do: prev
+  defp fib_i(1, curr, _prev), do: curr
+  defp fib_i(i, curr, prev), do: fib_i(i-1, prev+curr, curr)
+end
+FibI.fib_iter(2203) #|> IO.inspect()
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+11227588022178051398070623745770537746981032161033283578641889149504371902547595733548949731279174036520553510211185291521165787504965947954328861725425894532117680897067684977042503589399040135697168277407633126059586479862184815462709569351240070274187436057121550393922337505846249722123756568019538289963931388811270535294468233234206275243288823876307712381776769983580371337794399152833220102956602421639379175057893229860412359902362848104779389231572677
+```
+
+```elixir
+Benchee.run(
+  %{
+    "fib tree recursive" => fn -> Fib.fib(33) end,
+    "fib memoization" => fn -> FibM.fib_mem(33) end,
+    "fib tabulation" => fn -> FibT.fib_tab(33) end,
+    "fib tabula_array_erl" => fn -> FibAerl.fib_tab(33) end,
+    "fib tabula_list" => fn -> FibLtab.fib_tab(33) end,
+    "fib iterative" => fn -> FibI.fib_iter(33) end
+  },
+  profile_after: false
+  )
+:ok
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+Warning: the benchmark fib iterative is using an evaluated function.
+  Evaluated functions perform slower than compiled functions.
+  You can move the Benchee caller to a function in a module and invoke `Mod.fun()` instead.
+  Alternatively, you can move the benchmark into a benchmark.exs file and run mix run benchmark.exs
+
+Warning: the benchmark fib memoization is using an evaluated function.
+  Evaluated functions perform slower than compiled functions.
+  You can move the Benchee caller to a function in a module and invoke `Mod.fun()` instead.
+  Alternatively, you can move the benchmark into a benchmark.exs file and run mix run benchmark.exs
+
+Warning: the benchmark fib tabula_array_erl is using an evaluated function.
+  Evaluated functions perform slower than compiled functions.
+  You can move the Benchee caller to a function in a module and invoke `Mod.fun()` instead.
+  Alternatively, you can move the benchmark into a benchmark.exs file and run mix run benchmark.exs
+
+Warning: the benchmark fib tabula_list is using an evaluated function.
+  Evaluated functions perform slower than compiled functions.
+  You can move the Benchee caller to a function in a module and invoke `Mod.fun()` instead.
+  Alternatively, you can move the benchmark into a benchmark.exs file and run mix run benchmark.exs
+
+Warning: the benchmark fib tabulation is using an evaluated function.
+  Evaluated functions perform slower than compiled functions.
+  You can move the Benchee caller to a function in a module and invoke `Mod.fun()` instead.
+  Alternatively, you can move the benchmark into a benchmark.exs file and run mix run benchmark.exs
+
+Warning: the benchmark fib tree recursive is using an evaluated function.
+  Evaluated functions perform slower than compiled functions.
+  You can move the Benchee caller to a function in a module and invoke `Mod.fun()` instead.
+  Alternatively, you can move the benchmark into a benchmark.exs file and run mix run benchmark.exs
+
+Operating System: Linux
+CPU Information: AMD Ryzen AI 9 HX 370 w
+Number of Available Cores: 24
+Available memory: 93.58 GB
+Elixir 1.20.2
+Erlang 29.0.6
+JIT enabled: true
+
+Benchmark suite executing with the following configuration:
+warmup: 2 s
+time: 5 s
+memory time: 0 ns
+reduction time: 0 ns
+parallel: 1
+inputs: none specified
+Estimated total run time: 42 s
+Excluding outliers: false
+
+Benchmarking fib iterative ...
+Benchmarking fib memoization ...
+Benchmarking fib tabula_array_erl ...
+Benchmarking fib tabula_list ...
+Benchmarking fib tabulation ...
+Benchmarking fib tree recursive ...
+Calculating statistics...
+Formatting results...
+
+Name                           ips        average  deviation         median         99th %
+fib iterative            2025.02 K        0.49 μs  ±1815.45%        0.47 μs        0.67 μs
+fib tabula_list          1793.18 K        0.56 μs  ±1986.49%        0.50 μs        0.82 μs
+fib tabula_array_erl      507.54 K        1.97 μs   ±502.71%        1.85 μs        3.01 μs
+fib memoization           337.87 K        2.96 μs   ±255.53%        2.73 μs        5.28 μs
+fib tabulation            324.54 K        3.08 μs   ±305.85%        2.94 μs        5.17 μs
+fib tree recursive        0.0504 K    19823.90 μs    ±14.14%    18557.61 μs    26679.49 μs
+
+Comparison: 
+fib iterative            2025.02 K
+fib tabula_list          1793.18 K - 1.13x slower +0.0638 μs
+fib tabula_array_erl      507.54 K - 3.99x slower +1.48 μs
+fib memoization           337.87 K - 5.99x slower +2.47 μs
+fib tabulation            324.54 K - 6.24x slower +2.59 μs
+fib tree recursive        0.0504 K - 40143.78x slower +19823.41 μs
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+:ok
+```
+
+```elixir
+# Módosított változat a memoizálási lépések követésére 
+defmodule FibMm do
+  @spec fib_mem(i :: integer()) :: mem :: %{integer() => integer()}
+  def fib_mem(i), do: FibM.fib_m(i, %{0 => 0, 1 => 1}) |> elem(1)
+end
+FibMm.fib_mem(5)
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+%{0 => 0, 1 => 1, 2 => 1, 3 => 2, 4 => 3, 5 => 5}
+```
+
+```elixir
+# Interaktív bemenet (n slider); önálló cellába kell rakni
+cell = Kino.Input.number("Fibonacci index", default: 10, min: 0, max: 35)
+
+```
+
+```elixir
+# Bemenet beolvasása
+index = 
+  cell
+  |> IO.inspect(label: "Kino input cell")
+  |> Kino.Input.read()
+  |> IO.inspect(label: "Kino input read")
+
+
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+Kino input cell: %Kino.Input{
+  ref: "n6mjnbwvdjjtc7mhxwkio5jbfil3ruoh",
+  id: "130796645",
+  destination: {Kino.SubscriptionManager,
+   :"livebook_bm57bwqa--ad6qvet6@127.0.0.1"},
+  attrs: %{
+    default: 10,
+    label: "Fibonacci index",
+    max: 35,
+    min: 0,
+    type: :number,
+    step: nil,
+    debounce: :blur
+  }
+}
+Kino input read: 10
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+10
+```
+
+```elixir
+# Táblázat
+mem = FibMm.fib_mem(index)
+Explorer.DataFrame.new(Enum.map(mem, fn {k, v} -> %{index: k, value: inspect(%{k => v})} end))
+
+```
+
+```elixir
+defmodule FibTdbg do
+
+  # Tabulation (bottom-up) – dinamikus programozás
+  # O(n) futási idő, O(n) tárhely
+  @spec fib_tab(i :: integer()) :: n :: integer()
+  # n az i-edik Fibonacci-szám
+  def fib_tab(i), do: fib_t(%{0 => 0, 1 => 1}, 2, i)
+
+  @type fib() :: %{index :: integer() => value :: integer()}
+  @spec fib_t(mem :: fib(), j :: integer(), i :: integer()) :: n :: integer()
+  # n az i-edik Fibonacci-szám
+  def fib_t(tab, j, i) when j > i, do: tab[i]
+  def fib_t(tab, j, i) do
+    tab
+    |> Map.put(j, tab[j-1] + tab[j-2])
+    |> fib_t(j+1, i)
+    |> dbg()
+  end
+end
+FibTdbg.fib_tab(8) #|> IO.inspect()
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+21
+```

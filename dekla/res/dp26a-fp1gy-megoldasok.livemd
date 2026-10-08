@@ -1,0 +1,1697 @@
+<!-- livebook:{"persist_outputs":true} -->
+
+# DP26a - 1. FP-gyakorlat
+
+```elixir
+Mix.install([
+{:benchee, "~> 1.3"}
+])
+
+```
+
+## Jelölések, konvenciók
+
+A gyakorlatok anyaga szakaszokra van felosztva, minden szakaszban a bevezetés után néhány feladatot definiálunk, néha megoldott feladatokat is bemutatunk.
+
+<div style="background-color: lightgreen; padding: 0.3em;">
+
+```
+Halványzöld peremű, fekete hátterű cellában (a továbbiakban: specifikációs cella) van
+a szükséges „keretezéssel”, azaz a modul- és függvénydefinícióval együtt a megírandó
+függvény típusspecifikációja, valamint néhány teszthívás is. Ebbe a cellába nem lehet
+beleírni (csak szerkesztő módban), de a tartalmát ki lehet jelölni, lehet másolni.
+```
+</div>
+
+<p style="background-color: pink; padding: 1rem; margin: 1rem 0;">
+Rózsaszín hátterű cellába írjuk az esetleges korlátozásokat: ne használja ezt, ne csinálja azt stb.
+</p>
+
+Halványzöld hátterű cellában jelennek meg a magyarázataink, illetve a javaslataink egyes feladatok megoldására. Az utóbbiak gyakran el vannak rejve: a Súgó feliratra kattintva jelennek meg.
+
+<p style="background-color: lightgreen; padding: 1rem; margin: 1rem 0;">
+Az egymást kölcsönösen kizáró minták használata...
+</p>
+
+<details style="background-color: lightgreen; padding: 1rem; margin: 1rem 0;">
+<summary>Súgó</summary>
+Ezt és ezt javasoljuk a függvény megírásához.
+</details>
+
+A feladatot megoldó függvényt, kifejezést egy Elixir-cellába írja be: a felugó menüben a <em>+&nbsp;Elixir</em> feliratra kattintva hozzon létre egy új cellát, másolja be a specifikációs cella tartalmát, majd írja meg és értékelje ki a specifikált függvényt vagy a kért kifejezést.
+
+## Első lépések
+
+Válassza ki, hogy a _Livebookot_ (esetleg külön az _Elixirt_ is) hogyan kívánja telepíteni a saját gépére: Docker konténerként, a Mac, ill. a Windows telepítőkkel, Debian/Ubuntu esetén az _apt_, a _mise_ vagy az _asdf_  csomagkezelővel. Az első előadás prezentációs anyagában néhány dián összefoglaltuk a lehetőséget.
+
+Kezdje a munkát a kiválasztott eszközök telepítésével, az ismerkedéssel. Hozzon létre Elixir-cellát a _Livebookban_, inditsa el egy terminálablakban az _iex_-et, írjon be néhány egyszerű kifejezést, hívjon meg közismert függvényeket a `Kernel` Elixir- vagy a `:math` Erlang-könyvtárból, figyelje meg a _szövegkiegészítés_ (completion) és a _Livebookban_ a _felugró súgó_ működését. Ha elakad, kérjen segítséget a gyakorlatvezetőktől vagy társaitól.
+
+<!-- livebook:{"break_markdown":true} -->
+
+Ez a fájl az első tantermi gyakorlat anyagát tartalmazza. Ha a feladatsort nem sikerül befejeznie a gyakorlaton, oldja meg otthon. Lehetőség van távkonzultációra: üzenjen nekünk a Teams csoportban!
+
+## Rekurzió
+
+<div style="background-color: lightgreen; padding: 0.3em;">
+A deklaratív programozás alappillére a rekurzió. A rekurzió kétféle lehet: lineáris és elágazó (angolul <em>linear recursion</em> és <em>tree recursion).</em> Lineárisan rekurzív adatszerkezet a lista (láncolt lista, nem egydimenziós tömb!), elágazóan rekurzív a (bináris vagy több ágú) fa, ezek feldolgozására értelemszerűen rekurzív algoritmusokat írunk. De rekurzív algoritmusokat kell használnunk iterációk megvalósítására is ciklusok helyett, mivel az utóbbiak a deklaratív nyelvekben ismeretlen konstrukciók.
+</div>
+
+## Egyszerű feladatok listák feldolgozására
+
+<div style="background-color: lightgreen; padding: 1rem; margin: 1rem 0;">
+Rekurzív adatszerkezetek feldolgozásának természetes módja a rekurzív algoritmus. Lineáris adatszerkezetek pl. listák feldolgozására – imperatív nyelveken – még csak lehet ciklust írni, de elágazóan rekurzív adatszerkezeteket, pl. fákat ciklusokkal bejárni már nagy kihívás.
+
+Egy rekurzív adatszerkezet feldolgozására legalább két, esetleg több klózt írunk. Közöttük vannak olyanok, amelyekre az adatszerkezet jellegzetessége miatt csak egyszer vagy csak nagyon ritkán, másokra gyakrabban kerül sor. Ilyen például az üres és a nemüres lista esete: az üres listát feldolgozó klóz kiértékelésére csak egyszer kerül sor, a nemüres listát feldolgozó klózt többször, a lista hosszától függően esetleg nagyon sokszor meghívjuk.
+
+Az algoritmus hatékonyságát javítja, ha 
+
+* egy függvény klózai _kölcsönösen kizárják_ egymást, és
+* közülük a gyakrabban hívott(ak) megelőzi(k) a ritkábban hívott(ak)at.
+
+`def fun([x|xs])...`\
+`def fun([])...`
+</div>
+
+<!-- livebook:{"break_markdown":true} -->
+
+<div style="background-color: lightgreen; padding: 0.3em;">
+Gyakran előfordul, hogy bizonyos listákon bizonyos műveleteket nem lehet elvégezni. Pl. egy üres listának egyetlen eleme sincs, bármelyik elemét is kérjük, nincs mit eredményül adni.
+  
+Ilyenkor dönthetünk úgy, hogy az adott műveletet üres listára nem értelmezzük, és rábízzuk a rendszerre a hiba jelzését. Ha úgy döntünk, hogy jelezzük a helyes eredmény mellett a hibát is, akkor ezt hagyományosan kétféle stílusban tehetjük meg:
+
+* Erlang-stílusban a visszatérési érték típusa `{:ok, any()} | :error`, azaz siker esetén a visszatérési érték egy `{:ok, value}` pár, ahol egy `any()` típusú `value` a visszaadott érték, meghiúsulás esetén pedig a visszatérési érték az `:error` atom;
+* Elixir-stílusban a visszatérési érték típusa `any() | nil`, azaz siker esetén ugyancsak egy `any()` típusú `value` a visszatérési érték, meghiúsulás esetén pedig a `nil` atom.
+</div>
+
+<!-- livebook:{"break_markdown":true} -->
+
+<div style="background-color: pink; padding: 1rem; margin: 1rem 0;">
+  
+Az alábbi feladatok megoldására __ne__ használja az azonos vagy hasonló feladatokat megoldó könyvtári függvényeket a `Kernel`, `List`, `Enum` és más modulokból, pl. `hd`, `tl`, `first`, `last`, `at`, `length`, `split`, `slice`!
+
+Azt kérjük, hogy most gyakorlásképpen _saját_ – ahol kell, rekurzív – függvénydefiníciókat írjon.
+</div>
+
+<!-- livebook:{"break_markdown":true} -->
+
+### 1. Lista feje
+
+Írjon függvényt egy lista fejének (első elemének) visszaadására! Ha a lista üres, Elixir-stílusban jelezze, azaz a `nil` atomot adja eredményül.
+
+<details style="background-color: lightgreen; padding: 1rem; margin: 1rem 0;">
+<summary>Súgó</summary>
+Az első klóz a legalább egy elemű listára, a második pedig az üres listára illeszkedjen.
+</details>
+
+<!-- livebook:{"break_markdown":true} -->
+
+<div style="background-color: lightgreen; padding: 0.3em;">
+
+```elixir
+defmodule Head do
+  @spec hd(xs :: [any()]) :: r :: any() | nil
+  # Ha xs nem üres, x az xs lista feje, egyébként nil
+  def hd(...), do:
+  ...
+end
+IO.puts(Head.hd([]) == nil)
+IO.puts(Head.hd(Range.to_list(1..5)) == 1)
+IO.puts(Head.hd(~c"almárium") == ?a)
+```
+</div>
+
+```elixir
+defmodule Head do
+  @spec hd(xs :: [any()]) :: r :: any() | nil
+  # Ha xs nem üres, x az xs lista feje, egyébként nil
+  def hd([x|_]), do: x
+  def hd([]), do: nil
+end
+IO.puts(Head.hd([]) == nil)
+IO.puts(Head.hd(Range.to_list(1..5)) == 1)
+IO.puts(Head.hd(~c"almárium") == ?a)
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+true
+true
+true
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+:ok
+```
+
+### 2. Lista farka
+
+Írjon függvényt egy lista farkának (az első elemét követő részlistájának) a visszaadására! Ha a lista üres, Elixir-stílusban jelezze, azaz a `nil` atomot adja eredményül.
+
+<details style="background-color: lightgreen; padding: 1rem; margin: 1rem 0;">
+<summary>Súgó</summary>
+Az első klóz a legalább egy elemű listára, a második pedig az üres listára illeszkedjen.
+</details>
+
+<!-- livebook:{"break_markdown":true} -->
+
+<div style="background-color: lightgreen; padding: 0.3em;">
+
+```elixir
+defmodule Tail do
+  @spec tl(xs: [any()]) :: ts :: [any()] | nil
+  # Az xs lista farka ts
+  def tl(...), do:
+  ...
+end
+IO.puts(Tail.tl([]) == nil)
+IO.puts(Tail.tl(Range.to_list(1..5)) == [2,3,4,5])
+IO.puts(Tail.tl(~c"almárium") == ~c"lmárium")
+```
+</div>
+
+```elixir
+defmodule Tail do
+  @spec tl(xs: [any()]) :: ts :: [any()] | nil
+  # Az xs lista farka ts
+  def tl([_|xs]), do: xs
+  def tl([]), do: nil
+end
+IO.puts(Tail.tl([]) == nil)
+IO.puts(Tail.tl(Range.to_list(1..5)) == [2,3,4,5])
+IO.puts(Tail.tl(~c"almárium") == ~c"lmárium")
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+true
+true
+true
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+:ok
+```
+
+### 3. Lista n-edik eleme
+
+Írjon rekurzív függvényt egy lista n-edik elemének a visszaadására! (A lista indexelése 0-tól indul.) Ha a lista n-nél rövidebb, Elixir-stílusban jelezze, azaz a `nil` atomot adja eredményül.
+
+<details style="background-color: lightgreen; padding: 1rem; margin: 1rem 0;">
+<summary>Súgó</summary>
+Itt három klózt kell írnia: egyet az üres listára, egyet a megtalált elem visszaadására, egyet pedig arra, hogy rekurzív hívással folytassa a keresést.
+</details>
+
+<!-- livebook:{"break_markdown":true} -->
+
+<div style="background-color: lightgreen; padding: 0.3em;">
+
+```elixir
+defmodule Nth do
+  @spec nth(xs :: [any()], n :: integer()) :: r :: any() | nil
+  # Ha xs elég hosszú, r az xs n-edik eleme; egyébként nil (indexelés 0-tól)
+  def nth(..., n), do:
+  ...
+end
+IO.puts(Nth.nth([], 5) == nil)
+IO.puts(Nth.nth(Range.to_list(1..5), 4) == 5)
+IO.puts(Nth.nth(Range.to_list(1..5), 5) == nil)
+IO.puts(Nth.nth(~c"almárium", 3) == ?á)
+IO.puts(Nth.nth(~c"almárium", -3) == nil)
+```
+</div>
+
+```elixir
+defmodule Nth do
+  @spec nth(xs :: [any()], n :: integer()) :: r :: any() | nil
+  # Ha xs elég hosszú, r az xs n-edik eleme; egyébként nil (indexelés 0-tól)
+  def nth([x|_], 0), do: x
+  def nth([_|xs], n), do: nth(xs, n-1)
+  def nth([], _), do: nil
+end
+IO.puts(Nth.nth([], 5) == nil)
+IO.puts(Nth.nth(Range.to_list(1..5), 4) == 5)
+IO.puts(Nth.nth(Range.to_list(1..5), 5) == nil)
+IO.puts(Nth.nth(~c"almárium", 3) == ?á)
+IO.puts(Nth.nth(~c"almárium", -3) == nil)
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+true
+true
+true
+true
+true
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+:ok
+```
+
+A `benchee` Elixir-modul és a `mix` segítségével hasonlítsa össze a futási időket:
+
+* egy hosszú lista első, középső és utolsó elemének elérése esetén,
+* olyan klózsorrendek esetén, amikor az első, illetve az utolsó klóz illeszkedik az üres listára.
+
+```elixir
+defmodule NthEmptyFirst do
+  @spec nth(xs :: [any()], n :: integer()) :: r :: any() | nil
+  # Ha xs elég hosszú, r az xs n-edik eleme; egyébként nil (indexelés 0-tól)
+  def nth([], _), do: nil
+  def nth([x|_], 0), do: x
+  def nth([_|xs], n), do: nth(xs, n-1)
+end
+IO.puts(NthEmptyFirst.nth([], 5) == nil)
+IO.puts(NthEmptyFirst.nth(Range.to_list(1..5), 4) == 5)
+IO.puts(NthEmptyFirst.nth(Range.to_list(1..5), 5) == nil)
+IO.puts(NthEmptyFirst.nth(~c"almárium", 3) == ?á)
+IO.puts(NthEmptyFirst.nth(~c"almárium", -3) == nil)
+
+l = Range.to_list(0..100_000)
+Benchee.run(%{
+        "firstElemEmptyLast" => fn -> Nth.nth(l, 0) end,
+        "middleElemEmptyLast" => fn -> Nth.nth(l, 50_000) end,
+        "lastElemEmptyLast" => fn -> Nth.nth(l, 100_000) end,
+        "firstElemEmptyFirst" => fn -> NthEmptyFirst.nth(l, 0) end,
+        "middleElemEmptyFirst" => fn -> NthEmptyFirst.nth(l, 50_000) end,
+        "lastElemEmptyFirst" => fn -> NthEmptyFirst.nth(l, 100_000) end
+    }
+)
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+true
+true
+true
+true
+true
+Error trying to determine erlang version enoent, falling back to overall OTP version
+Warning: the benchmark firstElemEmptyFirst is using an evaluated function.
+  Evaluated functions perform slower than compiled functions.
+  You can move the Benchee caller to a function in a module and invoke `Mod.fun()` instead.
+  Alternatively, you can move the benchmark into a benchmark.exs file and run mix run benchmark.exs
+
+Warning: the benchmark firstElemEmptyLast is using an evaluated function.
+  Evaluated functions perform slower than compiled functions.
+  You can move the Benchee caller to a function in a module and invoke `Mod.fun()` instead.
+  Alternatively, you can move the benchmark into a benchmark.exs file and run mix run benchmark.exs
+
+Warning: the benchmark lastElemEmptyFirst is using an evaluated function.
+  Evaluated functions perform slower than compiled functions.
+  You can move the Benchee caller to a function in a module and invoke `Mod.fun()` instead.
+  Alternatively, you can move the benchmark into a benchmark.exs file and run mix run benchmark.exs
+
+Warning: the benchmark lastElemEmptyLast is using an evaluated function.
+  Evaluated functions perform slower than compiled functions.
+  You can move the Benchee caller to a function in a module and invoke `Mod.fun()` instead.
+  Alternatively, you can move the benchmark into a benchmark.exs file and run mix run benchmark.exs
+
+Warning: the benchmark middleElemEmptyFirst is using an evaluated function.
+  Evaluated functions perform slower than compiled functions.
+  You can move the Benchee caller to a function in a module and invoke `Mod.fun()` instead.
+  Alternatively, you can move the benchmark into a benchmark.exs file and run mix run benchmark.exs
+
+Warning: the benchmark middleElemEmptyLast is using an evaluated function.
+  Evaluated functions perform slower than compiled functions.
+  You can move the Benchee caller to a function in a module and invoke `Mod.fun()` instead.
+  Alternatively, you can move the benchmark into a benchmark.exs file and run mix run benchmark.exs
+
+Operating System: Windows
+CPU Information: Intel(R) Core(TM) i7-10750H CPU @ 2.60GHz
+Number of Available Cores: 12
+Available memory: 15.87 GB
+Elixir 1.19.3
+Erlang 28
+JIT enabled: true
+
+Benchmark suite executing with the following configuration:
+warmup: 2 s
+time: 5 s
+memory time: 0 ns
+reduction time: 0 ns
+parallel: 1
+inputs: none specified
+Estimated total run time: 42 s
+Excluding outliers: false
+
+Benchmarking firstElemEmptyFirst ...
+Warning: The function you are trying to benchmark is super fast, making measurements more unreliable!
+This holds especially true for memory measurements or when running with hooks.
+
+See: https://github.com/bencheeorg/benchee/wiki/Benchee-Warnings#fast-execution-warning
+
+You may disable this warning by passing print: [fast_warning: false] as configuration options.
+
+Benchmarking firstElemEmptyLast ...
+Warning: The function you are trying to benchmark is super fast, making measurements more unreliable!
+This holds especially true for memory measurements or when running with hooks.
+
+See: https://github.com/bencheeorg/benchee/wiki/Benchee-Warnings#fast-execution-warning
+
+You may disable this warning by passing print: [fast_warning: false] as configuration options.
+
+Benchmarking lastElemEmptyFirst ...
+Benchmarking lastElemEmptyLast ...
+Benchmarking middleElemEmptyFirst ...
+Benchmarking middleElemEmptyLast ...
+Calculating statistics...
+Formatting results...
+
+Name                           ips        average  deviation         median         99th %
+firstElemEmptyFirst      1745.97 K        0.57 μs    ±98.93%        1.02 μs        2.05 μs
+firstElemEmptyLast       1724.38 K        0.58 μs   ±100.87%        1.02 μs        2.05 μs
+middleElemEmptyLast         6.32 K      158.12 μs    ±41.63%      102.40 μs      307.20 μs
+middleElemEmptyFirst        6.28 K      159.34 μs    ±50.58%      102.40 μs      307.20 μs
+lastElemEmptyLast           3.16 K      316.78 μs    ±30.90%      307.20 μs      614.40 μs
+lastElemEmptyFirst          3.08 K      324.93 μs    ±31.75%      307.20 μs      614.40 μs
+
+Comparison: 
+firstElemEmptyFirst      1745.97 K
+firstElemEmptyLast       1724.38 K - 1.01x slower +0.00717 μs
+middleElemEmptyLast         6.32 K - 276.07x slower +157.55 μs
+middleElemEmptyFirst        6.28 K - 278.20x slower +158.77 μs
+lastElemEmptyLast           3.16 K - 553.09x slower +316.21 μs
+lastElemEmptyFirst          3.08 K - 567.32x slower +324.36 μs
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+%Benchee.Suite{
+  system: %Benchee.System{
+    elixir: "1.19.3",
+    erlang: "28",
+    jit_enabled?: true,
+    num_cores: 12,
+    os: :Windows,
+    available_memory: "15.87 GB",
+    cpu_speed: "Intel(R) Core(TM) i7-10750H CPU @ 2.60GHz"
+  },
+  configuration: %Benchee.Configuration{
+    parallel: 1,
+    time: 5000000000.0,
+    warmup: 2000000000.0,
+    memory_time: 0.0,
+    reduction_time: 0.0,
+    pre_check: false,
+    formatters: [Benchee.Formatters.Console],
+    percentiles: ~c"2c",
+    print: %{configuration: true, benchmarking: true, fast_warning: true},
+    inputs: nil,
+    input_names: [],
+    save: false,
+    load: false,
+    unit_scaling: :best,
+    assigns: %{},
+    before_each: nil,
+    after_each: nil,
+    before_scenario: nil,
+    after_scenario: nil,
+    measure_function_call_overhead: false,
+    title: nil,
+    profile_after: false,
+    max_sample_size: 1000000,
+    exclude_outliers: false
+  },
+  scenarios: [
+    %Benchee.Scenario{
+      name: "firstElemEmptyFirst",
+      job_name: "firstElemEmptyFirst",
+      function: #Function<43.113135111/0 in :erl_eval.expr/6>,
+      input_name: :__no_input,
+      input: :__no_input,
+      before_each: nil,
+      after_each: nil,
+      before_scenario: nil,
+      after_scenario: nil,
+      tag: nil,
+      run_time_data: %Benchee.CollectionData{
+        statistics: %Benchee.Statistics{
+          average: 572.7485894438046,
+          ips: 1745966.761735893,
+          std_dev: 566.6003488361517,
+          std_dev_ratio: 0.9892653762558833,
+          std_dev_ips: 1727224.4654789243,
+          median: 1024.0,
+          percentiles: %{25 => 0.0, 50 => 1024.0, 75 => 1024.0, 99 => 2048.0},
+          mode: 1024.0,
+          minimum: 0.0,
+          maximum: 10240.0,
+          relative_more: nil,
+          relative_less: nil,
+          absolute_difference: nil,
+          outliers: [3072.0, 3072.0, 3072.0, 3072.0, 3072.0, 3072.0, 3072.0, 3072.0, 3072.0, 3072.0,
+           3072.0, 3072.0, 3072.0, 3072.0, 3072.0, 3072.0, 3072.0, 3072.0, 3072.0, 3072.0, 3072.0,
+           3072.0, 3072.0, 3072.0, 3072.0, 3072.0, 3072.0, 3072.0, 3072.0, 3072.0, 3072.0, ...],
+          ...
+        },
+        ...
+      },
+      ...
+    },
+    ...
+  ]
+}
+```
+
+### 4. Lista hossza
+
+Írjon rekurzív függvényt egy lista hosszának meghatározására! Ne használjon segédfüggvényt!
+
+<details style="background-color: lightgreen; padding: 1rem; margin: 1rem 0;">
+<summary>Súgó</summary>
+Az első klóz a legalább egy elemű listákra, a második pedig az üres listára illeszkedjen.
+</details>
+
+<!-- livebook:{"break_markdown":true} -->
+
+<div style="background-color: lightgreen; padding: 0.3em;">
+
+```elixir
+defmodule Length do
+  @spec len(xs :: [any()]) :: n :: integer()
+  # Az xs lista hossza n
+  def len(...), do:
+  ...
+end
+IO.puts(Length.len([]) == 0)
+IO.puts(Length.len(Range.to_list(1..5)) == 5)
+IO.puts(Length.len(~c"kőszerű") == 7)
+```
+</div>
+
+```elixir
+defmodule Length do
+  @spec len(xs :: [any()]) :: n :: integer()
+  # Az xs lista hossza n
+  def len([_|xs]), do: 1 + len(xs)
+  def len([]), do: 0
+end
+IO.puts(Length.len([]) == 0)
+IO.puts(Length.len(Range.to_list(1..5)) == 5)
+IO.puts(Length.len(~c"kőszerű") == 7)
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+true
+true
+true
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+:ok
+```
+
+A lista hosszának megállapítására most akkumulátort és segédfüggvényt használó _jobbrekurzív_ függvényt írjon!
+
+<details style="background-color: lightgreen; padding: 1rem; margin: 1rem 0;">
+<summary>Súgó</summary>
+Az akkumulátorban gyűjtse a listaelemek számát: amikor leszedi a soron következő elemet a lista elejéről, akkor a rekurzív hívásban az akkumulátor korábbi értékéhez adjon 1-et.
+</details>
+
+<!-- livebook:{"break_markdown":true} -->
+
+<div style="background-color: lightgreen; padding: 0.3em;">
+
+```elixir
+defmodule Length2 do
+  @spec len(xs :: [any()]) :: n :: integer()
+  # Az xs lista hossza n
+  def len(....), do: ...
+
+  @spec len(xs :: [any()], count :: integer()) :: n :: integer()
+  # Az xs lista hossza és count összege n
+  def len(..., count), do:
+    ...
+end
+
+IO.puts(Length2.len([]) == 0)
+IO.puts(Length2.len(Range.to_list(1..5)) == 5)
+IO.puts(Length2.len(~c"kőszerű") == 7)
+```
+</div>
+
+```elixir
+defmodule Length2 do
+  @spec len(xs :: [any()]) :: n :: integer()
+  # Az xs lista hossza n
+  def len(xs), do: len(xs, 0)
+
+  @spec len(xs :: [any()], count :: integer()) :: n :: integer()
+  # Az xs lista hossza és count összege n
+  defp len([_|xs], count), do: len(xs, count + 1)
+  defp len([], count), do: count
+end
+
+IO.puts(Length2.len([]) == 0)
+IO.puts(Length2.len(Range.to_list(1..5)) == 5)
+IO.puts(Length2.len(~c"kőszerű") == 7)
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+true
+true
+true
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+:ok
+```
+
+### 5. Lista utolsó eleme
+
+Írjon rekurzív függvényt egy lista utolsó elemének visszaadására! Ne használjon segédfüggvényt!
+
+<!-- livebook:{"break_markdown":true} -->
+
+##### Esetek megkülönböztetése kölcsönös kizárással
+
+<div style="background-color: lightgreen; padding: 1rem; margin: 1rem 0;">
+A függvénynek, amennyiben az üres listát nem kell kezelnie, két esetet kell megkülönböztetnie: azt, amikor a listának <em>pontosan</em> egy eleme van, és azt, amikor a listának <em>legalább</em> egy eleme van. A korábban látott sémát csak kicsit kell módosítanunk: a második klóznak nem az üres listára, hanem az egyelemű listára kell illeszkednie.
+
+`def fun([x|xs])...`\
+`def fun([x])...`
+
+Csakhogy ezzel van egy kis gond: az első klóz ___minden___ olyan listára illeszkedik, amelyiknek van feje, a farka pedig tetszőleges elemszámú, azaz üres is lehet. Emiatt az első klóz az egyelemű listára is illeszkedik, azaz a második klózra soha nem kerül sor – a minták nem egymást kölcsönösen kizáróak. (Erre figyelmeztet is az Elixir fordító). A két klóz sorrendjének megfordításával a mintaillesztés a két esetet meg tudja különböztetni, ám ennek hatékonyságromlás az ára.
+
+`def fun([x])...`\
+`def fun([x|xs])...`
+
+Lehet azonban olyan mintát is írni, amelyik legalább két elemű listákra illeszkedik, és ezáltal kölcsönös kizárásban van a pontosan egy egyelemű listára illeszkedő mintával:
+
+`def fun([x1,x2|xs])...`\
+`def fun([x])...`
+
+Az első klóz törzsében a lista fejére az `x1` változóval, a lista farkára az `[x2|xs]` kifejezéssel hivatkozhatunk. Az utóbbi hivatkozást egyszerűbbé (és olcsóbbá!) tehetjük az ún. _réteges mintával_ (angolul: _layered pattern):_  
+
+`def fun([x1 | xxs = [x2|xs])...`\
+`def fun([x])...`
+
+A lista farkára az `xxs` változóval lehet hivatkozni. Ha az `x2` és `xs` változókat _nem használjuk_ a klóz törzsében, akkor erre az Elixir fordító figyelmeztetni fog. A figyelmeztetést úgy kerülhetjük el, hogy a változó nevét aláhúzásjellel (`_`) kezdjük. 
+
+`def fun([x1 | xxs = [_x2|_xs])...`\
+`def fun([x])...`
+
+Az aláhúzásjellel kezdődő nevek helyett elég aláhúzásjelet írni:
+
+`def fun([x1 | xxs = [_|_])...`\
+`def fun([x])...`,
+
+a beszédes nevek azonban segítik a megértést, utalnak a változó szerepére.
+
+Ha a lista második elemére vagy a harmadik elemtől kezdődő farkára akarunk hivatkozni a klóz törzsében, akkor inkább ne aláhúzásjellel kezdődő változóneveket használjunk. 
+</div>
+
+<!-- livebook:{"break_markdown":true} -->
+
+Először is írjon egy olyan függvényt, amelyik visszadja egy lista utolsó elemét, de a hibajelzést rábízza a rendszerre.
+
+<div style="background-color: lightgreen; padding: 0.3em;">
+
+```elixir
+defmodule Last do
+  @spec last(xs :: [any()]) :: x :: any()
+  # Ha xs nem üres, az utolsó eleme x
+  def last(...), do:
+  ...
+end
+IO.puts(Last.last(~c"Itt vagy?") == ??)
+IO.puts(Last.last([]))
+```
+</div>
+
+```elixir
+defmodule Last do
+  @spec last(xs :: [any()]) :: x :: any()
+  # Ha xs nem üres, az utolsó eleme x
+  def last([_a | xs=[_b|_cs]]), do: last(xs)
+  def last([x]), do: x
+end
+IO.puts(Last.last(~c"Itt vagy?") == ??)
+IO.puts(Last.last([]))
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+true
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+** (FunctionClauseError) no function clause matching in Last.last/1    
+    
+    The following arguments were given to Last.last/1:
+    
+        # 1
+        []
+    
+    #cell:433z53o3c2e65m26:4: Last.last/1
+    #cell:433z53o3c2e65m26:8: (file)
+```
+
+Most írja meg a függvényt Elixir-stílusú hibakezeléssel!
+
+<div style="background-color: lightgreen; padding: 0.3em;">
+
+```elixir
+defmodule LastEx do
+  @spec last(xs :: [any()]) :: r :: (x :: any()) | nil
+  # Ha xs nem üres, r == x, ahol az xs utolsó eleme x, egyébként r == nil
+  def last(...), do:
+  ...
+end
+IO.puts(LastEx.last(~c"Itt vagy?") == ??)
+IO.puts(LastEx.last([]) == nil)
+```
+</div>
+
+```elixir
+defmodule LastEx do
+  @spec last(xs :: [any()]) :: r :: (x :: any()) | nil
+  # Ha xs nem üres, r == x, ahol az xs utolsó eleme x, egyébként r == nil
+  def last([_a | xs=[_b|_cs]]), do: last(xs)
+  def last([x]), do: x
+  def last([]), do: nil
+end
+IO.puts(LastEx.last(~c"Itt vagy?") == ??)
+IO.puts(LastEx.last([]) == nil)
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+true
+true
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+:ok
+```
+
+Most írja meg újra a függvényt Erlang-stílusú hibakezeléssel!
+
+<div style="background-color: lightgreen; padding: 0.3em;">
+
+```elixir
+defmodule LastEr do
+  @spec last(xs :: [any()]) :: r :: {:ok, x :: any()} | :error
+  # Ha xs nem üres, r == {:ok, x}, ahol az xs utolsó eleme x, egyébként r == :error
+  def last(...), do:
+  ...
+end
+IO.puts(LastEr.last(~c"Itt vagy?") == {:ok, ??})
+IO.puts(LastEr.last([]) == :error)
+```
+</div>
+
+```elixir
+defmodule LastEr do
+  @spec last(xs :: [any()]) :: r :: {:ok, x :: any()} | :error
+  # Ha xs nem üres, r == {:ok, x}, ahol az xs utolsó eleme x, egyébként r == :error
+  def last([_a | xs=[_b|_cs]]), do: last(xs)
+  def last([x]), do: {:ok, x}
+  def last([]), do: :error
+end
+IO.puts(LastEr.last(~c"Itt vagy?") == {:ok, ??})
+IO.puts(LastEr.last([]) == :error)
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+true
+true
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+:ok
+```
+
+### 6. Lista $k$-adik elemétől induló, $n$ hosszú részlistája
+
+Írjon rekurzív függvényt egy lista olyan $n$ hosszú részlistájának a visszaadására, amelyik a $k$-adik elemtől kezdődik (a lista indexelése 0-tól indul)! Ha nincs ilyen hosszú részlistája, Elixir-típusú hibajelzéssel térjen vissza. Ne használjon segédfüggvényt! A klózok sorrendjének megválasztásával törekedjék hatékony megoldásra.
+
+Gondolja át, hányféle esetet kell megkülönböztetnie!
+
+<details style="background-color: lightgreen; padding: 1rem; margin: 1rem 0;">
+<summary>Súgó</summary>
+  
+1. Kiszedtük a lista $k$-adik elemével kezdődő, $n$ hosszú részlistát.
+1. Elhagytuk a lista első $k-1$ elemét, kigyűjthetjük a következő $n$ darab elemet.
+1. Elhagyjuk a lista első $k-1$ elemét.
+1. Elfogytak az elemek a listából, mielőtt kiszedtük volna az $n$ hosszú részlistát.
+</details>
+
+<!-- livebook:{"break_markdown":true} -->
+
+<div style="background-color: lightgreen; padding: 0.3em;">
+
+```elixir
+defmodule Slice do
+  @spec slice(xs :: [any()], k :: integer(), n :: integer()) :: r :: [any()] | nil
+  # Ha xs elég hosszú, r az xs k-tól induló, n hosszú részlistája; egyébként nil
+  # Indexelés 0-tól
+  def slice(..., k, n), do:
+  ...
+end
+IO.puts(Slice.slice([], 0, 5) == nil)
+IO.puts(Slice.slice(Range.to_list(1..5), 1, 3) == [2,3,4])
+IO.puts(Slice.slice(Range.to_list(1..5), 4, 1) == [5])
+IO.puts(Slice.slice(~c"almárium", 3, 3) == ~c"ári")
+IO.puts(Slice.slice(~c"almárium", -3, 3) == nil)
+```
+</div>
+
+```elixir
+defmodule Slice do
+  @spec slice(xs :: [any()], k :: integer(), n :: integer()) :: r :: [any()] | nil
+  # Ha xs elég hosszú, r az xs k-tól induló, n hosszú részlistája; egyébként nil
+  # Indexelés 0-tól
+  def slice(_xs, 0, 0), do: []
+  def slice([x|xs], 0, n) do
+    case slice(xs, 0, n-1) do
+      nil -> nil
+      t -> [x|t]
+    end
+  end
+  def slice([_x|xs], k, n), do: slice(xs, k-1, n)
+  def slice([], _, _), do: nil
+end
+IO.puts(Slice.slice([], 0, 5) == nil)
+IO.puts(Slice.slice(Range.to_list(1..5), 1, 3) == [2,3,4])
+IO.puts(Slice.slice(Range.to_list(1..5), 4, 1) == [5])
+IO.puts(Slice.slice(~c"almárium", 3, 3) == ~c"ári")
+IO.puts(Slice.slice(~c"almárium", -3, 3) == nil)
+IO.puts(Slice.slice(~c"almárium", 3, 9) == nil)
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+true
+true
+true
+true
+true
+true
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+:ok
+```
+
+A `benchee` Elixir-modul és a `mix` segítségével mérje meg a futási időket különféle paraméterezések mellett, továbbá profilírozással nézze meg, hogy melyik klóz, illetve hívott függvény használja el a legtöbb futási időt. Hasonlítsa össze a saját `Slice.slice/3` függvényének futási idejét az `Enum.slice/3` függvény futási idejével különféle szélsőséges paraméterezések mellett.
+
+```elixir
+l = Range.to_list(0..100_000)
+Benchee.run(%{
+        "begin" => fn -> Slice.slice(l, 0, 1_000) end,
+        "middle" => fn -> Slice.slice(l, 50_000, 1_000) end,
+        "end" => fn -> Slice.slice(l, 99_000, 1_000) end,
+        "all" => fn -> Slice.slice(l, 0, 100_000) end,
+        "beginEnum" => fn -> Enum.slice(l, 0, 1_000) end,
+        "middleEnum" => fn -> Enum.slice(l, 50_000, 1_000) end,
+        "endEnum" => fn -> Enum.slice(l, 99_000, 1_000) end,
+        "allEnum" => fn -> Enum.slice(l, 0, 100_000) end
+    },
+    profile_after: true
+)
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+Error trying to determine erlang version enoent, falling back to overall OTP version
+Warning: the benchmark all is using an evaluated function.
+  Evaluated functions perform slower than compiled functions.
+  You can move the Benchee caller to a function in a module and invoke `Mod.fun()` instead.
+  Alternatively, you can move the benchmark into a benchmark.exs file and run mix run benchmark.exs
+
+Warning: the benchmark allEnum is using an evaluated function.
+  Evaluated functions perform slower than compiled functions.
+  You can move the Benchee caller to a function in a module and invoke `Mod.fun()` instead.
+  Alternatively, you can move the benchmark into a benchmark.exs file and run mix run benchmark.exs
+
+Warning: the benchmark begin is using an evaluated function.
+  Evaluated functions perform slower than compiled functions.
+  You can move the Benchee caller to a function in a module and invoke `Mod.fun()` instead.
+  Alternatively, you can move the benchmark into a benchmark.exs file and run mix run benchmark.exs
+
+Warning: the benchmark beginEnum is using an evaluated function.
+  Evaluated functions perform slower than compiled functions.
+  You can move the Benchee caller to a function in a module and invoke `Mod.fun()` instead.
+  Alternatively, you can move the benchmark into a benchmark.exs file and run mix run benchmark.exs
+
+Warning: the benchmark end is using an evaluated function.
+  Evaluated functions perform slower than compiled functions.
+  You can move the Benchee caller to a function in a module and invoke `Mod.fun()` instead.
+  Alternatively, you can move the benchmark into a benchmark.exs file and run mix run benchmark.exs
+
+Warning: the benchmark endEnum is using an evaluated function.
+  Evaluated functions perform slower than compiled functions.
+  You can move the Benchee caller to a function in a module and invoke `Mod.fun()` instead.
+  Alternatively, you can move the benchmark into a benchmark.exs file and run mix run benchmark.exs
+
+Warning: the benchmark middle is using an evaluated function.
+  Evaluated functions perform slower than compiled functions.
+  You can move the Benchee caller to a function in a module and invoke `Mod.fun()` instead.
+  Alternatively, you can move the benchmark into a benchmark.exs file and run mix run benchmark.exs
+
+Warning: the benchmark middleEnum is using an evaluated function.
+  Evaluated functions perform slower than compiled functions.
+  You can move the Benchee caller to a function in a module and invoke `Mod.fun()` instead.
+  Alternatively, you can move the benchmark into a benchmark.exs file and run mix run benchmark.exs
+
+Operating System: Windows
+CPU Information: Intel(R) Core(TM) i7-10750H CPU @ 2.60GHz
+Number of Available Cores: 12
+Available memory: 15.87 GB
+Elixir 1.19.3
+Erlang 28
+JIT enabled: true
+
+Benchmark suite executing with the following configuration:
+warmup: 2 s
+time: 5 s
+memory time: 0 ns
+reduction time: 0 ns
+parallel: 1
+inputs: none specified
+Estimated total run time: 56 s
+Excluding outliers: false
+
+Benchmarking all ...
+Benchmarking allEnum ...
+Benchmarking begin ...
+Warning: The function you are trying to benchmark is super fast, making measurements more unreliable!
+This holds especially true for memory measurements or when running with hooks.
+
+See: https://github.com/bencheeorg/benchee/wiki/Benchee-Warnings#fast-execution-warning
+
+You may disable this warning by passing print: [fast_warning: false] as configuration options.
+
+Benchmarking beginEnum ...
+Warning: The function you are trying to benchmark is super fast, making measurements more unreliable!
+This holds especially true for memory measurements or when running with hooks.
+
+See: https://github.com/bencheeorg/benchee/wiki/Benchee-Warnings#fast-execution-warning
+
+You may disable this warning by passing print: [fast_warning: false] as configuration options.
+
+Benchmarking end ...
+Benchmarking endEnum ...
+Benchmarking middle ...
+Benchmarking middleEnum ...
+Calculating statistics...
+Formatting results...
+
+Name                 ips        average  deviation         median         99th %
+beginEnum        74.05 K       13.50 μs    ±51.43%       10.24 μs       40.96 μs
+begin            61.75 K       16.19 μs    ±51.96%       10.24 μs       40.96 μs
+middleEnum        5.61 K      178.35 μs    ±41.44%      204.80 μs      409.60 μs
+middle            5.25 K      190.60 μs    ±41.85%      204.80 μs      409.60 μs
+end               3.21 K      311.55 μs    ±36.93%      307.20 μs      716.80 μs
+endEnum           3.01 K      332.73 μs    ±34.03%      307.20 μs      716.80 μs
+allEnum           0.50 K     1981.94 μs    ±35.91%     1945.60 μs     3665.92 μs
+all               0.50 K     2018.53 μs    ±36.21%     1945.60 μs     3686.40 μs
+
+Comparison: 
+beginEnum        74.05 K
+begin            61.75 K - 1.20x slower +2.69 μs
+middleEnum        5.61 K - 13.21x slower +164.85 μs
+middle            5.25 K - 14.11x slower +177.10 μs
+end               3.21 K - 23.07x slower +298.05 μs
+endEnum           3.01 K - 24.64x slower +319.22 μs
+allEnum           0.50 K - 146.76x slower +1968.44 μs
+all               0.50 K - 149.47x slower +2005.03 μs
+
+Profiling beginEnum with eprof...
+
+Profile results of #PID<0.326.0>
+#                                                                CALLS     % TIME µS/CALL
+Total                                                             1172 100.0  511    0.44
+anonymous fn/2 in Benchee.Benchmark.BenchmarkConfig.__struct__/1    13  0.00    0    0.00
+Benchee.Benchmark.BenchmarkConfig.from/1                             1  0.00    0    0.00
+Benchee.Benchmark.BenchmarkConfig.__struct__/1                       1  0.00    0    0.00
+:erlang.apply/2                                                      1  0.00    0    0.00
+:maps.try_next/2                                                    13  0.00    0    0.00
+:maps.next/1                                                         9  0.00    0    0.00
+:maps.iterator/2                                                     5  0.00    0    0.00
+:maps.iterator/1                                                     5  0.00    0    0.00
+:maps.fold_1/4                                                      14  0.00    0    0.00
+:maps.fold/3                                                         1  0.00    0    0.00
+:maps.merge_with_1/3                                                 8  0.00    0    0.00
+:maps.merge_with/3                                                   4  0.00    0    0.00
+:maps.merge/2                                                        1  0.00    0    0.00
+:maps.from_list/1                                                    1  0.00    0    0.00
+:maps.find/2                                                         1  0.00    0    0.00
+Map.take/2                                                           1  0.00    0    0.00
+:erts_internal.map_next/3                                            5  0.00    0    0.00
+:erl_internal.bif/3                                                  1  0.00    0    0.00
+:lists.reverse/1                                                     1  0.00    0    0.00
+:lists.reverse/2                                                     1  0.00    0    0.00
+anonymous fn/1 in :erl_eval.expr/6                                   1  0.00    0    0.00
+anonymous fn/6 in :erl_eval.merge_bindings/4                         4  0.00    0    0.00
+:erl_eval.new_bindings/1                                             1  0.00    0    0.00
+:erl_eval.merge_bindings/4                                           4  0.00    0    0.00
+:erl_eval.add_bindings/2                                             1  0.00    0    0.00
+:erl_eval.binding/2                                                  1  0.00    0    0.00
+:erl_eval.match_list/6                                               1  0.00    0    0.00
+:erl_eval.guard0/4                                                   1  0.00    0    0.00
+:erl_eval.guard/4                                                    1  0.00    0    0.00
+:erl_eval.expr_list/7                                                4  0.00    0    0.00
+:erl_eval.expr_list/5                                                1  0.00    0    0.00
+:erl_eval.eval_fun/8                                                 1  0.00    0    0.00
+:erl_eval.eval_fun/2                                                 1  0.00    0    0.00
+:erl_eval.ret_expr/3                                                 5  0.00    0    0.00
+:erl_eval.do_apply/4                                                 1  0.00    0    0.00
+:erl_eval.do_apply/7                                                 1  0.00    0    0.00
+:erl_eval.expr/6                                                     6  0.00    0    0.00
+:erl_eval.exprs/6                                                    1  0.00    0    0.00
+:elixir.eval_external_handler/3                                      1  0.00    0    0.00
+Benchee.Benchmark.Hooks.run_before_function/2                        4  0.00    0    0.00
+Benchee.Benchmark.Hooks.run_before_each/2                            1  0.00    0    0.00
+Benchee.Benchmark.Hooks.run_after_scenario/2                         1  0.00    0    0.00
+Benchee.Benchmark.Hooks.run_after_each/3                             1  0.00    0    0.00
+Benchee.Benchmark.Runner.run_once/2                                  1  0.00    0    0.00
+Benchee.Benchmark.Runner.main_function/2                             1  0.00    0    0.00
+Benchee.Benchmark.Runner.collect_return_value/2                      1  0.00    0    0.00
+anonymous fn/2 in Benchee.Profile.run/4                              1  0.00    0    0.00
+Kernel.validate_struct!/3                                            1  0.00    0    0.00
+Kernel.struct!/2                                                     1  0.00    0    0.00
+anonymous fn/4 in Enum.reduce/3                                     13  0.00    0    0.00
+Enum.slice_list/4                                                    1  0.00    0    0.00
+Enum.slice_forward/4                                                 1  0.00    0    0.00
+Enum.slice/3                                                         1  0.00    0    0.00
+Enum.reduce/3                                                        1  0.00    0    0.00
+Enum.drop_list/2                                                     1  0.00    0    0.00
+Enum.amount_with_step/2                                              1  0.00    0    0.00
+Map.take/3                                                          14 19.96  102    7.29
+Benchee.Benchmark.Hooks.run_before_scenario/2                        1 19.96  102  102.00
+Enum.take_list/2                                                  1001 60.08  307    0.31
+
+Profile done over 59 matching functions
+
+Profiling begin with eprof...
+
+Profile results of #PID<0.328.0>
+#                                                                CALLS     % TIME µS/CALL
+Total                                                             1167 100.0  614    0.53
+anonymous fn/2 in Benchee.Benchmark.BenchmarkConfig.__struct__/1    13  0.00    0    0.00
+Benchee.Benchmark.BenchmarkConfig.from/1                             1  0.00    0    0.00
+Benchee.Benchmark.BenchmarkConfig.__struct__/1                       1  0.00    0    0.00
+:erlang.apply/2                                                      1  0.00    0    0.00
+:maps.try_next/2                                                    13  0.00    0    0.00
+:maps.next/1                                                         9  0.00    0    0.00
+:maps.iterator/2                                                     5  0.00    0    0.00
+:maps.fold_1/4                                                      14  0.00    0    0.00
+:maps.fold/3                                                         1  0.00    0    0.00
+:maps.merge_with_1/3                                                 8  0.00    0    0.00
+:maps.merge_with/3                                                   4  0.00    0    0.00
+:maps.merge/2                                                        1  0.00    0    0.00
+:maps.from_list/1                                                    1  0.00    0    0.00
+:maps.find/2                                                         1  0.00    0    0.00
+Map.take/3                                                          14  0.00    0    0.00
+Map.take/2                                                           1  0.00    0    0.00
+:erts_internal.map_next/3                                            5  0.00    0    0.00
+:erl_internal.bif/3                                                  1  0.00    0    0.00
+:lists.reverse/1                                                     1  0.00    0    0.00
+:lists.reverse/2                                                     1  0.00    0    0.00
+anonymous fn/1 in :erl_eval.expr/6                                   1  0.00    0    0.00
+anonymous fn/6 in :erl_eval.merge_bindings/4                         4  0.00    0    0.00
+:erl_eval.new_bindings/1                                             1  0.00    0    0.00
+:erl_eval.merge_bindings/4                                           4  0.00    0    0.00
+:erl_eval.add_bindings/2                                             1  0.00    0    0.00
+:erl_eval.binding/2                                                  1  0.00    0    0.00
+:erl_eval.match_list/6                                               1  0.00    0    0.00
+:erl_eval.guard0/4                                                   1  0.00    0    0.00
+:erl_eval.guard/4                                                    1  0.00    0    0.00
+:erl_eval.expr_list/7                                                4  0.00    0    0.00
+:erl_eval.expr_list/5                                                1  0.00    0    0.00
+:erl_eval.eval_fun/8                                                 1  0.00    0    0.00
+:erl_eval.eval_fun/2                                                 1  0.00    0    0.00
+:erl_eval.ret_expr/3                                                 5  0.00    0    0.00
+:erl_eval.do_apply/4                                                 1  0.00    0    0.00
+:erl_eval.do_apply/7                                                 1  0.00    0    0.00
+:erl_eval.expr/6                                                     6  0.00    0    0.00
+:erl_eval.exprs/6                                                    1  0.00    0    0.00
+:elixir.eval_external_handler/3                                      1  0.00    0    0.00
+Benchee.Benchmark.Hooks.run_before_scenario/2                        1  0.00    0    0.00
+Benchee.Benchmark.Hooks.run_before_function/2                        4  0.00    0    0.00
+Benchee.Benchmark.Hooks.run_before_each/2                            1  0.00    0    0.00
+Benchee.Benchmark.Hooks.run_after_scenario/2                         1  0.00    0    0.00
+Benchee.Benchmark.Hooks.run_after_each/3                             1  0.00    0    0.00
+Benchee.Benchmark.Runner.run_once/2                                  1  0.00    0    0.00
+Benchee.Benchmark.Runner.main_function/2                             1  0.00    0    0.00
+Benchee.Benchmark.Runner.collect_return_value/2                      1  0.00    0    0.00
+anonymous fn/2 in Benchee.Profile.run/4                              1  0.00    0    0.00
+Kernel.validate_struct!/3                                            1  0.00    0    0.00
+Kernel.struct!/2                                                     1  0.00    0    0.00
+anonymous fn/4 in Enum.reduce/3                                     13  0.00    0    0.00
+Enum.reduce/3                                                        1  0.00    0    0.00
+:maps.iterator/1                                                     5 16.61  102   20.40
+Slice.slice/3                                                     1001 83.39  512    0.51
+
+Profile done over 54 matching functions
+
+Profiling middleEnum with eprof...
+
+Profile results of #PID<0.330.0>
+#                                                                CALLS     % TIME µS/CALL
+Total                                                            51172 100.0 7986    0.16
+anonymous fn/2 in Benchee.Benchmark.BenchmarkConfig.__struct__/1    13  0.00    0    0.00
+Benchee.Benchmark.BenchmarkConfig.from/1                             1  0.00    0    0.00
+Benchee.Benchmark.BenchmarkConfig.__struct__/1                       1  0.00    0    0.00
+:erlang.apply/2                                                      1  0.00    0    0.00
+:maps.try_next/2                                                    13  0.00    0    0.00
+:maps.next/1                                                         9  0.00    0    0.00
+:maps.iterator/2                                                     5  0.00    0    0.00
+:maps.iterator/1                                                     5  0.00    0    0.00
+:maps.fold_1/4                                                      14  0.00    0    0.00
+:maps.fold/3                                                         1  0.00    0    0.00
+:maps.merge_with_1/3                                                 8  0.00    0    0.00
+:maps.merge/2                                                        1  0.00    0    0.00
+:maps.from_list/1                                                    1  0.00    0    0.00
+:maps.find/2                                                         1  0.00    0    0.00
+Map.take/3                                                          14  0.00    0    0.00
+Map.take/2                                                           1  0.00    0    0.00
+:erts_internal.map_next/3                                            5  0.00    0    0.00
+:erl_internal.bif/3                                                  1  0.00    0    0.00
+:lists.reverse/1                                                     1  0.00    0    0.00
+:lists.reverse/2                                                     1  0.00    0    0.00
+anonymous fn/1 in :erl_eval.expr/6                                   1  0.00    0    0.00
+anonymous fn/6 in :erl_eval.merge_bindings/4                         4  0.00    0    0.00
+:erl_eval.new_bindings/1                                             1  0.00    0    0.00
+:erl_eval.merge_bindings/4                                           4  0.00    0    0.00
+:erl_eval.add_bindings/2                                             1  0.00    0    0.00
+:erl_eval.binding/2                                                  1  0.00    0    0.00
+:erl_eval.match_list/6                                               1  0.00    0    0.00
+:erl_eval.guard0/4                                                   1  0.00    0    0.00
+:erl_eval.guard/4                                                    1  0.00    0    0.00
+:erl_eval.expr_list/7                                                4  0.00    0    0.00
+:erl_eval.expr_list/5                                                1  0.00    0    0.00
+:erl_eval.eval_fun/8                                                 1  0.00    0    0.00
+:erl_eval.eval_fun/2                                                 1  0.00    0    0.00
+:erl_eval.ret_expr/3                                                 5  0.00    0    0.00
+:erl_eval.do_apply/4                                                 1  0.00    0    0.00
+:erl_eval.do_apply/7                                                 1  0.00    0    0.00
+:erl_eval.expr/6                                                     6  0.00    0    0.00
+:erl_eval.exprs/6                                                    1  0.00    0    0.00
+:elixir.eval_external_handler/3                                      1  0.00    0    0.00
+Benchee.Benchmark.Hooks.run_before_scenario/2                        1  0.00    0    0.00
+Benchee.Benchmark.Hooks.run_before_function/2                        4  0.00    0    0.00
+Benchee.Benchmark.Hooks.run_before_each/2                            1  0.00    0    0.00
+Benchee.Benchmark.Hooks.run_after_scenario/2                         1  0.00    0    0.00
+Benchee.Benchmark.Hooks.run_after_each/3                             1  0.00    0    0.00
+Benchee.Benchmark.Runner.run_once/2                                  1  0.00    0    0.00
+Benchee.Benchmark.Runner.main_function/2                             1  0.00    0    0.00
+Benchee.Benchmark.Runner.collect_return_value/2                      1  0.00    0    0.00
+anonymous fn/2 in Benchee.Profile.run/4                              1  0.00    0    0.00
+Kernel.validate_struct!/3                                            1  0.00    0    0.00
+Kernel.struct!/2                                                     1  0.00    0    0.00
+anonymous fn/4 in Enum.reduce/3                                     13  0.00    0    0.00
+Enum.slice_list/4                                                    1  0.00    0    0.00
+Enum.slice_forward/4                                                 1  0.00    0    0.00
+Enum.slice/3                                                         1  0.00    0    0.00
+Enum.reduce/3                                                        1  0.00    0    0.00
+Enum.amount_with_step/2                                              1  0.00    0    0.00
+:maps.merge_with/3                                                   4  1.28  102   25.50
+Enum.take_list/2                                                  1001  3.84  307    0.31
+Enum.drop_list/2                                                 50001 94.88 7577    0.15
+
+Profile done over 59 matching functions
+
+Profiling middle with eprof...
+
+Profile results of #PID<0.332.0>
+#                                                                CALLS     % TIME µS/CALL
+Total                                                            51167 100.0 7986    0.16
+anonymous fn/2 in Benchee.Benchmark.BenchmarkConfig.__struct__/1    13  0.00    0    0.00
+Benchee.Benchmark.BenchmarkConfig.__struct__/1                       1  0.00    0    0.00
+:erlang.apply/2                                                      1  0.00    0    0.00
+:maps.try_next/2                                                    13  0.00    0    0.00
+:maps.next/1                                                         9  0.00    0    0.00
+:maps.iterator/2                                                     5  0.00    0    0.00
+:maps.iterator/1                                                     5  0.00    0    0.00
+:maps.fold_1/4                                                      14  0.00    0    0.00
+:maps.fold/3                                                         1  0.00    0    0.00
+:maps.merge_with_1/3                                                 8  0.00    0    0.00
+:maps.merge_with/3                                                   4  0.00    0    0.00
+:maps.merge/2                                                        1  0.00    0    0.00
+:maps.from_list/1                                                    1  0.00    0    0.00
+:maps.find/2                                                         1  0.00    0    0.00
+Map.take/3                                                          14  0.00    0    0.00
+Map.take/2                                                           1  0.00    0    0.00
+:erts_internal.map_next/3                                            5  0.00    0    0.00
+:erl_internal.bif/3                                                  1  0.00    0    0.00
+:lists.reverse/1                                                     1  0.00    0    0.00
+:lists.reverse/2                                                     1  0.00    0    0.00
+anonymous fn/1 in :erl_eval.expr/6                                   1  0.00    0    0.00
+anonymous fn/6 in :erl_eval.merge_bindings/4                         4  0.00    0    0.00
+:erl_eval.new_bindings/1                                             1  0.00    0    0.00
+:erl_eval.merge_bindings/4                                           4  0.00    0    0.00
+:erl_eval.add_bindings/2                                             1  0.00    0    0.00
+:erl_eval.match_list/6                                               1  0.00    0    0.00
+:erl_eval.guard0/4                                                   1  0.00    0    0.00
+:erl_eval.guard/4                                                    1  0.00    0    0.00
+:erl_eval.expr_list/7                                                4  0.00    0    0.00
+:erl_eval.expr_list/5                                                1  0.00    0    0.00
+:erl_eval.eval_fun/8                                                 1  0.00    0    0.00
+:erl_eval.eval_fun/2                                                 1  0.00    0    0.00
+:erl_eval.ret_expr/3                                                 5  0.00    0    0.00
+:erl_eval.do_apply/4                                                 1  0.00    0    0.00
+:erl_eval.do_apply/7                                                 1  0.00    0    0.00
+:erl_eval.expr/6                                                     6  0.00    0    0.00
+:erl_eval.exprs/6                                                    1  0.00    0    0.00
+:elixir.eval_external_handler/3                                      1  0.00    0    0.00
+Benchee.Benchmark.Hooks.run_before_scenario/2                        1  0.00    0    0.00
+Benchee.Benchmark.Hooks.run_before_function/2                        4  0.00    0    0.00
+Benchee.Benchmark.Hooks.run_before_each/2                            1  0.00    0    0.00
+Benchee.Benchmark.Hooks.run_after_scenario/2                         1  0.00    0    0.00
+Benchee.Benchmark.Hooks.run_after_each/3                             1  0.00    0    0.00
+Benchee.Benchmark.Runner.run_once/2                                  1  0.00    0    0.00
+Benchee.Benchmark.Runner.main_function/2                             1  0.00    0    0.00
+Benchee.Benchmark.Runner.collect_return_value/2                      1  0.00    0    0.00
+anonymous fn/2 in Benchee.Profile.run/4                              1  0.00    0    0.00
+Kernel.validate_struct!/3                                            1  0.00    0    0.00
+Kernel.struct!/2                                                     1  0.00    0    0.00
+anonymous fn/4 in Enum.reduce/3                                     13  0.00    0    0.00
+Enum.reduce/3                                                        1  0.00    0    0.00
+Benchee.Benchmark.BenchmarkConfig.from/1                             1  1.28  102  102.00
+:erl_eval.binding/2                                                  1  1.28  102  102.00
+Slice.slice/3                                                    51001 97.45 7782    0.15
+
+Profile done over 54 matching functions
+
+Profiling end with eprof...
+
+Profile results of #PID<0.334.0>
+#                                                                 CALLS     %  TIME µS/CALL
+Total                                                            100167 100.0 16076    0.16
+Benchee.Benchmark.BenchmarkConfig.from/1                              1  0.00     0    0.00
+Benchee.Benchmark.BenchmarkConfig.__struct__/1                        1  0.00     0    0.00
+:maps.try_next/2                                                     13  0.00     0    0.00
+:maps.next/1                                                          9  0.00     0    0.00
+:maps.iterator/2                                                      5  0.00     0    0.00
+:maps.iterator/1                                                      5  0.00     0    0.00
+:maps.fold_1/4                                                       14  0.00     0    0.00
+:maps.fold/3                                                          1  0.00     0    0.00
+:maps.merge_with_1/3                                                  8  0.00     0    0.00
+:maps.merge_with/3                                                    4  0.00     0    0.00
+:maps.merge/2                                                         1  0.00     0    0.00
+:maps.from_list/1                                                     1  0.00     0    0.00
+:maps.find/2                                                          1  0.00     0    0.00
+Map.take/3                                                           14  0.00     0    0.00
+Map.take/2                                                            1  0.00     0    0.00
+:erts_internal.map_next/3                                             5  0.00     0    0.00
+:erl_internal.bif/3                                                   1  0.00     0    0.00
+:lists.reverse/1                                                      1  0.00     0    0.00
+:lists.reverse/2                                                      1  0.00     0    0.00
+anonymous fn/1 in :erl_eval.expr/6                                    1  0.00     0    0.00
+anonymous fn/6 in :erl_eval.merge_bindings/4                          4  0.00     0    0.00
+:erl_eval.new_bindings/1                                              1  0.00     0    0.00
+:erl_eval.merge_bindings/4                                            4  0.00     0    0.00
+:erl_eval.add_bindings/2                                              1  0.00     0    0.00
+:erl_eval.binding/2                                                   1  0.00     0    0.00
+:erl_eval.match_list/6                                                1  0.00     0    0.00
+:erl_eval.guard0/4                                                    1  0.00     0    0.00
+:erl_eval.guard/4                                                     1  0.00     0    0.00
+:erl_eval.expr_list/7                                                 4  0.00     0    0.00
+:erl_eval.expr_list/5                                                 1  0.00     0    0.00
+:erl_eval.eval_fun/8                                                  1  0.00     0    0.00
+:erl_eval.eval_fun/2                                                  1  0.00     0    0.00
+:erl_eval.ret_expr/3                                                  5  0.00     0    0.00
+:erl_eval.do_apply/4                                                  1  0.00     0    0.00
+:erl_eval.do_apply/7                                                  1  0.00     0    0.00
+:erl_eval.expr/6                                                      6  0.00     0    0.00
+:erl_eval.exprs/6                                                     1  0.00     0    0.00
+:elixir.eval_external_handler/3                                       1  0.00     0    0.00
+Benchee.Benchmark.Hooks.run_before_scenario/2                         1  0.00     0    0.00
+Benchee.Benchmark.Hooks.run_before_function/2                         4  0.00     0    0.00
+Benchee.Benchmark.Hooks.run_before_each/2                             1  0.00     0    0.00
+Benchee.Benchmark.Hooks.run_after_scenario/2                          1  0.00     0    0.00
+Benchee.Benchmark.Hooks.run_after_each/3                              1  0.00     0    0.00
+Benchee.Benchmark.Runner.run_once/2                                   1  0.00     0    0.00
+Benchee.Benchmark.Runner.main_function/2                              1  0.00     0    0.00
+Benchee.Benchmark.Runner.collect_return_value/2                       1  0.00     0    0.00
+anonymous fn/2 in Benchee.Profile.run/4                               1  0.00     0    0.00
+Kernel.validate_struct!/3                                             1  0.00     0    0.00
+Kernel.struct!/2                                                      1  0.00     0    0.00
+anonymous fn/4 in Enum.reduce/3                                      13  0.00     0    0.00
+Enum.reduce/3                                                         1  0.00     0    0.00
+anonymous fn/2 in Benchee.Benchmark.BenchmarkConfig.__struct__/1     13  0.63   102    7.85
+:erlang.apply/2                                                       1  0.63   102  102.00
+Slice.slice/3                                                    100001 98.73 15872    0.16
+
+Profile done over 54 matching functions
+
+Profiling endEnum with eprof...
+
+Profile results of #PID<0.336.0>
+#                                                                CALLS     %  TIME µS/CALL
+Total                                                            10017 100.0 16587    0.17
+anonymous fn/2 in Benchee.Benchmark.BenchmarkConfig.__struct__/1    13  0.00     0    0.00
+Benchee.Benchmark.BenchmarkConfig.from/1                             1  0.00     0    0.00
+Benchee.Benchmark.BenchmarkConfig.__struct__/1                       1  0.00     0    0.00
+:erlang.apply/2                                                      1  0.00     0    0.00
+:maps.try_next/2                                                    13  0.00     0    0.00
+:maps.next/1                                                         9  0.00     0    0.00
+:maps.iterator/2                                                     5  0.00     0    0.00
+:maps.iterator/1                                                     5  0.00     0    0.00
+:maps.fold_1/4                                                      14  0.00     0    0.00
+:maps.fold/3                                                         1  0.00     0    0.00
+:maps.merge_with_1/3                                                 8  0.00     0    0.00
+:maps.merge_with/3                                                   4  0.00     0    0.00
+:maps.merge/2                                                        1  0.00     0    0.00
+:maps.from_list/1                                                    1  0.00     0    0.00
+:maps.find/2                                                         1  0.00     0    0.00
+Map.take/3                                                          14  0.00     0    0.00
+Map.take/2                                                           1  0.00     0    0.00
+:erl_internal.bif/3                                                  1  0.00     0    0.00
+:lists.reverse/1                                                     1  0.00     0    0.00
+anonymous fn/1 in :erl_eval.expr/6                                   1  0.00     0    0.00
+anonymous fn/6 in :erl_eval.merge_bindings/4                         4  0.00     0    0.00
+:erl_eval.new_bindings/1                                             1  0.00     0    0.00
+:erl_eval.merge_bindings/4                                           4  0.00     0    0.00
+:erl_eval.add_bindings/2                                             1  0.00     0    0.00
+:erl_eval.binding/2                                                  1  0.00     0    0.00
+:erl_eval.match_list/6                                               1  0.00     0    0.00
+:erl_eval.guard0/4                                                   1  0.00     0    0.00
+:erl_eval.guard/4                                                    1  0.00     0    0.00
+:erl_eval.expr_list/7                                                4  0.00     0    0.00
+:erl_eval.expr_list/5                                                1  0.00     0    0.00
+:erl_eval.eval_fun/8                                                 1  0.00     0    0.00
+:erl_eval.eval_fun/2                                                 1  0.00     0    0.00
+:erl_eval.ret_expr/3                                                 5  0.00     0    0.00
+:erl_eval.do_apply/4                                                 1  0.00     0    0.00
+:erl_eval.do_apply/7                                                 1  0.00     0    0.00
+:erl_eval.expr/6                                                     6  0.00     0    0.00
+:erl_eval.exprs/6                                                    1  0.00     0    0.00
+:elixir.eval_external_handler/3                                      1  0.00     0    0.00
+Benchee.Benchmark.Hooks.run_before_scenario/2                        1  0.00     0    0.00
+Benchee.Benchmark.Hooks.run_before_function/2                        4  0.00     0    0.00
+Benchee.Benchmark.Hooks.run_before_each/2                            1  0.00     0    0.00
+Benchee.Benchmark.Hooks.run_after_scenario/2                         1  0.00     0    0.00
+Benchee.Benchmark.Hooks.run_after_each/3                             1  0.00     0    0.00
+Benchee.Benchmark.Runner.run_once/2                                  1  0.00     0    0.00
+Benchee.Benchmark.Runner.main_function/2                             1  0.00     0    0.00
+Benchee.Benchmark.Runner.collect_return_value/2                      1  0.00     0    0.00
+anonymous fn/2 in Benchee.Profile.run/4                              1  0.00     0    0.00
+Kernel.validate_struct!/3                                            1  0.00     0    0.00
+Kernel.struct!/2                                                     1  0.00     0    0.00
+anonymous fn/4 in Enum.reduce/3                                     13  0.00     0    0.00
+Enum.slice_list/4                                                    1  0.00     0    0.00
+Enum.slice_forward/4                                                 1  0.00     0    0.00
+Enum.slice/3                                                         1  0.00     0    0.00
+Enum.reduce/3                                                        1  0.00     0    0.00
+Enum.amount_with_step/2                                              1  0.00     0    0.00
+:erts_internal.map_next/3                                            5  0.61   102   20.40
+:lists.reverse/2                                                     1  0.61   102  102.00
+Enum.take_list/2                                                  1001  1.85   307    0.31
+Enum.drop_list/2                                                 99001 96.92 16076    0.16
+
+Profile done over 59 matching functions
+
+Profiling allEnum with eprof...
+
+Profile results of #PID<0.338.0>
+#                                                                 CALLS     %  TIME µS/CALL
+Total                                                            100172 100.0 38092    0.38
+anonymous fn/2 in Benchee.Benchmark.BenchmarkConfig.__struct__/1     13  0.00     0    0.00
+Benchee.Benchmark.BenchmarkConfig.from/1                              1  0.00     0    0.00
+Benchee.Benchmark.BenchmarkConfig.__struct__/1                        1  0.00     0    0.00
+:erlang.apply/2                                                       1  0.00     0    0.00
+:maps.try_next/2                                                     13  0.00     0    0.00
+:maps.next/1                                                          9  0.00     0    0.00
+:maps.iterator/2                                                      5  0.00     0    0.00
+:maps.iterator/1                                                      5  0.00     0    0.00
+:maps.fold_1/4                                                       14  0.00     0    0.00
+:maps.fold/3                                                          1  0.00     0    0.00
+:maps.merge_with_1/3                                                  8  0.00     0    0.00
+:maps.merge_with/3                                                    4  0.00     0    0.00
+:maps.merge/2                                                         1  0.00     0    0.00
+:maps.from_list/1                                                     1  0.00     0    0.00
+:maps.find/2                                                          1  0.00     0    0.00
+Map.take/3                                                           14  0.00     0    0.00
+Map.take/2                                                            1  0.00     0    0.00
+:erts_internal.map_next/3                                             5  0.00     0    0.00
+:erl_internal.bif/3                                                   1  0.00     0    0.00
+:lists.reverse/1                                                      1  0.00     0    0.00
+:lists.reverse/2                                                      1  0.00     0    0.00
+anonymous fn/1 in :erl_eval.expr/6                                    1  0.00     0    0.00
+anonymous fn/6 in :erl_eval.merge_bindings/4                          4  0.00     0    0.00
+:erl_eval.new_bindings/1                                              1  0.00     0    0.00
+:erl_eval.merge_bindings/4                                            4  0.00     0    0.00
+:erl_eval.add_bindings/2                                              1  0.00     0    0.00
+:erl_eval.binding/2                                                   1  0.00     0    0.00
+:erl_eval.match_list/6                                                1  0.00     0    0.00
+:erl_eval.guard0/4                                                    1  0.00     0    0.00
+:erl_eval.guard/4                                                     1  0.00     0    0.00
+:erl_eval.expr_list/7                                                 4  0.00     0    0.00
+:erl_eval.expr_list/5                                                 1  0.00     0    0.00
+:erl_eval.eval_fun/2                                                  1  0.00     0    0.00
+:erl_eval.ret_expr/3                                                  5  0.00     0    0.00
+:erl_eval.do_apply/4                                                  1  0.00     0    0.00
+:erl_eval.do_apply/7                                                  1  0.00     0    0.00
+:erl_eval.expr/6                                                      6  0.00     0    0.00
+:erl_eval.exprs/6                                                     1  0.00     0    0.00
+:elixir.eval_external_handler/3                                       1  0.00     0    0.00
+Benchee.Benchmark.Hooks.run_before_scenario/2                         1  0.00     0    0.00
+Benchee.Benchmark.Hooks.run_before_function/2                         4  0.00     0    0.00
+Benchee.Benchmark.Hooks.run_before_each/2                             1  0.00     0    0.00
+Benchee.Benchmark.Hooks.run_after_scenario/2                          1  0.00     0    0.00
+Benchee.Benchmark.Hooks.run_after_each/3                              1  0.00     0    0.00
+Benchee.Benchmark.Runner.run_once/2                                   1  0.00     0    0.00
+Benchee.Benchmark.Runner.main_function/2                              1  0.00     0    0.00
+Benchee.Benchmark.Runner.collect_return_value/2                       1  0.00     0    0.00
+anonymous fn/2 in Benchee.Profile.run/4                               1  0.00     0    0.00
+Kernel.validate_struct!/3                                             1  0.00     0    0.00
+Kernel.struct!/2                                                      1  0.00     0    0.00
+anonymous fn/4 in Enum.reduce/3                                      13  0.00     0    0.00
+Enum.slice_list/4                                                     1  0.00     0    0.00
+Enum.slice_forward/4                                                  1  0.00     0    0.00
+Enum.slice/3                                                          1  0.00     0    0.00
+Enum.reduce/3                                                         1  0.00     0    0.00
+Enum.drop_list/2                                                      1  0.00     0    0.00
+Enum.amount_with_step/2                                               1  0.00     0    0.00
+:erl_eval.eval_fun/8                                                  1  0.27   102  102.00
+Enum.take_list/2                                                 100001 99.73 37990    0.38
+
+Profile done over 59 matching functions
+
+Profiling all with eprof...
+
+Profile results of #PID<0.340.0>
+#                                                                 CALLS     %  TIME µS/CALL
+Total                                                            100167 100.0 36146    0.36
+anonymous fn/2 in Benchee.Benchmark.BenchmarkConfig.__struct__/1     13  0.00     0    0.00
+Benchee.Benchmark.BenchmarkConfig.from/1                              1  0.00     0    0.00
+Benchee.Benchmark.BenchmarkConfig.__struct__/1                        1  0.00     0    0.00
+:erlang.apply/2                                                       1  0.00     0    0.00
+:maps.try_next/2                                                     13  0.00     0    0.00
+:maps.next/1                                                          9  0.00     0    0.00
+:maps.iterator/2                                                      5  0.00     0    0.00
+:maps.iterator/1                                                      5  0.00     0    0.00
+:maps.fold_1/4                                                       14  0.00     0    0.00
+:maps.fold/3                                                          1  0.00     0    0.00
+:maps.merge_with_1/3                                                  8  0.00     0    0.00
+:maps.merge_with/3                                                    4  0.00     0    0.00
+:maps.merge/2                                                         1  0.00     0    0.00
+:maps.from_list/1                                                     1  0.00     0    0.00
+:maps.find/2                                                          1  0.00     0    0.00
+Map.take/3                                                           14  0.00     0    0.00
+Map.take/2                                                            1  0.00     0    0.00
+:erts_internal.map_next/3                                             5  0.00     0    0.00
+:erl_internal.bif/3                                                   1  0.00     0    0.00
+:lists.reverse/1                                                      1  0.00     0    0.00
+:lists.reverse/2                                                      1  0.00     0    0.00
+anonymous fn/1 in :erl_eval.expr/6                                    1  0.00     0    0.00
+anonymous fn/6 in :erl_eval.merge_bindings/4                          4  0.00     0    0.00
+:erl_eval.new_bindings/1                                              1  0.00     0    0.00
+:erl_eval.merge_bindings/4                                            4  0.00     0    0.00
+:erl_eval.add_bindings/2                                              1  0.00     0    0.00
+:erl_eval.binding/2                                                   1  0.00     0    0.00
+:erl_eval.match_list/6                                                1  0.00     0    0.00
+:erl_eval.guard0/4                                                    1  0.00     0    0.00
+:erl_eval.guard/4                                                     1  0.00     0    0.00
+:erl_eval.expr_list/7                                                 4  0.00     0    0.00
+:erl_eval.expr_list/5                                                 1  0.00     0    0.00
+:erl_eval.eval_fun/8                                                  1  0.00     0    0.00
+:erl_eval.eval_fun/2                                                  1  0.00     0    0.00
+:erl_eval.ret_expr/3                                                  5  0.00     0    0.00
+:erl_eval.do_apply/4                                                  1  0.00     0    0.00
+:erl_eval.do_apply/7                                                  1  0.00     0    0.00
+:erl_eval.expr/6                                                      6  0.00     0    0.00
+:erl_eval.exprs/6                                                     1  0.00     0    0.00
+:elixir.eval_external_handler/3                                       1  0.00     0    0.00
+Benchee.Benchmark.Hooks.run_before_function/2                         4  0.00     0    0.00
+Benchee.Benchmark.Hooks.run_before_each/2                             1  0.00     0    0.00
+Benchee.Benchmark.Hooks.run_after_scenario/2                          1  0.00     0    0.00
+Benchee.Benchmark.Hooks.run_after_each/3                              1  0.00     0    0.00
+Benchee.Benchmark.Runner.run_once/2                                   1  0.00     0    0.00
+Benchee.Benchmark.Runner.main_function/2                              1  0.00     0    0.00
+Benchee.Benchmark.Runner.collect_return_value/2                       1  0.00     0    0.00
+anonymous fn/2 in Benchee.Profile.run/4                               1  0.00     0    0.00
+Kernel.validate_struct!/3                                             1  0.00     0    0.00
+Kernel.struct!/2                                                      1  0.00     0    0.00
+anonymous fn/4 in Enum.reduce/3                                      13  0.00     0    0.00
+Enum.reduce/3                                                         1  0.00     0    0.00
+Benchee.Benchmark.Hooks.run_before_scenario/2                         1  0.28   102  102.00
+Slice.slice/3                                                    100001 99.72 36044    0.36
+
+Profile done over 54 matching functions
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+%Benchee.Suite{
+  system: %Benchee.System{
+    elixir: "1.19.3",
+    erlang: "28",
+    jit_enabled?: true,
+    num_cores: 12,
+    os: :Windows,
+    available_memory: "15.87 GB",
+    cpu_speed: "Intel(R) Core(TM) i7-10750H CPU @ 2.60GHz"
+  },
+  configuration: %Benchee.Configuration{
+    parallel: 1,
+    time: 5000000000.0,
+    warmup: 2000000000.0,
+    memory_time: 0.0,
+    reduction_time: 0.0,
+    pre_check: false,
+    formatters: [Benchee.Formatters.Console],
+    percentiles: ~c"2c",
+    print: %{configuration: true, benchmarking: true, fast_warning: true},
+    inputs: nil,
+    input_names: [],
+    save: false,
+    load: false,
+    unit_scaling: :best,
+    assigns: %{},
+    before_each: nil,
+    after_each: nil,
+    before_scenario: nil,
+    after_scenario: nil,
+    measure_function_call_overhead: false,
+    title: nil,
+    profile_after: true,
+    max_sample_size: 1000000,
+    exclude_outliers: false
+  },
+  scenarios: [
+    %Benchee.Scenario{
+      name: "beginEnum",
+      job_name: "beginEnum",
+      function: #Function<43.113135111/0 in :erl_eval.expr/6>,
+      input_name: :__no_input,
+      input: :__no_input,
+      before_each: nil,
+      after_each: nil,
+      before_scenario: nil,
+      after_scenario: nil,
+      tag: nil,
+      run_time_data: %Benchee.CollectionData{
+        statistics: %Benchee.Statistics{
+          average: 13504.305052430887,
+          ips: 74050.45991759433,
+          std_dev: 6944.8100821388025,
+          std_dev_ratio: 0.5142663806227243,
+          std_dev_ips: 38081.662005269354,
+          median: 10240.0,
+          percentiles: %{25 => 10240.0, 50 => 10240.0, 75 => 20480.0, 99 => 40960.0},
+          mode: 10240.0,
+          minimum: 0.0,
+          maximum: 153600.0,
+          relative_more: nil,
+          relative_less: nil,
+          absolute_difference: nil,
+          outliers: [40960.0, 40960.0, 40960.0, 40960.0, 40960.0, 40960.0, 40960.0, 40960.0,
+           40960.0, 40960.0, 40960.0, 40960.0, 40960.0, 40960.0, 40960.0, 40960.0, 40960.0, 40960.0,
+           40960.0, 40960.0, 40960.0, 40960.0, 40960.0, 40960.0, 40960.0, 40960.0, 40960.0, 40960.0,
+           40960.0, 40960.0, 40960.0, ...],
+          ...
+        },
+        ...
+      },
+      ...
+    },
+    ...
+  ]
+}
+```
+
+### 7. Tagsági vizsgálat
+
+Írjon rekurzív függvényt annak eldöntésére, hogy egy érték benne van-e egy listában. Ne használjon segédfüggényt, ügyeljen a hatékonyságra.
+
+<!-- livebook:{"break_markdown":true} -->
+
+<div style="background-color: lightgreen; padding: 0.3em;">
+
+```elixir
+  defmodule Member do
+    @spec member?(xs :: [any()], e :: any()) :: b :: boolean()
+    # b == true, ha e benne van xs-ben, egyénként false
+    def member?(..., e), do:
+    ...
+  end
+  (Member.member?(~c"A szó elszáll", ?ó) == true) |> IO.inspect()
+  (Member.member?([~c"A szó", ~c"elszáll", ~c"az írás", ~c"megmarad."], ~c"elszáll")
+    == true) |> IO.inspect()
+  (Member.member?([1.2, ?v, "str", false], false) == true) |> IO.inspect()
+  (Member.member?([1.2, ?v, "str", false], "str") == true) |> IO.inspect()
+  (Member.member?([1.2, ?v, "str", false], ~c"str") == false) |> IO.inspect()
+  (Member.member?([], []) == false) |> IO.inspect()
+```
+</div>
+
+```elixir
+defmodule Member do
+  @spec member?(xs :: [any()], e :: any()) :: b :: boolean()
+  # b == true, ha e benne van xs-ben, egyénként false
+  def member?([e|_], e), do: true
+  def member?([_|xs], e), do: member?(xs, e)
+  def member?([], _), do: false
+end
+(Member.member?(~c"A szó elszáll", ?ó) == true) |> IO.inspect()
+(Member.member?([~c"A szó", ~c"elszáll", ~c"az írás", ~c"megmarad."], ~c"elszáll")
+  == true) |> IO.inspect()
+(Member.member?([1.2, ?v, "str", false], false) == true) |> IO.inspect()
+(Member.member?([1.2, ?v, "str", false], "str") == true) |> IO.inspect()
+(Member.member?([1.2, ?v, "str", false], ~c"str") == false) |> IO.inspect()
+(Member.member?([], []) == false) |> IO.inspect()
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+true
+true
+true
+true
+true
+true
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+true
+```
+
+### 8. Prímvizsgálat
+
+Írjon rekurzív programot annak eldöntésére, hogy egy egész szám prím-e. Feltételezheti, hogy a függvényt egészszám-paraméterrel hívjuk. Segédfüggvényt használhat. Ügyeljen a hatékonyságra.
+
+<!-- livebook:{"break_markdown":true} -->
+
+<div style="background-color: lightgreen; padding: 0.3em;">
+
+```elixir
+  defmodule Prime do
+    @spec prime?(x :: integer()) :: b :: boolean()
+    # b == true, ha x prím
+    def prime?(x), do:
+    ...
+  end
+  (Prime.prime?(17) == true) |> IO.inspect()
+  (Prime.prime?(18) == false) |> IO.inspect()
+  (Prime.prime?(197_628) == false) |> IO.inspect()
+  (Prime.prime?(1_000_003) == true) |> IO.inspect()
+  (Prime.prime?(1_213_457) == false) |> IO.inspect()
+  (Prime.prime?(179_424_691) == true) |> IO.inspect()
+```
+</div>
+
+```elixir
+defmodule Prime do
+  @spec prime?(x :: integer()) :: b :: boolean()
+  # b == true, ha x prím
+  def prime?(x), do: prime?(x, floor(:math.sqrt(x)))
+  defp prime?(_x, 1), do: true
+  defp prime?(x, y) when rem(x, y) == 0, do: false
+  defp prime?(x, y) when rem(x, y) != 0, do: prime?(x, y-1)
+end
+(Prime.prime?(17) == true) |> IO.inspect()
+(Prime.prime?(18) == false) |> IO.inspect()
+(Prime.prime?(197_628) == false) |> IO.inspect()
+(Prime.prime?(1_000_003) == true) |> IO.inspect()
+(Prime.prime?(1_213_457) == false) |> IO.inspect()
+(Prime.prime?(179_424_691) == true) |> IO.inspect()
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+true
+true
+true
+true
+true
+true
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+true
+```
+
+## További gyakorló feladatok
+
+<div style="background-color: lightgreen; padding: 0.3em;">
+
+```elixir
+defmodule Fp1Gy do
+  @spec revapp(xs :: [integer()], ys :: [integer()]) :: zs :: [integer()]
+  # zs == xs fordítottja ys elé fűzve
+  def revapp(...) do
+    ...
+  end
+
+  @spec rev(xs :: [integer()]) :: zs :: [integer()]
+  # zs == xs fordítottja
+  def rev(...) do
+    ...
+  end
+
+  @spec diff(xs :: [integer()], ys :: [integer()]) :: zs :: [integer()]
+  # zs == xs és ys különbsége, azaz xs azon elemei, melyek nincsenek benne ys-ben
+  # a listában az azonos értékű elemeket külön elemeknek tekintjük,
+  # azaz az ilyen lista zsák (bag), nem halmaz (set) 
+  def diff(...) do
+    ...
+  end
+end
+```
+</div>

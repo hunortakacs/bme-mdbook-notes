@@ -1,0 +1,418 @@
+<!-- livebook:{"file_entries":[{"name":"elsoLepesek.jpg","type":"attachment"},{"name":"ovodai-jelek.jpg","type":"attachment"},{"name":"ovodai-jelek.png","type":"attachment"},{"name":"recursiveMirror.jpg","type":"attachment"},{"name":"recursiveMirror2.jpg","type":"attachment"}],"persist_outputs":true} -->
+
+# DP26a - 3. FP-gyakorlat
+
+## Műveletek listákon
+
+A 2. FP-gyakorlaton az L1-L4 feladatok már szerepeltek (ott L3-L6 jelöléssel), de sokan idő hiányában nem tudták megoldani. Most ismét feladjuk ezeket is, azzal a kiegészítéssel, hogy minél több magasabb rendű és más könyvtári függvényt használjon.
+
+Írjon többféle megoldást a feladatokra:  magasabb rendű és más könyvtári függvényekkel (`Enum.map/2`, `Enum.filter/2`, `Enum.reduce/3`, `List.foldr/3`, , `List.foldl/3` stb.), valamint `for`-komprehenzióval.
+
+Hasonlítsa össze a megoldások futási idejét a `benchee`-vel, próbáljon hatékonyabb kódot írni pl. jobbrekurzióval.
+
+Használja a `kino_explorert`-t nyomkövetésre, hibakeresésre.
+
+Próbálja ki a `dialyxir` modult, azaz a _dialyzer_ segédeszközt, ellenőrizze programjaiban a típus- és függvényspecifikációk helyességét.
+
+A _dialyzert_ nem tudja _Livebook_ cellában futtatni, mert a _dialyzer_ a lefordított BEAM-kódot elemzi, a _Livebook_ pedig nem menti el a BEAM-kódot a háttértárba. Ezért hozzon létre egy _mix_ projektet, másolja ki az elemzendő programrészeket a _Livebook_ cellá(k)ból, és mentse el ezt a kódot a _mix_ projekt fájlrendszerén belül a `lib` mappában egy `.ex` típusnevű fájlba. Írja be a _mix_ függőségei közé a `dialyxir`-t, töltse le és fordítsa le az új modulokat. Ezután már futtathatja a _dialyzert._ A harmadik FP-előadáson néhány dián össze van foglalva a `dialyxir` telepítése és használata. Itt is olvashat róla: `https://hexdocs.pm/dialyxir/readme.html`.
+
+A _mix_ parancssoros használatához az _elixirt_ telepítenie kell a saját gépére, vagy _dockerből_ kell tudni futtatnia. Az első FP-előadás diái segítenek az _elixir_ telepítésben, az _elixir_ és a _mix_ használatban, ha eddig még nem használta parancssorból az _elixirt_ vagy a _mixet._
+
+<!-- livebook:{"break_markdown":true} -->
+
+### L1. Lista minden n-edik elemének kihagyásával létrejövő lista
+
+Írjon függvényt egy olyan lista létrehozására, amelyikből a paraméterként átadott lista minden n-edik eleme, a nulladiktól kezdve, ki van hagyva. (A listák indexelése, mint tudjuk, a 0-val kezdődik.)
+
+<p style="background-color: pink; padding: 1rem; margin: 1rem 0;">
+Ne használja az <code>Enum.split*</code>, <code>Enum.take*</code> és <code>Enum.drop*</code> függvények semelyik változatát a <code>dropevery/2</code> függvény megvalósítására! (De bármilyen könyvtári függvényt használhat az eredmény ellenőrzésére.)
+</p>
+
+<div style="background-color: lightgreen; padding: 0.3em;">
+
+```elixir
+defmodule Drop do
+  @spec dropevery(xs :: [any()], n :: integer()) :: rs :: [any()]
+  def dropevery(xs, n) do
+    ...
+  end
+end
+ls = ~c"álom" ++ [:a] ++ ~c"egybrigád"
+IO.inspect(Drop.dropevery(ls, 4) === ~c"lomegyrigd")
+ls = ~c"abcdefghijkl"
+IO.inspect(Drop.dropevery(ls, 5) === ~c"bcdeghijl")
+ls = ~c"1234567"
+IO.inspect(Drop.dropevery(ls, 2) === ~c"246")
+ls = []
+IO.inspect(Drop.dropevery(ls, 3) === [])
+ls = [:a, :b, :c, :d, :e, :f, :g, :h, :i, :j, :k, :l, :m]
+IO.inspect(Drop.dropevery(ls, 3) === [:b, :c, :e, :f, :h, :i, :k, :l])
+```
+</div>
+
+<details style="background-color: lightgreen; padding: 1rem; margin: 1rem 0;">
+ <summary>Súgó</summary>
+Ha nem ír segédfüggvényt és nincs más ötlete, használhatja a <code>for</code>-jelölést, generátoraként a <code>../2</code>, szűrőjeként a <code>rem/2</code> függvényeket, a listaelemek elérésére pedig a  <code>Enum.at/2</code> függvényt.
+</details>
+
+<!-- livebook:{"break_markdown":true} -->
+
+### L2. Lista egyre rövidülő szuffixumainak listája
+
+Írjon olyan függvényt, amely egy xs lista elemeiből álló részlistákat ad eredményül: az első részlista maga az xs legyen, a második részlista az xs második, azaz 1 indexű elemétől a végéig tartson, a harmadik részlista az xs harmadik, azaz 2 indexű elemétől a végéig tartson,
+s.í.t., az utolsó részlista az üres lista legyen.
+
+<div style="background-color: lightgreen; padding: 0.3em;">
+
+```elixir
+defmodule Tails do
+  @spec tails(xs :: [any()]) :: zss :: [[any()]]
+  # Az xs lista egyre rövidülő szuffixumainak listája zss
+  def tails(xs) do
+  ...
+  end
+end
+IO.puts(Tails.tails([1, 4, 2]) === [[1, 4, 2], [4, 2], [2], []])
+IO.puts(Tails.tails([:a, :b, :c, :d]) === [[:a, :b, :c, :d], [:b, :c, :d], [:c, :d], [:d], []])
+IO.puts(Tails.tails([:z]) === [[:z], []])
+IO.puts(Tails.tails([]) === [[]])
+```
+</div>
+
+<details style="background-color: lightgreen; padding: 1rem; margin: 1rem 0;">
+ <summary>Súgó</summary>
+A <code>tails</code> függvénynek listák listája az eredménye, így ha üres listára alkalmazzuk, akkor olyan lista lesz a visszatérési értéke, melynek egyetlen eleme van, az üres lista.
+</details>
+
+<!-- livebook:{"break_markdown":true} -->
+
+### L3. Lista egymást követő két-két eleméből képzett párok listája
+
+Írjon olyan rekurzív függvényt, amelyik egy lista 1. és 2., 3. és 4., 5. és 6. s.í.t. elemeiből képzett párok listáját adja eredményül. Ha a listának kettőnél kevesebb eleme van, az eredmény az üres lista legyen. Ha a listának páratlan számú eleme van, az utolsót dobja el.
+
+<div style="background-color: lightgreen; padding: 0.3em;">
+
+```elixir
+defmodule Pairs do
+  @spec pairs(xs::[any()]) :: zs :: [any()]
+  def pairs(xs), do: ...
+end
+zs = [{1,2}, {3,4}, {5,6}, {7,8}, {9,10}, {11,12}, {13,14}, {15,16}, {17,18}, {19,20}]
+(1..20 |> Range.to_list() |> Pairs.pairs() == zs) |> IO.puts
+zs = [{1,2}, {3,4}, {5,6}, {7,8}, {9,10}]
+(1..11 |> Range.to_list() |> Pairs.pairs() == zs) |> IO.puts
+([1] |> Pairs.pairs() == []) |> IO.puts
+([1] |> Pairs.pairs() == []) |> IO.puts
+```
+</div>
+
+<!-- livebook:{"break_markdown":true} -->
+
+### L4. Listában párosával előforduló elemek listája
+
+Írjon olyan rekurzív függvényt, amelyik egy lista elemei közül az összes olyat visszaadja az eredménylistában, amelyet vele azonos értékű elem követ, azaz például két egymást követő, azonos értékű elemből egyet, három egymást követőből kettőt stb. Írhat segédfüggvényt és akkumulátort nem használó, valamint akkumulátoros segédfüggvényt használó változatot. Próbáljon meg egyéb változatokat is írni, pl. a <code>for</code>-jelöléssel és az <code>Enum.zip/1</code> függvény alkalmazásával.
+
+<div style="background-color: lightgreen; padding: 0.3em;">
+
+```elixir
+defmodule Parosan do
+  @spec parosan(xs :: [any()]) :: rs :: [any()]
+  # Az xs lista összes olyan elemének listája rs, amely
+  # után vele azonos értékű elem áll
+  def parosan xs do
+  ...
+  end
+end
+IO.puts(Parosan.parosan([:a, :a, :a, 2, 3, 3, :a, 2, :b, :b, 4, 4]) === [:a, :a, 3, :b, 4])
+IO.puts(Parosan.parosan([:a, 2, 3, :a, 2, :b, 4]) === [])
+IO.puts(Parosan.parosan([:a]) === [])
+IO.puts(Parosan.parosan([]) === [])
+```
+</div>
+
+<!-- livebook:{"break_markdown":true} -->
+
+### L5. Lista elején azonos értékű elemekből álló részlisták listája
+
+Írjon függvényt olyan nemüres, folytonos részlisták előállítására, amelyek egy lista elejétől indulnak, és velük azonos értékű és elemszámú részlisták követik őket.  Példák:
+
+`[1,1]` ––> `[[1]]`: A lista elején kezdődő `[1]` részlistát az `[1]` részlista követi.
+
+`[1,1,1]` ––> `[[1]]`: A lista elején kezdődő `[1]` részlistát az `[1]` részlista követi, de a lista elején kezdődő `[1,1]` részlistát már nem követi azonos értékű részlista.
+
+`[1,1,0,0]` ––> `[[1]]`: A lista elején kezdődő `[1]` részlistát az `[1]` részlista követi, de a `[0]` részlista már nem a lista elején kezdődik.
+
+`[1,1,1,1]` ––> `[[1], [1, 1]]`: A lista elején kezdődő `[1]` és `[1, 1]`  részlistákat a lista elején kezdődő, azonos értékű részlisták követik.
+
+`[1,1,1,1,1]` ––> `[[1], [1, 1]]`: A lista elején kezdődő `[1]` és `[1, 1]`  részlistákat a lista elején kezdődő, azonos értékű részlisták követik, de a lista elején kezdődő `[1, 1, 1]`  részlistát már nem követi azonos értékű részlista.
+
+`[1,1,0,1,1]` ––> `[[1]]`: A lista elején kezdődő `[1]` részlistát az `[1]` részlista követi, de nincs több olyan ismétlődő részlista, ami a lista elején kezdődne.
+
+`[1,1,1,1,1,1]` ––> `[[1], [1, 1], [1, 1, 1]]`: A lista elején kezdődő `[1]`, `[1, 1]` és `[1, 1, 1]`  részlistákat a lista elején kezdődő, azonos értékű részlisták követik.
+
+Lehetőleg írjon többféle változatot, pl. akkumulátort használó és nem használó változatot, könyvtári függvényeket alkalmazó és nem alkalmazó változatot.
+
+<div style="background-color: lightgreen; padding: 0.3em;">
+
+```elixir
+defmodule Repeated do
+  @spec repeated(xs :: [any()]) :: rs :: [any()]
+  def repeated(xs) do
+  ...
+  end
+end
+(Repeated1.repeated([1,1]) == [[1]]) |> IO.inspect
+(Repeated1.repeated([1,1,1]) == [[1]]) |> IO.inspect
+(Repeated1.repeated([1,1,0,0]) == [[1]]) |> IO.inspect
+(Repeated1.repeated([1,1,1,1]) == [[1], [1, 1]]) |> IO.inspect
+(Repeated1.repeated([1,1,1,1,1]) == [[1], [1, 1]]) |> IO.inspect
+(Repeated1.repeated([1,1,0,1,1]) == [[1]]) |> IO.inspect
+(Repeated1.repeated([1,1,1,1,1,1]) == [[1], [1, 1], [1, 1, 1]]) |> IO.inspect
+
+(Repeated1.repeated([:a, :a, :a, 2, 3, 3, :a, :b, :b, :b, :b]) === [[:a]]) |> IO.inspect
+(Repeated1.repeated([:a, :b, :b, :b, :b]) === []) |> IO.inspect
+(Repeated1.repeated([:b, :b, :b, :b]) === [[:b], [:b, :b]]) |> IO.inspect
+(Repeated1.repeated([]) === []) |> IO.inspect
+```
+</div>
+
+<details style="background-color: lightgreen; padding: 1rem; margin: 1rem 0;">
+ <summary>Súgó</summary>
+Ha nincs jobb ötlete, használja az <code>Enum.take/2</code> és <code>Enum.drop/2</code> függvényeket egy segédfüggvényben.
+</details>
+
+<!-- livebook:{"break_markdown":true} -->
+
+### L6. Listában párosával előforduló részlisták listája
+
+Írjon függvényt egy lista összes olyan nemüres, folytonos részlistájának az előállítására, amelyet vele azonos értékű részlista követ. Lehetőleg írjon többféle változatot.
+
+<div style="background-color: lightgreen; padding: 0.3em;">
+
+```elixir
+defmodule Stammering do
+  @spec stammering(xs :: [any()]) :: zss :: [[any()]]
+  # zss az xs lista összes olyan nemüres, folytonos részlistájából
+  # álló lista, amelyet vele azonos értékű részlista követ
+  def stammering(xs) do
+    ...
+  end
+end
+(Stammering.stammering([:a, :a, :a, 2, 3, 3, :a, :b, :b, :b, :b]) ===
+  [[:a], [:a], [3], [:b], [:b, :b], [:b], [:b]]) |> IO.puts()
+IO.puts(Stammering.stammering([]) === [])
+IO.puts(Stammering.stammering([:a]) === [])
+IO.puts(Stammering.stammering([:a, :a]) === [[:a]])
+IO.puts(Stammering.stammering([:a, :b]) === [])
+```
+</div>
+
+<details style="background-color: lightgreen; padding: 1rem; margin: 1rem 0;">
+ <summary>Súgó</summary>
+Javasoljuk a <code>Tails.tails/1</code> használatát. Felhasználhatja a <code>Repeated1.repeated/1</code> vagy a <code>Repeated2.repeated/1</code>függvényt is.
+</details>
+
+<!-- livebook:{"break_markdown":true} -->
+
+### L7. Listában kulcs-érték párokban előforduló értékek listája
+
+Egy listában többféle típusú és szerkezetű elem fordul elő, köztük <code>{:v, v}</code> párok is, ahol a párok első tagja a <code>:v</code> atom, második tagja az itt <code>v</code>-vel jelölt, tetszőleges érték.
+
+Írjon olyan rekurzív függvényt, amelyik egy lista elemei közül az összes <code>{:v, v}</code> párban található <code>v</code> értéket visszaadja az eredménylistában. Írhat segédfüggvényt és akkumulátort nem használó, valamint akkumulátoros segédfüggvényt használó változatot. Feltétlenül írjon egyéb változatot is <code>for</code>-jelöléssel (meg fog lepődni!).
+
+<div style="background-color: lightgreen; padding: 0.3em;">
+
+```elixir
+defmodule Ertekek do
+  @spec ertekek(xs :: [{:v::atom(), v::any()} | any()]) :: vs :: [any()]
+  # Az xs lista elemei közül a {:v, v} mintára illeszkedő
+  # párok 2. tagjából képzett lista vs
+  def ertekek(xs), do: for({:v, v} <- xs, do: v)
+end
+Ertekek.ertekek([:alma, {:s, 3}, {:v, 1}, 3, {:v, 2}]) === [1, 2]
+```
+</div>
+
+<details style="background-color: lightgreen; padding: 1rem; margin: 1rem 0;">
+ <summary>Súgó</summary>
+Ha a <code>for</code>-jelölés generátorában egy mintaillesztés sikertelen, akkor az adott érték nem kerül be az eredménylistába (nem teljesült a kiválasztási feltétel), és a kiértékelés a következő listaelemmel folytatódik. Ezért a <code>for</code>-ral külön szűrőfeltétel használata nélkül, nagyon egyszerűen megvalósítható az elvárt működés.
+</details>
+
+## Összeg testvéries elosztása
+
+A harmadik FP-előadáson tárgyaltuk ezt a feladatot (a segédanyagban található):
+
+"Adott pénzérméket úgy kell elosztani két ember között, hogy a két összeg különbségének abszolút értéke a lehető legkisebb legyen (<a href="https://en.wikipedia.org/wiki/Central_European_Olympiad_in_Informatics" target="_blank"><abbr title="Közép-Európai Informatika Diákolimpia">CEOI</abbr></a>’1995 versenyfeladat).
+
+Ha az érmék értékét tartalmazó lista ez: [28, 7, 11, 8, 9, 7, 27], akkor egyikük a [9, 11, 28] érméket kapja, melyek összege 48, másikuk a többit, melyek összege 49."
+
+A bemutatott megoldás először kigyűjti az összes olyan részlistát, melyek összege nem nagyobb a teljes listaösszeg felénél, majd ezekből válogatja ki a maximális összegűeket.
+
+Írjon egy vagy több olyan változatot, amelyek már menet közben eldobják az aktuális maximumnál kisebb részlistákat. Ezután próbáljon olyan megoldást írni, amely az egyszer már kiszámolt összegű részlisták összegét nem számolja ki újra. Hasonlítsa össze az egyes változatok futási idejét a `benchee` segítségével, és becsülje meg a tárigényüket.
+
+```elixir
+defmodule ElosztS do  # a harmadik előadás segédanyagából
+  
+  def sort(ls), do: Enum.sort(ls, fn (a,b) -> b < a end)
+  
+  @type p_int() :: integer()
+  @type my_map() :: %{[p_int()] => p_int()}
+  @spec max_osszegek(map :: my_map()) :: resmap :: my_map()
+  def max_osszegek(map) do
+    maxval = Enum.max(Map.values(map))
+    for {k,v} <- map, v == maxval, into: %{}, do: {k, v}
+  end
+end
+
+
+defmodule Eloszt do  # a harmadik előadás segédanyagából
+
+  @spec eloszt(vals :: [EnumS.p_int()]) :: map :: EnumS.my_map 
+    # Legyen halfsum a vals pozitív egészlista összegének a fele (egész osztással).
+    # A map kulcs-érték párjaiban a kulcsok vals olyan max. összegű részlistái,
+    # melyek összege nem nagyobb halfsum-nál, az értékek pedig e részlisták összege.
+  
+  def eloszt([_,_|_] = vals) do
+    tot = Enum.sum(vals)
+    #|> IO.inspect(label: "Listaösszeg")
+    tgt = div(tot, 2)
+    #|> IO.inspect(label: "Célérték")
+
+    # vals = vals #Enum.sort(vals) #my_sort(vals) # rendezzük az értéklistát csökkenő sorrendben
+    # |> IO.inspect()
+    eloszt(Map.new(), vals, tgt, [], 0) # Map.new() === %{} # 0 jó-e?
+    # |> IO.inspect()
+    |> ElosztS.max_osszegek()
+  end
+  def eloszt(_), do: "A listának legalább kételeműnek kell lennie."
+
+  @spec eloszt(map  :: EnumS.my_map(),  # map-be gyűjtjük a részlistákat és összegüket 
+               vals :: [EnumS.p_int()], # a még feldolgozandó érmelista
+               tgt  :: EnumS.p_int(),   # a célösszeg (nem változik)
+               curr :: [EnumS.p_int()], # a már összegyűjtött részlista
+               sum  :: EnumS.p_int())   # a már összegyűjtött részlista összege
+          :: resmap :: EnumS.my_map()   # a bővített map, a fv. eredménye
+  
+  defp eloszt(map, [val|vals], tgt, curr, sum) do
+    curr_new = [val | curr] # az aktuális érmével bővített részlista
+    sum_new = sum + val     # az aktuális érmével megnövelt összeg
+
+    # ha az új összeg nem nagyobb a célösszegnél, berakjuk a map-be, ha kisebb, nem
+    # figyeljük meg, hogyan használjuk a pipe-ot az esetleg bővített map továbbadására
+    (if sum_new <= tgt, do: Map.put(map, curr_new, sum_new), else: map)
+    |> eloszt(vals, tgt, curr_new, sum_new) # 1. ág: val-t bevesszük # feltételesen kihagyható
+    |> eloszt(vals, tgt, curr, sum) # 2. ág: val-t kihagyjuk
+  end
+  defp eloszt(map, [], _tgt, _curr, _sum), do: map
+end
+
+Eloszt.eloszt([4,1,2,5,6,3,7]) |> IO.inspect()
+```
+
+### T1. Természetes szám valódi osztói
+
+Egy természetes szám valódi osztóinak nevezzük az 1-en és önmagán kívüli pozitív osztóit.
+
+Írjon olyan kifejezést/függvényt a <code>for</code> jelölés felhasználásával, amelyik egy listában visszaadja a paraméterként átadott természetes szám valódi osztóit.
+
+Írjon többféle megoldást, használjon magasabb rendű függvényeket, definiálhatja a függvényt a `def` kulcsszóval is.
+
+<div style="background-color: lightgreen; padding: 0.3em;">
+
+```elixir
+# @spec proper_divisors(i :: integer()) :: ds :: [integer()]
+# Az i természetes szám valódi osztóinak listája ds
+proper_divisors = ...
+(proper_divisors.(10) === [2, 5]) |> IO.inspect(charlists: :as_list)
+(proper_divisors.(23) === []) |> IO.inspect(charlists: :as_list)
+(proper_divisors.(48) === [2, 3, 4, 6, 8, 12, 16, 24]) \
+ |> IO.inspect(charlists: :as_list)
+(proper_divisors.(128) === [2, 4, 8, 16, 32, 64]) \
+ |> IO.inspect(charlists: :as_list)
+```
+</div>
+
+<details style="background-color: lightgreen; padding: 1rem; margin: 1rem 0;">
+<summary>Súgó</summary>
+
+Egy $k$ természetes szám valódi osztóit a legegyszerűbben úgy találhatja meg, hogy a $k$-t rendre elosztja a $2$ és $k/2$ közötti egészekkel, és ha az egészosztásnak nincs maradéka, akkor az adott szám osztója $k$-nak.
+</details>
+
+<!-- livebook:{"break_markdown":true} -->
+
+### T2. Összetett számok
+
+Összetett számnak nevezzük azt a természetes számot, amelynek van valódi osztója. A legkisebb összetett szám a 4.
+
+Írjon olyan kifejezést/függvényt a <code>for</code> jelölés felhasználásával, amelyik egy listában visszaadja a függvénynek paraméterként átadott természetes számnál nem nagyobb összes összetett számot, 4-től kezdve. A függvényben felhasználhatja a szám valódi osztóit előállító függvényt, amit az előbb írt meg.
+
+Írjon többféle megoldást, használjon magasabb rendű függvényeket, definiálhatja a függvényt a `def` kulcsszóval is.
+
+<div style="background-color: lightgreen; padding: 0.3em;">
+
+```elixir
+# @spec composite_numbers(i :: integer()) :: ns :: [integer()]
+# Az i-nél nem nagyobb összetett számok listája ns
+composite_numbers =
+(composite_numbers.(11) === [4, 6, 8, 9, 10]) |> IO.inspect(charlists: :as_list)
+(composite_numbers.(17) === [4, 6, 8, 9, 10, 12, 14, 15, 16]) \
+ |> IO.inspect(charlists: :as_list)
+```
+</div>
+
+<!-- livebook:{"break_markdown":true} -->
+
+#### Hatékonyabb megoldás
+
+Írjon olyan megoldást az előző feladatra, amelyik nem állítja elő a valódi osztók listáját.
+
+Az $n$ természetes szám összetett, ha osztható
+
+1. a $2$ és $\sqrt n$ közötti prímszámok bármelyikével;
+2. $2$-vel vagy a $3$ és $\sqrt n$ közötti páratlan egészek bármelyikével.
+
+Az első módszer gyorsabb, de ha a prímszámok előállítása nem triviális, elég hatékony a második módszer is. További hatékonyságnövelő lehetőségekről olvashat pl. itt: <a href="https://en.wikipedia.org/wiki/Primality_test">pl. https://en.wikipedia.org/wiki/Primality_test</a>.
+
+<div style="background-color: lightgreen; padding: 0.3em;">
+
+```elixir
+composite_numbers_faster = &for i <- 4..&1, composite?.(i), do: i
+(composite_numbers_faster.(11) === [4, 6, 8, 9, 10] ) \
+ |> IO.inspect(charlists: :as_list)
+(composite_numbers_faster.(21) === [4, 6, 8, 9, 10, 12, 14, 15, 16, 18, 20, 21])\
+ |> IO.inspect(charlists: :as_list)
+ ```
+</div>
+
+<details style="background-color: lightgreen; padding: 1rem; margin: 1rem 0;">
+<summary>
+Súgó
+</summary>
+
+Javasoljuk, hogy a megoldást bontsa lépésekre: állítsa elő a szám összetett voltának vizsgálatához használandó osztókat; állapítsa meg, hogy a szám összetett szám-e; állítsa elő az összetett számok listáját a kért tartományban. Fontolja meg az alább felsorolt függvények használatát.
+
+<ul>
+<li>A <code>Kernel</code> modulban definiált <code>..///3</code> operátor operandusainak egész számoknak kell lenniük, ezért ha a felső határ beállítására a <code>:math.sqrt/1</code> függvényt használja, egész számmá kell konvertálni (vö. <code>round/1</code>, <code>floor/1</code>, <code>ceil/1</code> függvények).</li>
+<li>Az <code>Enum.to_list/1</code> függvény tetszőleges felsorolható sorozatot alakít át listává, így tartomány-típusú értéksorozatot is.</li>
+<li>Az <code>Enum.reduce/3</code> függvény egy lista összes elemére alkalmaz egy kétoperandusú függvényt: ha pl. egy szám összetett voltát akarjuk vizsgálni vele, akkor olyan függvényt kell átadnunk paraméterként, amelyik az adott számnak a sorozat egy elemével való oszthatósága esetén igaz, egyébként hamis értékkel tér vissza.</li>
+</ul>
+</details>
+
+<div style="background-color: lightgreen; padding: 0.3em;">
+
+```elixir
+# @spec probes(i :: integer()) :: ps :: [integer()]
+# A 2-t, továbbá a 3 és a :math.sqrt(i) közé eső egészeket tartalmazó lista ps
+probes = ... 
+# @spec composite?(i :: integer()) :: b :: boolean()
+# b igaz, ha i összetett szám
+composite? = ...
+# @spec composite_numbers_faster(i :: integer()) :: ns :: [integer()]
+# Az i-nél nem nagyobb összetett számok listája ns
+composite_numbers_faster = ...
+```
+</div>
+
+<!-- livebook:{"break_markdown":true} -->
+
+A megoldást, ha a javaslatunkat megfogadta, három kis – esetleg több – lépésre bontotta, mindegyikre egy-egy névtelen (de változóhoz kötött) függvényt írt, így ezeket könnyebb volt megérteni, és a helyességüket könnyebb volt belátni. Mivel a funkcionális nyelvekben a függvényhívás nagyon hatékonyan van megoldva, ez a jó és követendő gyakorlat: minden kicsit is összetett függvényt több egyszerűbb függvényből rakjunk össze, és ahol csak lehet, használjuk a hatékonyan megvalósított és sokat tesztelt könyvtári függvényeket.

@@ -1,0 +1,125 @@
+<!-- livebook:{"persist_outputs":true} -->
+
+# dp26a, benchmarking-példa az 1. előadáshoz
+
+```elixir
+Mix.install([
+{:benchee, "~> 1.3"}
+])
+
+```
+
+## Egészlista összege háromféleképpen + benchmarking
+
+```elixir
+defmodule Sum do
+
+  def sum1([]), do: 0
+  def sum1([x|xs]), do: x + sum1(xs)
+
+  def sum2([x|xs]), do: x + sum2(xs)
+  def sum2([]), do: 0
+
+  def sum3(xs), do: sumi(xs, 0)
+
+  defp sumi([x|xs], sum), do: sumi(xs, sum+x)
+  defp sumi([], sum), do: sum
+
+end
+
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+{:module, Sum, <<70, 79, 82, 49, 0, 0, 9, ...>>, {:sumi, 2}}
+```
+
+```elixir
+1..1000 |> Range.to_list() |> Sum.sum1() |> IO.inspect()
+1..1000 |> Range.to_list() |> Sum.sum2() |> IO.inspect()
+1..1000 |> Range.to_list() |> Sum.sum3() |> IO.inspect()
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+500500
+500500
+500500
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+500500
+```
+
+```elixir
+Benchee.run(
+  %{
+    "sum1 ([] az 1. klozban)"  => fn -> 1..10_000 |> Enum.to_list |> Sum.sum1() end,
+    "sum2 ([] a 2. klozban)"  => fn -> 1..10_000 |> Enum.to_list |> Sum.sum2() end,
+    "sum3 (iterativ, [] a 2. klozban)"  => fn -> 1..10_000 |> Enum.to_list |> Sum.sum3() end
+  }# , profile_after: true
+)
+:ok
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+Warning: the benchmark sum1 ([] az 1. klozban) is using an evaluated function.
+  Evaluated functions perform slower than compiled functions.
+  You can move the Benchee caller to a function in a module and invoke `Mod.fun()` instead.
+  Alternatively, you can move the benchmark into a benchmark.exs file and run mix run benchmark.exs
+
+Warning: the benchmark sum2 ([] a 2. klozban) is using an evaluated function.
+  Evaluated functions perform slower than compiled functions.
+  You can move the Benchee caller to a function in a module and invoke `Mod.fun()` instead.
+  Alternatively, you can move the benchmark into a benchmark.exs file and run mix run benchmark.exs
+
+Warning: the benchmark sum3 (iterativ, [] a 2. klozban) is using an evaluated function.
+  Evaluated functions perform slower than compiled functions.
+  You can move the Benchee caller to a function in a module and invoke `Mod.fun()` instead.
+  Alternatively, you can move the benchmark into a benchmark.exs file and run mix run benchmark.exs
+
+Operating System: Linux
+CPU Information: Intel(R) Core(TM) i5-8365U CPU @ 1.60GHz
+Number of Available Cores: 8
+Available memory: 38.81 GB
+Elixir 1.18.4
+Erlang 28.0.1
+JIT enabled: true
+
+Benchmark suite executing with the following configuration:
+warmup: 2 s
+time: 5 s
+memory time: 0 ns
+reduction time: 0 ns
+parallel: 1
+inputs: none specified
+Estimated total run time: 21 s
+
+Benchmarking sum1 ([] az 1. klozban) ...
+Benchmarking sum2 ([] a 2. klozban) ...
+Benchmarking sum3 (iterativ, [] a 2. klozban) ...
+Calculating statistics...
+Formatting results...
+
+Name                                       ips        average  deviation         median         99th %
+sum3 (iterativ, [] a 2. klozban)       11.60 K       86.22 μs    ±16.11%       82.37 μs      150.53 μs
+sum1 ([] az 1. klozban)                 7.54 K      132.56 μs    ±22.29%      126.42 μs      230.17 μs
+sum2 ([] a 2. klozban)                  6.73 K      148.58 μs    ±15.46%      136.23 μs      204.25 μs
+
+Comparison: 
+sum3 (iterativ, [] a 2. klozban)       11.60 K
+sum1 ([] az 1. klozban)                 7.54 K - 1.54x slower +46.33 μs
+sum2 ([] a 2. klozban)                  6.73 K - 1.72x slower +62.36 μs
+```
+
+<!-- livebook:{"output":true} -->
+
+```
+:ok
+```
