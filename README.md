@@ -9,20 +9,21 @@ Study books for university classes, generated from lecture material with Claude 
 <class>/book/    the class's mdBook
 <class>/_work/   pipeline state: transcripts, coverage, outline, findings, class profile and checks
 hub/             the start page that lists every book
-.claude/skills/notes/   the skill that does the work
+scripts/         serve and build the site (no Claude Code needed)
+.claude/skills/notes/   the skill that writes and updates the books
 notes-dev/       development notes and regression tests of the skill
 ```
 
 ## Use
 
 - Put new files into `<class>/res/`, then run `/notes <class>` in Claude Code (`/notes` alone updates every class with new material). It shows an outline and asks about anything doubtful before writing, and commits when done.
-- Read locally at <http://127.0.0.1:3000/> (systemd user service `notes`).
+- Read locally: `python3 scripts/hub.py . serve` → <http://127.0.0.1:3000/>. `python3 scripts/hub.py . install-service` runs it as the systemd user service `notes`. Needs mdbook, mdbook-katex and mdbook-mermaid on PATH.
 
 ## Deploy
 
 Cloudflare Pages, connected to this repository:
 
-- build command: `python3 .claude/skills/notes/scripts/build_site.py . site --install .tools`
+- build command: `python3 scripts/build_site.py . site --install .tools`
 - output directory: `site`
 
 Every push rebuilds the hub and all books.

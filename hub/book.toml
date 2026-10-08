@@ -6,7 +6,7 @@ src = "src"
 [output.html]
 default-theme = "light"
 preferred-dark-theme = "navy"
-additional-css = ["theme/notes.css"]
+additional-css = ["theme/notes.css", "theme/hub.css"]
 
 [output.html.search]
 enable = false

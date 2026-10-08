@@ -42,18 +42,23 @@ Things he said he will refine later, once he uses it locally: naming, details of
   scripts/doctor.py           checks installed tools
   scripts/status.py           for the coordinator: which classes have work (hashes only, reads no material)
   scripts/bookmap.py          for planning an update: a map of the book generated from the chapters
-  scripts/build_site.py       static site for hosting: hub at the root, books under /<class>/
   scripts/prepare.py          hashes res/, triages new/changed sources, carries over transcripts
   scripts/pdf_triage.py       the PDF analysis (also: `page` and `crop` subcommands for Claude)
   scripts/cover.py            records unit -> chapter / cut reason in coverage.tsv
   scripts/check.py            all completeness and build checks; --finalize marks sources done
-  scripts/new_book.py         creates book/ (book.toml, SUMMARY, theme); --refresh updates the theme
-  scripts/hub.py              the hub: keeps hub/ (an mdBook listing all books) current, serves / and /<class>/,
-                              rebuilds on change, writes and links hub/notes.service
+  scripts/new_book.py         creates book/ (book.toml, SUMMARY, theme); --refresh updates the theme;
+                              both also copy notes.css into hub/theme/
   scripts/common.py           layout constants, state and coverage I/O, transcript parsing
   assets/theme/               highlight.js bundle, notes.css, notes.js, head.hbs, highlight-languages.json
   assets/katex/               KaTeX 0.16.4 stylesheet and woff2 fonts (math works offline)
+
+scripts/                      in the repository, not the skill: the repo must work without .claude/
+  hub.py                      the hub: keeps hub/ (an mdBook listing all books) current, serves / and /<class>/,
+                              rebuilds on change, writes and links hub/notes.service; owns hub/theme/hub.css
+  build_site.py               static site for hosting: hub at the root, books under /<class>/
 ```
+
+Everything a reader or the deploy needs (the books with their copied theme, hub/, scripts/) is outside `.claude/`, so deleting the skill leaves a working repository. The skill only generates and maintains; nothing outside it may import from or read files in `.claude/`.
 
 Per class (`<class>/`): `res/` (the user's input, read-only), `book/` (the mdBook), `_work/` (state.json, coverage.tsv, outline.md, findings.md, profile.md, verify/, sources/<slug>/{extract.json, draft.md, transcript.md, pages/, figures/}, audit/).
 
@@ -89,7 +94,7 @@ The user wants the hub and all books online for free, deployed automatically on 
 
 `build_site.py ROOT OUT --install DIR` is the whole build: it downloads static (musl) release binaries of mdbook 0.5.4, mdbook-katex and mdbook-mermaid 0.17.1 into DIR, builds `hub/` into OUT and each `<class>/book` into `OUT/<class>/` exactly as committed (no checks, nothing written to the repo). All links are relative (hub list `dekla/`, the books' home button `../` from the book root, computed in notes.js), so the site also works under a path prefix; `--base` (or `$READTHEDOCS_CANONICAL_URL`) only sets mdBook's 404 page.
 
-Cloudflare Pages project settings (dashboard, Git integration, no config file): framework preset None, build command `python3 .claude/skills/notes/scripts/build_site.py . site --install .tools`, output directory `site`, root directory empty. Tested in a clean `ubuntu:22.04` container with only python3 and ca-certificates.
+Cloudflare Pages project settings (dashboard, Git integration, no config file): framework preset None, build command `python3 scripts/build_site.py . site --install .tools`, output directory `site`, root directory empty. Tested in a clean `ubuntu:22.04` container with only python3 and ca-certificates.
 
 mdbook-katex 0.10.0 has no binary release, and compiling it needs `patch` and a C compiler (a quickjs dependency patches its sources), which a build image may lack. Its `0.10.0-alpha-binaries` release has a static binary; the whole site built with it is byte-identical to the one built with the locally compiled 0.10.0. When mdbook-katex publishes binaries for a release, switch `KATEX` in build_site.py.
 
@@ -151,4 +156,4 @@ Not covered by a real file: a real `.pptx`/`.docx` (LibreOffice is not installed
 
 After a change to a script: `python3 notes-dev/test/test_scripts.py`. After a change to SKILL.md or a reference: an end-to-end run.
 
-End-to-end: make a scratch git repo with `.claude/skills/notes` copied in and one class folder. For a synthetic class run `notes-dev/test/make_test_class.sh <folder>` (pdflatex with beamer); for a real one put copies of course files into `<folder>/<class>/res/` (copies only: the user's folders outside `~/bme/notes` are never touched). Prompt for the fresh agent: "You stand in for Claude Code in a test of a skill. The user typed `/notes <class>`. Setup: the university folder is …; the skill is at … (the value of `${CLAUDE_SKILL_DIR}`), `$ARGUMENTS` is `<class>`. Read `.claude/skills/notes/SKILL.md` and follow it exactly. When it says to wait for the user, end your turn with the message you would show. Every time you end a turn, append a SKILL FEEDBACK section: every unclear instruction, script error, false alarm, wrong flag, guess, and disproportionate effort." Answer the outline with SendMessage, then read the book and the feedback. If two runs share a repo, tell each to commit only its class folder.
+End-to-end: make a scratch git repo with `.claude/skills/notes` and `scripts/` copied in and one class folder. For a synthetic class run `notes-dev/test/make_test_class.sh <folder>` (pdflatex with beamer); for a real one put copies of course files into `<folder>/<class>/res/` (copies only: the user's folders outside `~/bme/notes` are never touched). Prompt for the fresh agent: "You stand in for Claude Code in a test of a skill. The user typed `/notes <class>`. Setup: the university folder is …; the skill is at … (the value of `${CLAUDE_SKILL_DIR}`), `$ARGUMENTS` is `<class>`. Read `.claude/skills/notes/SKILL.md` and follow it exactly. When it says to wait for the user, end your turn with the message you would show. Every time you end a turn, append a SKILL FEEDBACK section: every unclear instruction, script error, false alarm, wrong flag, guess, and disproportionate effort." Answer the outline with SendMessage, then read the book and the feedback. If two runs share a repo, tell each to commit only its class folder.

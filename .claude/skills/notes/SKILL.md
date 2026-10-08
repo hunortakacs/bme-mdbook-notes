@@ -24,7 +24,7 @@ Quality must not depend on how much material has piled up or how many classes th
 - **Fresh single-purpose agents** do work that needs a clean context or an independent eye: transcribing a large source, checking formulas against the page images, auditing a written chapter against its sources. You start them from the class agent's report; they work on one class only and report back to you, and you pass the report on to that class's agent.
 - **The class's own modules** carry what is specific to a class: `_work/profile.md` (terminology, notation, conventions, recurring decisions) and executable checks in `_work/verify/`. The class agent creates and improves them over the semester; `check.py` runs the checks. See [references/modules.md](references/modules.md). The skill itself stays general.
 
-The scripts live in `/home/hunor/bme/notes/.claude/skills/notes/scripts` (`S` below); each prints its usage with `--help`. The repository root is `/home/hunor/bme/notes` (`ROOT`).
+The scripts live in `/home/hunor/bme/notes/.claude/skills/notes/scripts` (`S` below); each prints its usage with `--help`. The repository root is `/home/hunor/bme/notes` (`ROOT`). The scripts the repository needs without the skill (the hub and the static site build) live in `ROOT/scripts`.
 
 ## The run
 
@@ -65,7 +65,7 @@ Audit prompt (one chapter): the instruction in [references/audit.md](references/
 When a class agent has sent its `FINAL REPORT`, refresh the list of books and commit that class and the hub together, one class at a time:
 
 ```bash
-python3 S/hub.py ROOT update
+python3 ROOT/scripts/hub.py ROOT update
 git add <class> hub && git commit -m "<class>: <what was added>"     # message in English; do not push
 ```
 
@@ -73,13 +73,14 @@ When every class is done, give the user each class's final report, shortened to 
 
 ## Reading the books
 
-All books are served together by the hub: `http://127.0.0.1:3000/` lists them, `/<class>/` is a book, and every book has a home button back to the list. It runs as the systemd user service `notes` and rebuilds a book within seconds of any change. Check it with `systemctl --user is-active notes`; if it is not installed, install it once with `python3 S/hub.py ROOT install-service` and tell the user the address. The hub is an ordinary mdBook in `ROOT/hub/`, kept in git with its unit file `hub/notes.service`; `hub.py` only rewrites the list between the `notes:books` markers in `hub/src/index.md`.
+All books are served together by the hub: `http://127.0.0.1:3000/` lists them, `/<class>/` is a book, and every book has a home button back to the list. It runs as the systemd user service `notes` and rebuilds a book within seconds of any change. Check it with `systemctl --user is-active notes`; if it is not installed, install it once with `python3 ROOT/scripts/hub.py ROOT install-service` and tell the user the address. The hub is an ordinary mdBook in `ROOT/hub/`, kept in git with its unit file `hub/notes.service`; `hub.py` only rewrites the list between the `notes:books` markers in `hub/src/index.md`.
 
 ## Folder layout
 
 ```text
 ROOT/                        git repository, one folder per class
   hub/                       the entry page listing all books (an mdBook, in git) and notes.service
+  scripts/                   hub.py and build_site.py: serving and deploying, usable without the skill
   <class>/
     res/                     the user's files (lecture slides, notebooks, code); never modified
     book/                    the mdBook: book.toml, src/, theme/   (book/book/ is build output)

@@ -28,7 +28,7 @@ import urllib.parse
 import urllib.request
 from pathlib import Path
 
-# The versions the skill is tested with (notes-dev/DEVELOPMENT.md, "Versions"). All three are
+# The versions the books are tested with (notes-dev/DEVELOPMENT.md, "Versions"). All three are
 # static (musl) release binaries, so a build machine needs nothing but Python. mdbook-katex 0.10.0
 # has no binary release; its 0.10.0-alpha binary renders the books byte for byte like 0.10.0.
 MDBOOK = "0.5.4"
@@ -91,7 +91,7 @@ def main():
 
     env = install(Path(args.install).resolve()) if args.install else dict(os.environ)
     if not shutil.which("mdbook", path=env.get("PATH")):
-        sys.exit("mdbook is not installed (use --install DIR, or see doctor.py)")
+        sys.exit("mdbook is not installed (use --install DIR)")
 
     hub = root / "hub"
     if not (hub / "book.toml").exists():

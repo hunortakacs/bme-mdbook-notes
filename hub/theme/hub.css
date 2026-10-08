@@ -1,0 +1,4 @@
+/* The hub is a single page: no sidebar. */
+#mdbook-sidebar, #mdbook-sidebar-toggle, #mdbook-sidebar-resize-handle { display: none !important; }
+#mdbook-sidebar-toggle-anchor:checked ~ .page-wrapper { transform: none !important; margin-inline-start: 0 !important; }
+main table { margin-inline: 0; }

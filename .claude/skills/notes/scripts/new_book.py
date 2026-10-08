@@ -2,7 +2,7 @@
 """Create the mdBook for a class, or refresh its theme files.
 
   new_book.py CLASS_DIR --title "Deklaratív programozás" [--lang hu] [--intro-title Bevezetés]
-  new_book.py CLASS_DIR --refresh        # copy the current theme assets into an existing book
+  new_book.py CLASS_DIR --refresh        # copy the current theme assets into an existing book (and the hub)
 
 Creates CLASS_DIR/book with book.toml, src/SUMMARY.md, src/intro.md and the
 theme: syntax highlighting for ~55 languages, line numbers, the reading
@@ -65,6 +65,9 @@ def copy_theme(bdir: Path) -> bool:
     theme.mkdir(parents=True, exist_ok=True)
     for name in ("highlight.js", "notes.css", "notes.js", "head.hbs"):
         shutil.copyfile(ASSETS / "theme" / name, theme / name)
+    hub_theme = bdir.parent.parent / "hub" / "theme"      # the hub (scripts/hub.py) shares the books' styles
+    hub_theme.mkdir(parents=True, exist_ok=True)
+    shutil.copyfile(ASSETS / "theme" / "notes.css", hub_theme / "notes.css")
     weights = theme / "notes-weights.js"
     if not weights.exists():
         weights.write_text("window.NOTES_WEIGHTS = {};\n")

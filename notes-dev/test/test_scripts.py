@@ -27,14 +27,20 @@ from pathlib import Path
 
 import pymupdf
 
-SKILL = Path(__file__).resolve().parents[2] / ".claude" / "skills" / "notes"
+REPO = Path(__file__).resolve().parents[2]
+SKILL = REPO / ".claude" / "skills" / "notes"
 S = SKILL / "scripts"
+REPO_SCRIPTS = ("hub.py", "build_site.py")     # in REPO/scripts: they work without the skill
 PNG_1PX = base64.b64decode(
     "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==")
 
 
+def script_path(script: str) -> Path:
+    return (REPO / "scripts" if script in REPO_SCRIPTS else S) / script
+
+
 def run(script: str, *args, check=True) -> str:
-    p = subprocess.run([sys.executable, "-B", str(S / script), *map(str, args)],
+    p = subprocess.run([sys.executable, "-B", str(script_path(script)), *map(str, args)],
                        capture_output=True, text=True)
     if check and p.returncode != 0:
         raise AssertionError(f"{script} {' '.join(map(str, args))} failed ({p.returncode}):\n{p.stdout}\n{p.stderr}")
@@ -354,7 +360,7 @@ class Hub(ClassFolder):
         with socket.socket() as s:
             s.bind(("127.0.0.1", 0))
             port = s.getsockname()[1]
-        proc = subprocess.Popen([sys.executable, "-B", str(S / "hub.py"), str(self.root), "serve",
+        proc = subprocess.Popen([sys.executable, "-B", str(script_path("hub.py")), str(self.root), "serve",
                                  "--port", str(port), "--interval", "0.5"],
                                 stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
         try:
@@ -484,7 +490,7 @@ class Coordination(ClassFolder):
         self.assertIn('<base href="/en/latest/proba/"', (out_dir / "proba" / "404.html").read_text())
         self.assertIn('<base href="/en/latest/"', (out_dir / "404.html").read_text())
         env = dict(os.environ, READTHEDOCS_CANONICAL_URL="https://x.readthedocs.io/hu/stable/")
-        p = subprocess.run([sys.executable, "-B", str(S / "build_site.py"), str(self.root), str(out_dir)],
+        p = subprocess.run([sys.executable, "-B", str(script_path("build_site.py")), str(self.root), str(out_dir)],
                            capture_output=True, text=True, env=env)
         self.assertIn("base /hu/stable/", p.stdout)
 
