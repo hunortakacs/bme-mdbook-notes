@@ -9,7 +9,8 @@
   4 book         SUMMARY and files agree; code blocks have a language and are
                  not empty; links and images resolve; chapters name their sources
   5 content      (warnings) code lines and formulas of a unit that do not appear in its chapter
-  6 build        mdbook build; formula errors; languages without highlighting
+  6 build        mdbook build; formula errors; links to headings that do not exist;
+                 languages without highlighting
   7 verifiers    the class's own checks: every executable in _work/verify/ (references/modules.md)
 
 FAIL lines must be fixed. WARN lines must be read and either fixed or judged
@@ -29,6 +30,7 @@ import shutil
 import statistics
 import subprocess
 import sys
+import urllib.parse
 from pathlib import Path
 
 sys.dont_write_bytecode = True   # no __pycache__ inside the skill folder
@@ -437,6 +439,7 @@ def main():
                 R.warn("mdbook build messages", log)
             out = bdir / "book"
             errors, raw = [], []
+            ids, anchors = {}, []
             for f in sorted(out.rglob("*.html")):
                 if f.name in ("print.html", "toc.html", "404.html"):
                     continue
@@ -444,6 +447,12 @@ def main():
                 for m in re.finditer(r'class="katex-error"[^>]*title="([^"]*)"', t):
                     errors.append(f"{f.relative_to(out)}: {html.unescape(m.group(1))[:160]}")
                 main = t.split("<main>", 1)[-1].split("</main>", 1)[0]
+                # checked against the built pages, so the heading ids are mdBook's own slugs
+                ids[f.resolve()] = {html.unescape(i) for i in re.findall(r'\bid="([^"]+)"', t)}
+                for href in re.findall(r'<a\b[^>]*\bhref="([^"]*#[^"]*)"', main):
+                    page, frag = html.unescape(href).split("#", 1)
+                    if not re.match(r"^[a-z]+:", page):
+                        anchors.append((f, page, urllib.parse.unquote(frag)))
                 main = re.sub(r"<pre.*?</pre>|<code.*?</code>|<span class=\"katex.*?</span></span></span>", "", main, flags=re.S)
                 if re.search(r"\$\$|\\begin\{(align|equation|pmatrix|cases)", main):
                     raw.append(str(f.relative_to(out)))
@@ -451,7 +460,12 @@ def main():
                 R.fail(f"{len(errors)} formula(s) KaTeX could not render", errors)
             if raw:
                 R.warn("pages that still show raw LaTeX (unclosed $$ or math inside HTML?)", raw)
-            if not errors and not log:
+            broken = [f"{f.relative_to(out)}: {page}#{frag}" for f, page, frag in anchors
+                      if (target := (f.parent / page).resolve() if page else f.resolve()) in ids
+                      and frag not in ids[target]]
+            if broken:
+                R.fail(f"{len(broken)} link(s) to a heading that does not exist", broken)
+            if not errors and not log and not broken:
                 R.ok(f"book built: {out / 'index.html'}")
 
     # -------------------------------------------------------------- 7 verifiers
