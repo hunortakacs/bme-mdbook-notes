@@ -49,7 +49,7 @@ Things he said he will refine later, once he uses it locally: naming, details of
   scripts/new_book.py         creates book/ (book.toml, SUMMARY, theme); --refresh updates the theme;
                               both also copy notes.css into hub/theme/
   scripts/common.py           layout constants, state and coverage I/O, transcript parsing
-  assets/theme/               highlight.js bundle, notes.css, notes.js, head.hbs, highlight-languages.json
+  assets/theme/               notes.css, notes.js, head.hbs, highlight.js (stub: no browser highlighting)
   assets/katex/               KaTeX 0.16.4 stylesheet and woff2 fonts (math works offline)
 
 scripts/                      in the repository, not the skill: the repo must work without .claude/
@@ -125,7 +125,7 @@ During tuning, the unflagged slides of fp1ea were checked visually on contact sh
 - mdBook **0.5.x** (tested 0.5.4). mdBook 0.4 is not supported: mdbook-katex 0.10 needs the 0.5 preprocessor API.
 - mdbook-katex **0.10.0**. Its injected CSS link points at KaTeX **0.16.4**; we set `no-css = true` and serve `assets/katex` (0.16.4) via `theme/head.hbs`. If mdbook-katex is upgraded and uses another KaTeX version, update `assets/katex` from `npm pack katex@<version>` (dist/katex.min.css + dist/fonts/*.woff2).
 - mdbook-mermaid **0.17.1** (built against mdBook 0.5.0; prints a harmless version warning that check.py filters).
-- highlight.js **10.7.3** custom bundle (mdBook ships 10.1.1 without Elixir/Prolog). Rebuild: in `.claude/notes-dev/highlight-bundle/`, `npm i highlight.js@10.7.3 esbuild`, edit `entry.js`, `npx esbuild entry.js --bundle --minify --format=iife --outfile=highlight.js`, copy to `assets/theme/highlight.js`, then `node langs.js > ../../skills/notes/assets/theme/highlight-languages.json` (check.py uses it to warn about unknown fence languages). Requires must stay static (`require('...')` per language), or esbuild fails. Aliases added: `iex`, `ex`, `exs` → elixir; `pl`, `pro` → prolog (this overrides Perl's `pl`).
+- Code highlighting: **Pygments 2.19.2** at build time, via the mdBook preprocessor `scripts/mdbook_pygments.py` (in the repo: building a book needs it). Every fence whose language Pygments knows becomes HTML with Pygments' classes; `mermaid` and unknown names are left alone. The books' `theme/highlight.js` is a stub so mdBook does not re-highlight in the browser. `new_book.py` writes `theme/pygments.css` (style `default` for mdBook's light themes, `one-dark` for the dark ones, token colours only); notes.css dims session prompts (`.gp`) and keeps session output (`.go`) plain. This replaced a custom highlight.js 10.7.3 bundle whose grammars needed patching (Elixir's `&>=/2` opened a bogus regex, no IEx prompts). `build_site.py --install` unpacks the Pygments wheel onto PYTHONPATH.
 - PyMuPDF 1.28 (`import pymupdf`, falls back to `fitz`), numpy.
 
 Install on Fedora: `sudo dnf install cargo git`, `cargo install mdbook mdbook-katex mdbook-mermaid --locked`, `python3 -m pip install --user pymupdf numpy`, `~/.cargo/bin` on PATH. `doctor.py` prints the same.
@@ -148,7 +148,6 @@ Not covered by a real file: a real `.pptx`/`.docx` (LibreOffice is not installed
 - A variant also appears when a later animation step merely replaces a placeholder (`...` → code): one extra view, nothing lost.
 - Slides that show decomposed Unicode on purpose (fp2ea s41) extract with spacing accents; the spot check catches it.
 - `check.py` section 5 is a substring check: a changed line is reported, an appended comment is not. Charlist spelling (`'a'`/`~c"a"`) and `#Function<…>` numbers are normalised, formula spacing and `\mathrm`/`\operatorname` too.
-- Code with `...` placeholders confuses the highlighter for the rest of the block; harmless.
 - Running examples costs effort when the lecture's own module is not in `res/` (examples are retyped from slides); IEx output is captured with `printf … | iex`.
 - The hub has no live reload in the browser; a reload shows the rebuilt book (pages are sent with `Cache-Control: no-cache`).
 

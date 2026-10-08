@@ -13,7 +13,7 @@ book/
     types.md             a chapter
     types/lists.md       its sub-chapters
     img/                 figures, named <source-slug>-<what>.png
-  theme/                 highlight.js, notes.css, notes.js, head.hbs, notes-weights.js
+  theme/                 pygments.css, notes.css, notes.js, head.hbs, notes-weights.js, highlight.js (a stub)
 ```
 
 - File names are short lowercase ASCII slugs of the topic (`mintaillesztes.md`, `types/lists.md`), without numbers: order lives in `SUMMARY.md`, so inserting a chapter never renames files.
@@ -67,7 +67,7 @@ Lines without a bullet before the first list are unnumbered prefix chapters. `# 
 
 ## Code blocks
 
-Always give the language. Names the highlighter knows include: `elixir` (also `iex`, `ex`, `exs`), `erlang`, `prolog`, `haskell`, `ocaml`, `fsharp`, `lisp`, `scheme`, `clojure`, `python` (`py`), `python-repl`, `c`, `cpp`, `csharp`, `java`, `kotlin`, `scala`, `go`, `rust`, `swift`, `javascript` (`js`), `typescript` (`ts`), `r`, `julia`, `matlab`, `mathematica`, `fortran`, `sql`, `pgsql`, `bash` (`sh`, `zsh`), `shell` (`console`), `powershell`, `dos`, `json`, `yaml`, `toml`/`ini`, `xml`/`html`, `css`, `markdown`, `latex` (`tex`), `makefile`, `cmake`, `dockerfile`, `diff`, `x86asm`, `armasm`, `llvm`, `verilog`, `vhdl`, `protobuf`, `http`, `nginx`, `awk`, `lua`, `perl`, `ruby`, `php`, and `text` for output and anything else. The full list is in the skill's `assets/theme/highlight-languages.json`; `check.py` warns about a name that is not in it.
+Always give the language. Code is highlighted at build time by Pygments (`scripts/mdbook_pygments.py`), so any Pygments language name works: `elixir`, `erlang`, `prolog`, `haskell`, `python`, `c`, `cpp`, `java`, `rust`, `bash`, `sql`, `latex` and hundreds more. For REPL and shell sessions use the session lexers, which dim the prompt and show the output as plain text: `iex` (IEx), `pycon` (Python `>>>`), `console` (shell `$`), `erl` (Erlang shell). `text` is for output and anything else. `check.py` warns about a name Pygments does not know.
 
 Line numbers, the copy button and ligature-free rendering are added by the theme; write nothing for them.
 

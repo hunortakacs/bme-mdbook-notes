@@ -9,8 +9,9 @@ OUT      output folder; it is emptied first
          $READTHEDOCS_CANONICAL_URL when it is set, otherwise /). Only mdBook's 404 page uses it;
          every other link is relative, so the site works under any prefix.
 --install DIR  first download the pinned tools (static release binaries of mdbook,
-         mdbook-katex, mdbook-mermaid) into DIR and use them. For a fresh build machine
-         (Cloudflare Pages, CI); locally the installed tools are used.
+         mdbook-katex, mdbook-mermaid, and the Pygments wheel for mdbook_pygments.py) into DIR
+         and use them. For a fresh build machine (Cloudflare Pages, CI); locally the installed
+         tools are used.
 
 The build is what the hub serves locally: each book exactly as committed (theme, word weights
 and all), no checks and no changes to the repository.
@@ -26,6 +27,7 @@ import sys
 import tarfile
 import urllib.parse
 import urllib.request
+import zipfile
 from pathlib import Path
 
 # The versions the books are tested with. All three are static (musl) release binaries, so a
@@ -42,6 +44,9 @@ RELEASES = {
     "mdbook-katex": f"https://github.com/lzanini/mdbook-katex/releases/download/{KATEX}-binaries/"
                     f"mdbook-katex-v{KATEX}-x86_64-unknown-linux-musl.tar.gz",
 }
+# Pure Python, so the wheel is just unpacked onto PYTHONPATH: no pip needed.
+PYGMENTS = "https://files.pythonhosted.org/packages/c7/21/705964c7812476f378728bdf590ca4b771ec72385c533964653c68e86bdc/" \
+           "pygments-2.19.2-py3-none-any.whl"
 
 
 def install(dest: Path) -> dict:
@@ -58,8 +63,14 @@ def install(dest: Path) -> dict:
             member.name = name
             tar.extract(member, bindir)
         (bindir / name).chmod(0o755)
+    pydir = dest / "python"
+    if not (pydir / "pygments").exists():
+        print(f"downloading pygments: {PYGMENTS}", flush=True)
+        with urllib.request.urlopen(PYGMENTS, timeout=120) as r:
+            zipfile.ZipFile(io.BytesIO(r.read())).extractall(pydir)
     env = dict(os.environ)
     env["PATH"] = f"{bindir}{os.pathsep}{env.get('PATH', '')}"
+    env["PYTHONPATH"] = os.pathsep.join(filter(None, [str(pydir), env.get("PYTHONPATH")]))
     return env
 
 

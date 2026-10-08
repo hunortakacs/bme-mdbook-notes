@@ -31,14 +31,15 @@ def main():
 
     try:
         import numpy  # noqa: F401
+        import pygments  # noqa: F401  (code highlighting, scripts/mdbook_pygments.py)
         try:
             import pymupdf
         except ImportError:
             import fitz as pymupdf
-        rows.append(("ok", "python: pymupdf, numpy", getattr(pymupdf, "__version__", "")))
+        rows.append(("ok", "python: pymupdf, numpy, pygments", getattr(pymupdf, "__version__", "")))
     except ImportError as e:
         ok = False
-        pip = "python3 -m pip install --user pymupdf numpy"
+        pip = "python3 -m pip install --user pymupdf numpy pygments"
         # PEP 668 (Homebrew, newer distro Pythons) refuses plain --user installs.
         if (Path(sysconfig.get_path("stdlib")) / "EXTERNALLY-MANAGED").exists():
             pip += " --break-system-packages   (installs into ~/.local only)"

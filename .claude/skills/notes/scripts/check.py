@@ -36,7 +36,6 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import common as C
 from cover import compress
 
-ASSETS = Path(__file__).resolve().parent.parent / "assets"
 FENCE = re.compile(r"^(\s*)(`{3,}|~{3,})(.*)$")
 IMG = re.compile(r"!\[[^\]]*\]\(([^)\s]+)(?:\s+\"[^\"]*\")?\)|<img[^>]+src=[\"']([^\"']+)[\"']")
 MARKERS = re.compile(r"\b(TODO|FIXME|XXX)\b|<!--\s*(status|flags|figure):")
@@ -271,8 +270,8 @@ def main():
 
     # ------------------------------------------------------------------- 4 book
     R.section("4 book")
-    known = json.loads((ASSETS / "theme" / "highlight-languages.json").read_text())
-    known_langs = set(known) | {a for v in known.values() for a in v} | {"mermaid", "text", "txt", "plain"}
+    from pygments.lexers import get_all_lexers           # the highlighter (scripts/mdbook_pygments.py)
+    known_langs = {a.lower() for _, aliases, _, _ in get_all_lexers() for a in aliases} | {"mermaid"}
     chapter_text = {}
     if not (src / "SUMMARY.md").exists():
         R.fail("book/src/SUMMARY.md does not exist; run new_book.py")

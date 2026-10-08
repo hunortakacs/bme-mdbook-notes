@@ -17,7 +17,7 @@ scripts/         serve and build the site (no Claude Code needed)
 ## Use
 
 - Put new files into `<class>/res/`, then run `/notes <class>` in Claude Code (`/notes` alone updates every class with new material). It shows an outline and asks about anything doubtful before writing, and commits when done.
-- Read locally: `python3 scripts/hub.py . serve` → <http://127.0.0.1:3000/>. `python3 scripts/hub.py . install-service` runs it as the systemd user service `notes`. Needs mdbook, mdbook-katex and mdbook-mermaid on PATH.
+- Read locally: `python3 scripts/hub.py . serve` → <http://127.0.0.1:3000/>. `python3 scripts/hub.py . install-service` runs it as the systemd user service `notes`. Needs mdbook, mdbook-katex, mdbook-mermaid and Python's Pygments.
 
 ## Deploy
 

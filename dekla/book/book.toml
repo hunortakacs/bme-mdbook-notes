@@ -12,6 +12,11 @@ after = ["links"]
 no-css = true            # the stylesheet and fonts are served from src/_katex (works offline)
 throw-on-error = false   # a bad formula is shown in red and reported by check.py
 
+# Code: highlighted at build time by Pygments; after katex, so a `$` in code is never math.
+[preprocessor.pygments]
+command = "python3 ../../scripts/mdbook_pygments.py"
+after = ["links", "katex"]
+
 # Diagrams: ```mermaid code blocks.
 [preprocessor.mermaid]
 command = "mdbook-mermaid"
@@ -20,7 +25,7 @@ command = "mdbook-mermaid"
 site-url = "/dekla/"     # the hub (hub.py) serves this book under /dekla/
 default-theme = "light"
 preferred-dark-theme = "navy"
-additional-css = ["theme/notes.css"]
+additional-css = ["theme/pygments.css", "theme/notes.css"]
 additional-js = ["theme/notes-weights.js", "theme/notes.js", "mermaid.min.js", "mermaid-init.js"]
 
 [output.html.search]

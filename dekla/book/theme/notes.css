@@ -7,6 +7,14 @@ code, pre, .hljs {
     font-feature-settings: "liga" 0, "calt" 0;
 }
 
+/* Session prompts (iex>, >>>, $ ...; Pygments' Generic.Prompt) are dimmed, so the eye goes to the
+   input; the session's output is plain text. Token colours are in pygments.css; `html` makes these
+   rules more specific than its `.light code .gp`. A token Pygments cannot parse (a `...` placeholder)
+   gets no red box. */
+html code.hljs .gp { color: inherit; font-weight: normal; opacity: 0.45; }
+html code.hljs .go { color: inherit; }
+html code.hljs .err { border: none; }
+
 /* Line numbers (the gutter is added by notes.js). The space for a two-digit gutter is
    reserved from the first paint, so the code does not move when the numbers arrive. */
 main pre:not(.mermaid) {
