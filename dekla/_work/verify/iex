@@ -1,0 +1,155 @@
+#!/usr/bin/env python3
+"""dekla verifier: run the book's Elixir and compare with what the book shows.
+
+  verify/iex CLASS_DIR [--list]     (check.py runs it with the class folder)
+
+For every chapter: compiles each complete `defmodule` of an `elixir` block (no `...`
+placeholders), then runs the chapter's `iex` blocks in one Elixir session, input by input,
+and compares each result with the output under it in the book. Normalised before comparing:
+whitespace, `#Function<...>` numbers, trailing `# comments` of output lines; `...` in the book's
+output matches anything; for an error only the exception name is compared (`** ...` alone: any
+error). IEx helpers (c, r, h, i, exports, ls, pwd) are skipped. verify/_prelude.exs holds
+modules the slides use without showing them in full (Fpea).
+
+Judged differences go into verify/_iex.accepted: `<key>\t<reason>` (the key changes with the
+code or the expected output). --list prints every difference with its key.
+"""
+import hashlib
+import json
+import re
+import subprocess
+import sys
+import tempfile
+from pathlib import Path
+
+HERE = Path(__file__).resolve().parent
+FENCE = re.compile(r"^\s*```(\w*)\s*$")
+NOT_HERE = re.compile(r"\b(Benchee|Kino|Explorer)\.|Mix\.install")   # libraries not installed for checks
+PLACEHOLDER = re.compile(r"(^|[\s(,:])\.\.\.\.?([\s),]|$)", re.M)
+
+
+def blocks(text):
+    out, lang, buf, start = [], None, [], 0
+    for n, line in enumerate(text.splitlines(), 1):
+        m = FENCE.match(line)
+        if m and lang is None:
+            lang, buf, start = m.group(1), [], n + 1
+        elif line.strip().startswith("```") and lang is not None:
+            out.append((lang, start, buf))
+            lang = None
+        elif lang is not None:
+            buf.append(line)
+    return out
+
+
+def strip_comment(line):
+    """Drop a trailing ` # comment` that stands outside double-quoted strings."""
+    quoted = False
+    for i, ch in enumerate(line):
+        if ch == '"' and (i == 0 or line[i - 1] != "\\"):
+            quoted = not quoted
+        elif ch == "#" and not quoted and i > 0 and line[i - 1] == " " and line[i + 1:i + 2] == " ":
+            return line[:i].rstrip()
+    return line
+
+
+def norm(s):
+    s = re.sub(r"#(Function|Reference|PID|Port)<[^>]*>", r"#\1<>", s)
+    lines = []
+    for l in s.splitlines():
+        lines.append(strip_comment(l))
+    return re.sub(r"\s+", "", "\n".join(lines))
+
+
+def matches(expected, got, status):
+    if not expected.strip():
+        return True
+    exp = expected.strip()
+    if exp.startswith("**"):
+        if status != "error":
+            return False
+        want = re.match(r"\*\*\s*\((\w+(?:\.\w+)*)\)", exp)
+        have = re.match(r"\*\*\s*\(([\w.]+)\)", got.strip())
+        return not want or (have and have.group(1).split(".")[-1] == want.group(1).split(".")[-1])
+    if status == "error":
+        return False
+    e, g = norm(exp), norm(got)
+    if "..." in e:
+        pattern = ".*".join(re.escape(p) for p in e.split("..."))
+        return re.fullmatch(pattern, g, re.S) is not None
+    return e == g
+
+
+def key(chapter, a, b):
+    return hashlib.sha1(f"{chapter}\0{a}\0{b}".encode()).hexdigest()[:12]
+
+
+def main():
+    cdir = Path(sys.argv[1]).resolve()
+    listing = "--list" in sys.argv
+    src = cdir / "book" / "src"
+    accepted = {}
+    acc_file = HERE / "_iex.accepted"
+    if acc_file.exists():
+        for line in acc_file.read_text().splitlines():
+            if line.strip() and not line.startswith("#"):
+                k, _, reason = line.partition("\t")
+                accepted[k.strip()] = reason
+    used, fails, n_mod, n_in, n_skip = set(), [], 0, 0, 0
+    for f in sorted(src.rglob("*.md")):
+        chapter = f.relative_to(src).as_posix()
+        bs = blocks(f.read_text())
+        modules = [{"line": s, "code": "\n".join(b)} for lang, s, b in bs
+                   if lang == "elixir" and any(l.lstrip().startswith("defmodule") for l in b)
+                   and not PLACEHOLDER.search("\n".join(b)) and not NOT_HERE.search("\n".join(b))]
+        sessions = [{"line": s, "lines": b} for lang, s, b in bs if lang == "iex"]
+        if not modules and not sessions:
+            continue
+        with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False) as tf:
+            prelude = HERE / "_prelude.exs"
+            json.dump({"prelude": str(prelude) if prelude.exists() else None,
+                       "modules": modules, "sessions": sessions}, tf)
+        try:
+            p = subprocess.run(["elixir", str(HERE / "_iex_eval.exs"), tf.name],
+                               capture_output=True, text=True, timeout=300)
+        except subprocess.TimeoutExpired:
+            fails.append((None, f"{chapter}: the Elixir session did not finish within 5 minutes"))
+            continue
+        finally:
+            Path(tf.name).unlink()
+        try:
+            results = json.loads(p.stdout.strip().splitlines()[-1])
+        except (IndexError, json.JSONDecodeError):
+            fails.append((None, f"{chapter}: the evaluator failed: {(p.stderr or p.stdout)[-300:]}"))
+            continue
+        for r in results:
+            if r["kind"] == "module":
+                n_mod += 1
+                if r["status"] != "ok":
+                    k = key(chapter, modules[[m["line"] for m in modules].index(r["line"])]["code"], "")
+                    fails.append((k, f"{chapter}:{r['line']}: does not compile: {r['message'][:160]} [{k}]"))
+                continue
+            if r["status"] == "skipped":
+                n_skip += 1
+                continue
+            n_in += 1
+            if not matches(r["expected"], r["got"], r["status"]):
+                k = key(chapter, r["input"], r["expected"])
+                got = " ".join(r["got"].split())[:160]
+                exp = " ".join(r["expected"].split())[:160]
+                fails.append((k, f"{chapter}:{r['line']}: `{r['input'][:80]}` gives `{got}`, "
+                                 f"the book shows `{exp}` [{k}]"))
+    for k, msg in fails:
+        if k in accepted and not listing:
+            used.add(k)
+            continue
+        print(("ACCEPTED " if k in accepted else "FAIL ") + msg)
+    stale = sorted(set(accepted) - used - {k for k, _ in fails})
+    if stale and not listing:
+        print(f"WARN verify/_iex.accepted: {len(stale)} key(s) no longer occur: {', '.join(stale)}")
+    print(f"OK {n_mod} module block(s) compiled, {n_in} IEx input(s) compared, {n_skip} helper(s) skipped, "
+          f"{len(used)} accepted difference(s)")
+
+
+if __name__ == "__main__":
+    main()

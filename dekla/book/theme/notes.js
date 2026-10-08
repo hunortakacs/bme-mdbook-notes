@@ -27,7 +27,9 @@
             gutter.style.paddingBottom = cs.paddingBottom;
             gutter.style.fontSize = cs.fontSize;
             gutter.style.lineHeight = cs.lineHeight;
-            pre.style.setProperty('--ln-width', String(count).length + 'ch');
+            if (count > 99) {                // two digits are reserved by notes.css
+                pre.style.setProperty('--ln-width', String(count).length + 'ch');
+            }
             pre.classList.add('has-ln');
             pre.insertBefore(gutter, code);
         });
@@ -138,13 +140,13 @@
             return;
         }
         const root = new URL(typeof path_to_root === 'string' && path_to_root ? path_to_root : './',
-            document.location.href).pathname;
+            document.location.href);
         const buttons = document.querySelector('.right-buttons');
-        if (root === '/' || !buttons) {
+        if (root.pathname === '/' || !buttons) {
             return;                          // served on its own (mdbook serve): no hub above it
         }
         const a = document.createElement('a');
-        a.href = '/';
+        a.href = new URL('../', root).href;  // the hub sits one level above the book, under any prefix
         a.title = 'All notes';
         a.setAttribute('aria-label', 'All notes');
         a.innerHTML = '<span class="fa-svg" id="notes-home-button"><svg xmlns="http://www.w3.org/2000/svg" ' +

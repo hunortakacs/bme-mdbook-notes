@@ -1,0 +1,5 @@
+# verify/iex: differences judged fine. <key>	<reason>
+db8404b40fff	the book abbreviates the 100 001-element list as on the slide (IEx truncates it anyway)
+b3b08708080d	deliberate compile error: shows that an expression (x < 0) cannot be a pattern
+1a6fd618a0da	deliberate compile error: shows that a function call (round(x)) cannot be a pattern
+c3ca666c7982	the book shows the warning IEx prints on stderr before the value

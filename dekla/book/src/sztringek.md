@@ -19,11 +19,11 @@ Két fogalmat kell megkülönböztetnünk:
   iex> str = "\u0065\u0302"; {byte_size(str), String.length(str)}
   {3, 1}
   iex> "u\u0302"# U+0302 Combining Circumflex Accent
-  "û"
+  "û"
   iex> String.codepoints(str)
   ["e", "̂"] # Két egykarakteres sztring van a listában.
   iex> String.graphemes(str)
-  ["ê"] # Egyetlen egykarakteres sztring van a listában.
+  ["ê"] # Egyetlen egykarakteres sztring van a listában.
   ```
 
 A `String.length/1` a grafémákat számolja, a `byte_size/1` a bájtokat.

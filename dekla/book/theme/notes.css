@@ -7,11 +7,12 @@ code, pre, .hljs {
     font-feature-settings: "liga" 0, "calt" 0;
 }
 
-/* Line numbers (the gutter is added by notes.js). */
-pre.has-ln {
+/* Line numbers (the gutter is added by notes.js). The space for a two-digit gutter is
+   reserved from the first paint, so the code does not move when the numbers arrive. */
+main pre:not(.mermaid) {
     position: relative;
 }
-pre.has-ln > code {
+main pre:not(.mermaid) > code {
     padding-inline-start: calc(var(--ln-width, 2ch) + 1.9em) !important;
 }
 pre.has-ln > .ln-gutter {
