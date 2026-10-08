@@ -8,7 +8,8 @@ In book.toml:
   after = ["links", "katex"]       # after katex, so a `$` in code is never taken for math
 
 Every fenced code block whose language Pygments knows becomes highlighted HTML with Pygments'
-CSS classes (theme/pygments.css colours them). Unknown languages and `mermaid` stay as they are.
+CSS classes (theme/pygments.css colours them). Unknown languages and `mermaid` stay as they are. In session blocks (iex, pycon, console, erl) a
+blank line is put between a command's output and the next prompt, so the source needs no spacing.
 The book's theme/highlight.js is a stub, so mdBook does not highlight again in the browser.
 """
 from __future__ import annotations
@@ -18,9 +19,10 @@ import re
 import sys
 
 try:
-    from pygments import highlight
+    from pygments import format
     from pygments.formatters import HtmlFormatter
     from pygments.lexers import get_lexer_by_name
+    from pygments.token import Generic
     from pygments.util import ClassNotFound
 except ImportError:
     sys.exit("mdbook_pygments: Pygments is not installed (python3 -m pip install --user pygments)")
@@ -40,8 +42,20 @@ def lexer(info: str):
         return None, lang
 
 
+def space_prompts(tokens):
+    """Yield the tokens with a blank line before every session prompt that directly follows output."""
+    after_output, at_line_start = False, True
+    for ttype, value in tokens:
+        if at_line_start:
+            if ttype is Generic.Prompt and after_output:
+                yield Generic.Output, "\n"
+            after_output = ttype is Generic.Output and value.strip() != "" and not value.endswith("\n\n")
+        at_line_start = value.endswith("\n")
+        yield ttype, value
+
+
 def render(prefix: str, lang: str, lex, body: list[str]) -> list[str]:
-    code = highlight("\n".join(body) + "\n", lex, FORMATTER)
+    code = format(space_prompts(lex.get_tokens("\n".join(body) + "\n")), FORMATTER)
     html = f'<pre><code class="language-{lang} hljs">{code}</code></pre>'
     return [prefix + line for line in html.split("\n")]
 

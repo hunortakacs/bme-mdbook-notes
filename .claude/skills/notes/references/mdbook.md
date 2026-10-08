@@ -67,7 +67,7 @@ Lines without a bullet before the first list are unnumbered prefix chapters. `# 
 
 ## Code blocks
 
-Always give the language. Code is highlighted at build time by Pygments (`scripts/mdbook_pygments.py`), so any Pygments language name works: `elixir`, `erlang`, `prolog`, `haskell`, `python`, `c`, `cpp`, `java`, `rust`, `bash`, `sql`, `latex` and hundreds more. For REPL and shell sessions use the session lexers, which dim the prompt and show the output as plain text: `iex` (IEx), `pycon` (Python `>>>`), `console` (shell `$`), `erl` (Erlang shell). `text` is for output and anything else. `check.py` warns about a name Pygments does not know.
+Always give the language. Code is highlighted at build time by Pygments (`scripts/mdbook_pygments.py`), so any Pygments language name works: `elixir`, `erlang`, `prolog`, `haskell`, `python`, `c`, `cpp`, `java`, `rust`, `bash`, `sql`, `latex` and hundreds more. For REPL and shell sessions use the session lexers, which dim the prompt, show the output as plain text and leave a blank line between an output and the next prompt (the build adds it, do not type it): `iex` (IEx), `pycon` (Python `>>>`), `console` (shell `$`), `erl` (Erlang shell). `text` is for output and anything else. `check.py` warns about a name Pygments does not know.
 
 Line numbers, the copy button and ligature-free rendering are added by the theme; write nothing for them.
 
