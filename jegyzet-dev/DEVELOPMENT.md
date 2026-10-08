@@ -41,7 +41,8 @@ Things he said he will refine later, once he uses it locally: naming, details of
   scripts/cover.py            records unit -> chapter / cut reason in coverage.tsv
   scripts/check.py            all completeness and build checks; --finalize marks sources done
   scripts/new_book.py         creates book/ (book.toml, SUMMARY, theme); --refresh updates the theme
-  scripts/hub.py              the hub: lists all books, serves / and /<class>/, rebuilds on change, installs the systemd unit
+  scripts/hub.py              the hub: keeps hub/ (an mdBook listing all books) current, serves / and /<class>/,
+                              rebuilds on change, writes and links hub/jegyzet.service
   scripts/common.py           layout constants, state and coverage I/O, transcript parsing
   assets/theme/               highlight.js bundle, jegyzet.css, jegyzet.js, head.hbs, highlight-languages.json
   assets/katex/               KaTeX 0.16.4 stylesheet and woff2 fonts (math works offline)
@@ -97,7 +98,7 @@ Install on Fedora: `sudo dnf install cargo git`, `cargo install mdbook mdbook-ka
 
 ## Status
 
-**Ready to use.** `~/bme/jegyzet` is the git repository and root: the skill in `.claude/skills/jegyzet/`, this folder, and one folder per class created by the user (`<class>/resources/`). The hub runs as the systemd user service `jegyzet` on http://127.0.0.1:3000/.
+**Ready to use.** `~/bme/jegyzet` is the git repository and root: the skill in `.claude/skills/jegyzet/`, this folder, and one folder per class created by the user (`<class>/resources/`). The hub runs as the systemd user service `jegyzet` on http://127.0.0.1:3000/. The hub is part of the repository: `hub/` holds its mdBook (book.toml, src/, theme/; the user may edit the page outside the `jegyzet:books` markers, whose content hub.py regenerates without dates so it only changes when a book does) and `hub/jegyzet.service`, which `install-service` writes with `%h` paths and links into `~/.config/systemd/user/`. Only `hub/book/` is ignored. A run commits `C` and `hub` together after `hub.py update`.
 
 How it was tested:
 

@@ -1,0 +1,125 @@
+/* Additions to the stock mdBook theme. Loaded through additional-css in book.toml.
+   Everything uses mdBook's own CSS variables, so it follows the selected theme. */
+
+/* No ligatures in code: |> and -> stay two characters. */
+code, pre, .hljs {
+    font-variant-ligatures: none;
+    font-feature-settings: "liga" 0, "calt" 0;
+}
+
+/* Line numbers (the gutter is added by jegyzet.js). */
+pre.has-ln {
+    position: relative;
+}
+pre.has-ln > code {
+    padding-inline-start: calc(var(--ln-width, 2ch) + 1.9em) !important;
+}
+pre.has-ln > .ln-gutter {
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    box-sizing: content-box;
+    width: var(--ln-width, 2ch);
+    padding-inline: 0.7em 0.6em;
+    margin: 0;
+    text-align: right;
+    white-space: pre;
+    color: var(--fg);
+    opacity: 0.38;
+    border-inline-end: 1px solid var(--table-border-color);
+    user-select: none;
+    -webkit-user-select: none;
+    pointer-events: none;
+    font-family: var(--mono-font);
+    font-variant-numeric: tabular-nums;
+}
+
+/* Whole-book reading progress (jegyzet.js). */
+#jz-progress {
+    position: fixed;
+    inset: 0 0 auto 0;
+    height: 3px;
+    z-index: 400;
+    background: transparent;
+    transition: height 0.15s ease;
+}
+#jz-progress > .jz-fill {
+    height: 100%;
+    width: 0;
+    background: var(--links);
+    opacity: 0.75;
+    transition: width 0.12s linear;
+}
+#jz-progress.jz-open {
+    height: 7px;
+    background: var(--table-border-color);
+}
+#jz-progress.jz-open > .jz-fill {
+    opacity: 1;
+}
+#jz-progress > .jz-label {
+    position: absolute;
+    top: calc(var(--menu-bar-height, 50px) + 6px);   /* below the menu bar, clear of its buttons */
+    right: 12px;
+    padding: 3px 9px;
+    border-radius: 4px;
+    border: 1px solid var(--theme-popup-border);
+    background: var(--theme-popup-bg);
+    color: var(--fg);
+    font-size: 1.3rem;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s ease;
+}
+#jz-progress.jz-open > .jz-label {
+    opacity: 1;
+}
+
+/* Wide formulas scroll inside their own box instead of widening the page. */
+.katex-display {
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-block: 0.3em;
+}
+
+/* Figures: centred, never wider than the text column. */
+main img {
+    display: block;
+    margin-inline: auto;
+    max-width: 100%;
+    height: auto;
+}
+main figure {
+    margin: 1.2em 0;
+    text-align: center;
+}
+main figcaption {
+    font-size: 0.9em;
+    opacity: 0.8;
+    margin-top: 0.4em;
+}
+pre.mermaid {
+    text-align: center;
+    background: transparent;
+}
+
+/* The closing line of a chapter that names its sources. */
+main .sources {
+    margin-top: 3em;
+    padding-top: 0.6em;
+    border-top: 1px solid var(--table-border-color);
+    font-size: 0.85em;
+    opacity: 0.7;
+}
+
+@media print {
+    #jz-progress { display: none; }
+    pre.has-ln > .ln-gutter { opacity: 0.6; }
+}
+
+/* The hub is a single page: no sidebar. */
+#mdbook-sidebar, #mdbook-sidebar-toggle, #mdbook-sidebar-resize-handle { display: none !important; }
+#mdbook-sidebar-toggle-anchor:checked ~ .page-wrapper { transform: none !important; margin-inline-start: 0 !important; }
+main table { margin-inline: 0; }

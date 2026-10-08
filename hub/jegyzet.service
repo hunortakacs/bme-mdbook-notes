@@ -1,0 +1,13 @@
+[Unit]
+Description=Jegyzet hub: all class books on http://127.0.0.1:3000/
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 %h/bme/jegyzet/.claude/skills/jegyzet/scripts/hub.py %h/bme/jegyzet serve --host 127.0.0.1 --port 3000
+Environment=PATH=%h/.cargo/bin:/usr/local/bin:/usr/bin:/bin
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target

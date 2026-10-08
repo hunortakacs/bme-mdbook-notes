@@ -375,6 +375,24 @@ class Hub(ClassFolder):
                 opener.open(req)
             self.assertEqual(r.exception.code, 301)
 
+            # the hub is a tracked mdBook in hub/; only the marked block is generated
+            index = self.root / "hub" / "src" / "index.md"
+            self.assertIn("[Próba tárgy](/proba/)", index.read_text())
+            self.assertTrue((self.root / "hub" / "book.toml").exists())
+            self.assertFalse((self.root / ".hub").exists())
+            index.write_text(index.read_text().replace("# Jegyzetek\n", "# Jegyzetek\n\nSaját bevezető.\n"))
+            (self.res.parent / "book" / "book.toml").write_text(
+                (self.res.parent / "book" / "book.toml").read_text().replace("Próba tárgy", "Próba tárgy 2"))
+            run("hub.py", self.root, "update")                    # the server may have done it already
+            text = index.read_text()
+            self.assertIn("Saját bevezető.", text)
+            self.assertIn("[Próba tárgy 2](/proba/)", text)
+            self.assertNotIn("[Próba tárgy](/proba/)", text)
+            status = subprocess.run(["git", "-C", str(self.root), "status", "--porcelain", "-uall", "hub"],
+                                    capture_output=True, text=True).stdout
+            self.assertIn("hub/src/index.md", status)
+            self.assertNotIn("hub/book/", status)                 # build output stays out of git
+
             # a new chapter shows up without a restart
             self.chapter("uj.md", "# Új fejezet\n\nszöveg\n")
             for _ in range(60):

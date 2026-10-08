@@ -1,0 +1,15 @@
+[book]
+title = "Jegyzetek"
+language = "hu"
+src = "src"
+
+[output.html]
+default-theme = "light"
+preferred-dark-theme = "navy"
+additional-css = ["theme/jegyzet.css"]
+
+[output.html.search]
+enable = false
+
+[output.html.print]
+enable = false

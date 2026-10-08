@@ -1,5 +1,6 @@
 # build output of the class books and of the hub
 */book/book/
-.hub/
+*/book/.book-building/
+*/book/.book-old/
 __pycache__/
 jegyzet-dev/highlight-bundle/node_modules/
