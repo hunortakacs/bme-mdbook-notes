@@ -95,7 +95,7 @@ def books_block(infos: list[dict]) -> str:
     (no dates), so the file changes in git exactly when a run changes a book."""
     if not infos:
         body = ("Még nincs jegyzet. Egy tárgy könyvét a `/jegyzet <tárgy>` paranccsal lehet elkészíteni, "
-                "ha a tárgy mappájában van `resources/` mappa.")
+                "ha a tárgy mappájában van `res/` mappa.")
     else:
         rows = ["| Tárgy | Fejezetek | Források |", "|---|---:|---:|"]
         for i in infos:

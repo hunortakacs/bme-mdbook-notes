@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Builds the synthetic "kvantum" test deck and a copy without page labels,
-# then puts both into <target>/kvantum/resources/.
+# then puts both into <target>/kvantum/res/.
 #   usage: jegyzet-dev/test/make_test_class.sh <target-folder>
 # Needs: pdflatex with beamer, tikz, booktabs, listings, helvet, courier;
 #        python3 with pymupdf, numpy, matplotlib, pillow.
@@ -35,11 +35,11 @@ p.get_pixmap(dpi=200, clip=r + (-2, -2, 2, 2)).save('formula.png')"
 latex deck.tex; latex deck.tex
 test -f deck.pdf || { grep -m3 -A2 '^!' deck.log; echo "pdflatex failed, see $work/deck.log"; exit 1; }
 
-mkdir -p "$target/kvantum/resources"
-cp deck.pdf "$target/kvantum/resources/kvantum-ea03.pdf"
+mkdir -p "$target/kvantum/res"
+cp deck.pdf "$target/kvantum/res/kvantum-ea03.pdf"
 # Same deck as an exporter without page labels would produce it, plus one page
 # with two pictures stacked on top of each other (an animation flattened to one page).
-python3 - "$target/kvantum/resources/kvantum-ea03-export.pdf" <<'PY'
+python3 - "$target/kvantum/res/kvantum-ea03-export.pdf" <<'PY'
 import sys, pymupdf as f
 d = f.open("deck.pdf"); d.set_page_labels([])
 pg = d.new_page(width=d[0].rect.width, height=d[0].rect.height)
@@ -48,4 +48,4 @@ r = f.Rect(60, 60, 300, 220)
 pg.insert_image(r, filename="plotA.png"); pg.insert_image(r, filename="plotB.png")
 d.save(sys.argv[1])
 PY
-echo "test class written to $target/kvantum/resources"
+echo "test class written to $target/kvantum/res"

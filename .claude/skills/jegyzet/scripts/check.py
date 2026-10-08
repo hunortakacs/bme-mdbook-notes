@@ -3,7 +3,7 @@
 
   check.py CLASS_DIR [--no-build] [--finalize] [--all]
 
-  1 sources      every file in resources/ was prepared and has not changed since
+  1 sources      every file in res/ was prepared and has not changed since
   2 transcripts  every unit is present and none is still marked TODO
   3 coverage     every unit points to a chapter or carries a reason for the cut
   4 book         SUMMARY and files agree; code blocks have a language and are
@@ -172,7 +172,7 @@ def main():
     failed = [rel for rel, e in sources.items() if e.get("status") == "failed"]
     skipped = [rel for rel, e in sources.items() if e.get("kind") == "unsupported"]
     if stale or changed or gone:
-        R.fail("resources changed since prepare.py ran; run prepare.py again",
+        R.fail(f"{rdir.name}/ changed since prepare.py ran; run prepare.py again",
                [f"new: {r}" for r in stale] + [f"changed: {r}" for r in changed] + [f"removed: {r}" for r in gone])
     if failed:
         R.fail("sources that could not be prepared", failed)

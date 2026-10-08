@@ -10,7 +10,7 @@ from pathlib import Path
 
 WORK = "_work"
 BOOK = "book"
-RESOURCE_NAMES = ("resources", "forrasok", "források", "forras", "anyag", "anyagok", "materials", "sources")
+RESOURCE_NAMES = ("res",)        # the class's input folder: <class>/res/
 IGNORED_NAMES = {".DS_Store", "Thumbs.db", "desktop.ini"}
 OFFICE_EXT = {".pptx", ".ppt", ".odp", ".docx", ".doc", ".odt", ".rtf", ".key"}
 IMAGE_EXT = {".png", ".jpg", ".jpeg", ".gif", ".webp", ".bmp", ".tif", ".tiff"}
@@ -58,14 +58,14 @@ def resources_dir(cdir: Path, state: dict, override: str | None = None) -> Path:
     if state.get("resources"):
         r = cdir / state["resources"]
         if not r.is_dir():
-            die(f"resources folder {r} does not exist")
+            die(f"input folder {r} does not exist")
         return r
     for name in RESOURCE_NAMES:
         if (cdir / name).is_dir():
             state["resources"] = name
             return cdir / name
-    die(f"no resources folder in {cdir} (expected one of: {', '.join(RESOURCE_NAMES)}; "
-        f"or pass --resources NAME)")
+    die(f"no res/ folder in {cdir} (put the class's material into {cdir / 'res'}, "
+        f"or pass --resources NAME for another folder name)")
 
 
 def list_resources(rdir: Path) -> list[Path]:

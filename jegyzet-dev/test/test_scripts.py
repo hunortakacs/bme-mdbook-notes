@@ -95,7 +95,7 @@ class ClassFolder(unittest.TestCase):
         self.tmp = Path(tempfile.mkdtemp(prefix="jegyzet-test-"))
         self.root = self.tmp / "repo"
         self.c = self.root / "proba"
-        self.res = self.c / "resources"
+        self.res = self.c / "res"
         self.res.mkdir(parents=True)
         subprocess.run(["git", "init", "-q", str(self.root)], check=True)
         subprocess.run(["git", "-C", str(self.root), "config", "user.email", "t@t"], check=True)

@@ -124,8 +124,8 @@ Decorative pictures are cut. Refer to a figure from the text and say what to see
 ## Exercises and homework
 
 - Exercises from the course, practice and homework alike (házi feladat, KHF, NHF, beadandó), belong at the end of the chapter whose topic they train, under a heading such as "Gyakorló feladatok", with the task text as given.
-- When the resources hold the same sheet twice, once with and once without solutions, take the task text from the version without, and the solutions from the other. When they hold only a solution (a solved homework without its task sheet), state the task from what the file itself says (header comment, specification) and mention in the report that the task sheet is missing.
-- Solutions appear only if the resources contain one (official, or the user's own solved homework). Put each inside `<details><summary>Megoldás</summary> ... </details>` so it is not seen by accident. Do not write solutions of your own; a one-line hint that points to the relevant section is allowed.
+- When `res/` holds the same sheet twice, once with and once without solutions, take the task text from the version without, and the solutions from the other. When they hold only a solution (a solved homework without its task sheet), state the task from what the file itself says (header comment, specification) and mention in the report that the task sheet is missing.
+- Solutions appear only if `res/` contains one (official, or the user's own solved homework). Put each inside `<details><summary>Megoldás</summary> ... </details>` so it is not seen by accident. Do not write solutions of your own; a one-line hint that points to the relevant section is allowed.
 
 ## Sources line
 

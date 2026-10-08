@@ -1,12 +1,12 @@
 ---
 name: jegyzet
-description: Builds and incrementally updates an mdBook study book (jegyzet) for a university class from the files in the class's resources folder (lecture slide PDFs, notebooks, code, exercise sheets). Use when the user wants to create, update, extend or rebuild the notes or book of a class, says new material arrived for a class, or names a class folder such as dekla, mi or kvantum together with notes, jegyzet or mdBook.
+description: Builds and incrementally updates an mdBook study book (jegyzet) for a university class from the files in the class's res folder (lecture slide PDFs, notebooks, code, exercise sheets). Use when the user wants to create, update, extend or rebuild the notes or book of a class, says new material arrived for a class, or names a class folder such as dekla, mi or kvantum together with notes, jegyzet or mdBook.
 argument-hint: "[class-folder]"
 ---
 
 # Jegyzet: one study book per class, updated as material arrives
 
-The user is a university student. Each class has a folder; its `resources/` folder fills up week by week with lecture slides and other material. This skill turns those resources into one mdBook per class that he reads from start to finish instead of the slides, and keeps that book current when resources are added or changed.
+The user is a university student. Each class has a folder; its `res/` folder fills up week by week with lecture slides and other material. This skill turns that material into one mdBook per class that he reads from start to finish instead of the slides, and keeps that book current when files are added to `res/` or changed.
 
 Two things matter above all, and every step below serves one of them:
 
@@ -21,7 +21,7 @@ Requested class: `$ARGUMENTS`
 <root>/                      git repository (the user's is ~/bme/jegyzet), one folder per class
   hub/                       the entry page listing all books (an mdBook, in git) and jegyzet.service
   dekla/
-    resources/               the user's files; never modify these
+    res/                     the user's files (lecture slides, notebooks, code); never modify these
     book/                    the mdBook: book.toml, src/, theme/   (book/book/ is build output)
     _work/
       state.json             which sources were processed, with their SHA-256
@@ -46,10 +46,10 @@ First, if the folder is a git repository and the class folder has uncommitted ch
 
 ```bash
 python3 S/doctor.py              # tools present? If something required is missing, tell the user the install line and stop.
-python3 S/prepare.py C           # hashes resources, prepares new and changed sources, prints a report
+python3 S/prepare.py C           # hashes res/, prepares new and changed sources, prints a report
 ```
 
-If no class was named, look for folders that contain a resources folder, run `prepare.py` on each, and continue with those that report pending work (ask which first if there are several).
+If no class was named, look for folders that contain a `res/` folder, run `prepare.py` on each, and continue with those that report pending work (ask which first if there are several).
 
 `prepare.py` is safe to run again at any time; it only redoes sources whose hash changed. Read its report carefully:
 

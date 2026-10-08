@@ -3,7 +3,7 @@
 
   prepare.py CLASS_DIR [--resources NAME] [--force] [--view-all] [--only SLUG ...]
 
-For every file in the class's resources folder it compares the SHA-256 with
+For every file in the class's res/ folder it compares the SHA-256 with
 _work/state.json and reports NEW / CHANGED / RENAMED / REMOVED / PENDING.
 New and changed sources are prepared in _work/sources/<slug>/:
 
@@ -139,7 +139,7 @@ def prepare_source(src: Path, kind: str, out: Path, view_all: bool) -> dict | No
             pdf = office_to_pdf(src, out)
             if pdf is None:
                 raise RuntimeError("could not convert with LibreOffice (is `soffice` installed?); "
-                                   "export the file to PDF and put the PDF in the resources folder")
+                                   "export the file to PDF and put the PDF in res/")
         meta, units = T.triage(pdf, out, view_all=view_all)
         meta["source"] = src.name
         data = {"meta": meta, "units": units}
@@ -275,7 +275,7 @@ def match_sections(old: list[dict], new: list[dict]):
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("class_dir")
-    ap.add_argument("--resources", help="name of the resources folder inside the class folder")
+    ap.add_argument("--resources", help="input folder inside the class folder, if not res")
     ap.add_argument("--force", action="store_true", help="prepare every source again")
     ap.add_argument("--view-all", action="store_true", help="render every PDF page for viewing")
     ap.add_argument("--only", nargs="+", metavar="SLUG", help="limit --force to these sources")
@@ -444,12 +444,12 @@ def main():
 
     pending = sum(1 for e in sources.values() if e.get("status") == "pending")
     unassigned = sum(1 for r in coverage if not r["disposition"].strip())
-    print(f"class: {cdir.name}   resources: {rdir.name}/   sources: {len(current)}")
+    print(f"class: {cdir.name}   input: {rdir.name}/   sources: {len(current)}")
     for line in report:
         print(line)
     print(f"unchanged and done: {unchanged}   pending: {pending}   coverage rows without a chapter: {unassigned}")
     if not pending:
-        print("Nothing to do: the book is up to date with the resources.")
+        print(f"Nothing to do: the book is up to date with {rdir.name}/.")
     (wdir / "prepare-report.txt").write_text("\n".join(report) + "\n")
 
 
