@@ -94,7 +94,7 @@ Add an explanation of your own only where a reader who has just the book would o
 
 - Every code block has a language (`elixir`, `python`, `c`, `prolog`, `bash`, `text` for plain output). Without it there is no highlighting and `check.py` fails.
 - Keep every example from the sources unless it is an exact duplicate. When two sources (often two lectures) show versions of the same example, show it once, in the fuller version, and keep what only the other one has. Keep code exactly, apart from trivial fixes. Keep comments that explain; translate nothing.
-- Interactive sessions show input and output together the way the REPL prints them. Program output goes in its own `text` block, introduced by a sentence.
+- Interactive sessions show input and output together the way the REPL prints them. Program output goes in its own `text` block, introduced by a sentence. Prompts are plain: `iex>`, never the numbered `iex(7)>` or `...(3)>` the slides and real IEx print.
 - Consecutive one-line notebook cells that demonstrate the same point become one block, an `iex` session with each result under its expression, not a row of separate blocks.
 - Refer to functions and constructs by name in the text, in backticks.
 

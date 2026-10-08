@@ -10,19 +10,19 @@ Erlang/OTP ...
 Interactive Elixir ...
   press Ctrl+C to exit
   (type h() ENTER for help)
-iex(1)> 3.2 + 2.1 * 2
+iex> 3.2 + 2.1 * 2
 7.4
-iex(2)> :atom
+iex> :atom
 :atom
-iex(3)> Atom
+iex> Atom
 Atom
-iex(4)> "string"
+iex> "string"
 "string"
-iex(5)> {:ennes,:%,A,:':',9.8}
+iex> {:ennes,:%,A,:':',9.8}
 {:ennes, :%, A, :":", 9.8}
-iex(6)> [:lista,:%,A,:':',9.8]
+iex> [:lista,:%,A,:':',9.8]
 [:lista, :%, A, :":", 9.8]
-iex(7)> i :':'
+iex> i :':'
 ...Data type
     Atom...
 ```
@@ -32,7 +32,7 @@ Az `i` segédfüggvény információt ír ki a kapott termről, például a típ
 Az IEx-ből a **Ctrl+C** lenyomásával léphetünk ki. Ekkor a BEAM megszakítási menüje jelenik meg; egy újabb Ctrl+C kilép a héjból:
 
 ```text
-iex(8)> Ctrl+C
+iex> Ctrl+C
 BREAK: (a)bort (A)bort with dump (c)ontinue
    (p)roc info (i)nfo (l)oaded (v)ersion
    (k)ill (D)b-tables (d)istribution
@@ -43,7 +43,7 @@ $
 A **Ctrl+G** a felhasználói parancsmódot (*User switch command*) nyitja meg; a `h` kiírja a parancsait, a `q` kilép:
 
 ```text
-iex(8)> Ctrl+G
+iex> Ctrl+G
 User switch command
 --> h
   c [nn]            - connect to job
@@ -63,7 +63,7 @@ $
 Az IEx segédfüggvényeit (*helpers*) a `h()` listázza:
 
 ```iex
-iex(1)> h().
+iex> h().
 Welcome to Interactive Elixir.
 ...
 c/1            - compiles a file
@@ -104,13 +104,13 @@ end
 A fájlt az IEx-ben a `c` paranccsal fordítjuk le; a függvényt a modulnévvel minősítve hívjuk:
 
 ```iex
-iex(1)> c "fpea.ex"  # fordítás
+iex> c "fpea.ex"  # fordítás
 [Fpea]
-iex(2)> Fpea.fac(5)  # futtatás
+iex> Fpea.fac(5)  # futtatás
 120
-iex(3)> fac(5)         # a modulnevet ki kell írni
+iex> fac(5)         # a modulnevet ki kell írni
 ** (CompileError) iex:3: undefined function fac/1
-iex(4)> Fpea.fac 5   # argumentum körül a zárójel sokszor elhagyható
+iex> Fpea.fac 5   # argumentum körül a zárójel sokszor elhagyható
 120
 ```
 

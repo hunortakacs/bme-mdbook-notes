@@ -204,13 +204,13 @@ def revapp(xs, ys), do: revapp (tl xs), [(hd xs) | ys]
 ```
 
 ```iex
-iex(22)> c "fpea.ex"
+iex> c "fpea.ex"
 [Fpea]
-iex(23)> xs
+iex> xs
 [10, 20.5, 30.5]
-iex(24)> Fpea.append(xs, [:a,:b,:c,:d])
+iex> Fpea.append(xs, [:a,:b,:c,:d])
 [10, 20.5, 30.5, :a, :b, :c, :d]
-iex(25)> Fpea.revapp xs, [:a,:b,:c,:d]
+iex> Fpea.revapp xs, [:a,:b,:c,:d]
 [30.5, 20.5, 10, :a, :b, :c, :d]
 ```
 
