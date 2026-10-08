@@ -48,6 +48,8 @@ pre.has-ln > .ln-gutter {
     width: 0;
     background: var(--links);
     opacity: 0.75;
+}
+#notes-progress.notes-ready > .notes-fill {
     transition: width 0.12s linear;
 }
 #notes-progress.notes-open {

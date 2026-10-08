@@ -86,7 +86,6 @@
         label.className = 'notes-label';
         bar.appendChild(fill);
         bar.appendChild(label);
-        document.body.appendChild(bar);
 
         function update() {
             const el = document.scrollingElement || document.documentElement;
@@ -125,7 +124,12 @@
         window.addEventListener('scroll', onScroll, { passive: true });
         window.addEventListener('resize', onScroll, { passive: true });
         window.addEventListener('load', update);
+        // Start at this page's position; animate only later changes, not the jump from 0 on every page.
         update();
+        document.body.appendChild(bar);
+        requestAnimationFrame(function () {
+            requestAnimationFrame(function () { bar.classList.add('notes-ready'); });
+        });
     }
 
     // ---- 3. back to the hub ------------------------------------------------------
