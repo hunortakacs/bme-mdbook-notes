@@ -356,7 +356,7 @@ class Hub(ClassFolder):
         make_pdf(self.res / "ea01.pdf", SLIDES[:1])
         run("prepare.py", self.c)
         run("new_book.py", self.c, "--title", "Próba tárgy")
-        (self.root / "notes-dev").mkdir()                    # folders without a book are ignored
+        (self.root / "scripts").mkdir()                      # folders without a book are ignored
         with socket.socket() as s:
             s.bind(("127.0.0.1", 0))
             port = s.getsockname()[1]

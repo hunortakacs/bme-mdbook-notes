@@ -5,7 +5,7 @@
   hub.py ROOT build                       # update, then build the hub and every class book
   hub.py ROOT serve [--host H] [--port P] # serve / (the hub) and /<class>/ (each book);
                                           # keeps the list current and rebuilds changed books
-  hub.py ROOT install-service [--port P]  # write hub/notes.service and run it (systemd user unit)
+  hub.py ROOT install-service [--port P]  # run serve as the systemd user service `notes`
 
 ROOT is the repository with one folder per class (ROOT/<class>/book/book.toml).
 The hub is an ordinary mdBook in ROOT/hub, kept in git: book.toml, src/ and
@@ -266,24 +266,18 @@ WantedBy=default.target
 
 
 def install_service(root: Path, host: str, port: int):
-    """The unit file lives in the repository (hub/notes.service) and is linked into systemd."""
-    def h(p: Path) -> str:                      # %h = the user's home, so the file is not tied to one machine
-        try:
-            return "%h/" + p.resolve().relative_to(Path.home()).as_posix()
-        except ValueError:
-            return str(p.resolve())
+    """The unit holds this machine's paths, so it is written into systemd, not into the repository."""
     python = "/usr/bin/python3" if Path("/usr/bin/python3").exists() else sys.executable
-    unit = root / HUB / "notes.service"
+    unit = Path.home() / ".config" / "systemd" / "user" / "notes.service"
     unit.parent.mkdir(parents=True, exist_ok=True)
-    unit.write_text(UNIT.format(host=host, port=port, python=python, script=h(Path(__file__)),
-                                root=h(root), cargo=h(Path.home() / ".cargo" / "bin")))
-    linked = Path.home() / ".config" / "systemd" / "user" / "notes.service"
-    if linked.exists() and not linked.is_symlink():   # an older install copied the file there
-        subprocess.run(["systemctl", "--user", "disable", "--now", "notes.service"], capture_output=True)
-        linked.unlink()
-    for cmd in (["daemon-reload"], ["enable", "--now", str(unit)], ["restart", "notes.service"]):
+    if unit.is_symlink():                       # older installs linked a unit file kept in the repository
+        subprocess.run(["systemctl", "--user", "disable", "notes.service"], capture_output=True)
+        unit.unlink(missing_ok=True)       # disable usually removes the link already
+    unit.write_text(UNIT.format(host=host, port=port, python=python, script=Path(__file__).resolve(),
+                                root=root, cargo=Path.home() / ".cargo" / "bin"))
+    for cmd in (["daemon-reload"], ["enable", "notes.service"], ["restart", "notes.service"]):
         subprocess.run(["systemctl", "--user", *cmd], check=True)
-    print(f"installed {unit} (linked into systemd)\nrunning: http://{host}:{port}/\n"
+    print(f"installed {unit}\nrunning: http://{host}:{port}/\n"
           "status: systemctl --user status notes   log: journalctl --user -u notes -f\n"
           "to keep it running while logged out: loginctl enable-linger $USER")
 
