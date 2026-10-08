@@ -2,6 +2,7 @@
 // 1. Line numbers in every code block.
 // 2. A thin reading-progress bar for the whole book, weighted by chapter length.
 // 3. A link to the list of all books, when the book is served by the hub (under /<class>/).
+// 4. Chapter changes without a page reload.
 (function () {
     'use strict';
 
@@ -36,6 +37,8 @@
     }
 
     // ---- 2. reading progress -------------------------------------------------
+    let relocateProgress = function () {};   // set by setupProgress; called after a chapter swap
+
     function chapterList() {
         const root = new URL(typeof path_to_root === 'string' && path_to_root ? path_to_root : './',
             document.location.href).href;
@@ -67,15 +70,19 @@
             p.weight = weights[p.key] > 0 ? weights[p.key] : (weights.__default || 1);
             total += p.weight;
         });
-        let here = document.location.href.split('#')[0].split('?')[0];
-        let index = pages.findIndex(function (p) { return p.url === here; });
-        if (index < 0) {
-            index = 0;                       // index.html is a copy of the first chapter
+        let index, before;
+        function locate() {
+            const here = document.location.href.split('#')[0].split('?')[0];
+            index = pages.findIndex(function (p) { return p.url === here; });
+            if (index < 0) {
+                index = 0;                   // index.html is a copy of the first chapter
+            }
+            before = 0;
+            for (let i = 0; i < index; i++) {
+                before += pages[i].weight;
+            }
         }
-        let before = 0;
-        for (let i = 0; i < index; i++) {
-            before += pages[i].weight;
-        }
+        locate();
 
         const bar = document.createElement('div');
         bar.id = 'notes-progress';
@@ -128,6 +135,7 @@
         window.addEventListener('load', update);
         // Start at this page's position; animate only later changes, not the jump from 0 on every page.
         update();
+        relocateProgress = function () { locate(); update(); };
         document.body.appendChild(bar);
         requestAnimationFrame(function () {
             requestAnimationFrame(function () { bar.classList.add('notes-ready'); });
@@ -158,13 +166,195 @@
         buttons.insertBefore(a, buttons.firstChild);
     }
 
+    // ---- 4. chapter changes without a page reload -------------------------------
+    // The Navigation API reports every navigation: links, mdBook's arrow keys, back and forward. For another
+    // chapter of this book only the content is fetched and swapped in; the sidebar, menu bar and search keep
+    // their state and the browser restores scroll and focus. Browsers without the API load pages normally.
+    const pageCache = new Map();             // prefetched on hover, used once: a rebuilt book never shows old pages
+    function fetchPage(url) {
+        let page = pageCache.get(url);
+        if (!page) {
+            page = fetch(url).then(function (r) {
+                if (!r.ok) {
+                    throw new Error(url + ': ' + r.status);
+                }
+                return r.text();
+            });
+            page.catch(function () { pageCache.delete(url); });
+            pageCache.set(url, page);
+        }
+        return page;
+    }
+
+    function markActiveChapter(root) {
+        const scrollbox = document.querySelector('mdbook-sidebar-scrollbox');
+        if (!scrollbox) {
+            return;
+        }
+        scrollbox.querySelectorAll('.on-this-page').forEach(function (el) { el.remove(); });
+        scrollbox.querySelectorAll('a.active').forEach(function (a) { a.classList.remove('active'); });
+        let here = document.location.href.split('#')[0].split('?')[0];
+        if (here.endsWith('/')) {
+            here += 'index.html';
+        }
+        const links = Array.from(scrollbox.querySelectorAll('a[href]'));
+        const strip = function (u) { return u.replace(/\.html$/, ''); };
+        const link = links.find(function (a) { return strip(a.href) === strip(here); })
+            || (here === root + 'index.html' ? links[0] : null);
+        if (!link) {
+            return;
+        }
+        link.classList.add('active');
+        for (let li = link.closest('li.chapter-item'); li; li = li.parentElement.closest('li.chapter-item')) {
+            li.classList.add('expanded');
+        }
+        // toc.js builds the "on this page" headings of the active chapter on DOMContentLoaded
+        document.dispatchEvent(new Event('DOMContentLoaded'));
+        // scrollIntoView would also move the page, which the browser has just restored
+        const box = scrollbox.getBoundingClientRect();
+        const at = link.getBoundingClientRect();
+        if (at.top < box.top || at.bottom > box.bottom) {
+            scrollbox.scrollTop += at.top - box.top - box.height / 2;
+        }
+    }
+
+    // What book.js and the other scripts did to the content on page load.
+    function prepareContent() {
+        document.querySelectorAll('main code').forEach(function (code) {
+            if (!code.parentElement.classList.contains('header')) {
+                code.classList.add('hljs');
+            }
+        });
+        if (window.playground_copyable) {
+            document.querySelectorAll('main pre > code').forEach(function (code) {
+                const pre = code.parentElement;
+                let buttons = pre.querySelector('.buttons');
+                if (!buttons) {
+                    buttons = document.createElement('div');
+                    buttons.className = 'buttons';
+                    pre.insertBefore(buttons, pre.firstChild);
+                }
+                const clip = document.createElement('button');
+                clip.className = 'clip-button';
+                clip.title = 'Copy to clipboard';
+                clip.setAttribute('aria-label', clip.title);
+                clip.innerHTML = '<i class="tooltiptext"></i>';
+                buttons.insertBefore(clip, buttons.firstChild);
+            });
+        }
+        addLineNumbers();
+        if (window.mermaid && document.querySelector('main .mermaid')) {
+            window.mermaid.run({ querySelector: 'main .mermaid' });
+        }
+    }
+
+    function setupNavigation() {
+        if (!window.navigation || !/^https?:$/.test(document.location.protocol)) {
+            return;
+        }
+        const root = new URL(typeof path_to_root === 'string' && path_to_root ? path_to_root : './',
+            document.location.href).href;
+        // mdBook resolves these against path_to_root, which stays the one of the first page loaded:
+        // make them absolute while it is still right.
+        const base = document.location.href;
+        document.querySelectorAll('#mdbook-sidebar a[href]:not([href^="#"]), #mdbook-menu-bar a[href]')
+            .forEach(function (a) { a.href = a.href; });
+        if (window.path_to_searchindex_js) {
+            window.path_to_searchindex_js = new URL(window.path_to_searchindex_js, base).href;
+        }
+        const results = document.getElementById('mdbook-searchresults');
+        if (results) {
+            new MutationObserver(function () {
+                results.querySelectorAll('a[href]').forEach(function (a) {
+                    a.href = new URL(a.getAttribute('href'), base).href;
+                });
+            }).observe(results, { childList: true });
+        }
+
+        function isChapter(url) {
+            return url.href.startsWith(root) && /(\.html|\/)$/.test(url.pathname)
+                && !/\/(print|toc)\.html$/.test(url.pathname);
+        }
+        // Start loading a chapter as soon as the pointer is over its link.
+        document.addEventListener('pointerover', function (e) {
+            const a = e.target.closest && e.target.closest('a[href]');
+            if (a) {
+                const url = new URL(a.href);
+                if (isChapter(url) && !url.search && url.pathname !== document.location.pathname) {
+                    fetchPage(url.origin + url.pathname);
+                }
+            }
+        }, { passive: true });
+
+        window.navigation.addEventListener('navigate', function (e) {
+            const url = new URL(e.destination.url);
+            if (!e.canIntercept || e.hashChange || e.downloadRequest !== null || e.formData
+                || e.navigationType === 'reload' || !isChapter(url)) {
+                return;
+            }
+            // pushState of the search box; links from search results (?highlight=) load normally to mark the words
+            if (e.navigationType === 'traverse' ? url.pathname === document.location.pathname
+                : e.destination.sameDocument || url.search) {
+                return;
+            }
+            e.intercept({
+                scroll: 'manual',
+                handler: async function () {
+                    let doc = null;
+                    const key = url.origin + url.pathname;
+                    try {
+                        const text = await fetchPage(key);
+                        pageCache.delete(key);
+                        doc = new DOMParser().parseFromString(text, 'text/html');
+                    } catch (err) {
+                        console.warn(err);
+                    }
+                    if (e.signal.aborted) {
+                        return;
+                    }
+                    const content = doc && doc.getElementById('mdbook-content');
+                    const wide = doc && doc.querySelector('.nav-wide-wrapper');
+                    if (!content || !wide) {
+                        document.location.reload();      // the URL is already the new one
+                        return;
+                    }
+                    // Firefox restores the scroll position of back/forward before the swap; scroll anchoring
+                    // would then shift it when the old content goes
+                    const html = document.documentElement;
+                    html.style.overflowAnchor = 'none';
+                    document.title = doc.title;
+                    document.getElementById('mdbook-content').replaceWith(content);
+                    document.querySelector('.nav-wide-wrapper').replaceWith(wide);
+                    try {
+                        sessionStorage.removeItem('sidebar-scroll-offset');   // toc.js reads it on the next full load
+                    } catch (err) { /* storage blocked */ }
+                    markActiveChapter(root);
+                    prepareContent();
+                    relocateProgress();
+                    // on narrow screens the sidebar covers the page; a full load would have closed it
+                    const toggle = document.getElementById('mdbook-sidebar-toggle-anchor');
+                    if (toggle && toggle.checked && document.body.clientWidth < 1080) {
+                        toggle.checked = false;
+                        toggle.dispatchEvent(new Event('change'));
+                    }
+                    try {
+                        e.scroll();                  // once the content has its final height
+                    } finally {
+                        html.style.overflowAnchor = '';
+                    }
+                },
+            });
+        });
+    }
+
     function init() {
         addLineNumbers();
         setupProgress();
         addHomeLink();
+        setupNavigation();
     }
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
+        document.addEventListener('DOMContentLoaded', init, { once: true });   // markActiveChapter fires it again
     } else {
         init();
     }

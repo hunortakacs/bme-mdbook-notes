@@ -142,4 +142,4 @@ python3 <skill>/scripts/check.py C      # builds as its last step and reports pr
 
 The user reads the books through the hub (`http://127.0.0.1:3000/C/`, the `notes` systemd user service running `hub.py`), which rebuilds a book by itself after every change. `mdbook serve C/book --open` previews a single book. The hub serves each book under `/C/`, which is why `book.toml` sets `site-url = "/C/"`; keep it.
 
-`check.py` also regenerates `theme/notes-weights.js` (words per chapter), which the progress bar uses to show the position in the whole book. Search is built in (`s` or the magnifier), and the print icon opens the whole book as one page.
+`check.py` also regenerates `theme/notes-weights.js` (words per chapter), which the progress bar uses to show the position in the whole book. Search is built in (`s` or the magnifier), and the print icon opens the whole book as one page. Chapters change without a page reload: `theme/notes.js` swaps only the content (Navigation API) and redoes what mdBook does on load (active chapter, "on this page" headings, copy buttons, line numbers, mermaid), so a change to mdBook's page scripts may need a matching change there.
