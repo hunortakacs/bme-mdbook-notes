@@ -9,9 +9,12 @@ New and changed sources are prepared in _work/sources/<slug>/:
 
   pdf, office   draft.md + extract.json + pages/*.png + figures/*.png (pdf_triage.py)
   notebook      draft.md with the cells flattened, image outputs in figures/
+  markdown      Markdown with images embedded as data: URIs: draft.md with every image in
+                figures/ and a figure comment in its place, split into sections like text
   image         one unit that has to be looked at
   text          nothing: the file is read as it is; Markdown-like files (.md, .livemd, ...)
-                are split into units at their # and ## headings, other files are one unit
+                are split into units at their # and ## headings (without any, at lines that
+                are bold and nothing else), other files are one unit
 
 transcript.md is created from draft.md. When a source changed, sections of the
 old transcript are carried over for every unit whose content is unchanged, so
@@ -78,7 +81,12 @@ def flatten_notebook(src: Path, out: Path) -> dict:
                     lines = lines[:40] + [f"... ({len(lines) - 40} more lines)"]
                 body += ["Output:", "```text", *lines, "```", ""]
     # one unit per # / ## section of the markdown cells, like a Markdown text source
-    body = "\n".join(body).splitlines()
+    return units_with_figures(src, "notebook", "\n".join(body).splitlines())
+
+
+def units_with_figures(src: Path, kind: str, body: list[str]) -> dict:
+    """Extract dict for a text body whose images are `<!-- figure: ... -->` comments:
+    one unit per section (C.sections), and every unit with a figure has to be looked at."""
     parts = C.sections(body) or [(src.name, 0, len(body))]
     ids = [f"s{k}" for k in range(1, len(parts) + 1)] if len(parts) > 1 else ["all"]
     units = []
@@ -90,9 +98,47 @@ def flatten_notebook(src: Path, out: Path) -> dict:
                       "figures": [], "links": [], "annots": [], "header": [], "text": text,
                       "fingerprint": hashlib.sha1((title + "\n" + text).encode()).hexdigest()[:16]})
     n_view = sum(1 for u in units if u["view"])
-    return {"meta": {"source": src.name, "kind": "notebook", "units": len(units),
+    return {"meta": {"source": src.name, "kind": kind, "units": len(units),
                      "needs_view": n_view, "flags": {"image": n_view} if n_view else {}},
             "units": units}
+
+
+IMAGE_INLINE = re.compile(r"!\[[^\]\n]*\]\(\s*<?(data:image/([a-z+]+);base64,([A-Za-z0-9+/=\s]+?))>?\s*\)")
+IMAGE_TAG = re.compile(r"<img\b[^>]*?src=[\"'](data:image/([a-z+]+);base64,([A-Za-z0-9+/=\s]+?))[\"'][^>]*>")
+IMAGE_REFDEF = re.compile(r"^\[([^\]\n]+)\]:\s*<?data:image/([a-z+]+);base64,([A-Za-z0-9+/=\s]+?)>?\s*$", re.M)
+IMAGE_REFUSE = re.compile(r"!\[[^\]\n]*\]\[([^\]\n]*)\]")
+
+
+def flatten_markdown(src: Path, out: Path) -> dict:
+    """Markdown with images embedded as data: URIs (Google Docs export and the like):
+    every image becomes figures/imgNNN.<ext> and a `<!-- figure: ... -->` comment where it stood."""
+    text = C.read_text(src)
+    out.mkdir(parents=True, exist_ok=True)
+    figdir = out / "figures"
+    if figdir.exists():
+        shutil.rmtree(figdir)
+    figdir.mkdir()
+    names: dict[str, str] = {}              # base64 data -> figure file, so a repeated image is one file
+
+    def save(subtype: str, data: str) -> str:
+        data = re.sub(r"\s+", "", data)
+        if data not in names:
+            ext = {"jpeg": "jpg", "svg+xml": "svg"}.get(subtype, subtype)
+            name = f"figures/img{len(names) + 1:03d}.{ext}"
+            (out / name).write_bytes(base64.b64decode(data + "=" * (-len(data) % 4)))
+            names[data] = name
+        return f"<!-- figure: {names[data]} -->"
+
+    refs = {m[1].strip().lower(): (m[2], m[3]) for m in IMAGE_REFDEF.finditer(text)}
+    text = IMAGE_REFDEF.sub("", text)
+    text = IMAGE_INLINE.sub(lambda m: save(m[2], m[3]), text)
+    text = IMAGE_TAG.sub(lambda m: save(m[2], m[3]), text)
+    text = IMAGE_REFUSE.sub(lambda m: save(*refs[m[1].strip().lower()]) if m[1].strip().lower() in refs
+                            else m[0], text)
+    left = text.count("data:image/")
+    if left:
+        raise RuntimeError(f"{left} embedded image(s) in a form prepare.py does not know; extend flatten_markdown")
+    return units_with_figures(src, "markdown", text.rstrip().splitlines())
 
 
 def image_source(src: Path, out: Path) -> dict:
@@ -131,6 +177,8 @@ def prepare_source(src: Path, kind: str, out: Path, view_all: bool) -> dict | No
         return None
     if kind == "notebook":
         data = flatten_notebook(src, out)
+    elif kind == "markdown":
+        data = flatten_markdown(src, out)
     elif kind == "image":
         data = image_source(src, out)
     else:
@@ -370,8 +418,9 @@ def main():
             e["sections"] = [{"id": u["id"], "title": u["title"], "fingerprint": u["fingerprint"]} for u in tunits]
             e["units"] = len(units)
             if len(units) > 1:
-                info = f"{len(units)} sections (units s1-s{len(units)}, split at # and ## headings)"
+                info = f"{len(units)} sections (units s1-s{len(units)}, split at headings)"
         else:
+            e.pop("sections", None)
             old = None
             if (out / "extract.json").exists():
                 old = json.loads((out / "extract.json").read_text())
@@ -405,6 +454,8 @@ def main():
             prev = old_rows.get(back.get(u["id"]))
             disp = prev["disposition"] if prev else ""
             new_rows.append({"source": e["slug"], "unit": u["id"], "title": u.get("title") or "", "disposition": disp})
+        # also rows of units the old preparation had but the new one does not know (a source that changed kind)
+        removed = removed + [uid for uid in old_rows if uid not in idmap and uid not in removed]
         lost = [(uid, old_rows[uid]["disposition"]) for uid in removed if uid in old_rows and old_rows[uid]["disposition"]]
         coverage = [r for r in coverage if r["source"] != e["slug"]] + new_rows
         e["sha256"] = hashes[rel]

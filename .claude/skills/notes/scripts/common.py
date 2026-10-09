@@ -17,6 +17,10 @@ IMAGE_EXT = {".png", ".jpg", ".jpeg", ".gif", ".webp", ".bmp", ".tif", ".tiff"}
 ARCHIVE_EXT = {".zip", ".tar", ".gz", ".tgz", ".bz2", ".xz", ".7z", ".rar"}
 MARKDOWN_EXT = {".md", ".markdown", ".livemd", ".qmd", ".rmd", ".mdx", ".txt"}
 HEADING = re.compile(r"^(#{1,2})\s+(.+?)\s*#*\s*$")
+# a line that is bold and nothing else: how Google Docs and Word exports mark their headings
+BOLD_LINE = re.compile(r"^\s*(?:\*\*[^*\n]+?\*\*\s*)+$")
+# an image embedded in Markdown as a data: URI (inline, reference definition or <img>)
+EMBEDDED_IMAGE = re.compile(rb"\]\(\s*<?data:image/|\]:\s*<?data:image/|src=[\"']data:image/")
 UNIT_HEADER = re.compile(r"^## (s\d+(?:\.\d+)?|all) · (.*)$")
 STATUS_LINE = re.compile(r"^<!-- status: (.*?) -->\s*$")
 
@@ -108,6 +112,12 @@ def classify(path: Path) -> str:
         return "image"
     if ext in ARCHIVE_EXT:
         return "unsupported"
+    if ext in MARKDOWN_EXT:
+        try:
+            if EMBEDDED_IMAGE.search(path.read_bytes()):
+                return "markdown"            # prepared like a notebook: the images have to be looked at
+        except OSError:
+            return "unsupported"
     try:
         data = path.read_bytes()[:200_000]
     except OSError:
@@ -166,15 +176,23 @@ def transcript_head(text: str) -> str:
 
 def sections(lines: list[str]) -> list[tuple[str, int, int]]:
     """(title, start, end) of the parts of a Markdown text between `#` and `##` headings
-    outside code fences. Text before the first heading belongs to the first part."""
-    starts, in_fence = [], False
+    outside code fences. Text before the first heading belongs to the first part.
+    A text without any `#` heading (an export from Google Docs or Word) is split at its
+    lines that are bold and nothing else."""
+    starts, bold, in_fence = [], [], False
     for i, line in enumerate(lines):
         if line.lstrip().startswith(("```", "~~~")):
             in_fence = not in_fence
             continue
-        m = None if in_fence else HEADING.match(line)
+        if in_fence:
+            continue
+        m = HEADING.match(line)
         if m:
             starts.append((i, m.group(2).strip()))
+        elif BOLD_LINE.match(line) and len(line.strip()) <= 160:
+            bold.append((i, re.sub(r"\s+", " ", line.replace("**", "")).strip()))
+    if not starts and not any(re.match(r"#{3,6}\s", l) for l in lines):
+        starts = bold
     if len(starts) < 2:
         return []
     if any(l.strip() for l in lines[:starts[0][0]]):
@@ -195,11 +213,13 @@ def read_text(path: Path) -> str:
 
 
 def text_units(path: Path, entry: dict | None = None) -> list[dict]:
-    """Units of a text source: one per `#`/`##` section of a Markdown-like file (s1, s2, ...),
+    """Units of a text source: one per section of a Markdown-like file (s1, s2, ...; see sections()),
     otherwise the whole file as `all`. Each: {id, title, lines, fingerprint}.
     A state entry prepared before sections existed (no "sections" key) stays one unit."""
     lines = read_text(path).splitlines()
     split = path.suffix.lower() in MARKDOWN_EXT and (entry is None or "sections" in entry)
+    if entry is not None and [x["id"] for x in entry.get("sections", [])] == ["all"]:
+        split = False                        # prepared as one unit; prepare.py re-splits it when it changes
     parts = sections(lines) if split else []
     if not parts:
         parts = [(path.name, 0, len(lines))]

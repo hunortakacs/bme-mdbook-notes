@@ -8,8 +8,9 @@ What it does
   1. Collapses animation steps (Beamer overlays, exported build steps) into
      logical slides. PDF page labels are used when present, otherwise
      consecutive pages where each one only adds to the previous one are
-     merged. A step is only dropped when both its words and its ink are
-     contained in a later step, so replaced content is kept.
+     merged. A step is only dropped when its words and its ink are contained
+     in a later step, in the same colours on the same background, so replaced
+     content is kept (a dark full-bleed slide contains nothing).
   2. Learns the slide template (background, logo, header, footer) as the
      per-pixel median of the pages and ignores it.
   3. Flags each slide: math, graphic, image, table, layout, stacked, encoding,
@@ -627,7 +628,7 @@ def analyse_page(page, template, debug=False):
         comps.append({"bbox": [round(v, 1) for v in box_pt], "kind": kind, "texture": tex,
                       "straight": strt, "ink": inkpx})
     packed = np.packbits(ink)
-    return {"segs": segs, "comps": comps, "ink": packed, "ink_shape": ink.shape,
+    return {"segs": segs, "comps": comps, "ink": packed, "ink_shape": ink.shape, "img": img,
             "ink_count": int(ink.sum()), "resid_count": int(resid.sum()), "hrules": hrules,
             "scale": scale, "thumb": hashlib.sha1(
                 (img[::8, ::8] // 32).tobytes()).hexdigest()[:16]}
@@ -658,7 +659,27 @@ def subsumed(a, b, strict_words):
         return False
     ia, ib = unpack(a), dilate(unpack(b), 2)
     lost = int((ia & ~ib).sum())
-    return lost <= max(60, 0.02 * a["ink_count"])
+    if lost > max(60, 0.02 * a["ink_count"]):
+        return False
+    # b must also show a's content as a's content: the same colours around a's ink, glyphs and
+    # their halo of background. Ink alone is not enough: a dark or full-bleed page is "ink"
+    # everywhere and would contain any page before it.
+    region = dilate(ia, 3)
+    differs = colour_differs(a["img"], b["img"], 2) & region
+    return int(differs.sum()) <= max(60, 0.02 * int(region.sum()))
+
+
+def colour_differs(x, y, r):
+    """Pixels of x whose colour is found at no position within r pixels in y."""
+    h, w, _ = x.shape
+    yp = np.pad(y.astype(np.int16), ((r, r), (r, r), (0, 0)), mode="edge")
+    xs = x.astype(np.int16)
+    best = None
+    for dy in range(2 * r + 1):
+        for dx in range(2 * r + 1):
+            d = np.abs(xs - yp[dy:dy + h, dx:dx + w]).max(axis=2)
+            best = d if best is None else np.minimum(best, d)
+    return best > INK_THRESHOLD
 
 
 # --------------------------------------------------------------------------

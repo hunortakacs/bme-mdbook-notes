@@ -95,7 +95,7 @@ ROOT/                        git repository, one folder per class
       audit/                 chapter excerpts for the auditors (not in git)
 ```
 
-A *unit* is one logical slide of a PDF (`s12`; `s12.1`, `s12.2` when animation steps replace each other's content), one `#`/`##` section of a Markdown-like text file or notebook (`s1`, `s2`, ...), or a whole file without such headings (`all`). A *slug* is the source's file name in lowercase ASCII.
+A *unit* is one logical slide of a PDF (`s12`; `s12.1`, `s12.2` when animation steps replace each other's content), one `#`/`##` section of a Markdown-like text file or notebook (`s1`, `s2`, ...; a file without any `#` heading, such as a Google Docs export, is split at its lines that are bold and nothing else), or a whole file without such sections (`all`). Markdown with images embedded as `data:` URIs is prepared like a notebook: its images are extracted and their units have to be looked at. A *slug* is the source's file name in lowercase ASCII.
 
 ## Rules that hold everywhere
 
