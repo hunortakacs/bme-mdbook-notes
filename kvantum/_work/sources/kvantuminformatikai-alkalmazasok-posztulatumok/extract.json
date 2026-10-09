@@ -1,0 +1,958 @@
+{
+ "meta": {
+  "source": "Kvantuminformatikai alkalmazások_posztulátumok.pdf",
+  "kind": "pdf",
+  "physical_pages": 20,
+  "units": 20,
+  "grouping": "heuristic",
+  "needs_view": 16,
+  "flags": {
+   "graphic": 15,
+   "image": 13,
+   "math": 8,
+   "table": 3,
+   "layout": 2,
+   "stacked": 1,
+   "encoding": 1,
+   "no-text": 1
+  },
+  "body_font_size": 28.0,
+  "page_hashes": [
+   "02e6c23980ee4979",
+   "7d00951d6a8b8a9e",
+   "40352ab4f31a267f",
+   "cb69dd46130f05e2",
+   "4f7c7f539194f028",
+   "5d5e4f172e08ea8d",
+   "8f97e4d44968258c",
+   "fbb5acca487bf31d",
+   "fa965471b89e6e32",
+   "db6f809df7a4d1d3",
+   "12ef07a34884acc2",
+   "0e53726d876ee9e0",
+   "7ced6b76b1aae3af",
+   "62f2760c77b08e48",
+   "910f0c4a2229abe4",
+   "268f8de4ac77d91c",
+   "39370abfc8c1fe16",
+   "980e202fa7f3ec39",
+   "7870aa2c01a70b4d",
+   "c520329923b6e0a1"
+  ]
+ },
+ "units": [
+  {
+   "id": "s1",
+   "page": 1,
+   "pages": [
+    1,
+    1
+   ],
+   "label": "",
+   "title": "",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p001.png",
+   "figures": [
+    {
+     "file": "figures/p001-f1.png",
+     "bbox": [
+      0.0,
+      0.0,
+      0.727,
+      0.339
+     ]
+    },
+    {
+     "file": "figures/p001-f2.png",
+     "bbox": [
+      0.818,
+      0.775,
+      0.989,
+      0.939
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "**Kvantummechanikai posztulátumok** **és alkalmazásuk**\n\nKvantuminformatikai alkalmazások BMEVIHIAD00\n\nBudapest,\n\n**Oláh Kitti**\n\n2026. 09. 21.\n\nBME Hálózati Rendszerek és Szolgáltatások Tanszék olah.kitti@edu.bme.hu",
+   "fingerprint": "819dabf4f234e876",
+   "debug": null
+  },
+  {
+   "id": "s2",
+   "page": 2,
+   "pages": [
+    2,
+    2
+   ],
+   "label": "",
+   "title": "MOTIVÁCIÓ",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "„Nem szeretem, és sajnálom, hogy valaha is közöm volt hozzá.” – **Erwin Schrödinger**\n\n„Azok, akiket nem sokkol, amikor először találkoznak a kvantummechanikával valószínűleg nem értették meg.” – **Niels Bohr**\n\n„Azt hiszem kijelenthetem, hogy senki sem érti a kvantummechanikát.” – **Richard Feynman**",
+   "fingerprint": "d74cbea496edcf16",
+   "debug": null
+  },
+  {
+   "id": "s3",
+   "page": 3,
+   "pages": [
+    3,
+    3
+   ],
+   "label": "",
+   "title": "TARTALOM",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- Mit nevezünk posztulátumnak? Mérnöki és fizikusi\naspektusból?\n- Mi a kvantumkommunikáció alapköve?\n- Két állapotú rendszerek bemutatása, Hilbert-tér és\na kvantummechanika kapcsolata\n- Mit jelent az unitér transzformáció? Kvantumkapuk\nbemutatása Bloch-gömb segítségével\n- Méréstechnika kvantumosan\n- Ha van egy kvantumbitünk, miért ne lehetne\negyszerre több is…",
+   "fingerprint": "f39e319ecc8f28da",
+   "debug": null
+  },
+  {
+   "id": "s4",
+   "page": 4,
+   "pages": [
+    4,
+    4
+   ],
+   "label": "",
+   "title": "POSZTULÁTUM",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- Valamely gondolati rendszer alapját képező, szükségképp\nigaznak tekintett állítások egyike.\n- Bizonyítás nélkül elfogadott, a gondolkodás szempontjából\nnélkülözhetetlen feltevés, tétel.\n- Egy bizonyos gondolati rendszer vagy tudományág számára a\nposztulátum az a minimális feltétel, amely alapján további következtetéseket lehet levonni, pl. a béke a jövő fejlődésének posztulátuma.\n- Geometriai posztulátum: Euklideszi geometria\n- Axióma: egy, az adott tudományágon belül bizonyíthatatlan, ám\nmagától értetődőnek tekintett állítás („**Ez triviális kolléga**”)",
+   "fingerprint": "b45e5efe4ed0c082",
+   "debug": null
+  },
+  {
+   "id": "s5",
+   "page": 5,
+   "pages": [
+    5,
+    5
+   ],
+   "label": "",
+   "title": "",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p005.png",
+   "figures": [
+    {
+     "file": "figures/p005-f1.png",
+     "bbox": [
+      0.0,
+      0.0,
+      0.314,
+      0.189
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "**Elválasztó fólia címmel**\n\n**Kvantummechanikai posztulátumok mérnöki**\n\n**interpretációban**",
+   "fingerprint": "10a3037df477e255",
+   "debug": null
+  },
+  {
+   "id": "s6",
+   "page": 6,
+   "pages": [
+    6,
+    6
+   ],
+   "label": "",
+   "title": "I. POSZTULÁTUM",
+   "flags": [
+    "math",
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p006.png",
+   "figures": [
+    {
+     "file": "figures/p006-f1.png",
+     "bbox": [
+      0.061,
+      0.447,
+      0.944,
+      0.899
+     ]
+    }
+   ],
+   "links": [
+    "https://www.shutterstock.com/hu/search/quantum-vacuum-state"
+   ],
+   "annots": [],
+   "header": [],
+   "text": "**Állapotleírás**\n\n**Zárt** fizikai rendszer aktuális állapota egy olyan állapotvektorral írható le, amely komplex együtthatókkal rendelkezik, egységnyi hosszú a Hilbert-térben (egy komplex lineáris vektortérben, amelyben értelmezve van a belső szorzat).\n- 𝛼^(2) + 𝛽^(2) = 1\n𝛼, 𝛽∈ℂ",
+   "fingerprint": "fed2d708b436410b",
+   "debug": null
+  },
+  {
+   "id": "s7",
+   "page": 7,
+   "pages": [
+    7,
+    7
+   ],
+   "label": "",
+   "title": "KVANTUMBIT (QUBIT)",
+   "flags": [
+    "math",
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p007.png",
+   "figures": [
+    {
+     "file": "figures/p007-f1.png",
+     "bbox": [
+      0.661,
+      0.581,
+      0.907,
+      0.959
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "𝜑^(†)\n\nȁۧ𝜑=ۦȁ\n- Dirac ‘*ket*’ és ‘*bra*’ jelölés\n- Kvantumbit: mindkét klasszikus állapotot (bázisállapotot)\ntartalmazza egyidőben: szuperpozíció\n\n1 ^(=) ^(𝛼)\n\nȁۧ𝜑= 𝛼หۧ0 + 𝛽ȁۧ1 = 𝛼^(1)\n        - 0 ^(+ 𝛽0)\n𝛽\n- ahol a és b komplex valószínűségi amplitúdók. Abszolút érték\nnégyzetük adja meg a mérés eredményét (a klasszikus bázisban): 𝛼^(2) + 𝛽^(2) = 1\n- Műveletek: belső és külső szorzat",
+   "fingerprint": "7a862a0ccb6ba044",
+   "debug": null
+  },
+  {
+   "id": "s8",
+   "page": 8,
+   "pages": [
+    8,
+    8
+   ],
+   "label": "",
+   "title": "HILBERT-TÉR",
+   "flags": [
+    "table",
+    "layout"
+   ],
+   "view": "pages/p008.png",
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- Végtelen dimenziójú euklideszi vektorterek\náltalánosítása\n- Teljes\n- Metrikus\n**Kvantum interpretáció** Állapot leírás Megfigyelhető Mérés eredménye Mérés valószínűsége Időbeni változása\n\n**Hilbert-térben** Vektor Hermitikus operátor Operátor sajátértéke Belső szorzat négyzete Unitér transzformáció (Schrödinger-egyenlet)",
+   "fingerprint": "ab5c1ed86d4f2642",
+   "debug": null
+  },
+  {
+   "id": "s9",
+   "page": 9,
+   "pages": [
+    9,
+    9
+   ],
+   "label": "",
+   "title": "II. POSZTULÁTUM",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p009.png",
+   "figures": [
+    {
+     "file": "figures/p009-f1.png",
+     "bbox": [
+      0.638,
+      0.691,
+      0.787,
+      0.909
+     ]
+    },
+    {
+     "file": "figures/p009-f2.png",
+     "bbox": [
+      0.106,
+      0.701,
+      0.262,
+      0.939
+     ]
+    },
+    {
+     "file": "figures/p009-f3.png",
+     "bbox": [
+      0.368,
+      0.701,
+      0.517,
+      0.939
+     ]
+    },
+    {
+     "file": "figures/p009-f4.png",
+     "bbox": [
+      0.841,
+      0.761,
+      0.982,
+      0.879
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "**Rendszer időbeli fejlődése**\n\nA zárt rendszer időbeli fejlődése **unitér**\n\ntranszformációval írható le, amely csak a kezdő és végállapottól függ. Adjungáltja megegyezik az inverzével. Sorok/oszlopok ortonormált bázist alkotnak. Kölcsönösen egyértelmű, hossztartó leképezés, ami megőrzi a belső szorzatot.",
+   "fingerprint": "f49a67fbb8f00aad",
+   "debug": null
+  },
+  {
+   "id": "s10",
+   "page": 10,
+   "pages": [
+    10,
+    10
+   ],
+   "label": "",
+   "title": "PAULI-KAPUK",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p010.png",
+   "figures": [
+    {
+     "file": "figures/p010-f1.png",
+     "bbox": [
+      0.068,
+      0.181,
+      0.277,
+      0.249
+     ]
+    },
+    {
+     "file": "figures/p010-f2.png",
+     "bbox": [
+      0.548,
+      0.251,
+      0.884,
+      0.479
+     ]
+    },
+    {
+     "file": "figures/p010-f3.png",
+     "bbox": [
+      0.323,
+      0.391,
+      0.487,
+      0.449
+     ]
+    },
+    {
+     "file": "figures/p010-f4.png",
+     "bbox": [
+      0.683,
+      0.571,
+      0.944,
+      0.809
+     ]
+    },
+    {
+     "file": "figures/p010-f5.png",
+     "bbox": [
+      0.331,
+      0.711,
+      0.494,
+      0.779
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Pauli X-kapu (bit-flip) :\n\nPauli Z-kapu (phase-flip) :",
+   "fingerprint": "7db62d63d3ba19a9",
+   "debug": null
+  },
+  {
+   "id": "s11",
+   "page": 11,
+   "pages": [
+    11,
+    11
+   ],
+   "label": "",
+   "title": "PAULI-KAPUK",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p011.png",
+   "figures": [
+    {
+     "file": "figures/p011-f1.png",
+     "bbox": [
+      0.068,
+      0.161,
+      0.277,
+      0.229
+     ]
+    },
+    {
+     "file": "figures/p011-f2.png",
+     "bbox": [
+      0.398,
+      0.221,
+      0.862,
+      0.459
+     ]
+    },
+    {
+     "file": "figures/p011-f3.png",
+     "bbox": [
+      0.181,
+      0.361,
+      0.344,
+      0.429
+     ]
+    },
+    {
+     "file": "figures/p011-f4.png",
+     "bbox": [
+      0.451,
+      0.631,
+      0.809,
+      0.839
+     ]
+    },
+    {
+     "file": "figures/p011-f5.png",
+     "bbox": [
+      0.181,
+      0.751,
+      0.367,
+      0.809
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Pauli Y-kapu:\n\nFázis-kapu:",
+   "fingerprint": "52036e2e78d0da4c",
+   "debug": null
+  },
+  {
+   "id": "s12",
+   "page": 12,
+   "pages": [
+    12,
+    12
+   ],
+   "label": "",
+   "title": "HADAMARD-KAPU",
+   "flags": [
+    "math",
+    "graphic",
+    "image",
+    "stacked",
+    "table"
+   ],
+   "view": "pages/p012.png",
+   "figures": [
+    {
+     "file": "figures/p012-f1.png",
+     "bbox": [
+      0.466,
+      0.171,
+      0.877,
+      0.439
+     ]
+    },
+    {
+     "file": "figures/p012-f2.png",
+     "bbox": [
+      0.046,
+      0.181,
+      0.277,
+      0.249
+     ]
+    },
+    {
+     "file": "figures/p012-f3.png",
+     "bbox": [
+      0.046,
+      0.301,
+      0.314,
+      0.419
+     ]
+    },
+    {
+     "file": "figures/p012-f4.png",
+     "bbox": [
+      0.713,
+      0.671,
+      0.959,
+      0.929
+     ]
+    },
+    {
+     "file": "figures/p012-x82.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p012-x83.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p012-x84.png",
+     "layer": true
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Hadamard-kapu **unitér transzformáció** és **hermitikus** is, emiatt:\n\n𝐻^(†) = 𝐻\n\n𝐻^(−1) = 𝐻 𝐻^(†)𝐻= 𝐼",
+   "fingerprint": "efe9724861fa0218",
+   "debug": null
+  },
+  {
+   "id": "s13",
+   "page": 13,
+   "pages": [
+    13,
+    13
+   ],
+   "label": "",
+   "title": "BLOCH-GÖMB",
+   "flags": [
+    "math",
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p013.png",
+   "figures": [
+    {
+     "file": "figures/p013-f1.png",
+     "bbox": [
+      0.033,
+      0.337,
+      0.562,
+      0.453
+     ]
+    },
+    {
+     "file": "figures/p013-f2.png",
+     "bbox": [
+      0.428,
+      0.491,
+      0.967,
+      0.909
+     ]
+    }
+   ],
+   "links": [
+    "https://bloch.kherb.io/",
+    "https://www.justqlabs.com/simulator"
+   ],
+   "annots": [],
+   "header": [],
+   "text": "- https://bloch.kherb.io/\n- https://www.justqlabs.com/simulator\n𝜃\n\n𝜃\n\n2 ^(ȁۧ0) ^(+ 𝑒𝑖𝜙𝑠𝑖𝑛) 2 ^(ȁۧ1)\n- ȁۧ𝜓= 𝑐𝑜𝑠",
+   "fingerprint": "209e83e77887d454",
+   "debug": null
+  },
+  {
+   "id": "s14",
+   "page": 14,
+   "pages": [
+    14,
+    14
+   ],
+   "label": "",
+   "title": "III. POSZTULÁTUM",
+   "flags": [
+    "math",
+    "graphic",
+    "image",
+    "table"
+   ],
+   "view": "pages/p014.png",
+   "figures": [
+    {
+     "file": "figures/p014-f1.png",
+     "bbox": [
+      0.698,
+      0.483,
+      0.997,
+      0.725
+     ]
+    },
+    {
+     "file": "figures/p014-f2.png",
+     "bbox": [
+      0.188,
+      0.581,
+      0.479,
+      0.649
+     ]
+    },
+    {
+     "file": "figures/p014-f3.png",
+     "bbox": [
+      0.376,
+      0.811,
+      0.629,
+      0.929
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "**Mérés**\n\nLegyen {𝑚} a mérés lehetséges eredményeinek a\n\nhalmaza. Egy mérés a mérési operátorok halmazával adható meg: {𝑀𝑚}. Ha a megmérendő rendszer állapota ȁۧφ akkor annak a valószínűsége, hogy a mérés az m eredményt adja:\n\nKlasszikus világ\n\nmérődoboz\n\nKvantumvilág\n\nA mérés után a rendszer állapota az alábbi lesz:",
+   "fingerprint": "a4d7193b851a8547",
+   "debug": null
+  },
+  {
+   "id": "s15",
+   "page": 15,
+   "pages": [
+    15,
+    15
+   ],
+   "label": "",
+   "title": "IV. POSZTULÁTUM",
+   "flags": [
+    "math",
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p015.png",
+   "figures": [
+    {
+     "file": "figures/p015-f1.png",
+     "bbox": [
+      0.661,
+      0.391,
+      0.922,
+      0.919
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "**Összetett rendszer**\n\nHa V és Y a két kvantumrendszerhez rendelt Hilbert-tér, akkor az\n\nebből a két rendszerből álló összetett rendszerhez a 𝑊= 𝑉⨂𝑌Hilbert-tér rendelhető. Mire használható? Példa két kvantumbitből álló regiszterre:\n\nȁۧφ1 = ȁۧ0\n\nȁۧφ2 = ^(หۧ0) ^(+ ȁۧ1)\n- 2\nหۧφ = ȁۧ0 ⨂^(ȁۧ0) ^(+ ȁۧ1) = ^(หۧ00) ^(+ ȁۧ01)\n  - 2\n    - 2",
+   "fingerprint": "8e1f16b842fc98e3",
+   "debug": null
+  },
+  {
+   "id": "s16",
+   "page": 16,
+   "pages": [
+    16,
+    16
+   ],
+   "label": "",
+   "title": "KVANTUMREGISZTER",
+   "flags": [
+    "math",
+    "graphic",
+    "encoding"
+   ],
+   "view": "pages/p016.png",
+   "figures": [
+    {
+     "file": "figures/p016-f1.png",
+     "bbox": [
+      0.056,
+      0.265,
+      0.374,
+      0.379
+     ]
+    },
+    {
+     "file": "figures/p016-f2.png",
+     "bbox": [
+      0.261,
+      0.265,
+      0.389,
+      0.379
+     ]
+    },
+    {
+     "file": "figures/p016-f3.png",
+     "bbox": [
+      0.055,
+      0.415,
+      0.549,
+      0.529
+     ]
+    },
+    {
+     "file": "figures/p016-f4.png",
+     "bbox": [
+      0.296,
+      0.426,
+      0.687,
+      0.529
+     ]
+    },
+    {
+     "file": "figures/p016-f5.png",
+     "bbox": [
+      0.296,
+      0.426,
+      0.549,
+      0.529
+     ]
+    },
+    {
+     "file": "figures/p016-f6.png",
+     "bbox": [
+      0.558,
+      0.426,
+      0.697,
+      0.529
+     ]
+    },
+    {
+     "file": "figures/p016-f7.png",
+     "bbox": [
+      0.055,
+      0.583,
+      0.759,
+      0.699
+     ]
+    },
+    {
+     "file": "figures/p016-f8.png",
+     "bbox": [
+      0.342,
+      0.594,
+      0.945,
+      0.699
+     ]
+    },
+    {
+     "file": "figures/p016-f9.png",
+     "bbox": [
+      0.342,
+      0.594,
+      0.759,
+      0.699
+     ]
+    },
+    {
+     "file": "figures/p016-f10.png",
+     "bbox": [
+      0.768,
+      0.594,
+      0.959,
+      0.699
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": " = a 0 + b 1\n\n 2\n\n = a 00 + b 01 + c 10 + d 11\n\n 4\n\n = a 0000 + b 0001 + ... + o 1110 + p 1111",
+   "fingerprint": "5c1371b175a588e5",
+   "debug": null
+  },
+  {
+   "id": "s17",
+   "page": 17,
+   "pages": [
+    17,
+    17
+   ],
+   "label": "",
+   "title": "SZÁMOLJUNK!",
+   "flags": [
+    "math",
+    "graphic",
+    "layout"
+   ],
+   "view": "pages/p017.png",
+   "figures": [
+    {
+     "file": "figures/p017-f1.png",
+     "bbox": [
+      0.032,
+      0.197,
+      0.299,
+      0.289
+     ]
+    },
+    {
+     "file": "figures/p017-f2.png",
+     "bbox": [
+      0.478,
+      0.291,
+      0.82,
+      0.349
+     ]
+    },
+    {
+     "file": "figures/p017-f3.png",
+     "bbox": [
+      0.035,
+      0.307,
+      0.307,
+      0.399
+     ]
+    },
+    {
+     "file": "figures/p017-f4.png",
+     "bbox": [
+      0.032,
+      0.447,
+      0.299,
+      0.539
+     ]
+    },
+    {
+     "file": "figures/p017-f5.png",
+     "bbox": [
+      0.032,
+      0.568,
+      0.307,
+      0.659
+     ]
+    },
+    {
+     "file": "figures/p017-f6.png",
+     "bbox": [
+      0.023,
+      0.715,
+      0.457,
+      0.929
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "ȁۧ0 +ۧȁ1 ȁۧ𝟎𝟎+ۧȁ𝟎𝟏\n\nȁ0 ⊗\n\n=\n\n2\n\n𝟐\n\nȁۧ1 +ۧȁ0 ȁۧ𝟎𝟏+ۧȁ𝟎𝟎\n\nȁ0 ⊗\n\n=\n\n2\n\n𝟐\n\nȁۧ0 +ۧȁ1\n\nȁۧ𝟎𝟎+ۧȁ𝟏𝟎\n\n⊗ȁ0 =\n- 2ۧ\n𝟐ۧ\n\nȁۧ0 +ۧȁ1 ȁ𝟏𝟎+ۧ ȁ𝟏𝟏\n\nȁ1 ⊗\n\n=ۧ\n\n2\n\n𝟐\n\nȁۧ0 +ۧȁ1\n\nȁۧ𝟎𝟏+ۧȁ𝟏𝟏\n\n⊗ȁ1 =\n\n2ۧ\n\n𝟐\n\nȁۧ0 +ۧȁ1 ȁۧ0 +ۧȁ1 ȁۧ𝟎𝟎+ۧȁ𝟎𝟏+ ȁۧ𝟏𝟎+ۧȁ𝟏𝟏\n\n⊗\n\n=\n\n𝟐\n\n2\n\n2\n\n(𝛼หۧ0 + 𝛽ȁۧ1 ) ⊗ȁۧ0 =𝜶หۧ𝟎𝟎+ 𝜷ȁۧ𝟏𝟎\n\nȁۧ0 ⊗𝛼หۧ0 + 𝛽ȁۧ1 = 𝜶หۧ𝟎𝟎+ 𝜷ȁۧ𝟎𝟏ۧ",
+   "fingerprint": "6ba5f975337c390b",
+   "debug": null
+  },
+  {
+   "id": "s18",
+   "page": 18,
+   "pages": [
+    18,
+    18
+   ],
+   "label": "",
+   "title": "",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p018.png",
+   "figures": [
+    {
+     "file": "figures/p018-f1.png",
+     "bbox": [
+      0.0,
+      0.0,
+      0.314,
+      0.189
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "**Elválasztó fólia címmel**\n\n**Kvantummechanikai posztulátumok**\n\n**fizikusi interpretációja**",
+   "fingerprint": "e48e6dc7f6726a7e",
+   "debug": null
+  },
+  {
+   "id": "s19",
+   "page": 19,
+   "pages": [
+    19,
+    19
+   ],
+   "label": "",
+   "title": "A KVANTUMMECHANIKA POSZTULÁTUMAI FIZIKUS INTERPRETÁCIÓBAN",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "**I.** **Posztulátum:** Minden kvantumrendszert egy hullámfüggvény, **Ψ(r,t)** ír\n\nle, amely függ a térbeli koordinátáktól (r) és az időtől (t). Ez a függvény tartalmazza a rendszer összes mérhető információját.\n\n**II.** **Posztulátum:** Minden fizikailag megfigyelhető (mint például az\n\nenergia, impulzus, pozíció) tulajdonságot egy hermitikus operátorral ábrázolunk. Ezek az operátorok a hullámfüggvényre hatva adják meg a megfigyelhető értékeit.\n\n**III.** **Posztulátum:** Amikor egy kvantumrendszeren mérést végzünk, az\n\neredmény a megfelelő operátor egyik sajátértéke lesz. Egy adott sajátérték megfigyelésének valószínűségét a hullámfüggvénynek a megfelelő sajátállapotra vetített nagyságának négyzete határozza meg.\n\n**IV.** **Posztulátum:** Méréskor a rendszer hullámfüggvénye „összeomlik” a\n\nmegfigyelt sajátértéknek megfelelő sajátállapotok egyikébe.\n\n**V.** **Posztulátum:** A hullámfüggvény időbeli alakulását az időfüggő\n\nSchrödinger-egyenlettel lehet leírni.",
+   "fingerprint": "0d92286220dc243c",
+   "debug": null
+  },
+  {
+   "id": "s20",
+   "page": 20,
+   "pages": [
+    20,
+    20
+   ],
+   "label": "",
+   "title": "",
+   "flags": [
+    "graphic",
+    "image",
+    "no-text"
+   ],
+   "view": "pages/p020.png",
+   "figures": [
+    {
+     "file": "figures/p020-f1.png",
+     "bbox": [
+      0.0,
+      0.0,
+      0.314,
+      0.189
+     ]
+    },
+    {
+     "file": "figures/p020-f2.png",
+     "bbox": [
+      0.091,
+      0.271,
+      0.689,
+      0.519
+     ]
+    },
+    {
+     "file": "figures/p020-f3.png",
+     "bbox": [
+      0.796,
+      0.441,
+      0.967,
+      0.529
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "",
+   "fingerprint": "1aa18f206433d587",
+   "debug": null
+  }
+ ]
+}

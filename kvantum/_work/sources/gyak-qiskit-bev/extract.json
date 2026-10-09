@@ -1,0 +1,255 @@
+{
+ "meta": {
+  "source": "gyak_qiskit_bev.ipynb",
+  "kind": "notebook",
+  "units": 13,
+  "needs_view": 4,
+  "flags": {
+   "image": 4
+  }
+ },
+ "units": [
+  {
+   "id": "s1",
+   "page": 1,
+   "pages": [
+    1,
+    1
+   ],
+   "label": "",
+   "title": "Kvantumszámítógépek programozása 2.: algoritmus implementációja áramköri rajz segítségével",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "# Kvantumszámítógépek programozása 2.: algoritmus implementációja áramköri rajz segítségével",
+   "fingerprint": "e72e71d27f4352a6"
+  },
+  {
+   "id": "s2",
+   "page": 1,
+   "pages": [
+    1,
+    1
+   ],
+   "label": "",
+   "title": "Kvantuminformatikai alkalmazások,",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "## Kvantuminformatikai alkalmazások,\n### 2026 ősz\n\n#### Dr. Solymos Balázs, Dr. Bacsárdi László, Dr. Imre Sándor\nsolymosb@hit.bme.hu",
+   "fingerprint": "2ca8980c4df55a09"
+  },
+  {
+   "id": "s3",
+   "page": 1,
+   "pages": [
+    1,
+    1
+   ],
+   "label": "",
+   "title": "Általános információk",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "## Általános információk\n\nAz órán a [Qiskit](https://qiskit.org/) python-os könyvtárat és a [Jupyter Notebook](https://jupyter.org/) környezetet használjuk.\nHa valaki saját gépen szeretné elvégezni a mérést, akkor fel kell telepíteni a Python-t, a Jupyter-t és a Qiskit-et. Az utolsó kettőt `pip` segítségével a következő módon lehet telepíteni egy már működő python installációhoz: \n\n```\npip install notebook\npip install qiskit[visualization]\npip install qiskit-ibm-runtime\npip install qiskit-aer\n```\n\nEzután indítható el a Jupyter a \"`jupyter notebook`\" paranccsal.",
+   "fingerprint": "1b6ea14a830d0404"
+  },
+  {
+   "id": "s4",
+   "page": 1,
+   "pages": [
+    1,
+    1
+   ],
+   "label": "",
+   "title": "1. Egyszerű kvantumos áramkörök a Qiskit-tel",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "## 1. Egyszerű kvantumos áramkörök a Qiskit-tel\n\nEgy áramkört a \"QuantumCircuit\" osztály példányosításával tudunk létrehozni.\n\n<!-- cell 4 -->\n```python\nfrom qiskit import QuantumCircuit #importáljuk a megfelelő qiskit könyvtárat\nqc = QuantumCircuit(3)            #létrehozunk egy QuantumCircuit példányt\n```\n\nA konstruktor paraméterének megadható, hogy mennyi qubit legyen az áramkörben. Az egy qubit-ekhez indexek tartoznak, melyek számozása 0-tól indul.",
+   "fingerprint": "3527b085267ee2ab"
+  },
+  {
+   "id": "s5",
+   "page": 1,
+   "pages": [
+    1,
+    1
+   ],
+   "label": "",
+   "title": "Kapuk hozzáadása",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "## Kapuk hozzáadása\n\nHa szeretnénk hozzáadni egy kaput az áramkörhöz, akkor azt az áramkör objektum megfelelő függvényével tudjuk megtenni.\n\n<!-- cell 7 -->\n```python\nqc.h(0)\n```\n\nOutput:\n```text\n<qiskit.circuit.instructionset.InstructionSet at 0x18c8caccc10>\n```\n\nLehetőségünk van irányított kapukat is elhelyezni. Ekkor az első paraméter a kontrollbit indexe, míg a második a célbithez tartozó.\n\n<!-- cell 9 -->\n```python\nqc.cx(0,1)\nqc.cx(0,2)\n```\n\nOutput:\n```text\n<qiskit.circuit.instructionset.InstructionSet at 0x18c8baeece0>\n```",
+   "fingerprint": "5709af1efba634ef"
+  },
+  {
+   "id": "s6",
+   "page": 1,
+   "pages": [
+    1,
+    1
+   ],
+   "label": "",
+   "title": "Áramkör megjelenítése",
+   "flags": [
+    "image"
+   ],
+   "view": "figures/cell011-1.png",
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "## Áramkör megjelenítése\n\nAz áramkör megjeleníthető a \"draw()\" függvénnyel.\n\nA függvény paraméter egy string, amivel megadható a kimenet formátuma. \n\nPl.: \"text\", \"latex\" és \"mpl\".\n\n<!-- cell 11 -->\n```python\n\nqc.draw(\"mpl\")\n```\n\n<!-- figure: figures/cell011-1.png (output of cell 11) -->",
+   "fingerprint": "459c3ad0fdaf04a3"
+  },
+  {
+   "id": "s7",
+   "page": 1,
+   "pages": [
+    1,
+    1
+   ],
+   "label": "",
+   "title": "Áramkörök a qiskitben",
+   "flags": [
+    "image"
+   ],
+   "view": "figures/cell013-1.png",
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "## Áramkörök a qiskitben\n\nHogyan kezeli a qiskit az áramköröket?\n\nVizsgáljuk meg az egyszerű X kaput!\n\n<!-- cell 13 -->\n```python\nqc_x = QuantumCircuit(2,0)\nqc_x.x(0)\nqc_x.draw(\"mpl\")\n```\n\n<!-- figure: figures/cell013-1.png (output of cell 13) -->\n\n### Tárolt adatstruktúra\n\n<!-- cell 15 -->\n```python\nqc_x.data\n```\n\nOutput:\n```text\n[CircuitInstruction(operation=Instruction(name='x', num_qubits=1, num_clbits=0, params=[]), qubits=(<Qubit register=(2, \"q\"), index=0>,), clbits=())]\n```\n\nAz \"X\" kapu:\n\n<!-- cell 17 -->\n```python\nqc_x.data[0].operation.definition.draw('mpl')\n```\n\n<!-- figure: figures/cell017-1.png (output of cell 17) -->\n\nFontos, hogy a `CircuitInstruction` és `QuantumCircuit` különbözik, pedig mindkettő egy kvantumbit vagy kvantumbitek módosítását írja le.\n\n### Áramkörök összekapcsolása\nKét külön készített áramkör összekapcsolható a \"compose\" függvénnyel:\n\n<!-- cell 20 -->\n```python\nqc_a = QuantumCircuit(3) #Első áramkör\nqc_a.x(1) \nqc_b = QuantumCircuit(2, name=\"qc_b\") #Második áramkör\nqc_b.x(0)\nqc_b.z(1)\ncombined = qc_a.compose(qc_b, qubits=[1, 2]) #Összekapcsolás\n```\n\nA függvény első paramétere az áramkör, amit hozzá szeretnénk adni a megfelelő áramkörünkhöz. A második paraméter pedig azok a kvantumbitek, amiken hatni fog.\n\n<!-- cell 22 -->\n```python\ncombined.draw(\"mpl\")\n```\n\n<!-- figure: figures/cell022-1.png (output of cell 22) -->\n\n### Áramkörök összekapcsolása 2.\n\nEgy másik megoldás, ha az áramkörünket a \".to_instruction()\" függvénnyel instrukcióvá alakítjuk. Ezután már elég csak úgy kezelni, mint pl. egy kaput.\n\n<!-- cell 24 -->\n```python\nqc_a = QuantumCircuit(3)\nqc_a.x(1)\nqc_b = QuantumCircuit(2, name=\"qc_b\")\nqc_b.x(0)\nqc_b.z(1)\ninst = qc_b.to_instruction()\n```\n\nEzután az append függvénnyel tudunk a meglévő áramkörhöz új elemeket hozzáfűzni.\nItt szintén meg kell adni, hogy mely kvantumbitekre hasson az új elem.\n\n<!-- cell 26 -->\n```python\nqc_a.append(inst, [1, 2])\n```\n\nOutput:\n```text\n<qiskit.circuit.instructionset.InstructionSet at 0x18c84a08370>\n```\n\n### Áramkörök összekapcsolása 2.\n\n<!-- cell 28 -->\n```python\nqc_a.draw(\"mpl\")\n```\n\n<!-- figure: figures/cell028-1.png (output of cell 28) -->\n\nA \"decompose\" függvény segítségével láthatjuk minden instrukció megvalósítását.\n\n<!-- cell 30 -->\n```python\nqc_a.decompose().draw(\"mpl\")\n```\n\n<!-- figure: figures/cell030-1.png (output of cell 30) -->\n\n### Vezérelt kapu készítése\nHa az áramkör, amit instrukcióként akarunk használni unitér, akkor úgy tudjuk kezelni, mint bármelyik más kaput. Például vezérelt változatot is tudunk készíteni belőle.\n\n<!-- cell 32 -->\n```python\ngate = qc_b.to_gate().control()\n# Mivel ez egy vezérelt kapu, ezért 3 indexet kell megadni.\nqc_a.append(gate, [0, 1, 2])\nqc_a.draw(\"mpl\")\n```\n\n<!-- figure: figures/cell032-1.png (output of cell 32) -->\n\n### Vezérelt kapu készítése\nAz áramkör dekompozíciója:\n\n<!-- cell 34 -->\n```python\nqc_a.decompose().draw(\"mpl\")\n```\n\n<!-- figure: figures/cell034-1.png (output of cell 34) -->",
+   "fingerprint": "473e642685f0e773"
+  },
+  {
+   "id": "s8",
+   "page": 1,
+   "pages": [
+    1,
+    1
+   ],
+   "label": "",
+   "title": "Áramkörök inicializálása állapotvektorral",
+   "flags": [
+    "image"
+   ],
+   "view": "figures/cell042-1.png",
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "## Áramkörök inicializálása állapotvektorral\nHálózat inicializáció (most regisztereket használva):\n\n<!-- cell 36 -->\n```python\nfrom qiskit import QuantumRegister, ClassicalRegister, QuantumCircuit\nq = QuantumRegister(2,'q') #kvantumbiteket tartalmazó regiszter létrehozása\nc = ClassicalRegister(2,'c') #klasszikus biteket tartalmazó regiszter\nqc = QuantumCircuit(q,c) #kvantumhálózat készítése a regiszterekból\n```\n\nÁllapotvektor megadása:\n\n<!-- cell 38 -->\n```python\nfrom qiskit.quantum_info import Statevector\nstate1 = Statevector([0.6,0.8])\n```\n\nÁllapot inicializáció:\n\n<!-- cell 40 -->\n```python\nqc.initialize(state1,qubits=q[0], normalize=True)\n```\n\nOutput:\n```text\n<qiskit.circuit.instructionset.InstructionSet at 0x18c8e329f90>\n```\n\nAz elkészült hálózat:\n\n<!-- cell 42 -->\n```python\nqc.draw(\"mpl\")\n```\n\n<!-- figure: figures/cell042-1.png (output of cell 42) -->\n\nÁllapotvektor kinyerése a kvantumhálózatból:\n\n<!-- cell 44 -->\n```python\nstate_qc = Statevector(qc)\nprint(state_qc)\n```\n\nOutput:\n```text\nStatevector([0.6+0.j, 0.8+0.j, 0. +0.j, 0. +0.j],\n            dims=(2, 2))\n```\n\nIsmerős LaTeX formázásban is kiíratható az állapot:\n\n<!-- cell 46 -->\n```python\nfrom qiskit.visualization import array_to_latex\narray_to_latex(state_qc) # Latex-es kiírás\n```\n\nOutput:\n```text\n<IPython.core.display.Latex object>\n```",
+   "fingerprint": "8471b15c72faa88b"
+  },
+  {
+   "id": "s9",
+   "page": 1,
+   "pages": [
+    1,
+    1
+   ],
+   "label": "",
+   "title": "Áramkörök futtatása",
+   "flags": [
+    "image"
+   ],
+   "view": "figures/cell053-1.png",
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "## Áramkörök futtatása\n\nAz áramkörök futtatásához jellemzően valamilyen szimulátort használunk. (Lehetőség van természetesen a felhőben elérhető kvantumszámítógépek használatára is tokenek fejében, csak ott ki kell várni a várakozási sort.)\n\nLegtöbbször úgy szeretnénk szimulálni az áramkört, hogy a végén klasszikus információt kapjunk.\nEhhez elengedhetetlen még hiányzó operáció a mérés, amely egy kvantumos regiszteren végrehajtja az előírt mérési operátort, és egy klasszikus regiszterbe írja a mérési eredményt.\n\nHozzunk létre egy kvantumos és klasszikus regisztereket is tartalmazó áramkört:\n\n<!-- cell 49 -->\n```python\nqc = QuantumCircuit(2,2) # a második paraméter a klasszikus bitek száma\nqc.h(0)\nqc.cx(0,1)\nqc.draw()\n```\n\nOutput:\n```text\n     ┌───┐     \nq_0: ┤ H ├──■──\n     └───┘┌─┴─┐\nq_1: ─────┤ X ├\n          └───┘\nc: 2/══════════\n```\n\nHasználjuk az állapotvektor szimulátort!\n\n<!-- cell 51 -->\n```python\nfrom qiskit_aer import Aer\nbackend = Aer.get_backend(\"statevector_simulator\")\njob = backend.run(qc)\nresult = job.result() # Blokkoló hívás!\noutputstate = result.get_statevector(qc)\narray_to_latex(outputstate)\n```\n\nOutput:\n```text\n<IPython.core.display.Latex object>\n```\n\nA measure függvény szolgál a mérések elhelyezésére, melynek első paramétere a mérni kívánt qubitek listája, a második a mérési eredményeket tároló klasszikus bitek listája. A méréshez használjuk az Aer szimulátort!\n\n<!-- cell 53 -->\n```python\nqc.measure(range(2), range(2))\nqc.draw(\"mpl\")\n```\n\n<!-- figure: figures/cell053-1.png (output of cell 53) -->\n\n<!-- cell 54 -->\n```python\nbackend = Aer.get_backend(\"aer_simulator\")\nresult = backend.run(qc, shots=1000).result()\n# A mérési eredményeket a result.get_counts függvénnyel tudjuk elérni.\ncounts = result.get_counts()\nprint(counts)\n```\n\nOutput:\n```text\n{'11': 500, '00': 500}\n```\n\nA mérési eredményeket hisztogrammal is szemléltethetjük.\n\n<!-- cell 56 -->\n```python\nfrom qiskit.visualization import plot_histogram\nplot_histogram(counts)\n```\n\n<!-- figure: figures/cell056-1.png (output of cell 56) -->\n\n### Állapotvektorok kinyerése a szimulációból\nHálózat előkészítése:\n\n<!-- cell 58 -->\n```python\nq = QuantumRegister(2,'q') #kvantumbiteket tartalmazó regiszter létrehozása (q[index]-el indexelhetőek az egyes bitek)\nc = ClassicalRegister(2,'c') #klasszikus biteket tartalmazó regiszter (c[index]-el indexelhetőek az egyes bitek)\nqc = QuantumCircuit(q,c) #kvantumhálózat készítése a regiszterekból\nqc.h(q[0]) #H kapu\nqc.cx(q[0],q[1]) #CNOT kapu\nqc.save_statevector(label = 'mereselott', pershot = True)\nqc.measure(q[0],c[0])\nqc.save_statevector(label = 'meresutan', pershot = True)\nqc.measure(q[1],c[1])\nqc.draw()\n```\n\nOutput:\n```text\n     ┌───┐      mereselott ┌─┐ meresutan    \nq_0: ┤ H ├──■───────░──────┤M├─────░────────\n     └───┘┌─┴─┐     ░      └╥┘     ░     ┌─┐\nq_1: ─────┤ X ├─────░───────╫──────░─────┤M├\n          └───┘     ░       ║      ░     └╥┘\nc: 2/═══════════════════════╩═════════════╩═\n                            0             1\n```\n\nSzimuláció:\n\n<!-- cell 60 -->\n```python\nfrom qiskit import transpile\nbackend = Aer.get_backend('qasm_simulator')\njob_sim = backend.run(transpile(qc, backend), shots=4,memory=True) # 4-szer ismételjük meg a kísérletet, hogy statisztikát kapjunk és elvégezzük a mérést\n#mérési eredmény kinyerése\nresult_sim = job_sim.result()\nprint(result_sim.data(0)['mereselott'])\nprint(result_sim.data(0)['meresutan'])\n```\n\nOutput:\n```text\n[Statevector([0.70710678+0.j, 0.        +0.j, 0.        +0.j,\n             0.70710678+0.j],\n            dims=(2, 2)), Statevector([0.70710678+0.j, 0.        +0.j, 0.        +0.j,\n             0.70710678+0.j],\n            dims=(2, 2)), Statevector([0.70710678+0.j, 0.        +0.j, 0.        +0.j,\n             0.70710678+0.j],\n            dims=(2, 2)), Statevector([0.70710678+0.j, 0.        +0.j, 0.        +0.j,\n             0.70710678+0.j],\n            dims=(2, 2))]\n[Statevector([1.+0.j, 0.+0.j, 0.+0.j, 0.+0.j],\n            dims=(2, 2)), Statevector([1.+0.j, 0.+0.j, 0.+0.j, 0.+0.j],\n            dims=(2, 2)), Statevector([0.+0.j, 0.+0.j, 0.+0.j, 1.+0.j],\n            dims=(2, 2)), Statevector([0.+0.j, 0.+0.j, 0.+0.j, 1.+0.j],\n            dims=(2, 2))]\n```",
+   "fingerprint": "dccd4e2966770db2"
+  },
+  {
+   "id": "s10",
+   "page": 1,
+   "pages": [
+    1,
+    1
+   ],
+   "label": "",
+   "title": "Tetszőleges kvantumos állapot előkészítése",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "## Tetszőleges kvantumos állapot előkészítése\n### $|0\\rangle$ előjelváltása\n\nTetszőleges $\\alpha|0\\rangle + \\beta|1\\rangle$ állapotot szeretnénk a $-\\alpha|0\\rangle + \\beta|1\\rangle$ állapotba alakítani. Hogyan tudjuk ezt elérni Pauli-kapukkal?\n\n<!-- cell 63 -->\n```python\nfrom qiskit_aer import Aer\n\nqc = QuantumCircuit(1) \nqc.initialize([0.6, 0.8], 0)\nqc.x(0)\nqc.z(0)\nqc.x(0)\nsim = Aer.get_backend(\"statevector_simulator\")\noutput_state = sim.run(qc).result().get_statevector(qc)\nprint(output_state)\n```\n\nOutput:\n```text\nStatevector([-0.6+0.j,  0.8+0.j],\n            dims=(2,))\n```",
+   "fingerprint": "190e4bc37aaf498e"
+  },
+  {
+   "id": "s11",
+   "page": 1,
+   "pages": [
+    1,
+    1
+   ],
+   "label": "",
+   "title": "Tetszőleges kvantumos állapot előkészítése",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "## Tetszőleges kvantumos állapot előkészítése\n### Globális fázis állítása\n\n $\\alpha|0\\rangle + \\beta|1\\rangle$ állapotból indulva jussunk el a: $e^{j\\pi/4}\\alpha|0\\rangle + e^{j\\pi/4}\\beta|1\\rangle$ állapotba!\n\n<!-- cell 65 -->\n```python\nfrom qiskit_aer import Aer\nimport numpy as np\nqc = QuantumCircuit(1) \nqc.initialize([0.6, 0.8], 0)\nangle = np.pi/4\nqc.x(0)\nqc.p(angle,0) # fázisforgató kapu - 1. paraméter: szög, 2. paraméter: qubit index\nqc.x(0)\nqc.p(angle,0)\nsim = Aer.get_backend(\"statevector_simulator\")\noutput_state = sim.run(qc).result().get_statevector(qc)\nprint(output_state)\n```\n\nOutput:\n```text\nStatevector([0.42426407+0.42426407j, 0.56568542+0.56568542j],\n            dims=(2,))\n```",
+   "fingerprint": "7a26acf653dc21c1"
+  },
+  {
+   "id": "s12",
+   "page": 1,
+   "pages": [
+    1,
+    1
+   ],
+   "label": "",
+   "title": "Tetszőleges kvantumos állapot előkészítése",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "## Tetszőleges kvantumos állapot előkészítése\nÉpítsünk tetszőleges egybites kvantumos állapot létrehozására alkalmas kvantumáramkört!\n\n<!-- cell 67 -->\n```python\nimport numpy as np\na = 0.6\nb = 0.8 \nparam1 = 0\nparam2 = 0\nparam3 = 0\nqc = QuantumCircuit(1)\n# Készített hálózat itt....\n\n\nprint(Statevector(qc))\nqc.draw()\n```\n\nOutput:\n```text\nStatevector([1.+0.j, 0.+0.j],\n            dims=(2,))\n```\n\nOutput:\n```text\n   \nq:\n```",
+   "fingerprint": "39529a7dee453462"
+  },
+  {
+   "id": "s13",
+   "page": 1,
+   "pages": [
+    1,
+    1
+   ],
+   "label": "",
+   "title": "Tetszőleges kvantumos állapot előkészítése",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "## Tetszőleges kvantumos állapot előkészítése\nÉpítsünk tetszőleges egybites kvantumos állapot létrehozására alkalmas kvantumáramkört!\n\nCél: a|0> + b|1> állapot előkészítése egy kvantumregiszterben.\n\n<!-- cell 70 -->\n```python\nimport numpy as np\na = -0.8\nb = 0.6\nalpha = 2* np.arccos(np.absolute(a))\nbeta= np.angle(b) - np.angle(a)\ngamma = -0.5 * alpha + np.angle(a) \nqc = QuantumCircuit(1)\nqc.h(0)\nqc.p(alpha,0)\nqc.h(0)\nqc.p(beta + 0.5* np.pi,0)\nqc.x(0)\nqc.p(gamma,0)\nqc.x(0)\nqc.p(gamma,0)\nprint(Statevector(qc))\nqc.draw()\n```\n\nOutput:\n```text\nStatevector([-0.8+4.13002965e-17j,  0.6-7.81597009e-17j],\n            dims=(2,))\n```\n\nOutput:\n```text\n   ┌───┐┌──────────┐┌───┐┌─────────┐┌───┐┌───────────┐┌───┐┌───────────┐\nq: ┤ H ├┤ P(1.287) ├┤ H ├┤ P(-π/2) ├┤ X ├┤ P(2.4981) ├┤ X ├┤ P(2.4981) ├\n   └───┘└──────────┘└───┘└─────────┘└───┘└───────────┘└───┘└───────────┘\n```",
+   "fingerprint": "67c55ab540574006"
+  }
+ ]
+}

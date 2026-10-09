@@ -1,0 +1,2495 @@
+{
+ "meta": {
+  "source": "04_Meresek20260930.pdf",
+  "kind": "pdf",
+  "physical_pages": 50,
+  "units": 50,
+  "grouping": "heuristic",
+  "needs_view": 49,
+  "flags": {
+   "graphic": 46,
+   "image": 46,
+   "encoding": 7,
+   "table": 3,
+   "no-text": 3,
+   "math": 13,
+   "stacked": 11,
+   "layout": 13
+  },
+  "body_font_size": 18.0,
+  "page_hashes": [
+   "5dfe9080858e625b",
+   "c0ee3970620a398f",
+   "bc69b573af05b3d9",
+   "7130346d943fb4de",
+   "1d7491c63e6d741c",
+   "22fb5158edc49a4b",
+   "614b679c0942eabc",
+   "58a2fe1301ed9b98",
+   "2910e6285b751c5c",
+   "227e718b0c23a062",
+   "0e6695622b303dc2",
+   "656089b67d1d163e",
+   "31f9f217b0d8d0a2",
+   "6efaf5262b91b3c4",
+   "1443b095c9f00e71",
+   "0f1a5aacfc94c8f2",
+   "af176f23c38ed55c",
+   "b59ad28c6ab8a2ef",
+   "02b2688b576eac2e",
+   "0821f0a73748e995",
+   "007adab78b42fad7",
+   "9c5a270be35c63ec",
+   "1c1af838457448a1",
+   "79158b8306df03d3",
+   "a357316f3d90a8fe",
+   "7fbcbdc6e5c2234d",
+   "e0d8cb0c9ac2a75d",
+   "f3e4f372f9565a9c",
+   "849999248ff66d38",
+   "698bad409739ad0c",
+   "7736cab5192d17a8",
+   "d270482d3ba65881",
+   "e1b058a8e44c0fa4",
+   "15f5ab866bcd320a",
+   "bb990dec0e37f976",
+   "291a8839576a4264",
+   "56144958ae674c6b",
+   "5dbd76170c033507",
+   "3092616ea9812863",
+   "5cbd01bc0685b736",
+   "f298ab4b2b30617a",
+   "8e9c166f4b5ef0d3",
+   "8405809f16cb5068",
+   "de80dff4a5e71768",
+   "5a731ac2dbe8b5df",
+   "959745f14cf234d8",
+   "74ae08eb059b8dee",
+   "4476229c90efd272",
+   "2c61833894984d71",
+   "6f5a631edd752955"
+  ]
+ },
+ "units": [
+  {
+   "id": "s1",
+   "page": 1,
+   "pages": [
+    1,
+    1
+   ],
+   "label": "",
+   "title": "",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p001.png",
+   "figures": [
+    {
+     "file": "figures/p001-f1.png",
+     "bbox": [
+      0.038,
+      0.311,
+      0.232,
+      0.679
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Dr. Imre Sándor MTA rendes tag\n\negyetemi tanár BME-VIK Hálózati Rendszerek és Szolgáltatások Tanszék\n\nI.B.122. Imre.sandor@vik.bme.hu",
+   "fingerprint": "6fe2128ec4db2063",
+   "debug": null
+  },
+  {
+   "id": "s2",
+   "page": 2,
+   "pages": [
+    2,
+    2
+   ],
+   "label": "",
+   "title": "BEMUTATKOZÁS",
+   "flags": [
+    "graphic",
+    "image",
+    "encoding"
+   ],
+   "view": "pages/p002.png",
+   "figures": [
+    {
+     "file": "figures/p002-f1.png",
+     "bbox": [
+      0.226,
+      0.171,
+      0.764,
+      0.439
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Stanford és az Elsevier világrangsorában 2026: TOP2%\n- **Mindezek ellenére** minden évben kapok olyan\nkérdéseket a hallgatóságból, amikre rácsodálkozom \n\nLényeg: ne féljenek kérdezni, a kérdés az újdonságra\n\nnyíló ajtó kilincse!",
+   "fingerprint": "79bb3cf1b249d4df",
+   "debug": null
+  },
+  {
+   "id": "s3",
+   "page": 3,
+   "pages": [
+    3,
+    3
+   ],
+   "label": "",
+   "title": "A KEZDET ",
+   "flags": [
+    "graphic",
+    "image",
+    "encoding"
+   ],
+   "view": "pages/p003.png",
+   "figures": [
+    {
+     "file": "figures/p003-f1.png",
+     "bbox": [
+      0.046,
+      0.121,
+      0.457,
+      0.869
+     ]
+    },
+    {
+     "file": "figures/p003-f2.png",
+     "bbox": [
+      0.503,
+      0.121,
+      0.914,
+      0.869
+     ]
+    }
+   ],
+   "links": [
+    "https://adt.arcanum.com/hu/view/EletEsTudomany_1998_1/?pg=205&layout=s"
+   ],
+   "annots": [],
+   "header": [],
+   "text": "https://adt.arcanum.com/hu/view/EletEsTudomany_1998_1/?pg=205&layout=s",
+   "fingerprint": "fc77f274f5e03b27",
+   "debug": null
+  },
+  {
+   "id": "s4",
+   "page": 4,
+   "pages": [
+    4,
+    4
+   ],
+   "label": "",
+   "title": "",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p004.png",
+   "figures": [
+    {
+     "file": "figures/p004-f1.png",
+     "bbox": [
+      0.0,
+      0.0,
+      0.727,
+      0.339
+     ]
+    },
+    {
+     "file": "figures/p004-f2.png",
+     "bbox": [
+      0.818,
+      0.861,
+      0.989,
+      0.939
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "**Mérések – átjáró a kvantum és a klasszikus** **világ között**\n\nKvantuminformatikai alkalmazások (BMEVIHIAD00) 2026/27. őszi félév **Dr. Imre Sándor, Dr. Bacsárdi László** BME Hálózati Rendszerek és Szolgáltatások Tanszék imre@hit.bme.hu",
+   "fingerprint": "445dc63df940ad8b",
+   "debug": null
+  },
+  {
+   "id": "s5",
+   "page": 5,
+   "pages": [
+    5,
+    5
+   ],
+   "label": "",
+   "title": "ISMÉTLÉS",
+   "flags": [
+    "encoding"
+   ],
+   "view": "pages/p005.png",
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- **Repetitio est mater studiorum**: az ismétlés a\ntudás anyja\n- A helyes fordítás: az imétlés a tanulás anyja vagy\naz ismétlés a tudás nagyanyja ",
+   "fingerprint": "2e8451267f6f30b7",
+   "debug": null
+  },
+  {
+   "id": "s6",
+   "page": 6,
+   "pages": [
+    6,
+    6
+   ],
+   "label": "",
+   "title": "A KVANTUMMECHANIKA POSZTULÁTUMAI",
+   "flags": [
+    "graphic",
+    "image",
+    "table"
+   ],
+   "view": "pages/p006.png",
+   "figures": [
+    {
+     "file": "figures/p006-f1.png",
+     "bbox": [
+      0.069,
+      0.161,
+      0.997,
+      0.929
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- **1. Posztulátum:** *kvantum bit*\n  - Hilbert-tér\n- 2. Posztulátum: *logikai kapuk*\n  - Unitér transzformáció\n  - Elemi kvantum logikai kapuk\n- 3. Posztulátum: *Q/C átalakítás*\n  - Mérési statisztika\n  - Mérés utáni állapot\n- **4. Posztulátum:** *regiszterek*\n  - Tenzor szorzás",
+   "fingerprint": "a0004472bbf3d064",
+   "debug": null
+  },
+  {
+   "id": "s7",
+   "page": 7,
+   "pages": [
+    7,
+    7
+   ],
+   "label": "",
+   "title": "SZABÁLYOK",
+   "flags": [
+    "graphic",
+    "image",
+    "encoding"
+   ],
+   "view": "pages/p007.png",
+   "figures": [
+    {
+     "file": "figures/p007-f1.png",
+     "bbox": [
+      0.092,
+      0.031,
+      0.997,
+      0.969
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- Sakk (MSSZ-FIDE):\n    - 24 A4-es oldal\n- Foci (MLSZ-FIFA):\n    - 33 A4-es oldal\n- Gombfoci (MALSZ):\n    - 33 A4-es oldal\n- Kézilabda (MKSZ):\n    - 134 A4-es oldal, de állásfoglalásokkal,\nszemléltetésekkel kiegészítve\n- Kvantum mechanika, avagy a természet\nszabályai:\n- **4, azaz NÉGY**, jó ötnek is tekinthetjük ",
+   "fingerprint": "a601e9bd6b303c49",
+   "debug": null
+  },
+  {
+   "id": "s8",
+   "page": 8,
+   "pages": [
+    8,
+    8
+   ],
+   "label": "",
+   "title": "DE HÁT MI IS AZ EMBER?",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p008.png",
+   "figures": [
+    {
+     "file": "figures/p008-f1.png",
+     "bbox": [
+      0.031,
+      0.201,
+      1.0,
+      0.939
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "",
+   "fingerprint": "8e5a845ed590dc4c",
+   "debug": null
+  },
+  {
+   "id": "s9",
+   "page": 9,
+   "pages": [
+    9,
+    9
+   ],
+   "label": "",
+   "title": "RAJZBAN",
+   "flags": [
+    "graphic",
+    "image",
+    "no-text"
+   ],
+   "view": "pages/p009.png",
+   "figures": [
+    {
+     "file": "figures/p009-f1.png",
+     "bbox": [
+      0.151,
+      0.181,
+      0.854,
+      0.819
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "",
+   "fingerprint": "67c998255181b778",
+   "debug": null
+  },
+  {
+   "id": "s10",
+   "page": 10,
+   "pages": [
+    10,
+    10
+   ],
+   "label": "",
+   "title": "VERSBEN - SZABÓ LŐRINC: DZSUANG-DSZI ÁLMA",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [
+    "https://www.youtube.com/watch?v=OucY-8c1pCA"
+   ],
+   "annots": [],
+   "header": [],
+   "text": "Kétezer évvel ezelőtt Dsuang Dszi,\n\nÉn jót nevettem: – Ne tréfálj, Dsuang Dszi!\n\na mester, egy lepkére mutatott.\n\nKi volnál? Te vagy: Dsuang Dszi! Te hát! –\n- Álmomban – mondta, – ez a lepke\nŐ mosolygott: – Az álombeli lepke\n\nvoltam\n\népp így hitte a maga igazát! –\n\nés most egy kicsit zavarban vagyok.\n\nŐ mosolygott, én vállat vontam. Aztán\n- Lepke, – mesélte, – igen, lepke voltam, valami mégis megborzongatott, s a lepke vígan táncolt a napon,\nkétezer évig töprengtem azóta,\n\nés nem is sejtette, hogy ő Dsuang Dszi… de egyre bizonytalanabb vagyok, És felébredtem… És most nem tudom,\n\nés most már azt hiszem, hogy nincs\n\nmost nem tudom, – folytatta eltűnődve, – igazság, mi az igazság, melyik lehetek:\n\nmár azt, hogy minden kép és költemény,\n\nhogy Dsuang Dszi álmodta-e a lepkét\n\nazt, hogy Dsuang Dszi álmodja a lepkét,\n\nvagy a lepke álmodik engemet? –\n\na lepke őt és mindhármunkat én\n\nhttps://www.youtube.com/watch?v=OucY-8c1pCA",
+   "fingerprint": "be69d132b3fba82a",
+   "debug": null
+  },
+  {
+   "id": "s11",
+   "page": 11,
+   "pages": [
+    11,
+    11
+   ],
+   "label": "",
+   "title": "MIRE ELÉG 500 KVANTUMBIT?",
+   "flags": [
+    "math",
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p011.png",
+   "figures": [
+    {
+     "file": "figures/p011-f1.png",
+     "bbox": [
+      0.038,
+      0.231,
+      0.959,
+      0.989
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "2^(63)=18 446 744 073 709 551 615 *búzaszem* 70 097 624 700 t *búza* EU éves termény:\n\n210.624.700 t\n- Kvantumosan:\n  - n=500 hosszú regiszter\ntöbb állapotot tartalmaz, mint a világegyetem atomjainak száma\n  - És számolni is lehet ennyi\nszámmal egyszerre!",
+   "fingerprint": "96573941752bf3d9",
+   "debug": null
+  },
+  {
+   "id": "s12",
+   "page": 12,
+   "pages": [
+    12,
+    12
+   ],
+   "label": "",
+   "title": "ÖSSZEFONÓDÁS",
+   "flags": [
+    "math",
+    "graphic",
+    "image",
+    "stacked",
+    "encoding"
+   ],
+   "view": "pages/p012.png",
+   "figures": [
+    {
+     "file": "figures/p012-f1.png",
+     "bbox": [
+      0.0,
+      0.021,
+      0.996,
+      0.999
+     ]
+    },
+    {
+     "file": "figures/p012-f2.png",
+     "bbox": [
+      0.832,
+      0.803,
+      1.0,
+      0.919
+     ]
+    },
+    {
+     "file": "figures/p012-x84.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p012-x85.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p012-x86.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p012-x87.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p012-x88.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p012-x89.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p012-x92.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p012-x99.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p012-x99.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p012-x101.png",
+     "layer": true
+    }
+   ],
+   "links": [
+    "http://www.jal.co.jp/aircraft/aircraft/dl/group_05_1024_768.jpg"
+   ],
+   "annots": [],
+   "header": [],
+   "text": "- Gyakorlatilag (szinte) minden hatékony\nkvantum algoritmusban és kommunikációs protokollban megjelenik\n\n   00   11\n      - 0\n3",
+   "fingerprint": "2c622faf21893c9c",
+   "debug": null
+  },
+  {
+   "id": "s13",
+   "page": 13,
+   "pages": [
+    13,
+    13
+   ],
+   "label": "",
+   "title": "BELL ÁLLAPOTOK",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p013.png",
+   "figures": [
+    {
+     "file": "figures/p013-f1.png",
+     "bbox": [
+      0.408,
+      0.241,
+      1.0,
+      0.979
+     ]
+    },
+    {
+     "file": "figures/p013-f2.png",
+     "bbox": [
+      0.054,
+      0.341,
+      0.382,
+      0.554
+     ]
+    },
+    {
+     "file": "figures/p013-f3.png",
+     "bbox": [
+      0.076,
+      0.581,
+      0.382,
+      0.929
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Nézzük meg a CNOT-kaput mint összefonódást előállító áramköri elemet!\n\n(beta-barium borate)\n\nCopyright © 2005 John Wiley & Sons Ltd.\n\nor Lithium niobate\n\nSpontaneous parametric down- conversion process can split photons into type II photon pairs with mutually perpendicular polarization.",
+   "fingerprint": "5ab3eb873ae7d98b",
+   "debug": null
+  },
+  {
+   "id": "s14",
+   "page": 14,
+   "pages": [
+    14,
+    14
+   ],
+   "label": "",
+   "title": "PAULI-KAPUK",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p014.png",
+   "figures": [
+    {
+     "file": "figures/p014-f1.png",
+     "bbox": [
+      0.1,
+      0.151,
+      1.0,
+      0.499
+     ]
+    },
+    {
+     "file": "figures/p014-f2.png",
+     "bbox": [
+      0.098,
+      0.181,
+      0.337,
+      0.249
+     ]
+    },
+    {
+     "file": "figures/p014-f3.png",
+     "bbox": [
+      0.1,
+      0.304,
+      0.734,
+      0.539
+     ]
+    },
+    {
+     "file": "figures/p014-f4.png",
+     "bbox": [
+      0.173,
+      0.441,
+      0.337,
+      0.509
+     ]
+    },
+    {
+     "file": "figures/p014-f5.png",
+     "bbox": [
+      0.773,
+      0.561,
+      1.0,
+      0.899
+     ]
+    },
+    {
+     "file": "figures/p014-f6.png",
+     "bbox": [
+      0.481,
+      0.661,
+      0.719,
+      0.879
+     ]
+    },
+    {
+     "file": "figures/p014-f7.png",
+     "bbox": [
+      0.158,
+      0.791,
+      0.307,
+      0.859
+     ]
+    },
+    {
+     "file": "figures/p014-f8.png",
+     "bbox": [
+      0.361,
+      0.811,
+      0.389,
+      0.869
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "A Pauli X kapu: a Bloch- gömb x tengelye körül forgat!\n- Pauli X (bit-flip) kapu:\n- Pauli Z (phase-flip) kapu:",
+   "fingerprint": "02835c0bd5634162",
+   "debug": null
+  },
+  {
+   "id": "s15",
+   "page": 15,
+   "pages": [
+    15,
+    15
+   ],
+   "label": "",
+   "title": "PAULI-KAPUK",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p015.png",
+   "figures": [
+    {
+     "file": "figures/p015-f1.png",
+     "bbox": [
+      0.07,
+      0.141,
+      1.0,
+      0.509
+     ]
+    },
+    {
+     "file": "figures/p015-f2.png",
+     "bbox": [
+      0.368,
+      0.651,
+      0.839,
+      0.889
+     ]
+    },
+    {
+     "file": "figures/p015-f3.png",
+     "bbox": [
+      0.098,
+      0.791,
+      0.307,
+      0.859
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- Pauli Y (???-flip) kapu:\n- Fázis kapu:",
+   "fingerprint": "4545ac22a1f57b34",
+   "debug": null
+  },
+  {
+   "id": "s16",
+   "page": 16,
+   "pages": [
+    16,
+    16
+   ],
+   "label": "",
+   "title": "MAI MOTTÓNK",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p016.png",
+   "figures": [
+    {
+     "file": "figures/p016-f1.png",
+     "bbox": [
+      0.676,
+      0.221,
+      1.0,
+      0.759
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "\"There are two possible\n\noutcomes: If the result\n\nconfirms the hypothesis,\n\nthen you’ve made a\n\nmeasurement. If the result is\n\ncontrary to the hypothesis,\n\nthen you’ve made a\n\ndiscovery.“\n\nEnrico Fermi",
+   "fingerprint": "62ce816cfb33705f",
+   "debug": null
+  },
+  {
+   "id": "s17",
+   "page": 17,
+   "pages": [
+    17,
+    17
+   ],
+   "label": "",
+   "title": "",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p017.png",
+   "figures": [
+    {
+     "file": "figures/p017-f1.png",
+     "bbox": [
+      0.0,
+      0.0,
+      0.314,
+      0.189
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "**Az általános mérés, avagy a 3. posztulátum**\n\n\"WHY must I treat the measuring device classically??\n\nWhat will happen to me if I don’t??\"\n\nEugene Wigner",
+   "fingerprint": "498fa8f50804dc0c",
+   "debug": null
+  },
+  {
+   "id": "s18",
+   "page": 18,
+   "pages": [
+    18,
+    18
+   ],
+   "label": "",
+   "title": "3. POSZTULÁTUM",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p018.png",
+   "figures": [
+    {
+     "file": "figures/p018-f1.png",
+     "bbox": [
+      0.451,
+      0.361,
+      0.547,
+      0.429
+     ]
+    },
+    {
+     "file": "figures/p018-f2.png",
+     "bbox": [
+      0.316,
+      0.561,
+      0.689,
+      0.639
+     ]
+    },
+    {
+     "file": "figures/p018-f3.png",
+     "bbox": [
+      0.331,
+      0.761,
+      0.667,
+      0.919
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "**3.** **A mérés**\n\nLegyen 𝑚 a mérés lehetséges eredményeinek a halmaza. Egy mérés a mérési operátorok halmazával adható meg:\n\nHa a megmérendő rendszer állapota , akkor annak a valószínűsége, hogy a mérés az m eredményt adja:\n\nA mérés után a rendszer állapota az alábbi lesz:",
+   "fingerprint": "e2d47ec29f4853c3",
+   "debug": null
+  },
+  {
+   "id": "s19",
+   "page": 19,
+   "pages": [
+    19,
+    19
+   ],
+   "label": "",
+   "title": "JELÖLÉS",
+   "flags": [
+    "graphic",
+    "image",
+    "stacked",
+    "layout"
+   ],
+   "view": "pages/p019.png",
+   "figures": [
+    {
+     "file": "figures/p019-f1.png",
+     "bbox": [
+      0.065,
+      0.381,
+      0.989,
+      0.909
+     ]
+    },
+    {
+     "file": "figures/p019-f2.png",
+     "bbox": [
+      0.076,
+      0.761,
+      0.232,
+      0.869
+     ]
+    },
+    {
+     "file": "figures/p019-x153.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p019-x148.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p019-x154.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p019-x156.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p019-x158.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p019-x160.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p019-x164.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p019-x166.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p019-x168.png",
+     "layer": true
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- Jobb szeretem Q/C átalakítónak hívni, mert sokkal\nmérnökibb (konstruktív), de a mérés szót (analítikus) is használni fogjuk hagyománytiszteletből.\n\nm\n\n2\n\n1\n\nN-1\n\nbemenet\n\nÁramköri jele:\n\nskála\n\n0\n\nkimenet",
+   "fingerprint": "9006a6887e28e029",
+   "debug": null
+  },
+  {
+   "id": "s20",
+   "page": 20,
+   "pages": [
+    20,
+    20
+   ],
+   "label": "",
+   "title": "EGY ÉRDEKES KÉRDÉS",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p020.png",
+   "figures": [
+    {
+     "file": "figures/p020-f1.png",
+     "bbox": [
+      0.211,
+      0.291,
+      0.817,
+      0.859
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Mi az hogy VÉLETLEN????",
+   "fingerprint": "1d51472643a12525",
+   "debug": null
+  },
+  {
+   "id": "s21",
+   "page": 21,
+   "pages": [
+    21,
+    21
+   ],
+   "label": "",
+   "title": "A VÉLETLEN TERMÉSZETE",
+   "flags": [
+    "graphic",
+    "image",
+    "stacked"
+   ],
+   "view": "pages/p021.png",
+   "figures": [
+    {
+     "file": "figures/p021-f1.png",
+     "bbox": [
+      0.076,
+      0.171,
+      0.982,
+      0.936
+     ]
+    },
+    {
+     "file": "figures/p021-x175.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p021-x176.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p021-x178.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p021-x185.jpeg",
+     "layer": true
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Isten nem dobókockázik a világgal!\n- Dehogynem! Sőt, volt annyira nagyvonalú, hogy diffegyenletek helyett olykor elegendő feldobni egy kockát!",
+   "fingerprint": "d083f89d57f28a22",
+   "debug": null
+  },
+  {
+   "id": "s22",
+   "page": 22,
+   "pages": [
+    22,
+    22
+   ],
+   "label": "",
+   "title": "EGY FONTOS KÖVETKEZMÉNY",
+   "flags": [
+    "graphic",
+    "image",
+    "table"
+   ],
+   "view": "pages/p022.png",
+   "figures": [
+    {
+     "file": "figures/p022-f1.png",
+     "bbox": [
+      0.803,
+      0.161,
+      0.982,
+      0.429
+     ]
+    },
+    {
+     "file": "figures/p022-f2.png",
+     "bbox": [
+      0.196,
+      0.331,
+      0.712,
+      0.419
+     ]
+    },
+    {
+     "file": "figures/p022-f3.png",
+     "bbox": [
+      0.361,
+      0.611,
+      0.644,
+      0.769
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Valszámból tudjuk:\n\nTeljességi reláció:",
+   "fingerprint": "2050762b3159bba7",
+   "debug": null
+  },
+  {
+   "id": "s23",
+   "page": 23,
+   "pages": [
+    23,
+    23
+   ],
+   "label": "",
+   "title": "MÉRÉS UTÁNI ÁLLAPOT",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p023.png",
+   "figures": [
+    {
+     "file": "figures/p023-f1.png",
+     "bbox": [
+      0.361,
+      0.161,
+      0.697,
+      0.319
+     ]
+    },
+    {
+     "file": "figures/p023-f2.png",
+     "bbox": [
+      0.083,
+      0.329,
+      0.509,
+      0.769
+     ]
+    },
+    {
+     "file": "figures/p023-f3.png",
+     "bbox": [
+      0.556,
+      0.33,
+      0.982,
+      0.769
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "klasszikus\n\nkvantumos",
+   "fingerprint": "346b27132d2ab2c0",
+   "debug": null
+  },
+  {
+   "id": "s24",
+   "page": 24,
+   "pages": [
+    24,
+    24
+   ],
+   "label": "",
+   "title": "MÉRÉS UTÁNI ÁLLAPOT",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p024.png",
+   "figures": [
+    {
+     "file": "figures/p024-f1.png",
+     "bbox": [
+      0.008,
+      0.101,
+      1.0,
+      1.0
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "",
+   "fingerprint": "d4b7053e88811b36",
+   "debug": null
+  },
+  {
+   "id": "s25",
+   "page": 25,
+   "pages": [
+    25,
+    25
+   ],
+   "label": "",
+   "title": "A 3. POSZTULÁTUM TERMÉSZETE",
+   "flags": [
+    "graphic",
+    "image",
+    "stacked",
+    "encoding"
+   ],
+   "view": "pages/p025.png",
+   "figures": [
+    {
+     "file": "figures/p025-f1.png",
+     "bbox": [
+      0.623,
+      0.331,
+      0.997,
+      0.679
+     ]
+    },
+    {
+     "file": "figures/p025-f2.png",
+     "bbox": [
+      0.083,
+      0.317,
+      0.485,
+      0.459
+     ]
+    },
+    {
+     "file": "figures/p025-x51.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p025-x150.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p025-x202.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p025-x206.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p025-x206.png",
+     "layer": true
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- A 3. Posztulátum egy analítikus eszköz:\n  - Adott/ismert a mérődoboz\n  - Ismert a bemenő állapot\n  - Megmondja, hogy mi fog történni.\n- Matematikusok: zárt alakú képletek \n- Fizikusok: leírtuk/értjük a világot \n- Mérnökök: mi alkotni szeretnénk ",
+   "fingerprint": "6165e491fe27b314",
+   "debug": null
+  },
+  {
+   "id": "s26",
+   "page": 26,
+   "pages": [
+    26,
+    26
+   ],
+   "label": "",
+   "title": "",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p026.png",
+   "figures": [
+    {
+     "file": "figures/p026-f1.png",
+     "bbox": [
+      0.0,
+      0.0,
+      0.314,
+      0.189
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "**Projektív mérés**\n\n**(Neumann-mérés)**",
+   "fingerprint": "a552e87bd111b115",
+   "debug": null
+  },
+  {
+   "id": "s27",
+   "page": 27,
+   "pages": [
+    27,
+    27
+   ],
+   "label": "",
+   "title": "MÉRÉS FIZIKAILAG",
+   "flags": [
+    "graphic",
+    "image",
+    "stacked",
+    "layout"
+   ],
+   "view": "pages/p027.png",
+   "figures": [
+    {
+     "file": "figures/p027-f1.png",
+     "bbox": [
+      0.076,
+      0.182,
+      0.907,
+      0.869
+     ]
+    },
+    {
+     "file": "figures/p027-x214.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p027-x214.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p027-x216.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p027-x218.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p027-x216.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p027-x216.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p027-x218.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p027-x218.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p027-x216.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p027-x225.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p027-x230.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p027-x230.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p027-x230.png",
+     "layer": true
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Polarizáló\n\nnyalábosztó\n\nFüggőlegesen polarizált\n\nfotonokat letükrözi ↓\n\nEgyfoton\n\ndetektor 1\n\nVízszintesen polarizált\n\nfotonokat átengedi →\n\nEgyfoton\n\ndetektor 0",
+   "fingerprint": "4baa07afa64d5e0d",
+   "debug": null
+  },
+  {
+   "id": "s28",
+   "page": 28,
+   "pages": [
+    28,
+    28
+   ],
+   "label": "",
+   "title": "",
+   "flags": [
+    "graphic",
+    "image",
+    "no-text"
+   ],
+   "view": "pages/p028.png",
+   "figures": [
+    {
+     "file": "figures/p028-f1.png",
+     "bbox": [
+      0.436,
+      0.0,
+      0.629,
+      0.209
+     ]
+    },
+    {
+     "file": "figures/p028-f2.png",
+     "bbox": [
+      0.151,
+      0.271,
+      0.832,
+      0.899
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "",
+   "fingerprint": "ffce3bdf324eac00",
+   "debug": null
+  },
+  {
+   "id": "s29",
+   "page": 29,
+   "pages": [
+    29,
+    29
+   ],
+   "label": "",
+   "title": "MÉRÉS FIZIKAILAG",
+   "flags": [
+    "math",
+    "graphic",
+    "image",
+    "layout"
+   ],
+   "view": "pages/p029.png",
+   "figures": [
+    {
+     "file": "figures/p029-f1.png",
+     "bbox": [
+      0.076,
+      0.182,
+      0.644,
+      0.832
+     ]
+    },
+    {
+     "file": "figures/p029-f2.png",
+     "bbox": [
+      0.665,
+      0.271,
+      0.884,
+      0.359
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Polarizáló\n\nnyalábosztó\n\nFüggőlegesen polarizált\n\nfotonokat letükrözi ↓\n\n1\n\nEgyfoton\n\ndetektor 1\n\nVízszintesen polarizált\n\nfotonokat átengedi →\n\nȁۧ↔= ȁۧ0\n\n0\n\nEgyfoton\n\ndetektor 0\n\nȁۧ↕= ȁۧ1",
+   "fingerprint": "e559934311faa83c",
+   "debug": null
+  },
+  {
+   "id": "s30",
+   "page": 30,
+   "pages": [
+    30,
+    30
+   ],
+   "label": "",
+   "title": "MÉRÉS FIZIKAILAG",
+   "flags": [
+    "math",
+    "graphic",
+    "image",
+    "layout"
+   ],
+   "view": "pages/p030.png",
+   "figures": [
+    {
+     "file": "figures/p030-f1.png",
+     "bbox": [
+      0.076,
+      0.161,
+      0.929,
+      0.719
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Polarizáló\n\nnyalábosztó\n\nEgyfoton\n\ndetektor 1\n\n†𝑀0ȁۧ0 = 1\n\n0 𝑀0\n\n𝑀0\n\n0\n\nEgyfoton\n\ndetektor 0\n\nA detektormodulom akkor jó, ha:\n\nA *vízszintes* polarizációhoz tartozó detektor\n\n100% eséllyel megszólal, *ha vízszintesen*\n\npolarizált foton érkezik.ۦȁ",
+   "fingerprint": "079334363dfbf938",
+   "debug": null
+  },
+  {
+   "id": "s31",
+   "page": 31,
+   "pages": [
+    31,
+    31
+   ],
+   "label": "",
+   "title": "MÉRÉS FIZIKAILAG",
+   "flags": [
+    "math",
+    "graphic",
+    "image",
+    "layout"
+   ],
+   "view": "pages/p031.png",
+   "figures": [
+    {
+     "file": "figures/p031-f1.png",
+     "bbox": [
+      0.076,
+      0.161,
+      0.929,
+      0.719
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Polarizáló\n\nnyalábosztó\n\nEgyfoton\n\ndetektor 1\n\n†𝑀0ȁۧ0 = 1\n\nۦȁ\n\n0 𝑀0\n\n†𝑀0ȁۧ1 = 0\n\nۦȁ\n\n1 𝑀0\n\n𝑀0\n\n0\n\nEgyfoton\n\ndetektor 0\n\nA detektormodulom akkor jó, ha:\n\nA *vízszintes* polarizációhoz tartozó detektor\n\n100% eséllyel megszólal, *ha vízszintesen*\n\npolarizált foton érkezik.\n\n(ÉS 0% eséllyel szólal meg, *ha függőleges*\n\nfoton érkezik*.)*",
+   "fingerprint": "c03d83b630089824",
+   "debug": null
+  },
+  {
+   "id": "s32",
+   "page": 32,
+   "pages": [
+    32,
+    32
+   ],
+   "label": "",
+   "title": "MÉRÉS FIZIKAILAG",
+   "flags": [
+    "math",
+    "graphic",
+    "image",
+    "layout"
+   ],
+   "view": "pages/p032.png",
+   "figures": [
+    {
+     "file": "figures/p032-f1.png",
+     "bbox": [
+      0.076,
+      0.121,
+      0.929,
+      0.719
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Polarizáló\n\nnyalábosztó\n\n1\n- 𝑀1\nEgyfoton\n\ndetektor 1\n\n†𝑀1ȁۧ1 = 1\n\nۦȁ\n\n1 𝑀1\n\n†𝑀1ȁ0 = 0\n\nۦȁ\n\n0 𝑀1\n\n𝑀0\n\n0\n\nEgyfoton\n      - detektor 0\nHasonlóan:\n\nA *függőleges* polarizációhoz tartozó detektor\n\n100% eséllyel megszólal, *ha függőlegesen*\n\npolarizált foton érkezik.\n\n(ÉS 0% eséllyel szólal meg, *ha vízszintes foton*\n\nérkezik*.)*",
+   "fingerprint": "fcd1fc4aa442e73c",
+   "debug": null
+  },
+  {
+   "id": "s33",
+   "page": 33,
+   "pages": [
+    33,
+    33
+   ],
+   "label": "",
+   "title": "MÉRÉS FIZIKAILAG",
+   "flags": [
+    "math",
+    "graphic",
+    "image",
+    "layout"
+   ],
+   "view": "pages/p033.png",
+   "figures": [
+    {
+     "file": "figures/p033-f1.png",
+     "bbox": [
+      0.076,
+      0.111,
+      0.87,
+      0.779
+     ]
+    },
+    {
+     "file": "figures/p033-f2.png",
+     "bbox": [
+      0.818,
+      0.211,
+      0.929,
+      0.299
+     ]
+    },
+    {
+     "file": "figures/p033-f3.png",
+     "bbox": [
+      0.698,
+      0.521,
+      0.937,
+      0.599
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Polarizáló\n\nnyalábosztó\n\n1\n- 𝑀1\nEgyfoton\n\ndetektor 1\n\n†𝑀0 + 𝑀1 †𝑀1 = 𝐼\n\n𝑀0\n\n𝑀0\n\n0\n\nEgyfoton\n      - detektor 0\n**Detektor**\n\n**modul**\n\nA *detektormodulom* akkor teljes, ha minden\n\nlehetőséget detektáltam:\n\ntetszőleges polarizációjú beérkező foton\n\nesetén vagy a függőleges vagy a vízszintes detektorok közül egy és csakis egy biztosan\n\nmegszólal.",
+   "fingerprint": "1dc2dd7bf1fa3a75",
+   "debug": null
+  },
+  {
+   "id": "s34",
+   "page": 34,
+   "pages": [
+    34,
+    34
+   ],
+   "label": "",
+   "title": "MÉRÉS FIZIKAILAG",
+   "flags": [
+    "math",
+    "graphic",
+    "image",
+    "stacked",
+    "layout"
+   ],
+   "view": "pages/p034.png",
+   "figures": [
+    {
+     "file": "figures/p034-f1.png",
+     "bbox": [
+      0.031,
+      0.161,
+      0.927,
+      0.949
+     ]
+    },
+    {
+     "file": "figures/p034-x214.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p034-x214.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p034-x250.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p034-x252.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p034-x254.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p034-x256.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p034-x258.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p034-x218.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p034-x216.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p034-x51.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p034-x260.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p034-x262.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p034-x264.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p034-x266.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p034-x268.png",
+     "layer": true
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Polarizáló\n\nnyalábosztó\n\nȁۧ1\n\nEgyfoton\n\ndetektor 1\n\nȁۧ𝜑\n\nȁۧ0\n\n𝑀0ȁۧ𝜑\n\n𝑀0\n\n0\n\nEgyfoton\n\ndetektor 0\n\nTetszőleges polarizációjú beérkező fotonok\n\nesetén a mérés után a foton vagy függőleges,\n\nvagy vízszintes állapotba „bebillen”.\n\n*(A mérési operátor* a mért állapotvektor\n\nirányába vetít*.)*",
+   "fingerprint": "3fdece78d82430b3",
+   "debug": null
+  },
+  {
+   "id": "s35",
+   "page": 35,
+   "pages": [
+    35,
+    35
+   ],
+   "label": "",
+   "title": "MÉRÉS FIZIKAILAG",
+   "flags": [
+    "math",
+    "graphic",
+    "image",
+    "stacked",
+    "layout"
+   ],
+   "view": "pages/p035.png",
+   "figures": [
+    {
+     "file": "figures/p035-f1.png",
+     "bbox": [
+      0.031,
+      0.161,
+      0.927,
+      0.949
+     ]
+    },
+    {
+     "file": "figures/p035-x214.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p035-x214.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p035-x250.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p035-x252.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p035-x254.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p035-x256.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p035-x258.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p035-x218.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p035-x216.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p035-x51.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p035-x260.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p035-x262.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p035-x264.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p035-x268.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p035-x272.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p035-x266.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p035-x274.png",
+     "layer": true
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Polarizáló\n\nnyalábosztó\n\nȁۧ1\n\nEgyfoton\n\ndetektor 1\n\nȁۧ𝜑\n\nȁۧ0\n\n𝑀0ȁۧ𝜑\n\n†𝑀0ȁۧ0\n\nۦȁ\n\n0 𝑀0\n\n𝑀0\n\n0\n\nEgyfoton\n\ndetektor 0\n\nTetszőleges polarizációjú beérkező fotonok\n\nesetén a mérés után a foton vagy függőleges,\n\nvagy vízszintes állapotba „bebillen”.\n\n(A mérési operátor a mért állapotvektor\n\nirányába vetít. A vetületet a nevezőben lévő\n\n*normafaktor* egységnyi hosszúra nyújtja*.)*",
+   "fingerprint": "b604015495f3f93e",
+   "debug": null
+  },
+  {
+   "id": "s36",
+   "page": 36,
+   "pages": [
+    36,
+    36
+   ],
+   "label": "",
+   "title": "MÉRÉS FIZIKAILAG",
+   "flags": [
+    "math",
+    "graphic",
+    "image",
+    "stacked",
+    "layout"
+   ],
+   "view": "pages/p036.png",
+   "figures": [
+    {
+     "file": "figures/p036-f1.png",
+     "bbox": [
+      0.016,
+      0.151,
+      1.0,
+      0.929
+     ]
+    },
+    {
+     "file": "figures/p036-x214.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p036-x214.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p036-x250.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p036-x252.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p036-x254.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p036-x256.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p036-x258.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p036-x218.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p036-x216.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p036-x218.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p036-x278.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p036-x279.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p036-x280.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p036-x281.png",
+     "layer": true
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Polarizáló\n\nnyalábosztó\n\nEgyfoton\n\ndetektor 1\n\n𝑀0\n\n𝑀0\n- 𝑀0𝑀0 = 𝑀0\n0\n\nEgyfoton\n\nX\n\ndetektor 0\n\nMás szóval a mérést kétszer végrehajtva\n\nugyan azt az eredményt kapom másodszorra,\n\nmint első alkalommal.",
+   "fingerprint": "1f333e259e3f2e44",
+   "debug": null
+  },
+  {
+   "id": "s37",
+   "page": 37,
+   "pages": [
+    37,
+    37
+   ],
+   "label": "",
+   "title": "PROJEKTÍV MÉRÉS KONSTRUÁLÁSA",
+   "flags": [
+    "math"
+   ],
+   "view": "pages/p037.png",
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "𝑀0 = ^(𝑎)\n\n𝑏\n- 𝑀0 -t ilyen alakban keressük:\n                - 𝑐 𝑑\n†𝑀0ȁۧ0 = 1\n- 𝑀0 megtalálásához meg kell oldanunk:^(ۦȁ)\n0 𝑀0\n\n†𝑀0ȁۧ1 = 0\n\nۦȁ\n\n1 𝑀0\n\n† 𝑎\n\n1\n\n𝑎 𝑏\n\n𝑏\n\n†𝑀0ȁۧ0 = 1\n\n1 =ۦȁ\n\n0 𝑀0\n\n0 ^(=)\n\n0\n\n𝑐 𝑑 𝑐 𝑑\n\n𝑎^(∗) 𝑐^(∗)\n\n1\n\n𝑎 𝑏\n\n0 ^(⟹𝑎2 +) ^(𝑐2) ^(= 1)\n\n1 0\n\n𝑏^(∗) 𝑑^(∗)\n\n𝑐 𝑑\n\n† 𝑎\n\n0\n\n𝑎 𝑏\n\n𝑏\n\n†𝑀0ȁۧ1 = 0\n\n0 =ۦȁ\n\n1 𝑀0\n\n1 ^(=)\n\n1\n\n𝑐 𝑑 𝑐 𝑑\n\n𝑎^(∗) 𝑐^(∗)\n\n0\n\n𝑎 𝑏\n\n1 ^(⟹𝑏2 +) ^(𝑑2) ^(= 0)\n\n0 1\n\n𝑏^(∗) 𝑑^(∗)\n\n𝑐 𝑑",
+   "fingerprint": "cb131317cee115ec",
+   "debug": null
+  },
+  {
+   "id": "s38",
+   "page": 38,
+   "pages": [
+    38,
+    38
+   ],
+   "label": "",
+   "title": "PROJEKTÍV MÉRÉS KONSTRUÁLÁSA",
+   "flags": [
+    "math",
+    "graphic",
+    "image",
+    "layout"
+   ],
+   "view": "pages/p038.png",
+   "figures": [
+    {
+     "file": "figures/p038-f1.png",
+     "bbox": [
+      0.109,
+      0.24,
+      0.637,
+      0.441
+     ]
+    },
+    {
+     "file": "figures/p038-f2.png",
+     "bbox": [
+      0.643,
+      0.164,
+      0.97,
+      0.509
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- To find 𝑀0 we need to solve:\n†𝑀0ȁۧ0 = 1\n\nۦȁ\n\n0 𝑀0\n\n†𝑀0ȁۧ1 = 0\n\nۦȁ\n\n1 𝑀0\n- Lehetséges megoldás: 𝑀0 = ^(1)\n0\n          - 0 0\n𝑀1 = ^(0)\n\n0\n- Hasonlóképpen:\n          - 0 1\n𝑀0 = ^(𝑎)\n\n𝑏\n                    - 𝑐 𝑑\n              - 𝑎^(2) + 𝑐^(2) = 1 𝑏^(2) + 𝑑^(2) = 0\n𝑏^(2) ≥0\n\n𝑏= 𝑑= 0\n\n𝑑^(2) ≥0\n\n𝑀0 = ^(𝑎)\n\n0\n                      - 𝑐 0",
+   "fingerprint": "1654274312419523",
+   "debug": null
+  },
+  {
+   "id": "s39",
+   "page": 39,
+   "pages": [
+    39,
+    39
+   ],
+   "label": "",
+   "title": "PROJEKTÍV MÉRÉS KONSTRUÁLÁSA",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p039.png",
+   "figures": [
+    {
+     "file": "figures/p039-f1.png",
+     "bbox": [
+      0.541,
+      0.321,
+      0.622,
+      0.429
+     ]
+    },
+    {
+     "file": "figures/p039-f2.png",
+     "bbox": [
+      0.706,
+      0.321,
+      0.787,
+      0.429
+     ]
+    },
+    {
+     "file": "figures/p039-f3.png",
+     "bbox": [
+      0.136,
+      0.331,
+      0.322,
+      0.419
+     ]
+    },
+    {
+     "file": "figures/p039-f4.png",
+     "bbox": [
+      0.376,
+      0.371,
+      0.457,
+      0.429
+     ]
+    },
+    {
+     "file": "figures/p039-f5.png",
+     "bbox": [
+      0.173,
+      0.571,
+      0.562,
+      0.639
+     ]
+    },
+    {
+     "file": "figures/p039-f6.png",
+     "bbox": [
+      0.008,
+      0.682,
+      0.989,
+      0.899
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Ellenőrizzük a teljességi relációt\n\nDirac-jelöléssel\n\nVégkövetkeztetés",
+   "fingerprint": "d82dec797f874088",
+   "debug": null
+  },
+  {
+   "id": "s40",
+   "page": 40,
+   "pages": [
+    40,
+    40
+   ],
+   "label": "",
+   "title": "PROJEKTOROK TULAJDONSÁGAI",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p040.png",
+   "figures": [
+    {
+     "file": "figures/p040-f1.png",
+     "bbox": [
+      0.301,
+      0.251,
+      0.697,
+      0.319
+     ]
+    },
+    {
+     "file": "figures/p040-f2.png",
+     "bbox": [
+      0.031,
+      0.391,
+      0.952,
+      0.819
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "",
+   "fingerprint": "d8b08847106697ad",
+   "debug": null
+  },
+  {
+   "id": "s41",
+   "page": 41,
+   "pages": [
+    41,
+    41
+   ],
+   "label": "",
+   "title": "MÉRÉS PROJEKTOROKKAL",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p041.png",
+   "figures": [
+    {
+     "file": "figures/p041-f1.png",
+     "bbox": [
+      0.323,
+      0.281,
+      0.644,
+      0.349
+     ]
+    },
+    {
+     "file": "figures/p041-f2.png",
+     "bbox": [
+      0.323,
+      0.411,
+      0.599,
+      0.539
+     ]
+    },
+    {
+     "file": "figures/p041-f3.png",
+     "bbox": [
+      0.338,
+      0.601,
+      0.502,
+      0.689
+     ]
+    },
+    {
+     "file": "figures/p041-f4.png",
+     "bbox": [
+      0.031,
+      0.801,
+      0.997,
+      0.929
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "",
+   "fingerprint": "b881750d4f7ac69c",
+   "debug": null
+  },
+  {
+   "id": "s42",
+   "page": 42,
+   "pages": [
+    42,
+    42
+   ],
+   "label": "",
+   "title": "MÉRÉS A BÁZISÁLLAPOTOK SZERINT",
+   "flags": [
+    "graphic",
+    "image",
+    "stacked"
+   ],
+   "view": "pages/p042.png",
+   "figures": [
+    {
+     "file": "figures/p042-f1.png",
+     "bbox": [
+      0.051,
+      0.226,
+      0.937,
+      0.939
+     ]
+    },
+    {
+     "file": "figures/p042-x312.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p042-x313.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p042-x314.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p042-x316.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p042-x317.jpeg",
+     "layer": true
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- Let us check what we have learned by means of a\nsimple example\n- Basis vectors and\n- Measurement statistic",
+   "fingerprint": "9e7a2573f9c081d7",
+   "debug": null
+  },
+  {
+   "id": "s43",
+   "page": 43,
+   "pages": [
+    43,
+    43
+   ],
+   "label": "",
+   "title": "MÉRÉS A BÁZISÁLLAPOTOK SZERINT",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p043.png",
+   "figures": [
+    {
+     "file": "figures/p043-f1.png",
+     "bbox": [
+      0.113,
+      0.341,
+      0.494,
+      0.619
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- Mérés utáni állapotok",
+   "fingerprint": "624ea092ccebdcb7",
+   "debug": null
+  },
+  {
+   "id": "s44",
+   "page": 44,
+   "pages": [
+    44,
+    44
+   ],
+   "label": "",
+   "title": "ÁLTALÁNOS ÉS PROJEKTÍV MÉRÉS KAPCSOLATA",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p044.png",
+   "figures": [
+    {
+     "file": "figures/p044-f1.png",
+     "bbox": [
+      0.203,
+      0.191,
+      0.757,
+      0.459
+     ]
+    },
+    {
+     "file": "figures/p044-f2.png",
+     "bbox": [
+      0.121,
+      0.761,
+      0.202,
+      0.889
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Copyright © 2005 John Wiley & Sons Ltd.\n\n**Neumark-kiterjesztés**: bármely általános mérést végre tudjuk hajtani projektív mérésként + kiegészítő kvantumbitek + unitér transzformáció\n- Mérhetőség (megkülönböztethetőség)\n- Másolhatóság (következő előadáson!)",
+   "fingerprint": "9cc80ff659e7ccc5",
+   "debug": null
+  },
+  {
+   "id": "s45",
+   "page": 45,
+   "pages": [
+    45,
+    45
+   ],
+   "label": "",
+   "title": "",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p045.png",
+   "figures": [
+    {
+     "file": "figures/p045-f1.png",
+     "bbox": [
+      0.0,
+      0.0,
+      0.314,
+      0.189
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "**Pozitív Operátor Értékű Mérés (POVM Positive**\n\n**Operator Valued Measurements)**\n\n**KITEKINTÉS**",
+   "fingerprint": "b65b1c290efc2802",
+   "debug": null
+  },
+  {
+   "id": "s46",
+   "page": 46,
+   "pages": [
+    46,
+    46
+   ],
+   "label": "",
+   "title": "POVM",
+   "flags": [
+    "encoding"
+   ],
+   "view": "pages/p046.png",
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- Mit tegyünk ha a megkülönböztetetendő állapotok nem\nmerőlegesek?\n- No cloning tétel (következő óra): ilyen állapotokat nem\nlehet egyértelműen/biztonságosan megkülönböztetni!\n- De mégis van olyan mérés konstrukció, ami kezelhetővé\nteszi az ilyen eseteket. Ez a POVM konstrukció.\n- Most csak szemléltetjük, akit a részletek is érdekelnek azt\nvárjuk az MSc mellékspecen .",
+   "fingerprint": "287c29c6e73379c9",
+   "debug": null
+  },
+  {
+   "id": "s47",
+   "page": 47,
+   "pages": [
+    47,
+    47
+   ],
+   "label": "",
+   "title": "PROJEKTÍV PÉLDA",
+   "flags": [
+    "math",
+    "graphic",
+    "image",
+    "stacked",
+    "table",
+    "layout"
+   ],
+   "view": "pages/p047.png",
+   "figures": [
+    {
+     "file": "figures/p047-f1.png",
+     "bbox": [
+      0.901,
+      0.161,
+      0.982,
+      0.339
+     ]
+    },
+    {
+     "file": "figures/p047-f2.png",
+     "bbox": [
+      0.014,
+      0.402,
+      0.675,
+      0.959
+     ]
+    },
+    {
+     "file": "figures/p047-f3.png",
+     "bbox": [
+      0.014,
+      0.499,
+      0.949,
+      0.823
+     ]
+    },
+    {
+     "file": "figures/p047-x332.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p047-x333.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p047-x334.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p047-x335.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p047-x337.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p047-x339.png",
+     "layer": true
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- Ortogonális állapotok megkülönböztetése.\n- Állatkert: madarak és emlősök\n- Mérődoboz konstruálása – direkt megközelítés:\nHa tojás pottyan ki belőle, akkor madár\n  - 𝑃0 =\nSkálaérték: emlős, madár Mért fizikai tulajdonság: szőrős, tojást pottyant\n\n𝑃1 =\n\n–\n\nHa szőrös, akkor emlős\n\nszőrös\n\ntojást pottyant",
+   "fingerprint": "3051cff330550ee6",
+   "debug": null
+  },
+  {
+   "id": "s48",
+   "page": 48,
+   "pages": [
+    48,
+    48
+   ],
+   "label": "",
+   "title": "POVM PÉLDA",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p048.png",
+   "figures": [
+    {
+     "file": "figures/p048-f1.png",
+     "bbox": [
+      0.518,
+      0.471,
+      0.967,
+      0.919
+     ]
+    },
+    {
+     "file": "figures/p048-f2.png",
+     "bbox": [
+      0.023,
+      0.541,
+      0.479,
+      0.749
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- Nem ortogonális állapotok megkülönböztetése.\n- Megérkezik egy rakás kacsacsőrű emlős az állatkertbe, a\nmadarak pedig délre költöznek.\n- A projektív mérés eredményéből nem következtethetünk\nbiztosan, mert a “szőrős” válasz nem igazít el bennünket\n\nszőrös\n\ntojást pottyant",
+   "fingerprint": "75338b452da9e864",
+   "debug": null
+  },
+  {
+   "id": "s49",
+   "page": 49,
+   "pages": [
+    49,
+    49
+   ],
+   "label": "",
+   "title": "POVM PÉLDA",
+   "flags": [
+    "graphic",
+    "image",
+    "stacked",
+    "layout"
+   ],
+   "view": "pages/p049.png",
+   "figures": [
+    {
+     "file": "figures/p049-f1.png",
+     "bbox": [
+      0.083,
+      0.277,
+      0.35,
+      0.48
+     ]
+    },
+    {
+     "file": "figures/p049-f2.png",
+     "bbox": [
+      0.106,
+      0.531,
+      0.453,
+      0.922
+     ]
+    },
+    {
+     "file": "figures/p049-x350.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p049-x351.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p049-x352.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p049-x353.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p049-x337.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p049-x354.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p049-x356.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p049-x358.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p049-x360.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p049-x361.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p049-x363.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p049-x364.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p049-x366.png",
+     "layer": true
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- Mérődoboz konstruálása – indirekt megközelítés (a\nmérőoperátorok merőlegesek a lehetséges állapotra):\n        - Vagy nem szőrös vagy nem tojás potyog belője (merőleges a\n„szőrös és tojás potyog belőle”-re), akkor emlős\n\nHa tojás pottyan ki belőle (merőleges a szőrősre), akkor\n    - Nem tudom állapot: emlős vagy kacsacsőrű emlős\nVagy nem szőrös vagy nem tojás potyog\n\n–\n\n–\n\nkacsacsőrű emlős\n\nbelője\n\ntojást pottyant\n\nA *piros* és a *zöld* vektornak is van vetülete D2-re! A három tengelye vett vetületek együtt adják az 1 valószínűséget.",
+   "fingerprint": "da247e5b35dcda0b",
+   "debug": null
+  },
+  {
+   "id": "s50",
+   "page": 50,
+   "pages": [
+    50,
+    50
+   ],
+   "label": "",
+   "title": "",
+   "flags": [
+    "graphic",
+    "image",
+    "no-text"
+   ],
+   "view": "pages/p050.png",
+   "figures": [
+    {
+     "file": "figures/p050-f1.png",
+     "bbox": [
+      0.203,
+      0.241,
+      0.802,
+      0.759
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "",
+   "fingerprint": "af86c0909e7022c0",
+   "debug": null
+  }
+ ]
+}

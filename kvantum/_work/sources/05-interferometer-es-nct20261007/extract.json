@@ -1,0 +1,2431 @@
+{
+ "meta": {
+  "source": "05_INterferometer_es_NCT20261007.pdf",
+  "kind": "pdf",
+  "physical_pages": 50,
+  "units": 50,
+  "grouping": "heuristic",
+  "needs_view": 47,
+  "flags": {
+   "graphic": 47,
+   "image": 46,
+   "table": 5,
+   "math": 3,
+   "layout": 7,
+   "stacked": 16,
+   "encoding": 1,
+   "no-text": 3
+  },
+  "body_font_size": 10.0,
+  "page_hashes": [
+   "e42b418c527f8d97",
+   "41562f6a64e45841",
+   "f5b38c7de5746f45",
+   "2d591e1688242fa2",
+   "fd56f9e0a76104cd",
+   "b84f2d64a23ffd3d",
+   "71e37ac4ad02e089",
+   "b0969abb7fd0a866",
+   "f7665b33d4cd8899",
+   "2b131ac49e31873c",
+   "af9bdde818996298",
+   "9dc6b816e6786dab",
+   "6076764abbd07fe3",
+   "116260fe6b5d4331",
+   "7e7dda8dbd8d3e74",
+   "375c312a5d7deb4a",
+   "994fe75a9cbe95e1",
+   "c6268f591ec5b894",
+   "20be5bdc4090558e",
+   "ce5bb70631db1846",
+   "7169e7b623837df4",
+   "12306388df62cc67",
+   "3f548d734c510711",
+   "0326f72b61958295",
+   "8a671f97bcd1017b",
+   "64ecd716ff11c731",
+   "bee03b290619a701",
+   "0ec567b171e9051b",
+   "b35253291419d53e",
+   "d1422d1e0b44ef72",
+   "342ae62d7a3c69b2",
+   "858455dbc549beea",
+   "2eec8251be67aa8d",
+   "287491f7884e7d06",
+   "421fcbb007f81bc9",
+   "cb3ae4d75aeae246",
+   "d2884b8fb2196684",
+   "9bb3f94350a48b74",
+   "f8cf26f052146ff2",
+   "bd240fcd630f1fb9",
+   "2e9babfbcfc9e752",
+   "2f87f4cff62e6428",
+   "e115e3cefd0bbd29",
+   "7dc80ec559950867",
+   "23f22b0e002fa4fd",
+   "68cd98e18850ebca",
+   "b0fad8b5cfab618e",
+   "d0d74904225c6ec3",
+   "635ed942087e4780",
+   "416492c6c10db42f"
+  ]
+ },
+ "units": [
+  {
+   "id": "s1",
+   "page": 1,
+   "pages": [
+    1,
+    1
+   ],
+   "label": "",
+   "title": "",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p001.png",
+   "figures": [
+    {
+     "file": "figures/p001-f1.png",
+     "bbox": [
+      0.0,
+      0.0,
+      0.727,
+      0.339
+     ]
+    },
+    {
+     "file": "figures/p001-f2.png",
+     "bbox": [
+      0.818,
+      0.861,
+      0.989,
+      0.939
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "**A kvantuminterferométer** **működése és a** **No cloning tétel**\n\nKvantuminformatikai alkalmazások (BMEVIHIAD00) 2026/27. őszi félév **Dr. Imre Sándor, Dr. Bacsárdi László** BME Hálózati Rendszerek és Szolgáltatások Tanszék imre@hit.bme.hu",
+   "fingerprint": "57004579abf4d0fb",
+   "debug": null
+  },
+  {
+   "id": "s2",
+   "page": 2,
+   "pages": [
+    2,
+    2
+   ],
+   "label": "",
+   "title": "ISMÉTLÉS",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "",
+   "fingerprint": "209512aa36683005",
+   "debug": null
+  },
+  {
+   "id": "s3",
+   "page": 3,
+   "pages": [
+    3,
+    3
+   ],
+   "label": "",
+   "title": "A KVANTUMMECHANIKA POSZTULÁTUMAI",
+   "flags": [
+    "graphic",
+    "image",
+    "table"
+   ],
+   "view": "pages/p003.png",
+   "figures": [
+    {
+     "file": "figures/p003-f1.png",
+     "bbox": [
+      0.069,
+      0.161,
+      0.997,
+      0.929
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- **1. Posztulátum:** *kvantum bit*\n  - Hilbert-tér\n- 2. Posztulátum: *logikai kapuk*\n  - Unitér transzformáció\n  - Elemi kvantum logikai kapuk\n- 3. Posztulátum: *Q/C átalakítás*\n  - Mérési statisztika\n  - Mérés utáni állapot\n- **4. Posztulátum:** *regiszterek*\n  - Tenzor szorzás",
+   "fingerprint": "a0004472bbf3d064",
+   "debug": null
+  },
+  {
+   "id": "s4",
+   "page": 4,
+   "pages": [
+    4,
+    4
+   ],
+   "label": "",
+   "title": "",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p004.png",
+   "figures": [
+    {
+     "file": "figures/p004-f1.png",
+     "bbox": [
+      0.0,
+      0.0,
+      0.314,
+      0.189
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "**Projektív mérés**\n\n**(Neumann-mérés)**\n\n“Projective geometry has opened up for us\n\nwith the greatest facility new territories in our science, and has rightly been called the\n\nroyal road to our particular field of\n\nknowledge.”\n\nFelix Klein",
+   "fingerprint": "49e9f9b412a2c12f",
+   "debug": null
+  },
+  {
+   "id": "s5",
+   "page": 5,
+   "pages": [
+    5,
+    5
+   ],
+   "label": "",
+   "title": "MÉRÉS FIZIKAILAG",
+   "flags": [
+    "math",
+    "graphic",
+    "image",
+    "layout"
+   ],
+   "view": "pages/p005.png",
+   "figures": [
+    {
+     "file": "figures/p005-f1.png",
+     "bbox": [
+      0.076,
+      0.182,
+      0.644,
+      0.832
+     ]
+    },
+    {
+     "file": "figures/p005-f2.png",
+     "bbox": [
+      0.665,
+      0.271,
+      0.884,
+      0.359
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Polarizáló\n\nnyalábosztó\n\nFüggőlegesen polarizált\n\nfotonokat letükrözi ↓\n\n1\n\nEgyfoton\n\ndetektor 1\n\nVízszintesen polarizált\n\nfotonokat átengedi →\n\nȁۧ↔= ȁۧ0\n\n0\n\nEgyfoton\n\ndetektor 0\n\nȁۧ↕= ȁۧ1",
+   "fingerprint": "e559934311faa83c",
+   "debug": null
+  },
+  {
+   "id": "s6",
+   "page": 6,
+   "pages": [
+    6,
+    6
+   ],
+   "label": "",
+   "title": "PROJEKTÍV MÉRÉS KONSTRUÁLÁSA",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p006.png",
+   "figures": [
+    {
+     "file": "figures/p006-f1.png",
+     "bbox": [
+      0.541,
+      0.321,
+      0.622,
+      0.429
+     ]
+    },
+    {
+     "file": "figures/p006-f2.png",
+     "bbox": [
+      0.706,
+      0.321,
+      0.787,
+      0.429
+     ]
+    },
+    {
+     "file": "figures/p006-f3.png",
+     "bbox": [
+      0.136,
+      0.331,
+      0.322,
+      0.419
+     ]
+    },
+    {
+     "file": "figures/p006-f4.png",
+     "bbox": [
+      0.376,
+      0.371,
+      0.457,
+      0.429
+     ]
+    },
+    {
+     "file": "figures/p006-f5.png",
+     "bbox": [
+      0.173,
+      0.571,
+      0.562,
+      0.639
+     ]
+    },
+    {
+     "file": "figures/p006-f6.png",
+     "bbox": [
+      0.008,
+      0.682,
+      0.989,
+      0.899
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Ellenőrizzük a teljességi relációt\n\nDirac-jelöléssel\n\nVégkövetkeztetés",
+   "fingerprint": "d82dec797f874088",
+   "debug": null
+  },
+  {
+   "id": "s7",
+   "page": 7,
+   "pages": [
+    7,
+    7
+   ],
+   "label": "",
+   "title": "PROJEKTOROK TULAJDONSÁGAI",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p007.png",
+   "figures": [
+    {
+     "file": "figures/p007-f1.png",
+     "bbox": [
+      0.301,
+      0.251,
+      0.697,
+      0.319
+     ]
+    },
+    {
+     "file": "figures/p007-f2.png",
+     "bbox": [
+      0.031,
+      0.391,
+      0.952,
+      0.819
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "",
+   "fingerprint": "61ebc282dae89b45",
+   "debug": null
+  },
+  {
+   "id": "s8",
+   "page": 8,
+   "pages": [
+    8,
+    8
+   ],
+   "label": "",
+   "title": "MÉRÉS PROJEKTOROKKAL",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p008.png",
+   "figures": [
+    {
+     "file": "figures/p008-f1.png",
+     "bbox": [
+      0.323,
+      0.281,
+      0.644,
+      0.349
+     ]
+    },
+    {
+     "file": "figures/p008-f2.png",
+     "bbox": [
+      0.323,
+      0.411,
+      0.599,
+      0.539
+     ]
+    },
+    {
+     "file": "figures/p008-f3.png",
+     "bbox": [
+      0.338,
+      0.601,
+      0.502,
+      0.689
+     ]
+    },
+    {
+     "file": "figures/p008-f4.png",
+     "bbox": [
+      0.031,
+      0.801,
+      0.997,
+      0.929
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "",
+   "fingerprint": "96942e63a5bc1c3f",
+   "debug": null
+  },
+  {
+   "id": "s9",
+   "page": 9,
+   "pages": [
+    9,
+    9
+   ],
+   "label": "",
+   "title": "MÉRÉS A BÁZISÁLLAPOTOK SZERINT",
+   "flags": [
+    "graphic",
+    "image",
+    "stacked"
+   ],
+   "view": "pages/p009.png",
+   "figures": [
+    {
+     "file": "figures/p009-f1.png",
+     "bbox": [
+      0.051,
+      0.226,
+      0.937,
+      0.939
+     ]
+    },
+    {
+     "file": "figures/p009-x95.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p009-x96.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p009-x97.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p009-x99.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p009-x100.jpeg",
+     "layer": true
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- Let us check what we have learned by means of a\nsimple example\n- Basis vectors and\n- Measurement statistic",
+   "fingerprint": "9e7a2573f9c081d7",
+   "debug": null
+  },
+  {
+   "id": "s10",
+   "page": 10,
+   "pages": [
+    10,
+    10
+   ],
+   "label": "",
+   "title": "ÁLTALÁNOS ÉS PROJEKTÍV MÉRÉS KAPCSOLATA",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p010.png",
+   "figures": [
+    {
+     "file": "figures/p010-f1.png",
+     "bbox": [
+      0.203,
+      0.191,
+      0.757,
+      0.459
+     ]
+    },
+    {
+     "file": "figures/p010-f2.png",
+     "bbox": [
+      0.121,
+      0.761,
+      0.202,
+      0.889
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Copyright © 2005 John Wiley & Sons Ltd.\n\n**Neumark-kiterjesztés**: bármely általános mérést végre tudjuk hajtani projektív mérésként + kiegészítő kvantumbitek + unitér transzformáció\n- Mérhetőség (megkülönböztethetőség)\n- Másolhatóság (következő előadáson!)",
+   "fingerprint": "93b3ea300bb3710c",
+   "debug": null
+  },
+  {
+   "id": "s11",
+   "page": 11,
+   "pages": [
+    11,
+    11
+   ],
+   "label": "",
+   "title": "",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p011.png",
+   "figures": [
+    {
+     "file": "figures/p011-f1.png",
+     "bbox": [
+      0.0,
+      0.0,
+      0.314,
+      0.189
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "**Pozitív Operátor Értékű Mérés (POVM Operator**\n\n**Valued Measurements)**\n\n**KITEKINTÉS**",
+   "fingerprint": "4507c63ada6e1436",
+   "debug": null
+  },
+  {
+   "id": "s12",
+   "page": 12,
+   "pages": [
+    12,
+    12
+   ],
+   "label": "",
+   "title": "POVM",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- Mit tegyünk ha a megkülönböztetetendő állapotok nem\nmerőlegesek?\n- No cloning tétel (következő óra): ilyen állapotokat nem\nlehet egyértelműen/biztonságosan megkülönböztetni!\n- De mégis van olyan mérés konstrukció, ami kezelhetővé\nteszi az ilyen eseteket. Ez a POVM konstrukció.",
+   "fingerprint": "63d588b958500513",
+   "debug": null
+  },
+  {
+   "id": "s13",
+   "page": 13,
+   "pages": [
+    13,
+    13
+   ],
+   "label": "",
+   "title": "PROJEKTÍV PÉLDA",
+   "flags": [
+    "graphic",
+    "image",
+    "stacked",
+    "table",
+    "layout"
+   ],
+   "view": "pages/p013.png",
+   "figures": [
+    {
+     "file": "figures/p013-f1.png",
+     "bbox": [
+      0.901,
+      0.161,
+      0.982,
+      0.339
+     ]
+    },
+    {
+     "file": "figures/p013-f2.png",
+     "bbox": [
+      0.014,
+      0.401,
+      0.675,
+      0.959
+     ]
+    },
+    {
+     "file": "figures/p013-f3.png",
+     "bbox": [
+      0.014,
+      0.499,
+      0.949,
+      0.823
+     ]
+    },
+    {
+     "file": "figures/p013-x112.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p013-x113.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p013-x114.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p013-x115.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p013-x116.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p013-x117.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p013-x119.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p013-x121.png",
+     "layer": true
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- Ortogonális állapotok megkülönböztetése.\n- Állatkert: madarak és emlősök\n- Mérődoboz konstruálása – direkt megközelítés:\nHa tojás pottyan ki belőle, akkor madár\n\n–\n\nSkálaérték: emlős, madár Mért fizikai tulajdonság: szőrős, tojást pottyant\n\n–\n\nHa szőrös, akkor emlős\n\nszőrös\n\ntojást pottyant",
+   "fingerprint": "20a2bb186db5f53f",
+   "debug": null
+  },
+  {
+   "id": "s14",
+   "page": 14,
+   "pages": [
+    14,
+    14
+   ],
+   "label": "",
+   "title": "POVM PÉLDA",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p014.png",
+   "figures": [
+    {
+     "file": "figures/p014-f1.png",
+     "bbox": [
+      0.526,
+      0.511,
+      0.887,
+      0.854
+     ]
+    },
+    {
+     "file": "figures/p014-f2.png",
+     "bbox": [
+      0.023,
+      0.541,
+      0.479,
+      0.749
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- Nem ortogonális állapotok megkülönböztetése.\n- Megérkezik egy rakás kacsacsőrű emlős az állatkertbe, a\nmadarak pedig délre költöznek.\n- A projektív mérés eredményéből nem következtethetünk\nbiztosan, mert a “szőrős” válasz nem igazít el bennünket\n\nszőrös\n\ntojást pottyant",
+   "fingerprint": "51c095bb0173573b",
+   "debug": null
+  },
+  {
+   "id": "s15",
+   "page": 15,
+   "pages": [
+    15,
+    15
+   ],
+   "label": "",
+   "title": "POVM PÉLDA",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p015.png",
+   "figures": [
+    {
+     "file": "figures/p015-f1.png",
+     "bbox": [
+      0.083,
+      0.291,
+      0.35,
+      0.55
+     ]
+    },
+    {
+     "file": "figures/p015-f2.png",
+     "bbox": [
+      0.083,
+      0.393,
+      0.404,
+      0.569
+     ]
+    },
+    {
+     "file": "figures/p015-f3.png",
+     "bbox": [
+      0.518,
+      0.531,
+      0.892,
+      0.909
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- Mérődoboz konstruálása – indirekt megközelítés (a\nmérőoperátorok merőlegesek a lehetséges állapotra):\n\n–\n        - Vagy nem szőrös vagy nem tojás potyog belője (merőleges a\n„szőrös és tojás potyog belőle”-re), akkor emlős\n\n–\n\nHa tojás pottyan ki belőle (merőleges a szőrősre), akkor\n\nkacsacsőrű emlős\n\n–",
+   "fingerprint": "a2ba79e5822b519b",
+   "debug": null
+  },
+  {
+   "id": "s16",
+   "page": 16,
+   "pages": [
+    16,
+    16
+   ],
+   "label": "",
+   "title": "",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p016.png",
+   "figures": [
+    {
+     "file": "figures/p016-f1.png",
+     "bbox": [
+      0.0,
+      0.0,
+      0.727,
+      0.339
+     ]
+    },
+    {
+     "file": "figures/p016-f2.png",
+     "bbox": [
+      0.818,
+      0.861,
+      0.989,
+      0.939
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "**A kvantuminterferométer működése**\n\n**Dr. Imre Sándor, Dr. Bacsárdi László** BME Hálózati Rendszerek és Szolgáltatások Tanszék imre@hit.bme.hu",
+   "fingerprint": "7766b7fa36c731a4",
+   "debug": null
+  },
+  {
+   "id": "s17",
+   "page": 17,
+   "pages": [
+    17,
+    17
+   ],
+   "label": "",
+   "title": "EGY EGYSZERŰ KÍSÉRLET",
+   "flags": [
+    "graphic",
+    "image",
+    "stacked",
+    "layout"
+   ],
+   "view": "pages/p017.png",
+   "figures": [
+    {
+     "file": "figures/p017-f1.png",
+     "bbox": [
+      0.668,
+      0.301,
+      1.0,
+      0.979
+     ]
+    },
+    {
+     "file": "figures/p017-f2.png",
+     "bbox": [
+      0.128,
+      0.311,
+      0.643,
+      0.728
+     ]
+    },
+    {
+     "file": "figures/p017-x138.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p017-x140.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p017-x143.jpeg",
+     "layer": true
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "0\n\n1\n\n0\n\np00\n\np01\n\np10\n\np11\n\n1",
+   "fingerprint": "8cb7ffed24cbe11d",
+   "debug": null
+  },
+  {
+   "id": "s18",
+   "page": 18,
+   "pages": [
+    18,
+    18
+   ],
+   "label": "",
+   "title": "EGY EGYSZERŰ KÍSÉRLET",
+   "flags": [
+    "math",
+    "graphic",
+    "image",
+    "stacked",
+    "table",
+    "layout",
+    "encoding"
+   ],
+   "view": "pages/p018.png",
+   "figures": [
+    {
+     "file": "figures/p018-f1.png",
+     "bbox": [
+      0.106,
+      0.231,
+      0.899,
+      0.744
+     ]
+    },
+    {
+     "file": "figures/p018-x138.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p018-x138.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p018-x147.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p018-x140.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p018-x140.jpeg",
+     "layer": true
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "0\n\n1\n\nP00 = p00· p00+ p01· p10 = 0.5 0\n\n0\n\n0\n\np00\n\np00\n\np01\n\np01\n\np10\n\np10\n\np11\n\np11\n\n1\n\n1",
+   "fingerprint": "ac46b000dc174429",
+   "debug": null
+  },
+  {
+   "id": "s19",
+   "page": 19,
+   "pages": [
+    19,
+    19
+   ],
+   "label": "",
+   "title": "EGY EGYSZERŰ KÍSÉRLET",
+   "flags": [
+    "graphic",
+    "image",
+    "stacked",
+    "layout"
+   ],
+   "view": "pages/p019.png",
+   "figures": [
+    {
+     "file": "figures/p019-f1.png",
+     "bbox": [
+      0.683,
+      0.221,
+      0.959,
+      0.499
+     ]
+    },
+    {
+     "file": "figures/p019-f2.png",
+     "bbox": [
+      0.398,
+      0.341,
+      0.547,
+      0.539
+     ]
+    },
+    {
+     "file": "figures/p019-f3.png",
+     "bbox": [
+      0.593,
+      0.561,
+      0.749,
+      0.832
+     ]
+    },
+    {
+     "file": "figures/p019-f4.png",
+     "bbox": [
+      0.181,
+      0.611,
+      0.539,
+      0.929
+     ]
+    },
+    {
+     "file": "figures/p019-x157.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p019-x159.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p019-x147.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p019-x147.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p019-x147.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p019-x147.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p019-x162.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p019-x164.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p019-x157.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p019-x162.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p019-x164.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p019-x159.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p019-x169.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p019-x171.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p019-x138.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p019-x140.jpeg",
+     "layer": true
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "0\n\n0\n\n1\n\np = 0.5\n\n1\n\np = 0.5",
+   "fingerprint": "2c88e1bc76656050",
+   "debug": null
+  },
+  {
+   "id": "s20",
+   "page": 20,
+   "pages": [
+    20,
+    20
+   ],
+   "label": "",
+   "title": "EGY EGYSZERŰ KÍSÉRLET",
+   "flags": [
+    "graphic",
+    "image",
+    "stacked",
+    "table"
+   ],
+   "view": "pages/p020.png",
+   "figures": [
+    {
+     "file": "figures/p020-f1.png",
+     "bbox": [
+      0.083,
+      0.221,
+      0.967,
+      0.992
+     ]
+    },
+    {
+     "file": "figures/p020-x159.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p020-x157.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p020-x147.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p020-x147.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p020-x147.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p020-x147.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p020-x162.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p020-x164.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p020-x157.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p020-x147.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p020-x147.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p020-x147.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p020-x147.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p020-x159.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p020-x162.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p020-x164.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p020-x169.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p020-x171.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p020-x138.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p020-x138.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p020-x140.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p020-x140.jpeg",
+     "layer": true
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "0\n\n1\n\nMit várunk?\n\n0\n\n1",
+   "fingerprint": "b3a8f6c5c65cb22c",
+   "debug": null
+  },
+  {
+   "id": "s21",
+   "page": 21,
+   "pages": [
+    21,
+    21
+   ],
+   "label": "",
+   "title": "EGY EGYSZERŰ KÍSÉRLET",
+   "flags": [
+    "math",
+    "graphic",
+    "image",
+    "stacked",
+    "table"
+   ],
+   "view": "pages/p021.png",
+   "figures": [
+    {
+     "file": "figures/p021-f1.png",
+     "bbox": [
+      0.083,
+      0.221,
+      0.967,
+      0.992
+     ]
+    },
+    {
+     "file": "figures/p021-x159.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p021-x157.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p021-x147.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p021-x147.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p021-x147.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p021-x147.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p021-x157.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p021-x147.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p021-x147.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p021-x147.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p021-x147.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p021-x159.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p021-x162.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p021-x164.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p021-x162.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p021-x164.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p021-x169.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p021-x171.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p021-x138.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p021-x138.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p021-x140.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p021-x140.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p021-x147.jpeg",
+     "layer": true
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "0\n\n1\n\nP00 = p00· p00+ p01· p10 = 0!\n\nMit történik?\n\n0\n\n1",
+   "fingerprint": "ccfd487feb38eeed",
+   "debug": null
+  },
+  {
+   "id": "s22",
+   "page": 22,
+   "pages": [
+    22,
+    22
+   ],
+   "label": "",
+   "title": "",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p022.png",
+   "figures": [
+    {
+     "file": "figures/p022-f1.png",
+     "bbox": [
+      0.0,
+      0.0,
+      0.314,
+      0.189
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "**Az interferométer általános leírása**\n\n\"An idea is always a generalization, and generalization is a\n\nproperty of thinking.\n\nTo generalize means to think.\"\n\nGeorg Hegel",
+   "fingerprint": "8cc2dddfa31a268f",
+   "debug": null
+  },
+  {
+   "id": "s23",
+   "page": 23,
+   "pages": [
+    23,
+    23
+   ],
+   "label": "",
+   "title": "FÉLIGÁTERESZTŐ TÜKÖR (HALFSILVERED MIRROR,",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p023.png",
+   "figures": [
+    {
+     "file": "figures/p023-f1.png",
+     "bbox": [
+      0.271,
+      0.401,
+      0.697,
+      0.759
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "**BEAMSPLITTER)**\n\nCopyright © 2005 John Wiley & Sons Ltd.",
+   "fingerprint": "afb9ef71b36ad4df",
+   "debug": null
+  },
+  {
+   "id": "s24",
+   "page": 24,
+   "pages": [
+    24,
+    24
+   ],
+   "label": "",
+   "title": "2 FÉLIGÁTERSZTŐ TÜKÖR MINT AZONOSSÁG TRANSZFORMÁCIÓ",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p024.png",
+   "figures": [
+    {
+     "file": "figures/p024-f1.png",
+     "bbox": [
+      0.203,
+      0.251,
+      0.772,
+      0.829
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Copyright © 2005 John Wiley & Sons Ltd.",
+   "fingerprint": "af722f870d9d5a82",
+   "debug": null
+  },
+  {
+   "id": "s25",
+   "page": 25,
+   "pages": [
+    25,
+    25
+   ],
+   "label": "",
+   "title": "2 FÉLIGÁTERSZTŐ TÜKÖR MINT AZONOSSÁG TRANSZFORMÁCIÓ",
+   "flags": [
+    "graphic"
+   ],
+   "view": "pages/p025.png",
+   "figures": [
+    {
+     "file": "figures/p025-f1.png",
+     "bbox": [
+      0.091,
+      0.278,
+      0.359,
+      0.429
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- A két tükör közé elhelyezett extra detektorok ismét véletlenszerűvé\nteszik az eredményt.\n- Megjegyzés: A mérések jellemzően befolyásolják a megfigyelt\nrendszert, és így magukat a mérési eredményeket is.\n- Az „elektromágneses hullámokkal történő megfigyelés (mérés)”\nparadoxona: Kis részlétek kis hullámhosszal figyelhetők meg. Minél kisebb a hullámhossz, annál nagyobb a frekvencia és így a foton energiája, tehát a egyre nagyobb a foton hatása a megfigyelt objektumra.\n\nCopyright © 2005 John Wiley & Sons Ltd.",
+   "fingerprint": "fce616b9bed058c9",
+   "debug": null
+  },
+  {
+   "id": "s26",
+   "page": 26,
+   "pages": [
+    26,
+    26
+   ],
+   "label": "",
+   "title": "ÁLTALÁNOSÍTOTT INTERFEROMÉTER",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p026.png",
+   "figures": [
+    {
+     "file": "figures/p026-f1.png",
+     "bbox": [
+      0.128,
+      0.171,
+      0.854,
+      0.889
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Copyright © 2005 John Wiley & Sons Ltd.",
+   "fingerprint": "c303ae93b6c3315e",
+   "debug": null
+  },
+  {
+   "id": "s27",
+   "page": 27,
+   "pages": [
+    27,
+    27
+   ],
+   "label": "",
+   "title": "ÁRAMKÖRI LEÍRÁS",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p027.png",
+   "figures": [
+    {
+     "file": "figures/p027-f1.png",
+     "bbox": [
+      0.211,
+      0.311,
+      0.779,
+      0.519
+     ]
+    },
+    {
+     "file": "figures/p027-f2.png",
+     "bbox": [
+      0.578,
+      0.611,
+      0.734,
+      0.729
+     ]
+    },
+    {
+     "file": "figures/p027-f3.png",
+     "bbox": [
+      0.151,
+      0.641,
+      0.284,
+      0.739
+     ]
+    },
+    {
+     "file": "figures/p027-f4.png",
+     "bbox": [
+      0.481,
+      0.641,
+      0.517,
+      0.699
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Copyright © 2005 John Wiley & Sons Ltd.",
+   "fingerprint": "55de162d17cdc7bc",
+   "debug": null
+  },
+  {
+   "id": "s28",
+   "page": 28,
+   "pages": [
+    28,
+    28
+   ],
+   "label": "",
+   "title": "ELEMZÉS (1)",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p028.png",
+   "figures": [
+    {
+     "file": "figures/p028-f1.png",
+     "bbox": [
+      0.181,
+      0.221,
+      0.817,
+      0.692
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Copyright © 2005 John Wiley & Sons Ltd.\n- 0",
+   "fingerprint": "8acade8ab66d8219",
+   "debug": null
+  },
+  {
+   "id": "s29",
+   "page": 29,
+   "pages": [
+    29,
+    29
+   ],
+   "label": "",
+   "title": "ELEMZÉS (2)",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p029.png",
+   "figures": [
+    {
+     "file": "figures/p029-f1.png",
+     "bbox": [
+      0.181,
+      0.211,
+      0.817,
+      0.879
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Copyright © 2005 John Wiley & Sons Ltd.",
+   "fingerprint": "9f2a563469260d93",
+   "debug": null
+  },
+  {
+   "id": "s30",
+   "page": 30,
+   "pages": [
+    30,
+    30
+   ],
+   "label": "",
+   "title": "ELEMZÉS (3)",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p030.png",
+   "figures": [
+    {
+     "file": "figures/p030-f1.png",
+     "bbox": [
+      0.181,
+      0.251,
+      0.817,
+      0.909
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Copyright © 2005 John Wiley & Sons Ltd.",
+   "fingerprint": "9480827fdd42fc5f",
+   "debug": null
+  },
+  {
+   "id": "s31",
+   "page": 31,
+   "pages": [
+    31,
+    31
+   ],
+   "label": "",
+   "title": "ELEMZÉS (4)",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p031.png",
+   "figures": [
+    {
+     "file": "figures/p031-f1.png",
+     "bbox": [
+      0.181,
+      0.251,
+      0.817,
+      0.919
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Copyright © 2005 John Wiley & Sons Ltd.",
+   "fingerprint": "95420a08a7036f75",
+   "debug": null
+  },
+  {
+   "id": "s32",
+   "page": 32,
+   "pages": [
+    32,
+    32
+   ],
+   "label": "",
+   "title": "ELEMZÉS (5)",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p032.png",
+   "figures": [
+    {
+     "file": "figures/p032-f1.png",
+     "bbox": [
+      0.023,
+      0.191,
+      1.0,
+      0.916
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- : ideális eset\n- : teljesen véletlen\nműködés",
+   "fingerprint": "25b2e3ef5ad1a8e5",
+   "debug": null
+  },
+  {
+   "id": "s33",
+   "page": 33,
+   "pages": [
+    33,
+    33
+   ],
+   "label": "",
+   "title": "LINEÁRIS RENDSZEREKRE VONATKOZÓ ISMERETEINKET",
+   "flags": [
+    "graphic",
+    "image",
+    "layout"
+   ],
+   "view": "pages/p033.png",
+   "figures": [
+    {
+     "file": "figures/p033-f1.png",
+     "bbox": [
+      0.181,
+      0.143,
+      0.965,
+      0.689
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Copyright © 2005 John Wiley & Sons Ltd.\n- 0\n**KIHASZNÁLVA**\n\n**ELEMZÉS (1)**",
+   "fingerprint": "149d4a0a85284a30",
+   "debug": null
+  },
+  {
+   "id": "s34",
+   "page": 34,
+   "pages": [
+    34,
+    34
+   ],
+   "label": "",
+   "title": "ELEMZÉS (2)",
+   "flags": [
+    "graphic",
+    "image",
+    "stacked"
+   ],
+   "view": "pages/p034.png",
+   "figures": [
+    {
+     "file": "figures/p034-f1.png",
+     "bbox": [
+      0.181,
+      0.211,
+      0.817,
+      0.597
+     ]
+    },
+    {
+     "file": "figures/p034-f2.png",
+     "bbox": [
+      0.323,
+      0.661,
+      0.757,
+      0.919
+     ]
+    },
+    {
+     "file": "figures/p034-x219.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p034-x230.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p034-x251.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p034-x253.png",
+     "layer": true
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Copyright © 2005 John Wiley & Sons Ltd.",
+   "fingerprint": "2f015ab2442512e3",
+   "debug": null
+  },
+  {
+   "id": "s35",
+   "page": 35,
+   "pages": [
+    35,
+    35
+   ],
+   "label": "",
+   "title": "ELEMZÉS (3)",
+   "flags": [
+    "graphic",
+    "image",
+    "stacked"
+   ],
+   "view": "pages/p035.png",
+   "figures": [
+    {
+     "file": "figures/p035-f1.png",
+     "bbox": [
+      0.181,
+      0.251,
+      0.817,
+      0.639
+     ]
+    },
+    {
+     "file": "figures/p035-f2.png",
+     "bbox": [
+      0.556,
+      0.721,
+      0.757,
+      0.939
+     ]
+    },
+    {
+     "file": "figures/p035-f3.png",
+     "bbox": [
+      0.316,
+      0.761,
+      0.502,
+      0.889
+     ]
+    },
+    {
+     "file": "figures/p035-f4.png",
+     "bbox": [
+      0.218,
+      0.791,
+      0.262,
+      0.849
+     ]
+    },
+    {
+     "file": "figures/p035-x219.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p035-x233.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p035-x221.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p035-x256.png",
+     "layer": true
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Copyright © 2005 John Wiley & Sons Ltd.",
+   "fingerprint": "7dd2743acd8f117c",
+   "debug": null
+  },
+  {
+   "id": "s36",
+   "page": 36,
+   "pages": [
+    36,
+    36
+   ],
+   "label": "",
+   "title": "ELEMZÉS (4)",
+   "flags": [
+    "graphic",
+    "image",
+    "stacked"
+   ],
+   "view": "pages/p036.png",
+   "figures": [
+    {
+     "file": "figures/p036-f1.png",
+     "bbox": [
+      0.181,
+      0.251,
+      0.817,
+      0.599
+     ]
+    },
+    {
+     "file": "figures/p036-f2.png",
+     "bbox": [
+      0.286,
+      0.661,
+      0.809,
+      0.919
+     ]
+    },
+    {
+     "file": "figures/p036-x219.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p036-x236.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p036-x260.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p036-x253.png",
+     "layer": true
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Copyright © 2005 John Wiley & Sons Ltd.",
+   "fingerprint": "72ca0ac2a4eb6eb8",
+   "debug": null
+  },
+  {
+   "id": "s37",
+   "page": 37,
+   "pages": [
+    37,
+    37
+   ],
+   "label": "",
+   "title": "INTERFEROMÉTER AHOGY EGY FIZIKUS LÁTJA",
+   "flags": [
+    "graphic",
+    "image",
+    "stacked"
+   ],
+   "view": "pages/p037.png",
+   "figures": [
+    {
+     "file": "figures/p037-f1.png",
+     "bbox": [
+      0.031,
+      0.141,
+      0.307,
+      0.479
+     ]
+    },
+    {
+     "file": "figures/p037-f2.png",
+     "bbox": [
+      0.346,
+      0.301,
+      0.937,
+      0.959
+     ]
+    },
+    {
+     "file": "figures/p037-x264.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p037-x265.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p037-x267.jpeg",
+     "layer": true
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "",
+   "fingerprint": "8dfad7f3f440d4e0",
+   "debug": null
+  },
+  {
+   "id": "s38",
+   "page": 38,
+   "pages": [
+    38,
+    38
+   ],
+   "label": "",
+   "title": "INTERFEROMÉTER AHOGY EGY VILLAMOSMÉRNÖK LÁTJA",
+   "flags": [
+    "graphic",
+    "image",
+    "stacked"
+   ],
+   "view": "pages/p038.png",
+   "figures": [
+    {
+     "file": "figures/p038-f1.png",
+     "bbox": [
+      0.038,
+      0.221,
+      0.779,
+      0.899
+     ]
+    },
+    {
+     "file": "figures/p038-x264.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p038-x265.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p038-x219.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p038-x270.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p038-x271.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p038-x273.png",
+     "layer": true
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "",
+   "fingerprint": "b0798ed053d696fd",
+   "debug": null
+  },
+  {
+   "id": "s39",
+   "page": 39,
+   "pages": [
+    39,
+    39
+   ],
+   "label": "",
+   "title": "INTERFEROMÉTER AHOGY EGY INFORMATIKUS LÁTJA",
+   "flags": [
+    "graphic",
+    "image",
+    "stacked",
+    "layout"
+   ],
+   "view": "pages/p039.png",
+   "figures": [
+    {
+     "file": "figures/p039-f1.png",
+     "bbox": [
+      0.001,
+      0.145,
+      0.967,
+      0.969
+     ]
+    },
+    {
+     "file": "figures/p039-x264.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p039-x265.jpeg",
+     "layer": true
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Klasszikus\n\nbemenet\n\nKvantum-\n\nInicializálás\n\npárhuzamosság\n\nAmplitúdó\n\nMérés\n\nerősítés\n\nUtó-\n\nfeldolgozás\n\nKlasszikus\n\nkimenet\n\nqc = QuantumCircuit(1,2) qc.h(0) qc.p(Dalpha) qc.h(0) qc.measure(0,1) qc.draw(\"mpl\") backend = Aer.get_backend(\"aer_simulator\") result = backend.run(qc, shots=10000).result() counts = result.get_counts() print(counts)",
+   "fingerprint": "b1ce9b24603103e6",
+   "debug": null
+  },
+  {
+   "id": "s40",
+   "page": 40,
+   "pages": [
+    40,
+    40
+   ],
+   "label": "",
+   "title": "INTERFEROMÉTER AHOGY EGY INFORMATIKUS LÁTJA",
+   "flags": [
+    "graphic",
+    "image",
+    "stacked"
+   ],
+   "view": "pages/p040.png",
+   "figures": [
+    {
+     "file": "figures/p040-f1.png",
+     "bbox": [
+      0.046,
+      0.201,
+      0.952,
+      0.799
+     ]
+    },
+    {
+     "file": "figures/p040-x280.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p040-x219.png",
+     "layer": true
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "",
+   "fingerprint": "dbc38457a561ce72",
+   "debug": null
+  },
+  {
+   "id": "s41",
+   "page": 41,
+   "pages": [
+    41,
+    41
+   ],
+   "label": "",
+   "title": "DEKOHERENCIA – ÖSSZEFONÓDÁS A KÖRNYEZETTEL",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p041.png",
+   "figures": [
+    {
+     "file": "figures/p041-f1.png",
+     "bbox": [
+      0.033,
+      0.703,
+      0.344,
+      0.78
+     ]
+    },
+    {
+     "file": "figures/p041-f2.png",
+     "bbox": [
+      0.286,
+      0.841,
+      0.779,
+      0.959
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- Az első két posztulátum csak *zárt* rendszerekre\nérvényes, ezért a környezettel való összefonódás nagyon veszélyes lehet!\n- Ennek bemutatására a jól ismert\nkvantuminterferométert használjuk, és feltételezzük, hogy az interferométeren áthaladó foton a laboratóriumon (azaz a környezeten) kívül egy pillangóval összefonódik.\n- A környezet:\n- A pillangó repülési szabálya:",
+   "fingerprint": "594fa6e44e3df881",
+   "debug": null
+  },
+  {
+   "id": "s42",
+   "page": 42,
+   "pages": [
+    42,
+    42
+   ],
+   "label": "",
+   "title": "DEKOHERENCIA – ÖSSZEFONÓDÁS A KÜLVILÁGGAL",
+   "flags": [
+    "graphic",
+    "image",
+    "stacked"
+   ],
+   "view": "pages/p042.png",
+   "figures": [
+    {
+     "file": "figures/p042-f1.png",
+     "bbox": [
+      0.076,
+      0.081,
+      0.989,
+      1.0
+     ]
+    },
+    {
+     "file": "figures/p042-x216.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p042-x219.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p042-x265.jpeg",
+     "layer": true
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Copyright © 2005 John Wiley & Sons Ltd.\n\nCopyright © 2005 John Wiley & Sons Ltd.\n\nCopyright © 2005 John Wiley & Sons Ltd.",
+   "fingerprint": "51c261044c94ee82",
+   "debug": null
+  },
+  {
+   "id": "s43",
+   "page": 43,
+   "pages": [
+    43,
+    43
+   ],
+   "label": "",
+   "title": "ELEMZÉS (1)",
+   "flags": [
+    "graphic",
+    "image",
+    "no-text"
+   ],
+   "view": "pages/p043.png",
+   "figures": [
+    {
+     "file": "figures/p043-f1.png",
+     "bbox": [
+      0.038,
+      0.191,
+      0.997,
+      0.929
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "",
+   "fingerprint": "007232798cf89468",
+   "debug": null
+  },
+  {
+   "id": "s44",
+   "page": 44,
+   "pages": [
+    44,
+    44
+   ],
+   "label": "",
+   "title": "ELEMZÉS (2)",
+   "flags": [
+    "graphic",
+    "image",
+    "no-text"
+   ],
+   "view": "pages/p044.png",
+   "figures": [
+    {
+     "file": "figures/p044-f1.png",
+     "bbox": [
+      0.061,
+      0.171,
+      0.952,
+      0.949
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "",
+   "fingerprint": "a509397c590ba719",
+   "debug": null
+  },
+  {
+   "id": "s45",
+   "page": 45,
+   "pages": [
+    45,
+    45
+   ],
+   "label": "",
+   "title": "ELEMZÉS (3)",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p045.png",
+   "figures": [
+    {
+     "file": "figures/p045-f1.png",
+     "bbox": [
+      0.033,
+      0.141,
+      0.997,
+      0.849
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "=\n- Ha\n    - akkor az összefonódás eltűnik.\n- Azonban ha\n      - akkor a működés teljesen\nvéletlenné válik és a megfigyelőt alaposan becsapjuk.",
+   "fingerprint": "c461df7c8b09531d",
+   "debug": null
+  },
+  {
+   "id": "s46",
+   "page": 46,
+   "pages": [
+    46,
+    46
+   ],
+   "label": "",
+   "title": "",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p046.png",
+   "figures": [
+    {
+     "file": "figures/p046-f1.png",
+     "bbox": [
+      0.0,
+      0.0,
+      0.314,
+      0.189
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "**A No Cloning (Copy) tétel**\n\n\"Knowledge is what we get when an observer, preferably a scientifically\n\ntrained observer, provides us with a copy of reality that we can all recognize. \"\n\nChristopher Lasch",
+   "fingerprint": "37bb978d76682143",
+   "debug": null
+  },
+  {
+   "id": "s47",
+   "page": 47,
+   "pages": [
+    47,
+    47
+   ],
+   "label": "",
+   "title": "AZ UNIVERZÁLIS KVANTUMMÁSOLÓ",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p047.png",
+   "figures": [
+    {
+     "file": "figures/p047-f1.png",
+     "bbox": [
+      0.316,
+      0.221,
+      0.674,
+      0.639
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- Első vezeték: másolandó kvantumállapot.\n- Középső vezeték : segéd qubitek.\n- Alsó vezeték: környezet.\n- Létezik-e egyáltalán ilyen U transzformáció? Ha igen, akkor\nmeghatározzuk belőle Q-t.",
+   "fingerprint": "af5bf526b956acee",
+   "debug": null
+  },
+  {
+   "id": "s48",
+   "page": 48,
+   "pages": [
+    48,
+    48
+   ],
+   "label": "",
+   "title": "AZ UNIVERZÁLIS KVANTUMMÁSOLÓ",
+   "flags": [
+    "graphic",
+    "image",
+    "stacked"
+   ],
+   "view": "pages/p048.png",
+   "figures": [
+    {
+     "file": "figures/p048-f1.png",
+     "bbox": [
+      0.113,
+      0.301,
+      0.502,
+      0.429
+     ]
+    },
+    {
+     "file": "figures/p048-f2.png",
+     "bbox": [
+      0.097,
+      0.483,
+      1.0,
+      0.939
+     ]
+    },
+    {
+     "file": "figures/p048-x311.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p048-x312.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p048-x313.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p048-x314.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p048-x315.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p048-x317.png",
+     "layer": true
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "A másolás azt jelenti, hogy:\n\nU-nak unitérnek kell Lennie, azaz megőrzi a belső szprzatot\n- For input\n- For output\nA két belső szorzat akkor egyenlő ha",
+   "fingerprint": "45c07e75da010bb1",
+   "debug": null
+  },
+  {
+   "id": "s49",
+   "page": 49,
+   "pages": [
+    49,
+    49
+   ],
+   "label": "",
+   "title": "A NO CLONING TÉTEL",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- Nem készíthető olyan unitér kvantumkapu, amivel\ntetszőleges kvantumállapot-halmaz hibamentesen másolható.\n- De\n    - Ortogonális állapotok halmaza másolható!\n    - Ismert állapot másolható!\n- Hogyan?",
+   "fingerprint": "44b28c136c176bfc",
+   "debug": null
+  },
+  {
+   "id": "s50",
+   "page": 50,
+   "pages": [
+    50,
+    50
+   ],
+   "label": "",
+   "title": "",
+   "flags": [
+    "graphic",
+    "image",
+    "no-text"
+   ],
+   "view": "pages/p050.png",
+   "figures": [
+    {
+     "file": "figures/p050-f1.png",
+     "bbox": [
+      0.203,
+      0.241,
+      0.802,
+      0.759
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "",
+   "fingerprint": "f2422291055f5fe1",
+   "debug": null
+  }
+ ]
+}

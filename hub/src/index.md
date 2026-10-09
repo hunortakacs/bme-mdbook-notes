@@ -5,5 +5,6 @@
 | Class | Chapters | Sources |
 |---|---:|---:|
 | [Deklaratív programozás](dekla/) | 23 | 10 |
+| [Kvantuminformatikai alkalmazások](kvantum/) | 17 | 12 |
 
 <!-- /notes:books -->

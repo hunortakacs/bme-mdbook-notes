@@ -1,0 +1,2052 @@
+{
+ "meta": {
+  "source": "01_bevezetes_20260909.pdf",
+  "kind": "pdf",
+  "physical_pages": 59,
+  "units": 58,
+  "grouping": "heuristic",
+  "needs_view": 37,
+  "flags": {
+   "graphic": 37,
+   "image": 36,
+   "no-text": 9,
+   "layout": 6,
+   "stacked": 5,
+   "table": 2,
+   "math": 1,
+   "encoding": 1
+  },
+  "body_font_size": 18.0,
+  "page_hashes": [
+   "06c47efd4fa3be2e",
+   "2a2b1cf1bb616e68",
+   "6cdcecf7eaaa8e1a",
+   "62b968ea887074b0",
+   "60e6f8cba1d095d7",
+   "75604fe1f2267c7a",
+   "c43e40abe9e6592e",
+   "18bc717ba1d7c9bf",
+   "3a4a17217432966f",
+   "a8cd20fd4db0e58c",
+   "9cfd7458d83def78",
+   "0cdc5914b73bef38",
+   "8119e0f20d8cb3f9",
+   "ceac9620e53fe6ce",
+   "1637d72e3457c774",
+   "02e8f752a12893c5",
+   "25b318d700ffb1bc",
+   "f05b6dd9a814f371",
+   "5726a16cffbc2884",
+   "66336d8744109b01",
+   "bc670e78a0260b3d",
+   "03395d893ba4f5cf",
+   "f761243cd1f8dc8b",
+   "4f9e09b35d1f3594",
+   "e63a75b20687e42f",
+   "e018132b3631bb47",
+   "f53577ac498a68e6",
+   "eddc0102e51a16bc",
+   "8e128b5ab0e61c99",
+   "c61d67d3f1e812d5",
+   "974e49cdaf23342a",
+   "286779fe60db5913",
+   "7c01b2201313500b",
+   "b0610b27e90b4207",
+   "c9ee09bf881c40c4",
+   "d6609c9dc6f0f3fa",
+   "17ec3fe322408191",
+   "ed1f7119412931b5",
+   "f7f8e11bc0800521",
+   "a1d1e81f0281179a",
+   "0ddc1e48b41dfeed",
+   "f50ea82206b6df1e",
+   "4305499d20cdb46c",
+   "7355fbe11be4a00a",
+   "41bbd6048c0a61f7",
+   "4a21a0fe4896c25a",
+   "d6decc89d3c68c9b",
+   "8dc92aec0f501c97",
+   "13998ea98f735281",
+   "94cf327ac5e5441d",
+   "344ecc0c004fb3dc",
+   "14a9370ff9fb1d3e",
+   "ea583e42e2ab2038",
+   "435277cc5ede1b03",
+   "57e06ba65dbe489e",
+   "7dc1e5533efb18b6",
+   "66360f8ae021b5c2",
+   "a737181d98a5a0df",
+   "5212b68b474a54cb"
+  ]
+ },
+ "units": [
+  {
+   "id": "s1",
+   "page": 1,
+   "pages": [
+    1,
+    1
+   ],
+   "label": "",
+   "title": "",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p001.png",
+   "figures": [
+    {
+     "file": "figures/p001-f1.png",
+     "bbox": [
+      0.0,
+      0.0,
+      0.575,
+      0.343
+     ]
+    },
+    {
+     "file": "figures/p001-f2.png",
+     "bbox": [
+      0.82,
+      0.644,
+      0.98,
+      0.943
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "**Bevezetés és motiváció**\n\nKvantuminformatikai alkalmazások, 2026. ősz 2026. szeptember 9.\n\n**Dr. Bacsárdi László, Dr. Imre Sándor**\n\nBME Villamosmérnöki és Informatikai Kar bacsardi@hit.bme.hu",
+   "fingerprint": "7c68b1af2bf2d181",
+   "debug": null
+  },
+  {
+   "id": "s2",
+   "page": 2,
+   "pages": [
+    2,
+    2
+   ],
+   "label": "",
+   "title": "DISCLAIMER",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "A 2026/2027-es tanévben az előadásról felvétel készül. Minden információ (dátumok, évvel kapcsolatos referencia) a 2026/2027-es tanév őszi félévére vonatkozik.\n\nAz előadás során a diasor minimálisan módosulhat (pl. elgépelések javítása, bizonyos fogalmak pontosítása.) A tárgy számonkért anyaga a félév során folyamatosan közzétett diasor. Ha az előadás felvétele és az utólag közzétett diasor között valamilyen különbség van, akkor az utólag közzétett diasor tartalma a mérvadó.",
+   "fingerprint": "591d42297e9cd84d",
+   "debug": null
+  },
+  {
+   "id": "s3",
+   "page": 3,
+   "pages": [
+    3,
+    3
+   ],
+   "label": "",
+   "title": "",
+   "flags": [
+    "graphic",
+    "image",
+    "no-text"
+   ],
+   "view": "pages/p003.png",
+   "figures": [
+    {
+     "file": "figures/p003-f1.png",
+     "bbox": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "",
+   "fingerprint": "5e43cab382b8975c",
+   "debug": null
+  },
+  {
+   "id": "s4",
+   "page": 4,
+   "pages": [
+    4,
+    4
+   ],
+   "label": "",
+   "title": "",
+   "flags": [
+    "graphic",
+    "image",
+    "no-text"
+   ],
+   "view": "pages/p004.png",
+   "figures": [
+    {
+     "file": "figures/p004-f1.png",
+     "bbox": [
+      0.13,
+      0.204,
+      0.358,
+      0.303
+     ]
+    },
+    {
+     "file": "figures/p004-f2.png",
+     "bbox": [
+      0.475,
+      0.244,
+      0.89,
+      0.289
+     ]
+    },
+    {
+     "file": "figures/p004-f3.png",
+     "bbox": [
+      0.19,
+      0.471,
+      0.838,
+      0.903
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "",
+   "fingerprint": "b19697bc4369a119",
+   "debug": null
+  },
+  {
+   "id": "s5",
+   "page": 5,
+   "pages": [
+    5,
+    5
+   ],
+   "label": "",
+   "title": "",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p005.png",
+   "figures": [
+    {
+     "file": "figures/p005-f1.png",
+     "bbox": [
+      0.07,
+      0.377,
+      0.268,
+      0.769
+     ]
+    },
+    {
+     "file": "figures/p005-f2.png",
+     "bbox": [
+      0.805,
+      0.377,
+      0.95,
+      0.636
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Dr. Bacsárdi László docens, tanszékvezető űrmérnök képzés szakfelelős\n\nMobil Kommunikáció és Kvantumtechnológiák Laboratórium BME Hálózati Rendszerek és Szolgáltatások Tanszék 1117 Budapest, Magyar tudósok krt. 2.\n\nszoba: I.B.121, e-mail: bacsardi@hit.bme.hu",
+   "fingerprint": "22c1b2ae0ec9d5b8",
+   "debug": null
+  },
+  {
+   "id": "s6",
+   "page": 6,
+   "pages": [
+    6,
+    6
+   ],
+   "label": "",
+   "title": "KONTEXTUS",
+   "flags": [
+    "graphic",
+    "image",
+    "no-text"
+   ],
+   "view": "pages/p006.png",
+   "figures": [
+    {
+     "file": "figures/p006-f1.png",
+     "bbox": [
+      0.145,
+      0.124,
+      0.853,
+      0.956
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "",
+   "fingerprint": "6688117c23772d31",
+   "debug": null
+  },
+  {
+   "id": "s7",
+   "page": 7,
+   "pages": [
+    7,
+    7
+   ],
+   "label": "",
+   "title": "KONTEXTUS",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "A Slido-s diákon megjelenő tartalom a 2026/2027-es tanév őszi félévében a kurzust felvett hallgatók véleményét tükrözi, és nem feltétlenül jelenti a BME Hálózati Rendszerek és Szolgáltatások Tanszék álláspontját és véleményét.",
+   "fingerprint": "133ce936be8cef5e",
+   "debug": null
+  },
+  {
+   "id": "s8",
+   "page": 8,
+   "pages": [
+    8,
+    8
+   ],
+   "label": "",
+   "title": "MI AZ A KVANTUM?",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p008.png",
+   "figures": [
+    {
+     "file": "figures/p008-f1.png",
+     "bbox": [
+      0.092,
+      0.297,
+      0.433,
+      0.729
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "**Egy rendszerre akkor aggasztjuk rá a** **„kvantum” jelzőt, ha a kvantummechanika** **törvényei szerint működik.**\n- A kvantum alapú rendszereknek speciális jellegzetességei:\n- kvantáltság\n- hullám-részecske kettősség\n- alagúteffektus\n- szuperpozíció\n- kvantum interferencia\n- …\nA kvantum alapú jelenségek alapvetően a nanométer tartományban jelennek meg **de** a kvantummechanika törvénye jelentik az alapjait sok makroszkopikus rendszernek is.",
+   "fingerprint": "d6ce1d671f213292",
+   "debug": null
+  },
+  {
+   "id": "s9",
+   "page": 9,
+   "pages": [
+    9,
+    9
+   ],
+   "label": "",
+   "title": "KVANTUMMECHANIKAI ALAPOKON MŰKÖDŐ RENDSZEREK",
+   "flags": [
+    "graphic",
+    "image",
+    "layout"
+   ],
+   "view": "pages/p009.png",
+   "figures": [
+    {
+     "file": "figures/p009-f1.png",
+     "bbox": [
+      0.074,
+      0.217,
+      0.928,
+      0.876
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Fotoszintézis\n\nÜtközések a CERN-ben\n\nIntegrált áramkörök\n\nLézerek\n\nNapelemek\n\nNukleáris erőművek\n\nNukleáris\n\nLEDek\n\nCCDk\n\nfúzió",
+   "fingerprint": "cc63153b04fb87b6",
+   "debug": null
+  },
+  {
+   "id": "s10",
+   "page": 10,
+   "pages": [
+    10,
+    10
+   ],
+   "label": "",
+   "title": "„We never experiment with just one electron or atom or (small) molecule.",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p010.png",
+   "figures": [
+    {
+     "file": "figures/p010-f1.png",
+     "bbox": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "In thought-experiments we sometimes assume that we do; this invariably entails ridiculous consequences... **we are not** **experimenting with single particles**, any more than we can raise Ichthyosauria in the zoo\"\n\nErwin Schrödinger [Brit. J. Phil. Sci. 3, 233 (1952)]",
+   "fingerprint": "2ef1da3152131000",
+   "debug": null
+  },
+  {
+   "id": "s11",
+   "page": 11,
+   "pages": [
+    11,
+    11
+   ],
+   "label": "",
+   "title": "",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "**A második kvantumtechnológiai** **forradalom korát éljük**",
+   "fingerprint": "fca41a762462772d",
+   "debug": null
+  },
+  {
+   "id": "s12",
+   "page": 12,
+   "pages": [
+    12,
+    12
+   ],
+   "label": "",
+   "title": "",
+   "flags": [
+    "graphic",
+    "image",
+    "no-text"
+   ],
+   "view": "pages/p012.png",
+   "figures": [
+    {
+     "file": "figures/p012-f1.png",
+     "bbox": [
+      0.1,
+      0.071,
+      0.965,
+      0.943
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "",
+   "fingerprint": "7a8b2606891387af",
+   "debug": null
+  },
+  {
+   "id": "s13",
+   "page": 13,
+   "pages": [
+    13,
+    13
+   ],
+   "label": "",
+   "title": "KVANTUMOS TÖRTÉNELEM: A KLASSZIKUS NEM ELÉG!",
+   "flags": [
+    "graphic",
+    "image",
+    "layout"
+   ],
+   "view": "pages/p013.png",
+   "figures": [
+    {
+     "file": "figures/p013-f1.png",
+     "bbox": [
+      0.13,
+      0.244,
+      0.868,
+      0.943
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Democrítus of Abdera\n\n(B.C. 460-370) i\n\nArisztotle\n\n(B.C. 384-322)\n\nSolvay conference\n\n1927\n\n17 Nobel laureates\n\n1 Nobel laureate",
+   "fingerprint": "58486c65ccc03d84",
+   "debug": null
+  },
+  {
+   "id": "s14",
+   "page": 14,
+   "pages": [
+    14,
+    14
+   ],
+   "label": "",
+   "title": "KVANTUMOS TÖRTÉNELEM",
+   "flags": [
+    "graphic",
+    "image",
+    "stacked",
+    "layout"
+   ],
+   "view": "pages/p014.png",
+   "figures": [
+    {
+     "file": "figures/p014-f1.png",
+     "bbox": [
+      0.122,
+      0.151,
+      0.883,
+      0.943
+     ]
+    },
+    {
+     "file": "figures/p014-x115.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p014-x116.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p014-x118.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p014-x119.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p014-x121.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p014-x123.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p014-x124.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p014-x126.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p014-x128.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p014-x165.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p014-x132.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p014-x134.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p014-x136.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p014-x137.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p014-x139.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p014-x123.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p014-x140.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p014-x123.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p014-x142.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p014-x143.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p014-x145.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p014-x147.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p014-x148.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p014-x150.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p014-x152.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p014-x154.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p014-x156.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p014-x160.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p014-x160.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p014-x162.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p014-x163.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p014-x164.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p014-x165.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p014-x167.jpeg",
+     "layer": true
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Solvay conf. 1927\n\nR. P. Feynmann\n\n1985\n\n2030\n- 2018",
+   "fingerprint": "aa0c62c3882e9cfd",
+   "debug": null
+  },
+  {
+   "id": "s15",
+   "page": 15,
+   "pages": [
+    15,
+    15
+   ],
+   "label": "",
+   "title": "KVANTUMKOMMUNIKÁCIÓS KUTATÓCSOPORTUNK",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p015.png",
+   "figures": [
+    {
+     "file": "figures/p015-f1.png",
+     "bbox": [
+      0.017,
+      0.151,
+      0.98,
+      0.929
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "",
+   "fingerprint": "3d442e5dbb1d74ff",
+   "debug": null
+  },
+  {
+   "id": "s16",
+   "page": 16,
+   "pages": [
+    16,
+    16
+   ],
+   "label": "",
+   "title": "FŐBB TEVÉKENYSÉGÜNK A MOBIL KOMMUNIKÁCIÓ ÉS KVANTUMTECHNOLÓGIÁK LABORATÓRIUMBAN",
+   "flags": [
+    "graphic",
+    "image",
+    "layout"
+   ],
+   "view": "pages/p016.png",
+   "figures": [
+    {
+     "file": "figures/p016-f1.png",
+     "bbox": [
+      0.67,
+      0.244,
+      0.973,
+      0.409
+     ]
+    },
+    {
+     "file": "figures/p016-f2.png",
+     "bbox": [
+      0.685,
+      0.724,
+      0.958,
+      0.903
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Űr&5G/6G\n\nIoT\n\nKvantum\n\n**Többek között részt veszünk**\n\n**az 5G Koalíció 6G**\n\n**munkacsoportjában is**\n\nKlasszikus\n\noptikai\n\nkommunikáció\n\n(pl. RoF)",
+   "fingerprint": "6ec57da024f3aeb6",
+   "debug": null
+  },
+  {
+   "id": "s17",
+   "page": 17,
+   "pages": [
+    17,
+    17
+   ],
+   "label": "",
+   "title": "KVANTUMKOMMUNIKÁCIÓ A BME VILLAMOSMÉRNÖKI ÉS INFORMATIKAI KARON",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p017.png",
+   "figures": [
+    {
+     "file": "figures/p017-f1.png",
+     "bbox": [
+      0.16,
+      0.164,
+      0.868,
+      0.956
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "",
+   "fingerprint": "887e8d4b23979196",
+   "debug": null
+  },
+  {
+   "id": "s18",
+   "page": 18,
+   "pages": [
+    18,
+    18
+   ],
+   "label": "",
+   "title": "",
+   "flags": [
+    "graphic",
+    "image",
+    "stacked",
+    "no-text"
+   ],
+   "view": "pages/p018.png",
+   "figures": [
+    {
+     "file": "figures/p018-f1.png",
+     "bbox": [
+      0.0,
+      0.004,
+      1.0,
+      1.0
+     ]
+    },
+    {
+     "file": "figures/p018-x205.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p018-x206.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p018-x207.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p018-x208.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p018-x209.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p018-x210.jpeg",
+     "layer": true
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "",
+   "fingerprint": "ddcb8d01830241ce",
+   "debug": null
+  },
+  {
+   "id": "s19",
+   "page": 19,
+   "pages": [
+    19,
+    19
+   ],
+   "label": "",
+   "title": "",
+   "flags": [
+    "graphic",
+    "image",
+    "no-text"
+   ],
+   "view": "pages/p019.png",
+   "figures": [
+    {
+     "file": "figures/p019-f1.png",
+     "bbox": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "",
+   "fingerprint": "16791051aa2abdcd",
+   "debug": null
+  },
+  {
+   "id": "s20",
+   "page": 20,
+   "pages": [
+    20,
+    20
+   ],
+   "label": "",
+   "title": "",
+   "flags": [
+    "graphic",
+    "image",
+    "stacked",
+    "no-text"
+   ],
+   "view": "pages/p020.png",
+   "figures": [
+    {
+     "file": "figures/p020-f1.png",
+     "bbox": [
+      0.0,
+      0.0,
+      0.988,
+      1.0
+     ]
+    },
+    {
+     "file": "figures/p020-x219.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p020-x220.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p020-x221.png",
+     "layer": true
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "",
+   "fingerprint": "6e4ec3b10b363bab",
+   "debug": null
+  },
+  {
+   "id": "s21",
+   "page": 21,
+   "pages": [
+    21,
+    21
+   ],
+   "label": "",
+   "title": "SIKERES SZABADTÉRI KÍSÉRLET 2026. JÚNIUS 2.",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p021.png",
+   "figures": [
+    {
+     "file": "figures/p021-f1.png",
+     "bbox": [
+      0.0,
+      0.137,
+      0.995,
+      0.969
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "",
+   "fingerprint": "bb696358ec2b36ef",
+   "debug": null
+  },
+  {
+   "id": "s22",
+   "page": 22,
+   "pages": [
+    22,
+    22
+   ],
+   "label": "",
+   "title": "BME VEZETI A CEQCI KONZORCIUMOT (2026-2029)",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p022.png",
+   "figures": [
+    {
+     "file": "figures/p022-f1.png",
+     "bbox": [
+      0.01,
+      0.164,
+      0.958,
+      0.929
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "",
+   "fingerprint": "9d723bd3e4832b53",
+   "debug": null
+  },
+  {
+   "id": "s23",
+   "page": 23,
+   "pages": [
+    23,
+    23
+   ],
+   "label": "",
+   "title": "PROJEKTJEINK",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p023.png",
+   "figures": [
+    {
+     "file": "figures/p023-f1.png",
+     "bbox": [
+      0.76,
+      0.244,
+      0.95,
+      0.583
+     ]
+    },
+    {
+     "file": "figures/p023-f2.png",
+     "bbox": [
+      0.52,
+      0.484,
+      0.71,
+      0.916
+     ]
+    },
+    {
+     "file": "figures/p023-f3.png",
+     "bbox": [
+      0.43,
+      0.537,
+      0.485,
+      0.636
+     ]
+    },
+    {
+     "file": "figures/p023-f4.png",
+     "bbox": [
+      0.167,
+      0.564,
+      0.38,
+      0.903
+     ]
+    },
+    {
+     "file": "figures/p023-f5.png",
+     "bbox": [
+      0.752,
+      0.684,
+      0.965,
+      0.916
+     ]
+    },
+    {
+     "file": "figures/p023-f6.png",
+     "bbox": [
+      0.415,
+      0.844,
+      0.485,
+      0.903
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- Kvantumos algoritmusok\n- Kvantumos véletlenszámgenerátor\n- Vezetékes (optikai szálas) kvantumkommunikáció\n- Szabadtéri kvantumkommunikáció\n- Műholdas kvantumkommunikáció",
+   "fingerprint": "386dd9fe5777c229",
+   "debug": null
+  },
+  {
+   "id": "s24",
+   "page": 25,
+   "pages": [
+    24,
+    25
+   ],
+   "label": "",
+   "title": "",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "**Miért is érdekes?**",
+   "fingerprint": "07c18f6d708f7699",
+   "debug": null
+  },
+  {
+   "id": "s25",
+   "page": 26,
+   "pages": [
+    26,
+    26
+   ],
+   "label": "",
+   "title": "DE MIKOR?",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p026.png",
+   "figures": [
+    {
+     "file": "figures/p026-f1.png",
+     "bbox": [
+      0.04,
+      0.177,
+      0.988,
+      0.957
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "The Mosca inequality\n\nForrás: Global Risk Institute 2023",
+   "fingerprint": "860c22e50cfc6833",
+   "debug": null
+  },
+  {
+   "id": "s26",
+   "page": 27,
+   "pages": [
+    27,
+    27
+   ],
+   "label": "",
+   "title": "",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p027.png",
+   "figures": [
+    {
+     "file": "figures/p027-f1.png",
+     "bbox": [
+      0.0,
+      0.551,
+      1.0,
+      1.0
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "**2030. április 14.**",
+   "fingerprint": "c48a7c66d139ec3c",
+   "debug": null
+  },
+  {
+   "id": "s27",
+   "page": 28,
+   "pages": [
+    28,
+    28
+   ],
+   "label": "",
+   "title": "KONTEXTUS",
+   "flags": [
+    "graphic",
+    "image",
+    "stacked",
+    "no-text"
+   ],
+   "view": "pages/p028.png",
+   "figures": [
+    {
+     "file": "figures/p028-f1.png",
+     "bbox": [
+      0.137,
+      0.164,
+      0.883,
+      0.969
+     ]
+    },
+    {
+     "file": "figures/p028-x273.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p028-x274.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p028-x275.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p028-x276.jpeg",
+     "layer": true
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "",
+   "fingerprint": "4323a912f4d07bf7",
+   "debug": null
+  },
+  {
+   "id": "s28",
+   "page": 29,
+   "pages": [
+    29,
+    29
+   ],
+   "label": "",
+   "title": "",
+   "flags": [
+    "graphic",
+    "image",
+    "no-text"
+   ],
+   "view": "pages/p029.png",
+   "figures": [
+    {
+     "file": "figures/p029-f1.png",
+     "bbox": [
+      0.272,
+      0.191,
+      0.755,
+      0.849
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "",
+   "fingerprint": "35596a0976ffd5b6",
+   "debug": null
+  },
+  {
+   "id": "s29",
+   "page": 30,
+   "pages": [
+    30,
+    30
+   ],
+   "label": "",
+   "title": "",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- **A tárgy és oktatói**",
+   "fingerprint": "b959987f5e495bb0",
+   "debug": null
+  },
+  {
+   "id": "s30",
+   "page": 31,
+   "pages": [
+    31,
+    31
+   ],
+   "label": "",
+   "title": "",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p031.png",
+   "figures": [
+    {
+     "file": "figures/p031-f1.png",
+     "bbox": [
+      0.122,
+      0.191,
+      0.245,
+      0.369
+     ]
+    },
+    {
+     "file": "figures/p031-f2.png",
+     "bbox": [
+      0.205,
+      0.604,
+      0.245,
+      0.703
+     ]
+    },
+    {
+     "file": "figures/p031-f3.png",
+     "bbox": [
+      0.287,
+      0.617,
+      0.83,
+      0.916
+     ]
+    },
+    {
+     "file": "figures/p031-f4.png",
+     "bbox": [
+      0.197,
+      0.764,
+      0.253,
+      0.903
+     ]
+    }
+   ],
+   "links": [
+    "mailto:%20quant-course@mcl.hu"
+   ],
+   "annots": [],
+   "header": [],
+   "text": "**Aki tudja**, **csinálja**. Aki nem tudja, tanítja. Aki meg tanítani se tudja, abból lesz a tornatanár!\n\nBacsárdi László, Imre Sándor\n\nÉretlenek (1980)\n\nValamint: Czermann Márton, Galambos Máté, Márton Botond, Mihály András, Oláh Kitti, Schranz Ágoston, Solymos Balázs\n\nBME Hálózati Rendszerek és Szolgáltatások Tanszék IB.121. illetve IB.122-es szoba\n\nkvantumkurzus@mcl.hu\n\nInfók: Moodle, Neptun",
+   "fingerprint": "3914889d7e99f974",
+   "debug": null
+  },
+  {
+   "id": "s31",
+   "page": 32,
+   "pages": [
+    32,
+    32
+   ],
+   "label": "",
+   "title": "MINDEN ÉSZREVÉTELT SZÍVESEN FOGADUNK!",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- A tárggyal kapcsolatos bármilyen ötletnek, észrevételnek,\njavaslatnak mindig örülünk!\n- Akár az OMHV (OHV) kitöltése során névtelenül, akár nekünk\njelezve.\n- Tavalyi hallgatói észrevételek alapján idén is módosítottunk!",
+   "fingerprint": "c4a7f1c8c5c3c75e",
+   "debug": null
+  },
+  {
+   "id": "s32",
+   "page": 33,
+   "pages": [
+    33,
+    33
+   ],
+   "label": "",
+   "title": "TANÓRÁK",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p033.png",
+   "figures": [
+    {
+     "file": "figures/p033-f1.png",
+     "bbox": [
+      0.4,
+      0.404,
+      0.868,
+      0.969
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Előadás: szerda: 14:15-15:45 Gyakorlat: csütörtök: 10:15-11:45 Esetleges változásokat Neptunon keresztül küldünk!",
+   "fingerprint": "b0efb98721630c39",
+   "debug": null
+  },
+  {
+   "id": "s33",
+   "page": 34,
+   "pages": [
+    34,
+    34
+   ],
+   "label": "",
+   "title": "SEGÉDANYAGOK",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p034.png",
+   "figures": [
+    {
+     "file": "figures/p034-f1.png",
+     "bbox": [
+      0.325,
+      0.417,
+      0.508,
+      0.889
+     ]
+    },
+    {
+     "file": "figures/p034-f2.png",
+     "bbox": [
+      0.595,
+      0.417,
+      0.778,
+      0.889
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- Segédanyagok: a tantárgy honlapján az előadás fóliák\n- **Hallgatói vélemény: „a tankönyvek jók és érthetőek; a diák az órai anyag átismétlésére**\n**jók”**\n- Könyvek: kölcsönözhetők a könyvtárból vagy GOTO internet",
+   "fingerprint": "95371257ada56eef",
+   "debug": null
+  },
+  {
+   "id": "s34",
+   "page": 35,
+   "pages": [
+    35,
+    35
+   ],
+   "label": "",
+   "title": "ELŐADÁSOK DIASORA",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- Fel fog kerülni a tárgy Moodle-csoportjába\n- Előadás előtt – terveink szerint – megosztunk egy draft verziót\njegyzetelés céljából. De a végleges verzió mindig az lesz, amit előadás után töltünk fel.\n- Az előadásokról felvétel készül, amelynek a linkjét az előadás után\npár nappal meg fogjuk osztani.\n- Az előadáshoz kapcsolódik egy online jegyzet is, amelyet a félév\nsorán frissítünk.",
+   "fingerprint": "a654ada7515399f4",
+   "debug": null
+  },
+  {
+   "id": "s35",
+   "page": 36,
+   "pages": [
+    36,
+    36
+   ],
+   "label": "",
+   "title": "FONTOS INFORMÁCIÓ A SEGÉDANYAGOKRÓL",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "**EZ A MÓDSZER NEM MŰKÖDIK:**\n\nLetöltöm és a ZH-k előtt átpörgetem a diasort.\n\nBiztos van ilyen tárgy is, de ez NEM az a tárgy!",
+   "fingerprint": "9289cbda16aa4361",
+   "debug": null
+  },
+  {
+   "id": "s36",
+   "page": 37,
+   "pages": [
+    37,
+    37
+   ],
+   "label": "",
+   "title": "GYAKORLATOK",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- Az első héten nincsen gyakorlat.\n- A gyakorlat nektek szól!\n  - A gyakorlatok felvételét megosztjuk, otthon mindenki nézze meg és csinálja\nvégig.\n  - Csütörtökönként konzultációt biztosítunk.",
+   "fingerprint": "3d42019e0d738bda",
+   "debug": null
+  },
+  {
+   "id": "s37",
+   "page": 38,
+   "pages": [
+    38,
+    38
+   ],
+   "label": "",
+   "title": "FÉLÉVES MENETREND",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p038.png",
+   "figures": [
+    {
+     "file": "figures/p038-f1.png",
+     "bbox": [
+      0.145,
+      0.297,
+      0.613,
+      0.889
+     ]
+    },
+    {
+     "file": "figures/p038-f2.png",
+     "bbox": [
+      0.685,
+      0.297,
+      0.83,
+      0.889
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Előadások tervezett beosztása",
+   "fingerprint": "9b4cdf6d3842253f",
+   "debug": null
+  },
+  {
+   "id": "s38",
+   "page": 39,
+   "pages": [
+    39,
+    39
+   ],
+   "label": "",
+   "title": "FÉLÉVES MENETREND",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p039.png",
+   "figures": [
+    {
+     "file": "figures/p039-f1.png",
+     "bbox": [
+      0.197,
+      0.271,
+      0.77,
+      0.929
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Gyakorlatok tervezett beosztása",
+   "fingerprint": "426b2812a733a15e",
+   "debug": null
+  },
+  {
+   "id": "s39",
+   "page": 40,
+   "pages": [
+    40,
+    40
+   ],
+   "label": "",
+   "title": "SZÁMONKÉRÉS",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- 3 darab kis zárthelyi\n- Féléves feladat",
+   "fingerprint": "44b99f859c2b79b8",
+   "debug": null
+  },
+  {
+   "id": "s40",
+   "page": 41,
+   "pages": [
+    41,
+    41
+   ],
+   "label": "",
+   "title": "SZÁMONKÉRÉS",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Kis zárthelyi:\n- Pár kérdés, 20-30 perc, az óra időpontjában és helyszínén\n  - csoportbontásban (beosztás névsor alapján, kis zh előtt majd Neptun-üzenet erről)\n- **Tervezett időpontok (végleges majd Neptun-üzenetben):**\n  - október 21., 14:15 (előadás idősávja, papíron)\n  - november 26., 10:15 (gyakorlat idősávja, számítógépes teremben)\n  - december 9., (előadás idősávja, papíron)\n- Pótlási héten bármelyik kis zárthelyi pótolható (akár mindegyik)\n- A kis zárthelyik anyagával kapcsolatos részletek majd Moodlen, a kis zh-k előtt\n  - Első és harmadik kis zh előadáshoz, második kis zh pedig a gyakorlathoz kapcsolódik\n  - Lesznek felkészülést segítő kérdések a kiszh-hoz\n  - Pontos időtartamot mindegyik kis zh előtt közzétesszük",
+   "fingerprint": "546256272bc96967",
+   "debug": null
+  },
+  {
+   "id": "s41",
+   "page": 42,
+   "pages": [
+    42,
+    42
+   ],
+   "label": "",
+   "title": "SZÁMONKÉRÉS",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Féléves feladat\n- Lesz egyénileg, és lesz két fős csapatban is megoldható feladat\n- Mérnöki gondolkodós és programozós feladat egyaránt\n- Részletes lista és pontos instrukciók: várhatóan a 3. héten\n- Etikus AI használati elvek a kari weboldalon!\n- Beadási határidő: **november 15., de lesz utána is teendő!**\n    - Beadási felület: alapvetően Moodle, de lesznek majd részletes instrukciók\n    - Alaposan olvassa át mindenki majd a részletes kiírást!\n- A házi feladat késedelmes beadása a pótlási hét negyedik napjáig lehetséges különeljárási díj\nellenében. Javító jelleggel a házi késedelmesen nem adható le. (Mindenkinek egy dobása van a házira). Elégtelenre értékelt házi feladat esetén pótlási héten pótleadás.\n\n**Ha valaki a féléves feladat alapján TDK-ázna,** **bátran szóljon!**",
+   "fingerprint": "d4f42c059148b873",
+   "debug": null
+  },
+  {
+   "id": "s42",
+   "page": 43,
+   "pages": [
+    43,
+    43
+   ],
+   "label": "",
+   "title": "FÉLÉVES ÉRDEMJEGY",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Mind a három kis zárthelyi esetében el kell érni kis zárthelyinként legalább 40%-ot\n\nÉS\n\na házi feladat pontszámából is legalább 40%-ot el kell érni.\n\nA tárgy végső jegye:\n\n3x20%-ban a zárthelyi dolgozat eredménye 40%-ban pedig a házi feladat eredménye.",
+   "fingerprint": "56128c644f30f3a5",
+   "debug": null
+  },
+  {
+   "id": "s43",
+   "page": 44,
+   "pages": [
+    44,
+    44
+   ],
+   "label": "",
+   "title": "MIT FOGUNK VISSZAKÉRDEZNI?",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- Röviden: A kvantumos szemléletet\n- Alapelvek és alapfogalmak:\n  - Pl. posztulátumok mérnöki értelmezésben, H kapu hatása klasszikus bemenetre, stb.\n- Egyszerű számolások\n- Összefüggések, vélt és valós hasonlóságok:\n  - Pl. Grover-féle adatbázis keresés RSA feltörésre is használható.\n- A működés logikája:\n  - Pl. A kvantumos mérés gyakorlatilag megegyezik a tüskés pikó hímek rivalizálásával\n(nőstényhozzáférésével).",
+   "fingerprint": "5f3791408967e620",
+   "debug": null
+  },
+  {
+   "id": "s44",
+   "page": 45,
+   "pages": [
+    45,
+    45
+   ],
+   "label": "",
+   "title": "KAPCSOLÓDÓ TÁRGYAK (1)",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [
+    "https://portal.vik.bme.hu/kepzes/targyak/VIHIAV06"
+   ],
+   "annots": [],
+   "header": [],
+   "text": "**VIHIAV06** **Bevezetés a kvantuminformatikába és -kommunikációba** Szabadon választható\n\nhttps://portal.vik.bme.hu/kepzes/targyak/VIHIAV06 Tavaszi félév, 2 kredit, heti 90 perc\n\nA tantárgy célja bemutatni a kvantuminformatikát és a kvantumkommunikáció alkalmazásának lehetőségeit. A kurzus célja elmagyarázni a kvantumáramkörök alapjait és több kvantuminformatikai algoritmust, valamint megvilágítani a kvantuminformatika fontosságát és alkalmazhatóságának sokszínűségét. A tárgy röviden ismerteti a gyakorlati megvalósítás alapjait is.",
+   "fingerprint": "a5f0c6e9490c15c6",
+   "debug": null
+  },
+  {
+   "id": "s45",
+   "page": 46,
+   "pages": [
+    46,
+    46
+   ],
+   "label": "",
+   "title": "KAPCSOLÓDÓ TÁRGYAK (2)",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [
+    "https://portal.vik.bme.hu/kepzes/targyak/VIHIAV46/"
+   ],
+   "annots": [],
+   "header": [],
+   "text": "**VIHIAV46** **Optikai kvantumkommunikációs rendszerek** Szabadon választható\n\nhttps://portal.vik.bme.hu/kepzes/targyak/VIHIAV46/ Őszi félévben, 2 kredit, heti 90 perc\n\nA tantárgy célja a kvantumkommunikáció és az optikai távközlés iránt érdeklődő hallgatók gyakorlati tudásának megalapozása. A tantárgy bemutatja a korszerű kvantumkommunikációs rendszerekben alkalmazott fizikai eszközöket, a felhasznált jelenségeket, majd a biztonságos adattovábbításhoz szükséges véletlenszám- generátorok és a generált kulcs biztonságos szétosztásának példáján keresztül mutatja be a kvantummechanika jelenségeinek felhasználását. Az elméleti ismeretek elmélyítését vezetett labormérések és mérésbemutatók segítik.",
+   "fingerprint": "3e26f58812604e15",
+   "debug": null
+  },
+  {
+   "id": "s46",
+   "page": 47,
+   "pages": [
+    47,
+    47
+   ],
+   "label": "",
+   "title": "KAPCSOLÓDÓ TÁRGYAK (3)",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [
+    "https://portal.vik.bme.hu/kepzes/targyak/VIHIAV52/"
+   ],
+   "annots": [],
+   "header": [],
+   "text": "**VIHIAV52** **Kvantumszámítógépek programozása** Szabadon választható\n\nhttps://portal.vik.bme.hu/kepzes/targyak/VIHIAV52/ Őszi félévben, 2 kredit, heti 90 perc\n\nA tárgy célja megismertetni a hallgatókat a különböző architektúrájú kvantumszámítógépekkel és a különböző programozási környezetekkel. A kurzus során a hallgatók betekintést nyernek a Qiskit fejlesztőkörnyezetbe, a Q# nyelvbe és az Azure Quantumba, a Cirg-be, és a Strawberry Fieldsbe. A hallgatók által írt programokat valós kvantumszámítógépeken tudják futtatni.",
+   "fingerprint": "9a8945cd46c48529",
+   "debug": null
+  },
+  {
+   "id": "s47",
+   "page": 48,
+   "pages": [
+    48,
+    48
+   ],
+   "label": "",
+   "title": "KAPCSOLÓDÓ TÁRGYAK (4)",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [
+    "https://portal.vik.bme.hu/kepzes/targyak/VIHIAV50/"
+   ],
+   "annots": [],
+   "header": [],
+   "text": "**VIHIAV50** **Optikai távközlési rendszerek** Szabadon választható\n\nhttps://portal.vik.bme.hu/kepzes/targyak/VIHIAV50/ Tavaszi félévben, 4 kredit, heti 2*90 perc\n\nA tárgy célja, hogy átfogó képet adjon a modern optikai távközlési hálózatok felépítéséről, a bennük alkalmazott eszközök azon tulajdonságairól, melyek befolyásolják a rendszer működését. Bemutatja a fény alkalmazásának sokféle lehetőségét; nyomatékosítja, hogy az üvegszálas technológia nemcsak az internet gerincét adja, hanem számos további alkalmazása van.",
+   "fingerprint": "7ee017f60dce9005",
+   "debug": null
+  },
+  {
+   "id": "s48",
+   "page": 49,
+   "pages": [
+    49,
+    49
+   ],
+   "label": "",
+   "title": "KAPCSOLÓDÓ TÁRGYAK (5)",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [
+    "https://portal.vik.bme.hu/kepzes/targyak/VIHIMSUB001-00/"
+   ],
+   "annots": [],
+   "header": [],
+   "text": "**VIHIMSUB001-00** **Quantum and Optical Communication for Satellite Systems** (Műholdas rendszerekben alkalmazott kvantum- és optikai kommunikáció) Szabadon választható tárgy, 4 kredit\n\nhttps://portal.vik.bme.hu/kepzes/targyak/VIHIMSUB001-00/ Tavaszi félévben, az Európai Űrögynökség támogatásával, angol nyelven\n\nA tárgy betekintést nyújt a műholdas optikai és kvantumkommunikáció legújabb fejlesztéseibe. A kvantumtechnológiák szempontjából a hangsúly a kvantumkommunikációs alkalmazási területeken lesz (beleértve a kvantum alapú véletlenszám-generálását űrbeli körülmények között, a műholdas kvantum alapú kulcsszétosztást és a kvantuminternetet",
+   "fingerprint": "684bf483651ba633",
+   "debug": null
+  },
+  {
+   "id": "s49",
+   "page": 50,
+   "pages": [
+    50,
+    50
+   ],
+   "label": "",
+   "title": "KAPCSOLÓDÓ TÁRGYAK (6)",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "**Új kvantumos tárgy** Terveink szerint a tavaszi félévben kínálni fogunk egy speciális szabadon választható tárgyat:\n\nImre Sándor dékán úrral közösen fogjuk tartani speciális formátumban létszámlimittel (max. 30-35 fő) kvantumtechnológia témakörben\n\nA tárgyat most dolgozzuk ki, részletek majd a félév végén.",
+   "fingerprint": "ea02cde6eff3ae42",
+   "debug": null
+  },
+  {
+   "id": "s50",
+   "page": 51,
+   "pages": [
+    51,
+    51
+   ],
+   "label": "",
+   "title": "SZABADON VÁLASZTHATÓ TÁRGYAK",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p051.png",
+   "figures": [
+    {
+     "file": "figures/p051-f1.png",
+     "bbox": [
+      0.355,
+      0.404,
+      0.568,
+      0.756
+     ]
+    }
+   ],
+   "links": [
+    "https://www.hit.bme.hu/page/valaszthatotargy"
+   ],
+   "annots": [],
+   "header": [],
+   "text": "A Hálózati Rendszerek és Szolgáltatások Tanszéken (HIT) számos témakörben kínálunk szabadon választható tárgyakat:\n\nhttps://www.hit.bme.hu/page/valaszthatotargy",
+   "fingerprint": "368b95acb78a00f9",
+   "debug": null
+  },
+  {
+   "id": "s51",
+   "page": 52,
+   "pages": [
+    52,
+    52
+   ],
+   "label": "",
+   "title": "NEM TELJESEN KAPCSOLÓDIK, DE TÁRGY",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [
+    "https://portal.vik.bme.hu/kepzes/targyak/VIHIMA18/"
+   ],
+   "annots": [],
+   "header": [],
+   "text": "**Kvantuminformatika és -kommunikáció** Választható természettudományos tárgy, MSc, villamosmérnök és űrmérnök\n\nhttps://portal.vik.bme.hu/kepzes/targyak/VIHIMA18/ Őszi félévben, 5 kredit, villamosmérnök, űrmérnök\n\nA tantárgy célja, hogy megismertesse a hallgatóságot a kvantuminformatika fogalomrendszerével, információelméleti vonatkozásaival és alkalmazási példákon keresztül informatikai és távközlési környezetben való alkalmazhatóságával. A tárgy röviden ismerteti a gyakorlati megvalósítás alapjait is.",
+   "fingerprint": "86d1b5c3c996774a",
+   "debug": null
+  },
+  {
+   "id": "s52",
+   "page": 53,
+   "pages": [
+    53,
+    53
+   ],
+   "label": "",
+   "title": "KVANTUMINFORMATIKA MELLÉKSPECIALIZÁCIÓ (INFÓ MSC)",
+   "flags": [
+    "graphic"
+   ],
+   "view": "pages/p053.png",
+   "figures": [
+    {
+     "file": "figures/p053-f1.png",
+     "bbox": [
+      0.235,
+      0.204,
+      0.83,
+      0.796
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Kvantumszámítógépek és alkalmazásaik\n- Kvantumhálózatok\nKvantuminformatika laboratórium\n\nvalamint Önálló labor 1-2, Diplomatervezés 1-2 témák",
+   "fingerprint": "02f028a88ff97dd2",
+   "debug": null
+  },
+  {
+   "id": "s53",
+   "page": 54,
+   "pages": [
+    54,
+    54
+   ],
+   "label": "",
+   "title": "TÚL A TÁRGYON: TANULMÁNYI VERSENY",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p054.png",
+   "figures": [
+    {
+     "file": "figures/p054-f1.png",
+     "bbox": [
+      0.662,
+      0.604,
+      1.0,
+      1.0
+     ]
+    }
+   ],
+   "links": [
+    "https://vik.hk/verseny/kvantum-informatika-es-kommunikacio/"
+   ],
+   "annots": [],
+   "header": [],
+   "text": "- Kvantuminformatika és kvantumkommunikációs tanulmányi\nverseny\n- Első három helyezett: megajánlott jeles\n- Bizonyos pontszám felett teljesítők: ZH vagy házi max.\npontszámmal\n- Tervezett dátum: 2026. november 19., csütörtök https://vik.hk/verseny/kvantum-informatika-es-kommunikacio/\n(Most szeptemberben még a tavalyi dátumok szerepelnek ezen az oldalon!)",
+   "fingerprint": "d2711590488cbbdc",
+   "debug": null
+  },
+  {
+   "id": "s54",
+   "page": 55,
+   "pages": [
+    55,
+    55
+   ],
+   "label": "",
+   "title": "TÚL A TÁRGYON: TDK",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p055.png",
+   "figures": [
+    {
+     "file": "figures/p055-f1.png",
+     "bbox": [
+      0.13,
+      0.337,
+      0.875,
+      0.929
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Tudományos Diákköri Konferencia Minden évben van kvantumos téma, az elmúlt években többször volt kvantumos szekció is. A 2022/2023-as tanévben 3 szekcióban is kvantumos témával hoztuk el az I. helyezést!",
+   "fingerprint": "ef886a0198422936",
+   "debug": null
+  },
+  {
+   "id": "s55",
+   "page": 56,
+   "pages": [
+    56,
+    56
+   ],
+   "label": "",
+   "title": "",
+   "flags": [
+    "graphic",
+    "image",
+    "stacked"
+   ],
+   "view": "pages/p056.png",
+   "figures": [
+    {
+     "file": "figures/p056-f1.png",
+     "bbox": [
+      0.0,
+      0.0,
+      0.575,
+      0.343
+     ]
+    },
+    {
+     "file": "figures/p056-f2.png",
+     "bbox": [
+      0.722,
+      0.364,
+      0.995,
+      0.956
+     ]
+    },
+    {
+     "file": "figures/p056-x368.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p056-x369.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p056-x371.jpeg",
+     "layer": true
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "**Akkor vágjunk bele!**\n\n“If that turns out to be true, I'll quit physics.”\n\nMax von Laue, Nobel laureate (1914)",
+   "fingerprint": "500d9c09658bd3b7",
+   "debug": null
+  },
+  {
+   "id": "s56",
+   "page": 57,
+   "pages": [
+    57,
+    57
+   ],
+   "label": "",
+   "title": "KÉRDEZZENEK!!!!",
+   "flags": [
+    "graphic",
+    "image",
+    "table",
+    "layout"
+   ],
+   "view": "pages/p057.png",
+   "figures": [
+    {
+     "file": "figures/p057-f1.png",
+     "bbox": [
+      0.212,
+      0.217,
+      0.866,
+      0.796
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "**A kérdés típusa**\n\nbuta\n\nremek\n\nritka\n\n„szemét”\n\n**Értelmezés**\n\nH azt hiszi nem tudja, mert lusta O tudja\n\n**jegy +++**\n\nH nem tudja O tudja\n\n**jegy +++**\n\nH nem tudja O nem tudja\n\n**jegy ---**\n\nH tudja, hogy O nem tudja O nem tudja",
+   "fingerprint": "04217a7baed50ce0",
+   "debug": null
+  },
+  {
+   "id": "s57",
+   "page": 58,
+   "pages": [
+    58,
+    58
+   ],
+   "label": "",
+   "title": "EGY EGYSZERŰ KÉRDÉS",
+   "flags": [
+    "math",
+    "graphic",
+    "image",
+    "table",
+    "layout",
+    "encoding"
+   ],
+   "view": "pages/p058.png",
+   "figures": [
+    {
+     "file": "figures/p058-f1.png",
+     "bbox": [
+      0.167,
+      0.271,
+      0.879,
+      0.983
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "0,0000000001% p+,e-,n 99,9999999999% semmi\n\nC, B, A, E\n\nt  2\n\nt  14\n\nt  6\n\nt = 0.3\n\nAlma\n\nt =2026.09.09.\n\nt  20",
+   "fingerprint": "2f3a91f178c7029e",
+   "debug": null
+  },
+  {
+   "id": "s58",
+   "page": 59,
+   "pages": [
+    59,
+    59
+   ],
+   "label": "",
+   "title": "",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p059.png",
+   "figures": [
+    {
+     "file": "figures/p059-f1.png",
+     "bbox": [
+      0.212,
+      0.097,
+      0.8,
+      0.663
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Ne éljenek „klasszikusan”! Az élet kerek mivoltához nélkülözhetetlen a szuperpozíció.\n\nImre Sándor 2010",
+   "fingerprint": "a1de3cc5a2b03b11",
+   "debug": null
+  }
+ ]
+}

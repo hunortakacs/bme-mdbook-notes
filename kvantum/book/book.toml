@@ -1,0 +1,41 @@
+[book]
+title = "Kvantuminformatikai alkalmazások"
+language = "hu"
+src = "src"
+
+[build]
+create-missing = false
+
+# Math: $inline$ and $$display$$, rendered at build time by mdbook-katex.
+[preprocessor.katex]
+after = ["links"]
+no-css = true            # the stylesheet and fonts are served from src/_katex (works offline)
+throw-on-error = false   # a bad formula is shown in red and reported by check.py
+
+# Code: highlighted at build time by Pygments; after katex, so a `$` in code is never math.
+[preprocessor.pygments]
+command = "python3 ../../scripts/mdbook_pygments.py"
+after = ["links", "katex"]
+
+# Diagrams: ```mermaid code blocks.
+[preprocessor.mermaid]
+command = "mdbook-mermaid"
+
+[output.html]
+site-url = "/kvantum/"     # the hub (hub.py) serves this book under /kvantum/
+default-theme = "light"
+preferred-dark-theme = "navy"
+additional-css = ["theme/pygments.css", "theme/notes.css"]
+additional-js = ["theme/notes-weights.js", "theme/notes.js", "mermaid.min.js", "mermaid-init.js"]
+
+[output.html.search]
+enable = true
+limit-results = 30
+use-boolean-and = true
+
+[output.html.print]
+enable = true
+
+[output.html.playground]
+runnable = false
+copyable = true

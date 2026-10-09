@@ -1,0 +1,104 @@
+{
+ "meta": {
+  "source": "Emélkeztető a CNOT művelethez.pdf",
+  "kind": "pdf",
+  "physical_pages": 4,
+  "units": 3,
+  "grouping": "heuristic",
+  "needs_view": 3,
+  "flags": {
+   "math": 2,
+   "graphic": 1,
+   "image": 1,
+   "table": 3,
+   "layout": 1
+  },
+  "body_font_size": 11.0,
+  "page_hashes": [
+   "d6e808b96601c1c8",
+   "81eeb782264a23c8",
+   "b752fdfc756c4457",
+   "f16eafc05580c80b"
+  ]
+ },
+ "units": [
+  {
+   "id": "s1",
+   "page": 1,
+   "pages": [
+    1,
+    1
+   ],
+   "label": "",
+   "title": "CNOT kapu",
+   "flags": [
+    "math",
+    "graphic",
+    "image",
+    "table",
+    "layout"
+   ],
+   "view": "pages/p001.png",
+   "figures": [
+    {
+     "file": "figures/p001-f1.png",
+     "bbox": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "A CNOT kapu egy két qubites kapu. Negálja a célbit értékét, ha a vezérlőbit 1, és nem végez semmilyen műveletet a célbiten, ha a vezérlőbit 0. Klasszikus bemenetekkel Igazságtábla klasszikus bemenetekhez:\n\ncontrol\n\ntarget\n\nÁramköri rajz:\n\ncontrol\n\ntarget\n\n**CNOT előtt** **CNOT után**\n\n**Control Target Control Target**\n\n|0⟩ |0⟩ |0⟩ |0⟩\n\n|0⟩ |1⟩ |0⟩ |1⟩\n\n|1⟩ |0⟩ |1⟩ |1⟩\n\n|1⟩ |1⟩ |1⟩ |0⟩\n\nKlasszikus\n\nmegfelelője",
+   "fingerprint": "472dc7f3e541a08a",
+   "debug": null
+  },
+  {
+   "id": "s2",
+   "page": 2,
+   "pages": [
+    2,
+    2
+   ],
+   "label": "",
+   "title": "Általában egy klasszikus|𝑥𝑦⟩ bemenet esetén a kimenet a következő:",
+   "flags": [
+    "math",
+    "table"
+   ],
+   "view": "pages/p002.png",
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "𝐶𝑁𝑂𝑇(|𝑥𝑦⟩) = |𝑥(𝑥⊕𝑦)⟩\n\nAhol ⊕ az XOR műveletet jelöli. Kvantum bemenetekkel Bra-ket jelölés: Általános 2-kubit állapot bra-ket jelöléssel (CNOT előtt):\n\n|𝜓⟩= 𝑎|*00*⟩+ 𝑏|*01*⟩+ 𝑐|*10*⟩+ 𝑑|*11*⟩\n\nA CNOT lineáris művelet (mint minden unitér művelet), ezért:\n\n𝐶𝑁𝑂𝑇(𝑎|*00*⟩+ 𝑏|*01*⟩+ 𝑐|*10*⟩+ 𝑑|*11*⟩)\n\n= 𝑎 𝐶𝑁𝑂𝑇(|*00*⟩) + 𝑏 𝐶𝑁𝑂𝑇(|*01*⟩) + 𝑐 𝐶𝑁𝑂𝑇(|*10*⟩) + 𝑑 𝐶𝑁𝑂𝑇(|*11*⟩)\n\nAzonban az igazságtábla alapján ismerjük a szuperpozíció minden tagjának hatását:\n\n𝑎 𝐶𝑁𝑂𝑇(|*00*⟩) + 𝑏 𝐶𝑁𝑂𝑇(|*01*⟩) + 𝑐 𝐶𝑁𝑂𝑇(|*10*⟩) + 𝑑 𝐶𝑁𝑂𝑇(|*11*⟩) = 𝑎|*00*⟩+ 𝑏|*01*⟩+ 𝑐|*11*⟩+ 𝑑|*10*⟩\n\nVektorjelölés: Általános 2-kubit állapot bra-ket jelöléssel (CNOT előtt):\n\n𝑎 𝑏\n\n|𝜓⟩= [ ]\n\n𝑐 𝑑\n\nA CNOT művelet mátrixa:\n\n1 0 0 0 0 1 0 0\n\n] = [^(𝐼)\n\n0̂\n\n0 0 0 1 0̂ 𝑋^(])\n\n𝐶𝑁𝑂𝑇= [\n\n0 0 1 0\n\nAhol 0̂ a 2x2-es nulla almátrix. Ezzel egy tetszőleges|𝜓⟩ állapoton végzett CNOT művelet eredménye:\n\n𝑎 𝑎\n\n1 0 0 0\n\n𝑏 𝑏\n\n0 1 0 0\n\n] [ ] = [ ]\n\n[\n\n𝑐 𝑑\n\n0 0 0 1\n\n𝑑 𝑐\n\n0 0 1 0\n\n(Megjegyzendő, hogy az állapotvektor utolsó két komponense felcserélődött.)",
+   "fingerprint": "672249b24da9bd7a",
+   "debug": null
+  },
+  {
+   "id": "s3",
+   "page": 4,
+   "pages": [
+    3,
+    4
+   ],
+   "label": "",
+   "title": "Köszönetnyilvánítás",
+   "flags": [
+    "table"
+   ],
+   "view": "pages/p004.png",
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "The development of this course material has received funding from the European Union under grant agreement No 101081247 (QCIHungary project) and has been implemented with the support provided by the Ministry of Culture and Innovation of Hungary from the National Research, Development and Innovation Fund. Views and opinions expressed are, however, those of the author(s) only and do not necessarily reflect those of the European Union or the European Commission. Neither the European Union nor the granting authority can be held responsible for them.",
+   "fingerprint": "146bdc1aac453e24",
+   "debug": null
+  }
+ ]
+}

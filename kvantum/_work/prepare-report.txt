@@ -1,0 +1,24 @@
+NEW       01_bevezetes_20260909.pdf  [01-bevezetes-20260909, pdf]
+          59 pages -> 58 units, 37 to view (flags: encoding 1, graphic 37, image 36, layout 6, math 1, no-text 9, stacked 5, table 2); animation steps were merged by content, spot-check a few
+NEW       03_osszefonodasalapjai_20260923.pdf  [03-osszefonodasalapjai-20260923, pdf]
+          32 pages -> 30 units, 25 to view (flags: encoding 2, graphic 25, image 24, layout 1, math 4, stacked 5, table 2); animation steps were merged by content, spot-check a few
+NEW       04_Meresek20260930.pdf  [04-meresek20260930, pdf]
+          50 pages -> 50 units, 49 to view (flags: encoding 7, graphic 46, image 46, layout 13, math 13, no-text 3, stacked 11, table 3)
+NEW       05_INterferometer_es_NCT20261007.pdf  [05-interferometer-es-nct20261007, pdf]
+          50 pages -> 50 units, 47 to view (flags: encoding 1, graphic 47, image 46, layout 7, math 3, no-text 3, stacked 16, table 5)
+NEW       2_bloch.ipynb  [2-bloch, notebook]
+          5 units, 3 to view (flags: image 3)
+NEW       Emélkeztető a CNOT művelethez.pdf  [emelkezteto-a-cnot-muvelethez, pdf]
+          4 pages -> 3 units, 3 to view (flags: graphic 1, image 1, layout 1, math 2, table 3); animation steps were merged by content, spot-check a few
+NEW       Kvantuminformatikai alkalmazások jegyzet 2026 ősz.md  [kvantuminformatikai-alkalmazasok-jegyzet-2026-osz, text]
+NEW       Kvantuminformatikai alkalmazások_posztulátumok.pdf  [kvantuminformatikai-alkalmazasok-posztulatumok, pdf]
+          20 pages -> 20 units, 16 to view (flags: encoding 1, graphic 15, image 13, layout 2, math 8, no-text 1, stacked 1, table 3)
+NEW       Kvantuminformatikai áramkörök tervezése.pdf  [kvantuminformatikai-aramkorok-tervezese, pdf]
+          6 pages -> 6 units, 5 to view (flags: graphic 3, image 3, layout 1, math 4)
+NEW       bloch_gyak.pdf  [bloch-gyak, pdf]
+          14 pages -> 14 units, 12 to view (flags: encoding 1, graphic 12, image 12, layout 1, math 1, no-text 1, stacked 2, table 3)
+NEW       gyak1.pdf  [gyak1, pdf]
+          24 pages -> 24 units, 24 to view (flags: graphic 20, image 18, layout 9, math 17, stacked 1, table 2)
+NEW       gyak_qiskit_bev.ipynb  [gyak-qiskit-bev, notebook]
+          13 units, 4 to view (flags: image 4)
+DUPLICATE 03_osszefonodasalapjai_20260923.pdf: 1 of 30 units have every page in 01_bevezetes_20260909.pdf; they are marked and need no viewing

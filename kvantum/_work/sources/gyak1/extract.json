@@ -1,0 +1,1020 @@
+{
+ "meta": {
+  "source": "gyak1.pdf",
+  "kind": "pdf",
+  "physical_pages": 24,
+  "units": 24,
+  "grouping": "heuristic",
+  "needs_view": 24,
+  "flags": {
+   "graphic": 20,
+   "image": 18,
+   "math": 17,
+   "table": 2,
+   "layout": 9,
+   "stacked": 1
+  },
+  "body_font_size": 24.0,
+  "page_hashes": [
+   "f07ace0fca29b065",
+   "485f28ab98289f44",
+   "a493ab91896d6b7b",
+   "8d9e86da03edd6b3",
+   "b16038cad8892a30",
+   "f4354772ce0ec43c",
+   "fa308986a4d7bd6f",
+   "5f1e06c7070ab69b",
+   "8161fa10cf7bfc32",
+   "3998f29454a4d2a6",
+   "dbf50de78d5c48f0",
+   "4a5f0243a5b145d5",
+   "1bf1e6ab004ffc69",
+   "2efaab9ea04c2f0f",
+   "73162c99e67b7972",
+   "b35a8e28b11e435c",
+   "b7e8fbda4520429c",
+   "7a8e60c56aa9617b",
+   "2d6763ddeee0528e",
+   "016d3396c0dace68",
+   "aa5119f7df94ac9e",
+   "96dbea475db4218a",
+   "2f9f4478d4c477cb",
+   "8ce5aaa5f9cb1914"
+  ]
+ },
+ "units": [
+  {
+   "id": "s1",
+   "page": 1,
+   "pages": [
+    1,
+    1
+   ],
+   "label": "",
+   "title": "",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p001.png",
+   "figures": [
+    {
+     "file": "figures/p001-f1.png",
+     "bbox": [
+      0.0,
+      0.0,
+      0.56,
+      0.369
+     ]
+    },
+    {
+     "file": "figures/p001-f2.png",
+     "bbox": [
+      0.857,
+      0.857,
+      0.988,
+      0.943
+     ]
+    }
+   ],
+   "links": [
+    "mailto:bacsardi@hit.bme.hu"
+   ],
+   "annots": [],
+   "header": [],
+   "text": "**Basic operations of quantum informatics** (Műveletek kvantumbitekkel és kvantumregiszterekkel) **Practice** Kvantuminformatikai alkalmazások **Dr. Balázs Solymos Dr. László Bacsárdi**\n\nDepartment of Networked Systems and Services Faculty of Electrical Engineering and Informatics *bacsardi@hit.bme.hu*, solymosb@hit.bme.hu",
+   "fingerprint": "28e98a408fda95a2",
+   "debug": null
+  },
+  {
+   "id": "s2",
+   "page": 2,
+   "pages": [
+    2,
+    2
+   ],
+   "label": "",
+   "title": "POSTULATES OF QUANTUM MECHANICS FROM ENGINEERING POINT OF VIEW",
+   "flags": [
+    "math",
+    "graphic",
+    "image",
+    "table"
+   ],
+   "view": "pages/p002.png",
+   "figures": [
+    {
+     "file": "figures/p002-f1.png",
+     "bbox": [
+      0.46,
+      0.191,
+      0.868,
+      0.956
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "1^(th) postulate: *quantum bit*\n- Vector in Hilbert space\n2^(nd) postulate : *logic gates*\n- Unitary transform\n- Elementary logic gates\n3^(rd) postulate : *Q/C conversion*\n- Measurement statistics\n- Post measurement state\n4^(th) postulate : *registers*\n- Tensor product",
+   "fingerprint": "aed22685a618663d",
+   "debug": null
+  },
+  {
+   "id": "s3",
+   "page": 3,
+   "pages": [
+    3,
+    3
+   ],
+   "label": "",
+   "title": "QUBIT NOTATION",
+   "flags": [
+    "math",
+    "graphic",
+    "image",
+    "layout"
+   ],
+   "view": "pages/p003.png",
+   "figures": [
+    {
+     "file": "figures/p003-f1.png",
+     "bbox": [
+      0.302,
+      0.177,
+      0.905,
+      0.636
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- Inner product:\n- Outer product:\n- Tensor product:\n𝜓1 ∙\n\n𝜓ۧ 𝜙=\n\n𝜓2 ∙\n\n𝜙1 𝜓1𝜙1 𝜙2 𝜓1𝜙2\n\n=\n\n𝜙1 𝜓2𝜙1 𝜙2 𝜓2𝜙2",
+   "fingerprint": "500b806634648626",
+   "debug": null
+  },
+  {
+   "id": "s4",
+   "page": 4,
+   "pages": [
+    4,
+    4
+   ],
+   "label": "",
+   "title": "BRA-KET NOTATION",
+   "flags": [
+    "math",
+    "graphic",
+    "image",
+    "layout"
+   ],
+   "view": "pages/p004.png",
+   "figures": [
+    {
+     "file": "figures/p004-f1.png",
+     "bbox": [
+      0.032,
+      0.137,
+      0.778,
+      0.934
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- Qubit:\n- Inner product:\n- Outer product:\n- Tensor product:\n𝜙1 𝜓1𝜙1\n\n𝜓1 ∙\n\n𝜙2 𝜓1𝜙2\n\n𝜓⨂ۧ 𝜙=ۧ 𝜓ۧ 𝜙=\n\n=\n\n𝜙1 𝜓2𝜙1\n\n𝜓2 ∙\n\n𝜙2 𝜓2𝜙2",
+   "fingerprint": "483912e7f73303dc",
+   "debug": null
+  },
+  {
+   "id": "s5",
+   "page": 5,
+   "pages": [
+    5,
+    5
+   ],
+   "label": "",
+   "title": "QUANTUM GATES AS UNITARY OPERATORS",
+   "flags": [
+    "graphic",
+    "image",
+    "stacked"
+   ],
+   "view": "pages/p005.png",
+   "figures": [
+    {
+     "file": "figures/p005-f1.png",
+     "bbox": [
+      0.002,
+      0.164,
+      0.913,
+      0.916
+     ]
+    },
+    {
+     "file": "figures/p005-x45.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p005-x46.png",
+     "layer": true
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "",
+   "fingerprint": "bf1fa4454bc9244e",
+   "debug": null
+  },
+  {
+   "id": "s6",
+   "page": 6,
+   "pages": [
+    6,
+    6
+   ],
+   "label": "",
+   "title": "LET’S CALCULATE!",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p006.png",
+   "figures": [
+    {
+     "file": "figures/p006-f1.png",
+     "bbox": [
+      0.197,
+      0.151,
+      0.373,
+      0.876
+     ]
+    },
+    {
+     "file": "figures/p006-f2.png",
+     "bbox": [
+      0.415,
+      0.204,
+      0.56,
+      0.356
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "",
+   "fingerprint": "a84c9ea9310c799d",
+   "debug": null
+  },
+  {
+   "id": "s7",
+   "page": 7,
+   "pages": [
+    7,
+    7
+   ],
+   "label": "",
+   "title": "LET’S CALCULATE!",
+   "flags": [
+    "math",
+    "graphic",
+    "image",
+    "layout"
+   ],
+   "view": "pages/p007.png",
+   "figures": [
+    {
+     "file": "figures/p007-f1.png",
+     "bbox": [
+      0.017,
+      0.231,
+      0.14,
+      0.693
+     ]
+    },
+    {
+     "file": "figures/p007-f2.png",
+     "bbox": [
+      0.415,
+      0.281,
+      0.774,
+      0.769
+     ]
+    },
+    {
+     "file": "figures/p007-f3.png",
+     "bbox": [
+      0.017,
+      0.339,
+      0.148,
+      0.693
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "|𝜓= ^(1)\n- 0 1\n𝜓ۧ 𝜙=\n\n2\n\n|𝜙=\n\n1\n\n2\n\n1\n\n1\n\n2\n\n1 ∙\n\n1\n\n2\n\n= = ^(1) (ۧ|00 +ۧ |01 )ۧ\n\n1\n\n2\n\n1\n\n2\n\n2\n\n0\n\n2\n\n0 ∙\n\n1\n\n0\n\n2",
+   "fingerprint": "4e9a690a64ea16ba",
+   "debug": null
+  },
+  {
+   "id": "s8",
+   "page": 8,
+   "pages": [
+    8,
+    8
+   ],
+   "label": "",
+   "title": "LET’S CALCULATE!",
+   "flags": [
+    "math",
+    "graphic",
+    "image",
+    "layout"
+   ],
+   "view": "pages/p008.png",
+   "figures": [
+    {
+     "file": "figures/p008-f1.png",
+     "bbox": [
+      0.197,
+      0.151,
+      0.641,
+      0.876
+     ]
+    },
+    {
+     "file": "figures/p008-f2.png",
+     "bbox": [
+      0.52,
+      0.191,
+      0.658,
+      0.356
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "1\n\n(ۧ|00 +ۧ |01 )\n\n2\n\n1\n\n(ۧ|00 +ۧ |01 )\n\n2\n\n1\n\n(ۧ|00 +ۧ |10 )\n- 2\n1\n\n(ۧ|10 +ۧ |11 )\n- 2\n1\n\n(ۧ|01 +ۧ |11 )\n\n2\n\n1 2 ^((ۧ|00) ^(+ۧ |01) ^(+ۧ |10) ^(+ۧ |11) ^())\n      - aۧ|00 +ۧ 𝑏|10\n      - aۧ|00 +ۧ 𝑏|01",
+   "fingerprint": "4448d2e16f7075da",
+   "debug": null
+  },
+  {
+   "id": "s9",
+   "page": 9,
+   "pages": [
+    9,
+    9
+   ],
+   "label": "",
+   "title": "BASIS STATES",
+   "flags": [
+    "math",
+    "graphic"
+   ],
+   "view": "pages/p009.png",
+   "figures": [
+    {
+     "file": "figures/p009-f1.png",
+     "bbox": [
+      0.058,
+      0.343,
+      0.287,
+      0.476
+     ]
+    },
+    {
+     "file": "figures/p009-f2.png",
+     "bbox": [
+      0.058,
+      0.343,
+      0.287,
+      0.476
+     ]
+    },
+    {
+     "file": "figures/p009-f3.png",
+     "bbox": [
+      0.058,
+      0.516,
+      0.287,
+      0.649
+     ]
+    },
+    {
+     "file": "figures/p009-f4.png",
+     "bbox": [
+      0.058,
+      0.516,
+      0.287,
+      0.649
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Can the following states form a valid basis?\n\n|ۧ+ = ^(1) |0 + ^(1) |1\n\n2ۧ\n\n2ۧ\n\n|ۧ−= ^(1) |0 −^(1) |1\n\n2\n\n2",
+   "fingerprint": "dd5baa815f5e9063",
+   "debug": null
+  },
+  {
+   "id": "s10",
+   "page": 10,
+   "pages": [
+    10,
+    10
+   ],
+   "label": "",
+   "title": "BASIS STATES",
+   "flags": [
+    "math",
+    "graphic",
+    "layout"
+   ],
+   "view": "pages/p010.png",
+   "figures": [
+    {
+     "file": "figures/p010-f1.png",
+     "bbox": [
+      0.002,
+      0.217,
+      0.693,
+      0.809
+     ]
+    },
+    {
+     "file": "figures/p010-f2.png",
+     "bbox": [
+      0.362,
+      0.217,
+      0.658,
+      0.409
+     ]
+    },
+    {
+     "file": "figures/p010-f3.png",
+     "bbox": [
+      0.439,
+      0.678,
+      0.693,
+      0.796
+     ]
+    },
+    {
+     "file": "figures/p010-f4.png",
+     "bbox": [
+      0.476,
+      0.678,
+      0.693,
+      0.796
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Can the following states form a valid basis?\n\n1\n\n1\n\n1\n\n2\n- 2ۧ ^(|0) ^(+) 2ۧ ^(|1 =)\n|ۧ−=\n\n|ۧ+ =\n\n1\n\n2\n\nCheck orthogonality:\n\n1\n\n2\n\n−1\n\n2\n\n1 1\n\n1\n\n1\n\n2ۧ ^(|0) ^(−) 2ۧ ^(|1) ^(=) 2 2\n\n〈+ |ۧ−=\n\n1\n\n1\n\n1\n\n2\n\n2ۧ ^(|0) ^(−) 2ۧ ^(|1 =)\n\n−1\n\n2\n\n1 1 1 −1\n\n2 2 ^(+) 2 2 ^(= 0)\n\n=\n\nSince the result is 0, they are orthogonal, and thus, can form a valid basis.",
+   "fingerprint": "698a7fb9dc48615e",
+   "debug": null
+  },
+  {
+   "id": "s11",
+   "page": 11,
+   "pages": [
+    11,
+    11
+   ],
+   "label": "",
+   "title": "LET’S WRITE SOME QUBITS",
+   "flags": [
+    "math"
+   ],
+   "view": "pages/p011.png",
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- Define a qubit, which when measured (in the *|ۧ0* *, |ۧ1* basis) will give\na result of “1” every time!\n- Define a qubit, which gives back 0 with 50% of probability!\n- Do the same for measurements in the (in the *|ۧ+* *, |ۧ−* basis)",
+   "fingerprint": "ec558409308ae01d",
+   "debug": null
+  },
+  {
+   "id": "s12",
+   "page": 12,
+   "pages": [
+    12,
+    12
+   ],
+   "label": "",
+   "title": "PAULI X GATE",
+   "flags": [
+    "math",
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p012.png",
+   "figures": [
+    {
+     "file": "figures/p012-f1.png",
+     "bbox": [
+      0.58,
+      0.244,
+      0.643,
+      0.343
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- Pauli X gate, or bit-flip gate\n- Symbol:\n- Matrix: *X =* ^(0)\n1\n    - 1 0\n- Its operation on *𝜑= 𝑎0* *+ 𝑏1* = ^(𝑎)\n            - 𝑏\n𝑎 𝑏\n- X 𝜑=\n= 𝑏0 + 𝑎1\n\n0 1 1 0",
+   "fingerprint": "2cdc472d099269a6",
+   "debug": null
+  },
+  {
+   "id": "s13",
+   "page": 13,
+   "pages": [
+    13,
+    13
+   ],
+   "label": "",
+   "title": "PAULI Z GATE",
+   "flags": [
+    "math",
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p013.png",
+   "figures": [
+    {
+     "file": "figures/p013-f1.png",
+     "bbox": [
+      0.625,
+      0.284,
+      0.673,
+      0.383
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- Pauli Z gate, or phase-flip gate\n- Symbol:\n- Matrix: *Z =* ^(1)\n0\n    - 0 −1\n- Its operation on *𝜑= 𝑎0* *+ 𝑏1* = ^(𝑎)\n            - 𝑏\n𝑎 𝑏\n- Z 𝜑=\n*= 𝑎*0 −𝑏1\n\n1 0 0 −1",
+   "fingerprint": "1e290b7ad0013f31",
+   "debug": null
+  },
+  {
+   "id": "s14",
+   "page": 14,
+   "pages": [
+    14,
+    14
+   ],
+   "label": "",
+   "title": "PAULI Y GATE",
+   "flags": [
+    "math",
+    "graphic",
+    "image",
+    "layout"
+   ],
+   "view": "pages/p014.png",
+   "figures": [
+    {
+     "file": "figures/p014-f1.png",
+     "bbox": [
+      0.512,
+      0.244,
+      0.575,
+      0.343
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- Its operation on *𝜑= 𝑎0* *+ 𝑏1* = ^(𝑎)\n- Pauli Y gate\n- Symbol:\n- Matrix: *Y =* ^(0)\n−𝑖\n    - 𝑖 0\n𝑎 𝑏\n- Y *𝜑=*\n0 −𝑖 𝑖 0\n            - 𝑏\n*= −𝑏𝑖*0 + 𝑎𝑖1",
+   "fingerprint": "f00912c97cae55e9",
+   "debug": null
+  },
+  {
+   "id": "s15",
+   "page": 15,
+   "pages": [
+    15,
+    15
+   ],
+   "label": "",
+   "title": "PHASE ROTATOR",
+   "flags": [
+    "math"
+   ],
+   "view": "pages/p015.png",
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- Phase rotator\n𝑃𝛼\n- Symbol:\n- Alternative symbols (for a particular phase)\n- Matrix: P 𝛼= ^(1)\n0\n    - 0 𝑒^(𝑖𝛼)\n- Its operation on *𝜑= 𝑎0* *+ 𝑏1* = ^(𝑎)\n            - 𝑏\n𝑎 𝑏\n\n= 𝑎0 + 𝑒^(𝑖𝛼)1\n- P 𝜑=\n1 0 0 𝑒^(𝑖𝛼)",
+   "fingerprint": "f9f878941698d4da",
+   "debug": null
+  },
+  {
+   "id": "s16",
+   "page": 16,
+   "pages": [
+    16,
+    16
+   ],
+   "label": "",
+   "title": "HADAMARD GATE",
+   "flags": [
+    "math",
+    "graphic",
+    "image",
+    "layout"
+   ],
+   "view": "pages/p016.png",
+   "figures": [
+    {
+     "file": "figures/p016-f1.png",
+     "bbox": [
+      0.58,
+      0.217,
+      0.643,
+      0.316
+     ]
+    },
+    {
+     "file": "figures/p016-f2.png",
+     "bbox": [
+      0.06,
+      0.179,
+      0.412,
+      0.551
+     ]
+    },
+    {
+     "file": "figures/p016-f3.png",
+     "bbox": [
+      0.152,
+      0.697,
+      0.2,
+      0.863
+     ]
+    },
+    {
+     "file": "figures/p016-f4.png",
+     "bbox": [
+      0.279,
+      0.615,
+      0.516,
+      0.784
+     ]
+    },
+    {
+     "file": "figures/p016-f5.png",
+     "bbox": [
+      0.525,
+      0.711,
+      0.635,
+      0.769
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- Hadamard gate\n- Symbol:\n1\n\n1\n\n2\n\n2\n- Matrix: *H =* 1\n1\n\n−\n\n2\n\n2\n- Its operation on *𝜑= 𝑎0* *+ 𝑏1* = ^(𝑎)\n                      - 𝑏\n𝑎 𝑏\n\n1\n\n1\n\n1\n\n1\n- H 𝜑=\n= 𝑎 0 + 1 + b 0 −1 =\n\n2\n\n2\n\n2\n                        - 2\n1\n          - 1\n−\n\n2\n          - 2\n1\n\n1\n\n2 ^((𝑎+ 𝑏)) ^(0) ^(+) 2 ^((𝑎−𝑏)) ^(1)",
+   "fingerprint": "9fe0136137db0b90",
+   "debug": null
+  },
+  {
+   "id": "s17",
+   "page": 17,
+   "pages": [
+    17,
+    17
+   ],
+   "label": "",
+   "title": "CNOT GATE",
+   "flags": [
+    "math",
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p017.png",
+   "figures": [
+    {
+     "file": "figures/p017-f1.png",
+     "bbox": [
+      0.182,
+      0.191,
+      0.32,
+      0.369
+     ]
+    },
+    {
+     "file": "figures/p017-f2.png",
+     "bbox": [
+      0.565,
+      0.297,
+      0.868,
+      0.756
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- Symbol:\n      - Truth table:\n1 0 0 0 0 1 0 0\n- Matrix: *CNOT =*\n0 0 0 1 0 0 1 0\n\n𝐶𝑁𝑂𝑇 (𝑎|00 +ۧ 𝑏|01 +ۧ 𝑐|10 +ۧ 𝑑|11 ) =ۧ 𝑎|00 +ۧ 𝑏|01 +ۧ 𝑑|10 +ۧ 𝑐|11",
+   "fingerprint": "03f054e424303dc2",
+   "debug": null
+  },
+  {
+   "id": "s18",
+   "page": 18,
+   "pages": [
+    18,
+    18
+   ],
+   "label": "",
+   "title": "LET’S TRY TO CREATE MEASUREMENT OPERATONS",
+   "flags": [
+    "graphic",
+    "image",
+    "table"
+   ],
+   "view": "pages/p018.png",
+   "figures": [
+    {
+     "file": "figures/p018-f1.png",
+     "bbox": [
+      0.069,
+      0.253,
+      0.38,
+      0.329
+     ]
+    },
+    {
+     "file": "figures/p018-f2.png",
+     "bbox": [
+      0.587,
+      0.417,
+      0.928,
+      0.703
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- Take the set of two orthogonal states\n(for example:\n\n)\n- How does the projective operator look like?",
+   "fingerprint": "fe4c1a9694f2e11b",
+   "debug": null
+  },
+  {
+   "id": "s19",
+   "page": 19,
+   "pages": [
+    19,
+    19
+   ],
+   "label": "",
+   "title": "CONSTRUCTING A PROJECTIVE MEASUREMENT OPERATOR",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p019.png",
+   "figures": [
+    {
+     "file": "figures/p019-f1.png",
+     "bbox": [
+      0.205,
+      0.24,
+      0.513,
+      0.356
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- Start with two orthogonal states:",
+   "fingerprint": "d1520998779b3bc4",
+   "debug": null
+  },
+  {
+   "id": "s20",
+   "page": 20,
+   "pages": [
+    20,
+    20
+   ],
+   "label": "",
+   "title": "CONSTRUCTING A PROJECTIVE MEASUREMENT OPERATOR",
+   "flags": [
+    "math",
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p020.png",
+   "figures": [
+    {
+     "file": "figures/p020-f1.png",
+     "bbox": [
+      0.205,
+      0.24,
+      0.703,
+      0.626
+     ]
+    },
+    {
+     "file": "figures/p020-f2.png",
+     "bbox": [
+      0.61,
+      0.644,
+      0.673,
+      0.756
+     ]
+    },
+    {
+     "file": "figures/p020-f3.png",
+     "bbox": [
+      0.52,
+      0.671,
+      0.568,
+      0.729
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- Start with two orthogonal states :\n- To find 𝑀0:\n†𝑀0|ۧ0 = 1\n\nۦ|\n\n0 𝑀0\n\n†𝑀0|ۧ1 = 0\n\nۦ|\n\n1 𝑀0\n\n𝑀0𝑀0 = 𝑀0\n- Searching for 𝑀0 in the following form:",
+   "fingerprint": "daf02775b4f661ba",
+   "debug": null
+  },
+  {
+   "id": "s21",
+   "page": 21,
+   "pages": [
+    21,
+    21
+   ],
+   "label": "",
+   "title": "3RD POSTULATE IN CASE OF PROJECTIVE MEASUREMENTS (1)",
+   "flags": [
+    "math",
+    "layout"
+   ],
+   "view": "pages/p021.png",
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- To find 𝑀0 we have to solve:*ۦ|*\n†𝑀0|ۧ0 = 1\n\n1 =ۦ|\n\n0 𝑀0\n\n† 𝑎\n\n1\n\n𝑎 𝑏\n\n𝑏\n\n0 ^(=)\n\n𝑐 𝑑 𝑐 𝑑\n\n𝑎^(∗) 𝑐^(∗)\n\n𝑎 𝑏\n\n1 0\n\n𝑏^(∗) 𝑑^(∗)\n\n𝑐 𝑑\n\n†𝑀0|ۧ1 = 0\n\n0 =ۦ|\n\n1 𝑀0\n\n† 𝑎\n\n0\n\n𝑎 𝑏\n\n𝑏\n\n1 ^(=)\n\n𝑐 𝑑 𝑐 𝑑\n\n𝑎^(∗) 𝑐^(∗)\n\n𝑎 𝑏\n\n0 1\n\n𝑏^(∗) 𝑑^(∗)\n\n𝑐 𝑑\n\n𝑀0 = ^(𝑎)\n\n𝑏\n\n†𝑀0|ۧ0 = 1\n\n0 𝑀0\n\n𝑐 𝑑\n\n†𝑀0|ۧ1 = 0\n\nۦ|\n\n1 𝑀0\n\n𝑀0𝑀0 = 𝑀0\n\n0\n\n1 0 ^(⟹𝑎2 +) ^(𝑐2) ^(= 1)\n\n1\n\n0 1 ^(⟹𝑏2 +) ^(𝑑2) ^(= 0)",
+   "fingerprint": "7b661d22cceca851",
+   "debug": null
+  },
+  {
+   "id": "s22",
+   "page": 22,
+   "pages": [
+    22,
+    22
+   ],
+   "label": "",
+   "title": "CONSTRUCTING A PROJECTIVE MEASUREMENT OPERATOR",
+   "flags": [
+    "math",
+    "layout"
+   ],
+   "view": "pages/p022.png",
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- To find 𝑀0 we have to solve:\n†𝑀0|ۧ0 = 1\n\nۦ|\n\n0 𝑀0\n\n†𝑀0|ۧ1 = 0\n\nۦ|\n\n1 𝑀0\n\n𝑀0𝑀0 = 𝑀0\n\n𝑎 0\n\n𝑐 0 ^(=) ^(𝑎)\n\n0\n\n𝑎 0\n\n𝑐 0\n\n𝑐 0\n\n𝑀0 = ^(1)\n\n0\n- Solution:\n0 0\n\n𝑀1 = ^(0)\n\n0\n- Similarly:\n0 1\n\n𝑀0 = ^(𝑎)\n\n𝑏\n\n𝑐 𝑑\n\n𝑎^(2) + 𝑐^(2) = 1 𝑏^(2) + 𝑑^(2) = 0\n\n𝑏^(2) ≥0 𝑏= 𝑑= 0 𝑑^(2) ≥0\n\n𝑀0 = ^(𝑎)\n\n0\n\n𝑎^(2) = 𝑎\n\n𝑐 0\n\n𝑎𝑐= 𝑐",
+   "fingerprint": "08f7301ebd0ba491",
+   "debug": null
+  },
+  {
+   "id": "s23",
+   "page": 23,
+   "pages": [
+    23,
+    23
+   ],
+   "label": "",
+   "title": "CONSTRUCTING A PROJECTIVE MEASUREMENT OPERATOR",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p023.png",
+   "figures": [
+    {
+     "file": "figures/p023-f1.png",
+     "bbox": [
+      0.407,
+      0.324,
+      0.47,
+      0.423
+     ]
+    },
+    {
+     "file": "figures/p023-f2.png",
+     "bbox": [
+      0.527,
+      0.324,
+      0.59,
+      0.423
+     ]
+    },
+    {
+     "file": "figures/p023-f3.png",
+     "bbox": [
+      0.655,
+      0.324,
+      0.68,
+      0.423
+     ]
+    },
+    {
+     "file": "figures/p023-f4.png",
+     "bbox": [
+      0.227,
+      0.337,
+      0.365,
+      0.449
+     ]
+    },
+    {
+     "file": "figures/p023-f5.png",
+     "bbox": [
+      0.111,
+      0.49,
+      0.553,
+      0.636
+     ]
+    },
+    {
+     "file": "figures/p023-f6.png",
+     "bbox": [
+      0.111,
+      0.682,
+      0.868,
+      0.903
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Completeness:\n\nPractical notation:\n\nConclusion",
+   "fingerprint": "e45b74eba1e5b687",
+   "debug": null
+  },
+  {
+   "id": "s24",
+   "page": 24,
+   "pages": [
+    24,
+    24
+   ],
+   "label": "",
+   "title": "PLATO'S ALLEGORY OF THE CAVE",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p024.png",
+   "figures": [
+    {
+     "file": "figures/p024-f1.png",
+     "bbox": [
+      0.152,
+      0.257,
+      0.845,
+      0.969
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "",
+   "fingerprint": "665a644d77c3e883",
+   "debug": null
+  }
+ ]
+}

@@ -1,0 +1,686 @@
+{
+ "meta": {
+  "source": "bloch_gyak.pdf",
+  "kind": "pdf",
+  "physical_pages": 14,
+  "units": 14,
+  "grouping": "heuristic",
+  "needs_view": 12,
+  "flags": {
+   "graphic": 12,
+   "image": 12,
+   "table": 3,
+   "math": 1,
+   "layout": 1,
+   "encoding": 1,
+   "no-text": 1,
+   "stacked": 2
+  },
+  "body_font_size": 24.0,
+  "page_hashes": [
+   "5ce76ad8744e2095",
+   "646d5712d1a878f6",
+   "40f297e13ac37313",
+   "f3c658f1ad4d9118",
+   "4fe6a334c307420e",
+   "1e1174642963a504",
+   "bd263cfeea1c4318",
+   "321cb6f557f2f86b",
+   "342c9b6e5f8a09b1",
+   "820806c667a551f6",
+   "7c77e394a0b18011",
+   "8bde1edbf907b372",
+   "2aa20346071b0589",
+   "602a8199d048ad15"
+  ]
+ },
+ "units": [
+  {
+   "id": "s1",
+   "page": 1,
+   "pages": [
+    1,
+    1
+   ],
+   "label": "",
+   "title": "",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p001.png",
+   "figures": [
+    {
+     "file": "figures/p001-f1.png",
+     "bbox": [
+      0.016,
+      0.0,
+      0.727,
+      0.339
+     ]
+    },
+    {
+     "file": "figures/p001-f2.png",
+     "bbox": [
+      0.818,
+      0.861,
+      0.989,
+      0.939
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "**Műveletek a Bloch-gömbön**\n\nKvantuminformatikai alkalmazások – Gyakorlat\n\n**Dr. Solymos Balázs, Dr. Bacsárdi László, Dr. Imre Sándor** BME Hálózati Rendszerek és Szolgáltatások Tanszék solymosb@hit.bme.hu",
+   "fingerprint": "7fa3aae89ab9e7f6",
+   "debug": null
+  },
+  {
+   "id": "s2",
+   "page": 2,
+   "pages": [
+    2,
+    2
+   ],
+   "label": "",
+   "title": "A KVANTUMMECHANIKA POSZTULÁTUMAI",
+   "flags": [
+    "graphic",
+    "image",
+    "table"
+   ],
+   "view": "pages/p002.png",
+   "figures": [
+    {
+     "file": "figures/p002-f1.png",
+     "bbox": [
+      0.069,
+      0.161,
+      0.997,
+      0.929
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- 1. posztulátum: *kvantumbit*\n  - Hilbert-tér\n- 2. posztulátum: *logikai kapuk*\n  - Unitér transzformáció\n  - Elemi kvantum logikai kapuk\n- 3. posztulátum: *Q/C átalakítás*\n  - Mérési statisztika\n  - Mérés utáni állapot\n- 4. posztulátum: *regiszterek*\n  - Tenzorszorzás",
+   "fingerprint": "09431ece0af154d1",
+   "debug": null
+  },
+  {
+   "id": "s3",
+   "page": 3,
+   "pages": [
+    3,
+    3
+   ],
+   "label": "",
+   "title": "1ST POSTULATE (STATE SPACE)",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "The actual state of any closed physical system can be described by means of a so called state vector **v** having complex coefficients and unit length in a Hilbert space V i.e. a complex linear vector space (state space) equipped with inner product.\n\n**1.** **Állapotleírás**\n\n**Zárt** fizikai rendszer aktuális állapota egy olyan állapotvektorral írható le, amely komplex együtthatókkal rendelkezik, egységnyi hosszú a H Hilbert-térben (egy komplex lineáris vektortérben, amelyben értelmezve van a belső szorzat).",
+   "fingerprint": "ced0b6ecf143594f",
+   "debug": null
+  },
+  {
+   "id": "s4",
+   "page": 4,
+   "pages": [
+    4,
+    4
+   ],
+   "label": "",
+   "title": "KVANTUMBIT (QUBIT)",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p004.png",
+   "figures": [
+    {
+     "file": "figures/p004-f1.png",
+     "bbox": [
+      0.586,
+      0.231,
+      0.764,
+      0.299
+     ]
+    },
+    {
+     "file": "figures/p004-f2.png",
+     "bbox": [
+      0.511,
+      0.401,
+      0.682,
+      0.509
+     ]
+    },
+    {
+     "file": "figures/p004-f3.png",
+     "bbox": [
+      0.196,
+      0.421,
+      0.427,
+      0.489
+     ]
+    },
+    {
+     "file": "figures/p004-f4.png",
+     "bbox": [
+      0.766,
+      0.451,
+      0.802,
+      0.509
+     ]
+    },
+    {
+     "file": "figures/p004-f5.png",
+     "bbox": [
+      0.286,
+      0.631,
+      0.419,
+      0.699
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- Dirac ‘*ket*’ és ‘*bra*’ jelölés\n- Kvantumbit: mindkét klasszikus állapotot (bázisállapotot)\ntartalmazza egyidőben: szuperpozíció\n- ahol a és b komplex valószínűségi amplitúdók. Abszolút érték\nnégyzetük adja meg a mérés eredményét (a klasszikus bázisban):\n- Műveletek: belső és külső szorzat",
+   "fingerprint": "58a9d472d988517b",
+   "debug": null
+  },
+  {
+   "id": "s5",
+   "page": 5,
+   "pages": [
+    5,
+    5
+   ],
+   "label": "",
+   "title": "BLOCH-GÖMB (1)",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p005.png",
+   "figures": [
+    {
+     "file": "figures/p005-f1.png",
+     "bbox": [
+      0.121,
+      0.391,
+      0.877,
+      0.609
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Egy kvantumbitet jelenít meg",
+   "fingerprint": "0414df7cf5c8ec1f",
+   "debug": null
+  },
+  {
+   "id": "s6",
+   "page": 6,
+   "pages": [
+    6,
+    6
+   ],
+   "label": "",
+   "title": "BLOCH-GÖMB (2)",
+   "flags": [
+    "math",
+    "graphic",
+    "image",
+    "table",
+    "layout",
+    "encoding"
+   ],
+   "view": "pages/p006.png",
+   "figures": [
+    {
+     "file": "figures/p006-f1.png",
+     "bbox": [
+      0.526,
+      0.238,
+      0.989,
+      0.519
+     ]
+    },
+    {
+     "file": "figures/p006-f2.png",
+     "bbox": [
+      0.038,
+      0.273,
+      0.479,
+      0.942
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- 0\nz\n\na\n\n𝛼\n\nb 𝛽\n\nx\n\n1\n\nCopyright © 2005 John Wiley & Sons Ltd.\n\n = a 0 + b 1\n\nj\n\ny",
+   "fingerprint": "4879dd7728df11b2",
+   "debug": null
+  },
+  {
+   "id": "s7",
+   "page": 7,
+   "pages": [
+    7,
+    7
+   ],
+   "label": "",
+   "title": "PAULI-KAPUK",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p007.png",
+   "figures": [
+    {
+     "file": "figures/p007-f1.png",
+     "bbox": [
+      0.091,
+      0.211,
+      0.307,
+      0.289
+     ]
+    },
+    {
+     "file": "figures/p007-f2.png",
+     "bbox": [
+      0.481,
+      0.281,
+      0.824,
+      0.509
+     ]
+    },
+    {
+     "file": "figures/p007-f3.png",
+     "bbox": [
+      0.263,
+      0.421,
+      0.427,
+      0.479
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Pauli-X (bit-flip) kapu:",
+   "fingerprint": "b22e7c385e5e0793",
+   "debug": null
+  },
+  {
+   "id": "s8",
+   "page": 8,
+   "pages": [
+    8,
+    8
+   ],
+   "label": "",
+   "title": "PAULI-KAPUK",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p008.png",
+   "figures": [
+    {
+     "file": "figures/p008-f1.png",
+     "bbox": [
+      0.062,
+      0.211,
+      0.877,
+      0.769
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- Pauli X (bit-flip) gate:\n- Pauli Z (phase-flip) gate:",
+   "fingerprint": "2428c25ac05f088b",
+   "debug": null
+  },
+  {
+   "id": "s9",
+   "page": 9,
+   "pages": [
+    9,
+    9
+   ],
+   "label": "",
+   "title": "PAULI-KAPUK",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p009.png",
+   "figures": [
+    {
+     "file": "figures/p009-f1.png",
+     "bbox": [
+      0.083,
+      0.161,
+      0.299,
+      0.239
+     ]
+    },
+    {
+     "file": "figures/p009-f2.png",
+     "bbox": [
+      0.107,
+      0.281,
+      0.854,
+      0.519
+     ]
+    },
+    {
+     "file": "figures/p009-f3.png",
+     "bbox": [
+      0.173,
+      0.421,
+      0.337,
+      0.489
+     ]
+    },
+    {
+     "file": "figures/p009-f4.png",
+     "bbox": [
+      0.248,
+      0.691,
+      0.727,
+      0.799
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- Pauli Y (???-flip) gate:\n- Geometrical interpretation of Pauli X gate: rotation\naround axis x in the Bloch sphere",
+   "fingerprint": "b8a0c647d99d8442",
+   "debug": null
+  },
+  {
+   "id": "s10",
+   "page": 10,
+   "pages": [
+    10,
+    10
+   ],
+   "label": "",
+   "title": "FÁZIS-KAPU",
+   "flags": [
+    "graphic",
+    "image",
+    "no-text"
+   ],
+   "view": "pages/p010.png",
+   "figures": [
+    {
+     "file": "figures/p010-f1.png",
+     "bbox": [
+      0.068,
+      0.241,
+      0.292,
+      0.299
+     ]
+    },
+    {
+     "file": "figures/p010-f2.png",
+     "bbox": [
+      0.458,
+      0.381,
+      0.869,
+      0.619
+     ]
+    },
+    {
+     "file": "figures/p010-f3.png",
+     "bbox": [
+      0.151,
+      0.521,
+      0.352,
+      0.589
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "",
+   "fingerprint": "6b8dd0b91ddb3d0d",
+   "debug": null
+  },
+  {
+   "id": "s11",
+   "page": 11,
+   "pages": [
+    11,
+    11
+   ],
+   "label": "",
+   "title": "HADAMARD-KAPU",
+   "flags": [
+    "graphic",
+    "image",
+    "stacked"
+   ],
+   "view": "pages/p011.png",
+   "figures": [
+    {
+     "file": "figures/p011-f1.png",
+     "bbox": [
+      0.091,
+      0.181,
+      0.314,
+      0.259
+     ]
+    },
+    {
+     "file": "figures/p011-f2.png",
+     "bbox": [
+      0.511,
+      0.191,
+      0.914,
+      0.537
+     ]
+    },
+    {
+     "file": "figures/p011-f3.png",
+     "bbox": [
+      0.106,
+      0.341,
+      0.359,
+      0.439
+     ]
+    },
+    {
+     "file": "figures/p011-f4.png",
+     "bbox": [
+      0.293,
+      0.531,
+      0.434,
+      0.589
+     ]
+    },
+    {
+     "file": "figures/p011-x91.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p011-x92.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p011-x93.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p011-x78.png",
+     "layer": true
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- Hadamard-kapu hermitikus:\n,\n- továbbá:",
+   "fingerprint": "bcc705ea1802c94e",
+   "debug": null
+  },
+  {
+   "id": "s12",
+   "page": 12,
+   "pages": [
+    12,
+    12
+   ],
+   "label": "",
+   "title": "HADAMARD-KAPU",
+   "flags": [
+    "graphic",
+    "image",
+    "stacked",
+    "table"
+   ],
+   "view": "pages/p012.png",
+   "figures": [
+    {
+     "file": "figures/p012-f1.png",
+     "bbox": [
+      0.053,
+      0.181,
+      0.277,
+      0.249
+     ]
+    },
+    {
+     "file": "figures/p012-f2.png",
+     "bbox": [
+      0.511,
+      0.191,
+      0.914,
+      0.537
+     ]
+    },
+    {
+     "file": "figures/p012-f3.png",
+     "bbox": [
+      0.106,
+      0.341,
+      0.359,
+      0.439
+     ]
+    },
+    {
+     "file": "figures/p012-f4.png",
+     "bbox": [
+      0.293,
+      0.531,
+      0.434,
+      0.589
+     ]
+    },
+    {
+     "file": "figures/p012-f5.png",
+     "bbox": [
+      0.533,
+      0.661,
+      0.779,
+      0.919
+     ]
+    },
+    {
+     "file": "figures/p012-x91.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p012-x92.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p012-x93.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p012-x96.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p012-x78.png",
+     "layer": true
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- Hadamard-kapu hermitikus:\n,\n- továbbá:\n- Érdemes megjegyezni:",
+   "fingerprint": "a0b79e7645aa23db",
+   "debug": null
+  },
+  {
+   "id": "s13",
+   "page": 13,
+   "pages": [
+    13,
+    13
+   ],
+   "label": "",
+   "title": "HADAMARD-KAPU ÉS A SZUPERPOZÍCIÓ ELVE",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p013.png",
+   "figures": [
+    {
+     "file": "figures/p013-f1.png",
+     "bbox": [
+      0.083,
+      0.161,
+      0.997,
+      0.699
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "",
+   "fingerprint": "503a0dd4af54825f",
+   "debug": null
+  },
+  {
+   "id": "s14",
+   "page": 14,
+   "pages": [
+    14,
+    14
+   ],
+   "label": "",
+   "title": "BLOCH GÖMB FELADATOK",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Vizsgáljuk meg hol helyezkednek el az egyes bázisállapotok a gömbön!\n\nMilyen régió tartozik a gömbön egy mérési eloszláshoz?\n\nMilyen operációnak feleltethetőek meg a gömbön az egyes Pauli kapuk?\n\nVizsgáljuk meg, és lássuk be a következő egyenlőségeket: HH=I, XX=I, ZZ=I, HXH=Z, HZH=X",
+   "fingerprint": "9baf031eee608241",
+   "debug": null
+  }
+ ]
+}

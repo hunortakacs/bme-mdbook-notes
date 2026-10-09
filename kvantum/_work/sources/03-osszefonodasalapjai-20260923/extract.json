@@ -1,0 +1,1299 @@
+{
+ "meta": {
+  "source": "03_osszefonodasalapjai_20260923.pdf",
+  "kind": "pdf",
+  "physical_pages": 32,
+  "units": 30,
+  "grouping": "heuristic",
+  "needs_view": 25,
+  "flags": {
+   "graphic": 25,
+   "image": 24,
+   "table": 2,
+   "math": 4,
+   "encoding": 2,
+   "layout": 1,
+   "stacked": 5
+  },
+  "body_font_size": 10.0,
+  "page_hashes": [
+   "4c2a9381959edf1a",
+   "3a6b3a936e59168f",
+   "0edb1f1e0032452e",
+   "18afe78e4dcb36cc",
+   "a8cd20fd4db0e58c",
+   "e248a35891d520e5",
+   "364fbca77ea9fdbe",
+   "dc574911c0f4cd26",
+   "94a0064f3843e711",
+   "044c68bd1ecc2778",
+   "3fc9466b76f0d783",
+   "3b2987849618e2ba",
+   "d99967a5ef365aed",
+   "0ae0dd9cf23a7164",
+   "05b9eba2bd6987b7",
+   "8b73f587ce187deb",
+   "f5dc04bf8fbae515",
+   "0cd781c43b2515eb",
+   "67ba8ec0f00144ef",
+   "1e3b3f2c0ce22bac",
+   "5a491619ddb969f0",
+   "76c07efa8e1db443",
+   "903753f6862c494a",
+   "fad5f46667c43f06",
+   "b062f75f0cef4953",
+   "1ff99c91c44a8169",
+   "b1af7ef8b948b1d6",
+   "6bdfde7511e5f3da",
+   "6ab3eeee5ca4aeb7",
+   "74069ebec3e57dcc",
+   "544b6183eb9a15a4",
+   "d3cc44ec30d63947"
+  ]
+ },
+ "units": [
+  {
+   "id": "s1",
+   "page": 1,
+   "pages": [
+    1,
+    1
+   ],
+   "label": "",
+   "title": "",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p001.png",
+   "figures": [
+    {
+     "file": "figures/p001-f1.png",
+     "bbox": [
+      0.0,
+      0.0,
+      0.575,
+      0.343
+     ]
+    },
+    {
+     "file": "figures/p001-f2.png",
+     "bbox": [
+      0.857,
+      0.644,
+      0.988,
+      0.943
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "**Összefonódás**\n\nKvantuminformatikai alkalmazások, 2026. ősz 2026. szeptember 23.\n\n**Dr. Bacsárdi László, Dr. Imre Sándor**\n\nBME Villamosmérnöki és Informatikai Kar bacsardi@hit.bme.hu",
+   "fingerprint": "ad15079ddd6565a0",
+   "debug": null
+  },
+  {
+   "id": "s2",
+   "page": 2,
+   "pages": [
+    2,
+    2
+   ],
+   "label": "",
+   "title": "FONTOS INFORMÁCIÓ",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "A 2026/2027-es tanévben az előadásról felvétel készül. Minden információ (dátumok, évvel kapcsolatos referencia) a 2026/2027-es tanév őszi félévére vonatkozik.\n\nAz előadás során a diasor minimálisan módosulhat (pl. elgépelések javítása, bizonyos fogalmak pontosítása.) A tárgy számonkért anyaga a félév során folyamatosan közzétett diasor. Ha az előadás felvétele és az utólag közzétett diasor között valamilyen különbség van, akkor az utólag közzétett diasor tartalma a mérvadó.",
+   "fingerprint": "7ee8d0c8308a208c",
+   "debug": null
+  },
+  {
+   "id": "s3",
+   "page": 3,
+   "pages": [
+    3,
+    3
+   ],
+   "label": "",
+   "title": "ÖSSZEFOGLALÁS A KORÁBBI ÓRÁKRÓL",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "",
+   "fingerprint": "c1cd451fcfbff47e",
+   "debug": null
+  },
+  {
+   "id": "s4",
+   "page": 4,
+   "pages": [
+    4,
+    4
+   ],
+   "label": "",
+   "title": "MI AZ A KVANTUM?",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p004.png",
+   "figures": [
+    {
+     "file": "figures/p004-f1.png",
+     "bbox": [
+      0.092,
+      0.297,
+      0.433,
+      0.729
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "**Egy rendszerre akkor aggasztjuk rá a** **„kvantum” jelzőt, ha a kvantummechanika** **törvényei szerint működik.**\n\nA kvantum alapú rendszereknek speciális jellegzetességei:\n- kvantáltság\n- hullám-részecske kettősség\n- alagúteffektus\n- szuperpozíció\n- kvantum interferencia\n- …\nA kvantum alapú jelenségek alapvetően a nanométer tartományban jelennek meg **de** a kvantummechanika törvénye jelentik az alapjait sok makroszkopikus rendszernek is.",
+   "fingerprint": "c26156bb6ddf4696",
+   "debug": null
+  },
+  {
+   "id": "s5",
+   "page": 5,
+   "pages": [
+    5,
+    5
+   ],
+   "label": "",
+   "title": "„We never experiment with just one electron or atom or (small) molecule.",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p005.png",
+   "figures": [
+    {
+     "file": "figures/p005-f1.png",
+     "bbox": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "In thought-experiments we sometimes assume that we do; this invariably entails ridiculous consequences... **we are not** **experimenting with single particles**, any more than we can raise Ichthyosauria in the zoo\"\n\nErwin Schrödinger [Brit. J. Phil. Sci. 3, 233 (1952)]",
+   "fingerprint": "2ef1da3152131000",
+   "debug": null
+  },
+  {
+   "id": "s6",
+   "page": 6,
+   "pages": [
+    6,
+    6
+   ],
+   "label": "",
+   "title": "A KVANTUMMECHANIKA POSZTULÁTUMAI",
+   "flags": [
+    "graphic",
+    "image",
+    "table"
+   ],
+   "view": "pages/p006.png",
+   "figures": [
+    {
+     "file": "figures/p006-f1.png",
+     "bbox": [
+      0.141,
+      0.164,
+      0.875,
+      0.929
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- 1. Posztulátum: *kvantumbit*\n  - Hilbert-tér\n- 2. Posztulátum: *logikai kapuk*\n  - Unitér transzformáció\n  - Elemi kvantum logikai kapuk\n- 3. Posztulátum: *Q/C átalakítás*\n  - Mérési statisztika\n  - Mérés utáni állapot\n- 4. Posztulátum: *regiszterek*\n  - Tenzorszorzás",
+   "fingerprint": "0917992a9e73b95d",
+   "debug": null
+  },
+  {
+   "id": "s7",
+   "page": 7,
+   "pages": [
+    7,
+    7
+   ],
+   "label": "",
+   "title": "POSZTULÁTUMOK (1)",
+   "flags": [
+    "math",
+    "graphic",
+    "image",
+    "encoding"
+   ],
+   "view": "pages/p007.png",
+   "figures": [
+    {
+     "file": "figures/p007-f1.png",
+     "bbox": [
+      0.385,
+      0.617,
+      0.523,
+      0.756
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "**1.** **Állapotleírás** **Zárt** fizikai rendszer aktuális állapota egy olyan állapotvektorral írható le, amely komplex együtthatókkal rendelkezik, egységnyi hosszú a H Hilbert-térben (egy komplex lineáris vektortérben, amelyben értelmezve van a belső szorzat).\n\n**2. Zárt rendszer időbeli fejlődése** A **zárt** rendszer időbeli fejlődése **unitér** transzformációval írható le, amely csak a kezdő és végállapottól függ.\n\n**4. Összetett rendszer** Ha V és Y a két kvantumrendszerhez rendelt Hilbert-tér, akkor az ebből a két\n\nW = V  Y\n\nrendszerből álló összetett rendszerhez a Hilbert-tér rendelhető.",
+   "fingerprint": "e7277fe280a7956d",
+   "debug": null
+  },
+  {
+   "id": "s8",
+   "page": 8,
+   "pages": [
+    8,
+    8
+   ],
+   "label": "",
+   "title": "3. POSZTULÁTUM",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p008.png",
+   "figures": [
+    {
+     "file": "figures/p008-f1.png",
+     "bbox": [
+      0.46,
+      0.351,
+      0.538,
+      0.423
+     ]
+    },
+    {
+     "file": "figures/p008-f2.png",
+     "bbox": [
+      0.137,
+      0.497,
+      0.883,
+      0.969
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "**3.** **A mérés**\n\nLegyen 𝑚 a mérés lehetséges eredményeinek a halmaza. Egy mérés a mérési operátorok halmazával adható meg:\n\nHa a megmérendő rendszer állapota , akkor annak a valószínűsége, hogy a mérés az m eredményt adja:\n\nA mérés után a rendszer állapota az alábbi lesz:\n\nEz miért érdekes?",
+   "fingerprint": "6dd7bf0de7237490",
+   "debug": null
+  },
+  {
+   "id": "s9",
+   "page": 9,
+   "pages": [
+    9,
+    9
+   ],
+   "label": "",
+   "title": "KVANTUMBIT (QUBIT)",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p009.png",
+   "figures": [
+    {
+     "file": "figures/p009-f1.png",
+     "bbox": [
+      0.437,
+      0.177,
+      0.575,
+      0.249
+     ]
+    },
+    {
+     "file": "figures/p009-f2.png",
+     "bbox": [
+      0.265,
+      0.364,
+      0.485,
+      0.436
+     ]
+    },
+    {
+     "file": "figures/p009-f3.png",
+     "bbox": [
+      0.692,
+      0.364,
+      0.725,
+      0.463
+     ]
+    },
+    {
+     "file": "figures/p009-f4.png",
+     "bbox": [
+      0.542,
+      0.377,
+      0.59,
+      0.436
+     ]
+    },
+    {
+     "file": "figures/p009-f5.png",
+     "bbox": [
+      0.677,
+      0.631,
+      0.778,
+      0.703
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- Dirac ‘*ket*’ és ‘*bra*’ jelölés\n- Kvantumbit: mindkét klasszikus állapotot (bázisállapotot) tartalmazza egyidőben:\nszuperpozíció\n- ahol a és b komplex valószínűségi amplitúdók. Abszolút érték négyzetük adja\nmeg a mérés eredményét (a klasszikus bázisban):\n- Műveletek: belső és külső szorzat",
+   "fingerprint": "0bc087c4d486edf8",
+   "debug": null
+  },
+  {
+   "id": "s10",
+   "page": 10,
+   "pages": [
+    10,
+    10
+   ],
+   "label": "",
+   "title": "BLOCH-GÖMB (1)",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p010.png",
+   "figures": [
+    {
+     "file": "figures/p010-f1.png",
+     "bbox": [
+      0.22,
+      0.391,
+      0.778,
+      0.609
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Egy kvantumbitet jelenít meg",
+   "fingerprint": "169873da6e453c46",
+   "debug": null
+  },
+  {
+   "id": "s11",
+   "page": 11,
+   "pages": [
+    11,
+    11
+   ],
+   "label": "",
+   "title": "BLOCH-GÖMB (2)",
+   "flags": [
+    "math",
+    "graphic",
+    "image",
+    "layout",
+    "encoding"
+   ],
+   "view": "pages/p011.png",
+   "figures": [
+    {
+     "file": "figures/p011-f1.png",
+     "bbox": [
+      0.542,
+      0.297,
+      0.853,
+      0.383
+     ]
+    },
+    {
+     "file": "figures/p011-f2.png",
+     "bbox": [
+      0.154,
+      0.273,
+      0.485,
+      0.942
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- 0\nz\n\na\n\n𝛼\n\nb 𝛽\n\nx\n\n1\n\nCopyright © 2005 John Wiley & Sons Ltd.\n    - j\n = a 0 + b 1\n\ny",
+   "fingerprint": "be238cfa4f2c1d84",
+   "debug": null
+  },
+  {
+   "id": "s12",
+   "page": 12,
+   "pages": [
+    12,
+    12
+   ],
+   "label": "",
+   "title": "EGYBITES KVANTUMKAPUK",
+   "flags": [
+    "graphic",
+    "image",
+    "stacked"
+   ],
+   "view": "pages/p012.png",
+   "figures": [
+    {
+     "file": "figures/p012-f1.png",
+     "bbox": [
+      0.175,
+      0.537,
+      0.343,
+      0.609
+     ]
+    },
+    {
+     "file": "figures/p012-f2.png",
+     "bbox": [
+      0.377,
+      0.551,
+      0.425,
+      0.689
+     ]
+    },
+    {
+     "file": "figures/p012-f3.png",
+     "bbox": [
+      0.46,
+      0.657,
+      0.538,
+      0.823
+     ]
+    },
+    {
+     "file": "figures/p012-f4.png",
+     "bbox": [
+      0.565,
+      0.671,
+      0.793,
+      0.809
+     ]
+    },
+    {
+     "file": "figures/p012-f5.png",
+     "bbox": [
+      0.055,
+      0.684,
+      0.253,
+      0.809
+     ]
+    },
+    {
+     "file": "figures/p012-x114.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p012-x115.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p012-x116.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p012-x117.png",
+     "layer": true
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- Megismerkedtünk különböző kvantumkapukkal\n  - Pauli-X, Y, Z kapuk\n  - Fázisforgató kapu\n  - Valamint a Hadamard-kapuval (H-kapu)",
+   "fingerprint": "1586a9950dc4e0bf",
+   "debug": null
+  },
+  {
+   "id": "s13",
+   "page": 13,
+   "pages": [
+    13,
+    13
+   ],
+   "label": "",
+   "title": "ELEMI KVANTUMKAPUK (1)",
+   "flags": [
+    "graphic",
+    "image",
+    "stacked"
+   ],
+   "view": "pages/p013.png",
+   "figures": [
+    {
+     "file": "figures/p013-f1.png",
+     "bbox": [
+      0.047,
+      0.204,
+      0.74,
+      0.769
+     ]
+    },
+    {
+     "file": "figures/p013-x120.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p013-x121.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p013-x115.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p013-x122.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p013-x124.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p013-x123.png",
+     "layer": true
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Pauli-X (bit-flip) kapu:\n\nPauli-Z (fázis-flip) kapu",
+   "fingerprint": "4241b0881aaf0547",
+   "debug": null
+  },
+  {
+   "id": "s14",
+   "page": 14,
+   "pages": [
+    14,
+    14
+   ],
+   "label": "",
+   "title": "ELEMI KVANTUMKAPUK (2)",
+   "flags": [
+    "graphic",
+    "image",
+    "stacked"
+   ],
+   "view": "pages/p014.png",
+   "figures": [
+    {
+     "file": "figures/p014-f1.png",
+     "bbox": [
+      0.407,
+      0.271,
+      0.703,
+      0.516
+     ]
+    },
+    {
+     "file": "figures/p014-f2.png",
+     "bbox": [
+      0.295,
+      0.391,
+      0.373,
+      0.516
+     ]
+    },
+    {
+     "file": "figures/p014-f3.png",
+     "bbox": [
+      0.13,
+      0.417,
+      0.253,
+      0.489
+     ]
+    },
+    {
+     "file": "figures/p014-f4.png",
+     "bbox": [
+      0.37,
+      0.631,
+      0.695,
+      0.863
+     ]
+    },
+    {
+     "file": "figures/p014-f5.png",
+     "bbox": [
+      0.055,
+      0.764,
+      0.238,
+      0.836
+     ]
+    },
+    {
+     "file": "figures/p014-f6.png",
+     "bbox": [
+      0.287,
+      0.791,
+      0.335,
+      0.849
+     ]
+    },
+    {
+     "file": "figures/p014-x127.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p014-x128.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p014-x129.png",
+     "layer": true
+    },
+    {
+     "file": "figures/p014-x130.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p014-x123.png",
+     "layer": true
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Pauli-Y (???-flip) kapu:\n\nFázisforgató kapu",
+   "fingerprint": "89daa90183a136ef",
+   "debug": null
+  },
+  {
+   "id": "s15",
+   "page": 15,
+   "pages": [
+    15,
+    15
+   ],
+   "label": "",
+   "title": "HADAMARD-KAPU HATÁSA A BÁZISÁLLAPOTOKRA",
+   "flags": [
+    "graphic",
+    "image",
+    "table"
+   ],
+   "view": "pages/p015.png",
+   "figures": [
+    {
+     "file": "figures/p015-f1.png",
+     "bbox": [
+      0.362,
+      0.417,
+      0.553,
+      0.676
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- Érdemes megjegyezni",
+   "fingerprint": "7fd6b06b33670d01",
+   "debug": null
+  },
+  {
+   "id": "s16",
+   "page": 17,
+   "pages": [
+    16,
+    17
+   ],
+   "label": "",
+   "title": "SZÁMONKÉRÉS",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Féléves feladat\n- Egyénileg és csapatban is megoldható\n- Mérnöki ábrándozós és programozós feladat egyaránt van\n- Beadási forma: videó vagy dokumentum\nHa valaki a NHF alapján TDK-ázna, bátran szóljon!",
+   "fingerprint": "96f3055067d6203c",
+   "debug": null
+  },
+  {
+   "id": "s17",
+   "page": 18,
+   "pages": [
+    18,
+    18
+   ],
+   "label": "",
+   "title": "",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "**Bármilyen kérdés az eddigiekhez?**",
+   "fingerprint": "62da5e26976b0db8",
+   "debug": null
+  },
+  {
+   "id": "s18",
+   "page": 19,
+   "pages": [
+    19,
+    19
+   ],
+   "label": "",
+   "title": "",
+   "flags": [
+    "graphic",
+    "image",
+    "stacked"
+   ],
+   "view": "pages/p019.png",
+   "figures": [
+    {
+     "file": "figures/p019-f1.png",
+     "bbox": [
+      0.0,
+      0.0,
+      0.373,
+      0.316
+     ]
+    },
+    {
+     "file": "figures/p019-f2.png",
+     "bbox": [
+      0.372,
+      0.0,
+      0.965,
+      0.41
+     ]
+    },
+    {
+     "file": "figures/p019-f3.png",
+     "bbox": [
+      0.13,
+      0.471,
+      0.38,
+      0.918
+     ]
+    },
+    {
+     "file": "figures/p019-f4.png",
+     "bbox": [
+      0.595,
+      0.471,
+      0.973,
+      0.903
+     ]
+    },
+    {
+     "file": "figures/p019-x17.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p019-x147.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p019-x148.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p019-x149.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p019-x150.jpeg",
+     "layer": true
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "**Összefonódás**\n\n**(Entanglement)**\n\n\"Wonder is from surprise, and surprise stops with\n\nexperience.\"\n\nBishop Robert South\n\nEinstein,\n\namikor\n\nelőször hallott az összefonódásról",
+   "fingerprint": "0c9e7c3b998231d0",
+   "debug": null
+  },
+  {
+   "id": "s19",
+   "page": 21,
+   "pages": [
+    20,
+    21
+   ],
+   "label": "",
+   "title": "SCHRÖDINGER MACSKÁJA",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p021.png",
+   "figures": [
+    {
+     "file": "figures/p021-f1.png",
+     "bbox": [
+      0.122,
+      0.164,
+      0.89,
+      0.903
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "",
+   "fingerprint": "58521b6cf85471db",
+   "debug": null
+  },
+  {
+   "id": "s20",
+   "page": 22,
+   "pages": [
+    22,
+    22
+   ],
+   "label": "",
+   "title": "SZUPERPOZÍCIÓ",
+   "flags": [
+    "math",
+    "graphic"
+   ],
+   "view": "pages/p022.png",
+   "figures": [
+    {
+     "file": "figures/p022-f1.png",
+     "bbox": [
+      0.308,
+      0.351,
+      0.695,
+      0.466
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "|ۧ𝜑= 𝑎ۧ|0 + 𝑏ۧ|1",
+   "fingerprint": "3de71531607d6278",
+   "debug": null
+  },
+  {
+   "id": "s21",
+   "page": 23,
+   "pages": [
+    23,
+    23
+   ],
+   "label": "",
+   "title": "MEGLEPŐ ÁLLAPOT",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p023.png",
+   "figures": [
+    {
+     "file": "figures/p023-f1.png",
+     "bbox": [
+      0.032,
+      0.284,
+      0.728,
+      0.568
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- A 4. posztulátum alapján bontsuk fel az alábbi állapotot!\n?\n    - ?\n- Nincs ilyen felbontás!\n- Kvantumállapotok két típusa\n  - szorzat (product)\n  - összefonódott (entangled)",
+   "fingerprint": "e83af7a67a2835d6",
+   "debug": null
+  },
+  {
+   "id": "s22",
+   "page": 24,
+   "pages": [
+    24,
+    24
+   ],
+   "label": "",
+   "title": "ÖSSZEFONÓDÁS",
+   "flags": [
+    "math",
+    "graphic",
+    "image",
+    "stacked"
+   ],
+   "view": "pages/p024.png",
+   "figures": [
+    {
+     "file": "figures/p024-f1.png",
+     "bbox": [
+      0.122,
+      0.004,
+      0.944,
+      0.983
+     ]
+    },
+    {
+     "file": "figures/p024-x168.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p024-x169.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p024-x170.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p024-x171.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p024-x172.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p024-x173.jpeg",
+     "layer": true
+    },
+    {
+     "file": "figures/p024-x179.jpeg",
+     "layer": true
+    }
+   ],
+   "links": [
+    "http://www.jal.co.jp/aircraft/aircraft/dl/group_05_1024_768.jpg"
+   ],
+   "annots": [],
+   "header": [],
+   "text": "Gyakorlatilag (szinte) minden hatékony kvantumalgoritmusban és kommunikációs\n\ngroup_05_1024_768\n\nprotokollban megjelenik\n\n𝜓= ^(1) 00 + ^(1) 11\n- 2\n  - 2",
+   "fingerprint": "da340ee0f87f789f",
+   "debug": null
+  },
+  {
+   "id": "s23",
+   "page": 25,
+   "pages": [
+    25,
+    25
+   ],
+   "label": "",
+   "title": "",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p025.png",
+   "figures": [
+    {
+     "file": "figures/p025-f1.png",
+     "bbox": [
+      0.0,
+      0.0,
+      0.26,
+      0.169
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "**Hogyan állítsunk elő összefonódott** **párt?**",
+   "fingerprint": "d3f19d4952928718",
+   "debug": null
+  },
+  {
+   "id": "s24",
+   "page": 26,
+   "pages": [
+    26,
+    26
+   ],
+   "label": "",
+   "title": "VEZÉRELT NEM KAPU (CNOT GATE)",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p026.png",
+   "figures": [
+    {
+     "file": "figures/p026-f1.png",
+     "bbox": [
+      0.219,
+      0.177,
+      0.763,
+      0.921
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Felső vezeték: vezérlés (control) Alsó vezeték: adat (data)",
+   "fingerprint": "0c232c3ae91ba3de",
+   "debug": null
+  },
+  {
+   "id": "s25",
+   "page": 27,
+   "pages": [
+    27,
+    27
+   ],
+   "label": "",
+   "title": "CNOT-KAPU",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p027.png",
+   "figures": [
+    {
+     "file": "figures/p027-f1.png",
+     "bbox": [
+      0.22,
+      0.297,
+      0.493,
+      0.716
+     ]
+    },
+    {
+     "file": "figures/p027-f2.png",
+     "bbox": [
+      0.535,
+      0.324,
+      0.83,
+      0.769
+     ]
+    },
+    {
+     "file": "figures/p027-f3.png",
+     "bbox": [
+      0.37,
+      0.857,
+      0.665,
+      0.929
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Igazságtábla\n\nMátrix\n\nMesteregyenlet",
+   "fingerprint": "9b0ad62b7db606e1",
+   "debug": null
+  },
+  {
+   "id": "s26",
+   "page": 28,
+   "pages": [
+    28,
+    28
+   ],
+   "label": "",
+   "title": "CNOT MINT KLASSZIKUS MÁSOLÓGÉP",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p028.png",
+   "figures": [
+    {
+     "file": "figures/p028-f1.png",
+     "bbox": [
+      0.632,
+      0.271,
+      0.86,
+      0.516
+     ]
+    },
+    {
+     "file": "figures/p028-f2.png",
+     "bbox": [
+      0.295,
+      0.471,
+      0.515,
+      0.543
+     ]
+    },
+    {
+     "file": "figures/p028-f3.png",
+     "bbox": [
+      0.4,
+      0.617,
+      0.568,
+      0.689
+     ]
+    },
+    {
+     "file": "figures/p028-f4.png",
+     "bbox": [
+      0.602,
+      0.617,
+      0.748,
+      0.689
+     ]
+    },
+    {
+     "file": "figures/p028-f5.png",
+     "bbox": [
+      0.257,
+      0.777,
+      0.665,
+      0.849
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Ha az adat bemenet , akkor CNOT kapu a vezérlés bemenetét teszi az adat kimenetére\n- Legyen a vezérlés:\n- A szuperpozíció elve alapján a kezdeti bemeneti állapot\n- A CNOT kapu alkalmazását követően\nÖsszefonódott pár!",
+   "fingerprint": "59c87f4c9fe2c48b",
+   "debug": null
+  },
+  {
+   "id": "s27",
+   "page": 29,
+   "pages": [
+    29,
+    29
+   ],
+   "label": "",
+   "title": "BELL ÁLLAPOTOK",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p029.png",
+   "figures": [
+    {
+     "file": "figures/p029-f1.png",
+     "bbox": [
+      0.166,
+      0.218,
+      0.883,
+      0.983
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Nézzük meg a CNOT-kaput mint összefonódást előállító áramköri elemet!\n\n(beta-barium borate)\n\nCopyright © 2005 John Wiley & Sons Ltd.\n\nor Lithium niobate\n- Spontaneous parametric down-\n- conversion process can split photons into type II photon pairs with mutually perpendicular polarization.",
+   "fingerprint": "76c595076b28670d",
+   "debug": null
+  },
+  {
+   "id": "s28",
+   "page": 30,
+   "pages": [
+    30,
+    30
+   ],
+   "label": "",
+   "title": "BELL-ÁLLAPOTOK",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p030.png",
+   "figures": [
+    {
+     "file": "figures/p030-f1.png",
+     "bbox": [
+      0.377,
+      0.217,
+      0.59,
+      0.743
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "A Bell-állapotok ortogonálisak!",
+   "fingerprint": "350288af66cd7260",
+   "debug": null
+  },
+  {
+   "id": "s29",
+   "page": 31,
+   "pages": [
+    31,
+    31
+   ],
+   "label": "",
+   "title": "ÁLTALÁNOSÍTOTT KVANTUM ÖSSZEFONÓ",
+   "flags": [
+    "graphic",
+    "image"
+   ],
+   "view": "pages/p031.png",
+   "figures": [
+    {
+     "file": "figures/p031-f1.png",
+     "bbox": [
+      0.37,
+      0.177,
+      0.605,
+      0.607
+     ]
+    }
+   ],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "Copyright © 2005 John Wiley & Sons Ltd.\n- Elegendő az összefonódott kvantumbitek egyikéhez hozzáfonódni,\nhogy a teljes rendszerhez hozzáfonódjunk\n- Összefonódást nem tudunk előállítani klasszikus kommunikáció\nsegítségével",
+   "fingerprint": "65ff41920aa842e0",
+   "debug": null
+  },
+  {
+   "id": "s30",
+   "page": 32,
+   "pages": [
+    32,
+    32
+   ],
+   "label": "",
+   "title": "DE MIRE JÓ MINDEZ?",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "- Szupersűrű tömörítés (superdense coding)\n- Teleportáció (quantum teleportation)\n- Kvantum alapú kulcsszétosztás (quantum key distribution)\n- Összefonódás megosztás (entanglement swapping)\n- s még nagyon sok más helyen használjuk",
+   "fingerprint": "911c97c9d6da3d91",
+   "debug": null
+  }
+ ]
+}

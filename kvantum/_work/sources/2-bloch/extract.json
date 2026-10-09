@@ -1,0 +1,109 @@
+{
+ "meta": {
+  "source": "2_bloch.ipynb",
+  "kind": "notebook",
+  "units": 5,
+  "needs_view": 3,
+  "flags": {
+   "image": 3
+  }
+ },
+ "units": [
+  {
+   "id": "s1",
+   "page": 1,
+   "pages": [
+    1,
+    1
+   ],
+   "label": "",
+   "title": "Általános Qiskit információk",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "# Általános Qiskit információk\nA demonstrációhoz a Qiskit python-os könyvtárat és a Jupyter Notebook környezetet használom. Ha valaki saját gépen szeretné követni az anyagot, akkor fel kell telepíteni a Python-t, a Jupyter-t és a Qiskit-et. Az utolsó kettőt pip segítségével a következő módon lehet telepíteni egy már működő python installációhoz:\n\n    pip install notebook\n    pip install qiskit[visualization]\n    pip install qiskit-ibm-runtime\n    pip install qiskit-aer\nEzután indítható el a Jupyter a \"jupyter notebook\" paranccsal.",
+   "fingerprint": "683bea08228f6b59"
+  },
+  {
+   "id": "s2",
+   "page": 1,
+   "pages": [
+    1,
+    1
+   ],
+   "label": "",
+   "title": "Bloch gömb Qiskit példa",
+   "flags": [],
+   "view": null,
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "# Bloch gömb Qiskit példa",
+   "fingerprint": "1b86504f2dfd7c3f"
+  },
+  {
+   "id": "s3",
+   "page": 1,
+   "pages": [
+    1,
+    1
+   ],
+   "label": "",
+   "title": "1. Bloch gömb rajzolása állapotvektor alapján",
+   "flags": [
+    "image"
+   ],
+   "view": "figures/cell003-1.png",
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "## 1. Bloch gömb rajzolása állapotvektor alapján\n\n<!-- cell 3 -->\n```python\nfrom qiskit import QuantumCircuit\nfrom qiskit.quantum_info import Statevector\nfrom qiskit.visualization import plot_bloch_multivector\nimport numpy as np\n\n#state = Statevector([1/np.sqrt(2), 1/np.sqrt(2)])\nstate = Statevector([0.6, 0.8])\nplot_bloch_multivector(state)\n```\n\n<!-- figure: figures/cell003-1.png (output of cell 3) -->",
+   "fingerprint": "f71c536a97b1e56b"
+  },
+  {
+   "id": "s4",
+   "page": 1,
+   "pages": [
+    1,
+    1
+   ],
+   "label": "",
+   "title": "2. Egyszerű kvantumhálózat készítése és kapuk alkalmazása",
+   "flags": [
+    "image"
+   ],
+   "view": "figures/cell005-1.png",
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "## 2. Egyszerű kvantumhálózat készítése és kapuk alkalmazása\n\n<!-- cell 5 -->\n```python\n\nqc = QuantumCircuit(1,1) # 1 kvantum és 1 klasszikus bit (1 klasszikus bit a későbbi mérési eredmények tárolására kell)\nqc.initialize([0.8, 0.6j], 0) #kezdeti állapot beállítása\n\n#kvantumkapuk alkalmazása ()\nqc.x(0) # Pauli X kapu\nqc.y(0) # Pauli Y kapu\nqc.z(0) # Pauli Z kapu\nqc.h(0) # H kapu\n#fázisforgató kapu\ntheta = np.pi\nqc.p(theta, 0)\nstate = Statevector(qc)\nplot_bloch_multivector(state)\n```\n\n<!-- figure: figures/cell005-1.png (output of cell 5) -->",
+   "fingerprint": "a04dc42629fa2b78"
+  },
+  {
+   "id": "s5",
+   "page": 1,
+   "pages": [
+    1,
+    1
+   ],
+   "label": "",
+   "title": "3.mérés definiálása",
+   "flags": [
+    "image"
+   ],
+   "view": "figures/cell011-1.png",
+   "figures": [],
+   "links": [],
+   "annots": [],
+   "header": [],
+   "text": "## 3.mérés definiálása\n\n<!-- cell 7 -->\n```python\n\n\nqc.measure(range(1),range(1)) #mely qubiteken végezzünk mérést és azok eredményeit hova írjuk\nqc.draw() #ellenőrzésként a hálózat lerajzoltatható\n```\n\nOutput:\n```text\n     ┌──────────────────────┐┌───┐┌───┐┌───┐┌───┐┌──────┐┌─┐\n  q: ┤ Initialize(0.8,0.6j) ├┤ X ├┤ Y ├┤ Z ├┤ H ├┤ P(π) ├┤M├\n     └──────────────────────┘└───┘└───┘└───┘└───┘└──────┘└╥┘\nc: 1/═════════════════════════════════════════════════════╩═\n                                                          0\n```\n\n### Mérési eredmények szimulációja\n\n<!-- cell 9 -->\n```python\nfrom qiskit_aer import Aer\nfrom qiskit import transpile\n\n#szimulátor kijelölése\nbackend = Aer.get_backend('qasm_simulator')\njob_sim = backend.run(transpile(qc, backend), shots=1000) # 1000-szer ismételjük meg a kísérletet, hogy statisztikát kapjunk és elvégezzük a mérést\n\nresult_sim = job_sim.result() \n\ncounts = result_sim.get_counts()\nprint(counts) #mérési eredmények kiírása\n```\n\nOutput:\n```text\n{'1': 481, '0': 519}\n```\n\n### Mérési eredmények vizualizációja\n\n<!-- cell 11 -->\n```python\nfrom qiskit.visualization import plot_histogram\n\n#hisztogram a mérési eredményekből\nplot_histogram(counts)\n```\n\n<!-- figure: figures/cell011-1.png (output of cell 11) -->",
+   "fingerprint": "9b5b2babc22f8021"
+  }
+ ]
+}

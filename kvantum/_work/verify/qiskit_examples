@@ -1,0 +1,194 @@
+#!/usr/bin/env python3
+"""Run the book's Python (Qiskit) examples and compare them with the output shown after them.
+
+Called as  verify/qiskit_examples <class folder>.  Every chapter whose Python blocks use Qiskit is run
+like a notebook: its blocks in order, in one namespace; a block's output is what it prints plus the repr
+of its last expression (figures, None and InstructionSet values print nothing; a LaTeX value is
+compared with the $$...$$ formula in the paragraph right after the block).  The expected output is
+the first ```text block after a Python block, if at most one paragraph of prose stands between them.
+Comparison: line-wise after stripping trailing spaces; numbers may differ by 1e-6; measurement counts
+(a dict of bitstring -> int) only need the same keys and total, since they are random.
+
+Directives in the chapter source, on the lines just before a block:
+  <!-- verify: skip -->               the block is not run (it needs something not installed)
+  <!-- verify: prelude ... -->        code run (hidden) before the next block
+Interpreter: $KVANTUM_QISKIT_PYTHON, default ~/.local/share/venvs/qiskit/bin/python.
+Accepted differences: _qiskit_examples.accepted (key<TAB>reason, key = sha1(code + expected)[:12]).
+"""
+import ast, hashlib, json, os, re, subprocess, sys, tempfile
+from pathlib import Path
+
+cdir = Path(sys.argv[1] if len(sys.argv) > 1 else ".").resolve()
+src = cdir / "book" / "src"
+here = Path(__file__).resolve().parent
+py = os.environ.get("KVANTUM_QISKIT_PYTHON", str(Path.home() / ".local/share/venvs/qiskit/bin/python"))
+if not Path(py).exists():
+    print(f"cannot run: Qiskit interpreter {py} not found (create the venv with qiskit, qiskit-aer, matplotlib, pylatexenc)")
+    sys.exit(2)
+
+accepted = {}
+acc_file = here / "_qiskit_examples.accepted"
+if acc_file.exists():
+    for line in acc_file.read_text().splitlines():
+        if line.strip() and not line.startswith("#"):
+            k, _, why = line.partition("\t")
+            accepted[k.strip()] = why
+
+FENCE = re.compile(r"^(\s*)(`{3,})(\w*)\s*$")
+
+
+def blocks(text):
+    """[(lang, code, directives, gap_paragraphs_to_next)] in order; also returns the raw item list."""
+    lines = text.splitlines()
+    items, i, pending = [], 0, []
+    prose = []
+    while i < len(lines):
+        m = FENCE.match(lines[i])
+        if m:
+            ind, ticks, lang = m.groups()
+            j, body = i + 1, []
+            while j < len(lines) and not (lines[j].strip() == ticks and lines[j].startswith(ind)):
+                l = lines[j]
+                body.append(l[len(ind):] if l.startswith(ind) else l.lstrip())
+                j += 1
+            paras = len([p for p in "\n".join(prose).split("\n\n") if p.strip()])
+            if items:
+                items[-1]["math_after"] = first_display("\n".join(prose))
+            items.append({"lang": lang, "code": "\n".join(body), "dirs": pending, "paras_before": paras, "line": i + 1})
+            pending, prose, i = [], [], j + 1
+            continue
+        s = lines[i].strip()
+        d = re.match(r"<!--\s*verify:\s*(skip|prelude)(.*?)(-->)?$", s, re.S)
+        if d:
+            kind, rest = d.group(1), d.group(2)
+            if kind == "prelude" and not d.group(3):
+                j = i + 1
+                while j < len(lines) and "-->" not in lines[j]:
+                    rest += "\n" + lines[j]; j += 1
+                rest += "\n" + lines[j].split("-->")[0] if j < len(lines) else ""
+                i = j
+            pending.append((kind, rest.strip()))
+        elif s and not s.startswith(("<details", "</details", "<summary", "<!--")):
+            prose.append(lines[i])
+        elif not s:
+            prose.append("")
+        i += 1
+    if items:
+        items[-1]["math_after"] = first_display("\n".join(prose))
+    return items
+
+
+def first_display(text):
+    """The first $$...$$ formula of the first paragraph after a block, or None."""
+    para = next((p for p in text.split("\n\n") if p.strip()), "")
+    m = re.match(r"\s*\$\$(.+?)\$\$\s*$", para, re.S)
+    return m.group(1) if m else None
+
+
+def tex_norm(s):
+    s = s.replace("$", "")
+    s = re.sub(r"\\\\\s*(\\end\{)", r"\1", s)      # a row break right before \end{...}
+    return re.sub(r"\s+", "", s)
+
+
+RUNNER = r'''
+import sys, io, json, ast, contextlib, traceback
+import matplotlib; matplotlib.use("Agg")
+cells = json.load(open(sys.argv[1]))
+ns = {"__name__": "__main__"}
+out = []
+for code in cells:
+    buf = io.StringIO()
+    try:
+        with contextlib.redirect_stdout(buf):
+            tree = ast.parse(code)
+            last = tree.body[-1] if tree.body and isinstance(tree.body[-1], ast.Expr) else None
+            if last is not None:
+                tree.body = tree.body[:-1]
+            exec(compile(tree, "<block>", "exec"), ns)
+            if last is not None:
+                v = eval(compile(ast.Expression(last.value), "<block>", "eval"), ns)
+                if type(v).__name__ == "Latex":
+                    print("\x00LATEX" + v.data)
+                elif v is not None and not hasattr(v, "savefig") and type(v).__name__ != "InstructionSet":
+                    print(repr(v))
+        out.append({"ok": True, "out": buf.getvalue()})
+    except Exception:
+        out.append({"ok": False, "out": buf.getvalue(), "err": traceback.format_exc(limit=1).strip().splitlines()[-1]})
+json.dump(out, open(sys.argv[2], "w"))
+'''
+
+NUM = re.compile(r"[-+]?\d+\.\d*(?:e[-+]?\d+)?|[-+]?\d*\.\d+(?:e[-+]?\d+)?|[-+]?\d+e[-+]?\d+")
+
+
+def same(exp, got):
+    e = [l.rstrip() for l in exp.strip("\n").splitlines()]
+    g = [l.rstrip() for l in got.strip("\n").splitlines()]
+    if e == g:
+        return True
+    try:
+        de, dg = ast.literal_eval(exp.strip()), ast.literal_eval(got.strip())
+        if isinstance(de, dict) and isinstance(dg, dict) and all(isinstance(v, int) for v in list(de.values()) + list(dg.values())):
+            return set(de) == set(dg) and sum(de.values()) == sum(dg.values())
+    except Exception:
+        pass
+    te, tg = re.sub(r"\s+", " ", NUM.sub("#", exp)).strip(), re.sub(r"\s+", " ", NUM.sub("#", got)).strip()
+    if te != tg:
+        return False
+    ne, ng = [float(x) for x in NUM.findall(exp)], [float(x) for x in NUM.findall(got)]
+    return len(ne) == len(ng) and all(abs(a - b) <= 1e-6 for a, b in zip(ne, ng))
+
+
+checked = fails = skipped = 0
+for md in sorted(src.rglob("*.md")):
+    items = blocks(md.read_text())
+    pys = [k for k, it in enumerate(items) if it["lang"] in ("python", "py")]
+    if not any("qiskit" in items[k]["code"] for k in pys):
+        continue
+    rel = md.relative_to(src).as_posix()
+    cells, owners = [], []
+    for k in pys:
+        it = items[k]
+        if any(d[0] == "skip" for d in it["dirs"]):
+            skipped += 1
+            continue
+        pre = "\n".join(d[1] for d in it["dirs"] if d[0] == "prelude")
+        cells.append((pre + "\n" if pre else "") + it["code"])
+        owners.append(k)
+    with tempfile.TemporaryDirectory() as td:
+        cj, oj = Path(td, "cells.json"), Path(td, "out.json")
+        cj.write_text(json.dumps(cells))
+        r = subprocess.run([py, "-c", RUNNER, str(cj), str(oj)], cwd=td, capture_output=True, text=True, timeout=600)
+        if not oj.exists():
+            print(f"FAIL {rel}: runner crashed: {r.stderr.strip()[-300:]}")
+            fails += 1
+            continue
+        results = json.loads(oj.read_text())
+    for k, res in zip(owners, results):
+        it = items[k]
+        nxt = items[k + 1] if k + 1 < len(items) else None
+        expected = nxt["code"] if nxt and nxt["lang"] == "text" and nxt["paras_before"] <= 1 else None
+        key = hashlib.sha1((it["code"] + "\0" + (expected or "")).encode()).hexdigest()[:12]
+        if key in accepted:
+            continue
+        if not res["ok"]:
+            print(f"FAIL {rel}: block at line {it['line']} raises {res['err']} [{key}]")
+            fails += 1
+            continue
+        if res["out"].startswith("\x00LATEX"):
+            want = it.get("math_after")
+            if want is None:
+                continue
+            checked += 1
+            if tex_norm(want) != tex_norm(res["out"][6:]):
+                print(f"FAIL {rel}: block at line {it['line']}: LaTeX output differs; running gives: {tex_norm(res['out'][6:])[:200]} [{key}]")
+                fails += 1
+            continue
+        if expected is None:
+            continue
+        checked += 1
+        if not same(expected, res["out"]):
+            got = res["out"].strip().replace("\n", "\\n")[:200]
+            print(f"FAIL {rel}: block at line {it['line']}: output differs; running gives: {got} [{key}]")
+            fails += 1
+print(f"OK qiskit examples: {checked} outputs compared, {fails} problem(s), {skipped} block(s) skipped by directive")
