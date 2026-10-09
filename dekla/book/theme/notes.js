@@ -248,6 +248,13 @@
         }
     }
 
+    // The URL changes as soon as a navigation starts, while the old content stays until the new one arrives:
+    // its relative links would resolve against the new URL (holding → stacked posztulatumok/posztulatumok/...).
+    function absoluteContentLinks() {
+        document.querySelectorAll('#mdbook-content a[href]:not([href^="#"]), .nav-wide-wrapper a[href]')
+            .forEach(function (a) { a.href = a.href; });
+    }
+
     function setupNavigation() {
         if (!window.navigation || !/^https?:$/.test(document.location.protocol)) {
             return;
@@ -259,6 +266,7 @@
         const base = document.location.href;
         document.querySelectorAll('#mdbook-sidebar a[href]:not([href^="#"]), #mdbook-menu-bar a[href]')
             .forEach(function (a) { a.href = a.href; });
+        absoluteContentLinks();
         if (window.path_to_searchindex_js) {
             window.path_to_searchindex_js = new URL(window.path_to_searchindex_js, base).href;
         }
@@ -325,6 +333,7 @@
                     document.title = doc.title;
                     document.getElementById('mdbook-content').replaceWith(content);
                     document.querySelector('.nav-wide-wrapper').replaceWith(wide);
+                    absoluteContentLinks();
                     try {
                         sessionStorage.removeItem('sidebar-scroll-offset');   // toc.js reads it on the next full load
                     } catch (err) { /* storage blocked */ }
